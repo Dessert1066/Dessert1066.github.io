@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="计网实验（网络版）路由器1）打开packet tracer，在里面新建路由器（routers）和pc（End Devices），用console线（蓝色）连接路由器console口和pc的串口（com1,i.e. RS232)，即可完成连接。 2）双击pc，打开terminal，波特率选择9600，其余默认，然后就能进入用户模式。 3）用户模式：router&gt; ​      特权模式：rou">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2022/04/11/%E8%AE%A1%E7%BD%91%E5%AE%9E%E9%AA%8C%EF%BC%88%E7%BD%91%E7%BB%9C%E7%89%88%EF%BC%89/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="计网实验（网络版）路由器1）打开packet tracer，在里面新建路由器（routers）和pc（End Devices），用console线（蓝色）连接路由器console口和pc的串口（com1,i.e. RS232)，即可完成连接。 2）双击pc，打开terminal，波特率选择9600，其余默认，然后就能进入用户模式。 3）用户模式：router&gt; ​      特权模式：rou">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-04-11T05:05:54.473Z">
+<meta property="article:modified_time" content="2022-04-08T06:47:35.365Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-计网实验（网络版）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/04/11/%E8%AE%A1%E7%BD%91%E5%AE%9E%E9%AA%8C%EF%BC%88%E7%BD%91%E7%BB%9C%E7%89%88%EF%BC%89/" class="article-date">
+  <time class="dt-published" datetime="2022-04-11T05:05:54.473Z" itemprop="datePublished">2022-04-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="计网实验（网络版）"><a href="#计网实验（网络版）" class="headerlink" title="计网实验（网络版）"></a>计网实验（网络版）</h1><h2 id="路由器"><a href="#路由器" class="headerlink" title="路由器"></a>路由器</h2><p>1）打开packet tracer，在里面新建路由器（routers）和pc（End Devices），用console线（蓝色）连接路由器console口和pc的串口（com1,i.e. RS232)，即可完成连接。</p>
+<p>2）双击pc，打开terminal，波特率选择9600，其余默认，然后就能进入用户模式。</p>
+<p>3）用户模式：router&gt;</p>
+<p>​      特权模式：router#</p>
+<p>​      全局配置模式：router(config)#</p>
+<p>要进入特权模式，输入enable；要进入全局配置模式，在特权模式下输入configure terminal；在全局配置模式中可以选择端口；按Ctrl+Z可以退出全局配置模式。</p>
+<p>4）编辑路由器登陆信息：</p>
+<p>Router(config)#banner motd “Welcomee to NJU”</p>
+<p>5）配置端口描述：</p>
+<p>Router(config)#int fa 0&#x2F;0</p>
+<p>Router(config-if)#description To ISP</p>
+<p>6）关闭域名解析功能：</p>
+<p>Router(config)#no ip domain-lookup</p>
+<p>7）将实验端口恢复默认设置：</p>
+<p>Router(config)#default interface f0&#x2F;0</p>
+<p>8）设置系统时间：</p>
+<p>Router#clock set 08:00:00 1jan 2016 </p>
+<p>9)给路由器命名：</p>
+<p>进入全局配置模式，用hostname<name>命令来设定路由器名称</p>
+<p>10）给端口配IP地址：在全局配置模式下，进入各端口配置模式配置IP地址</p>
+<p>​        1.以太网口配置</p>
+<p>​            Router(config)# int f0&#x2F;0</p>
+<p>​            Router(config-if) #ip address <ip address><subnet mask></p>
+<p>​            Router(config-if)# no shutdown</p>
+<p>​        2.串行线：根据串口是DTE还是DCE来选择（略）</p>
+<p>11）Ping命令</p>
+<p>Router#ping <ip address></p>
+<p>12）设置Telnet</p>
+<p>能进行Telnet的前提：主机能ping通路由器；路由器设置了telnet密码；路由器允许通过telnet登录；如果需要进入特权模式，还需要配置enable密码。</p>
+<p>配置命令：Router#telnet <ip address></p>
+<p>​                   Router#telnet <hostname></p>
+<p>启动telnet：</p>
+<p>Router#config t</p>
+<p>Router(config)#line vty 0 4 &#x2F;&#x2F;同时允许0-4共5个连接</p>
+<p>Router(config-line)# login</p>
+<p>Router(config-line)#password cisco &#x2F;&#x2F;设置密码为cisco</p>
+<p>设置enable密码：</p>
+<p>Router(config)#enable password cisco</p>
+<p>Router(config-line)# password cisco</p>
+<h2 id="交换机"><a href="#交换机" class="headerlink" title="交换机"></a>交换机</h2><p>1）连接方法同路由器</p>
+<p>2）将hostname改为nju</p>
+<p>先enable进入特权模式，在con t 进入全局配置模式（命令在不引起歧义的情况下可以省略），然后</p>
+<p>Switch(config)#hostname nju</p>
+<p>3）设置特权密码和vty线路密码</p>
+<p>nju(config)#enable password ccna</p>
+<p>nju(config)#line vty 0 4</p>
+<p>nju(config-line)#passwoed ccnp</p>
+<p>4）设置管理ip地址</p>
+<p>nju(config)#inter vlan1</p>
+<p>nju(config-if)#ip add 192.168.1.1 255.255.255.0</p>
+<p>nju(config-if)#no shut</p>
+<p>nju(config-if)#exit</p>
+<p>nju(config)#ip default0gateway 192.168.1.100</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/04/11/%E8%AE%A1%E7%BD%91%E5%AE%9E%E9%AA%8C%EF%BC%88%E7%BD%91%E7%BB%9C%E7%89%88%EF%BC%89/" data-id="cl1x4q9ns0005okvdfr7744ns" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/04/11/Springboot/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/04/08/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/04/13/%E6%B1%82vector%E5%92%8C%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC/">求vector和数组中的最大值</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/11/C++vector%E6%B5%85%E6%9E%90/">C++容器浅析</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/11/git%E6%9B%B4%E6%96%B0%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/11/Springboot/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/11/%E8%AE%A1%E7%BD%91%E5%AE%9E%E9%AA%8C%EF%BC%88%E7%BD%91%E7%BB%9C%E7%89%88%EF%BC%89/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
