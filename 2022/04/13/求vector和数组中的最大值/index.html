@@ -1,237 +1,37 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  
-  <title>求vector和数组中的最大值 | Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="C++数组或vector求最大值或最小值可以用max_element()和min_element()函数，二者返回的都是迭代器或指针. 头文件：#include&lt;algorithm&gt; vector容器： 12int maxValue &#x3D; *max_element(v.begin(),v.end());int maxPosition &#x3D; max_element(v.begin(),v.e">
-<meta property="og:type" content="article">
-<meta property="og:title" content="求vector和数组中的最大值">
-<meta property="og:url" content="http://example.com/2022/04/13/%E6%B1%82vector%E5%92%8C%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="C++数组或vector求最大值或最小值可以用max_element()和min_element()函数，二者返回的都是迭代器或指针. 头文件：#include&lt;algorithm&gt; vector容器： 12int maxValue &#x3D; *max_element(v.begin(),v.end());int maxPosition &#x3D; max_element(v.begin(),v.e">
-<meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-04-13T01:40:06.000Z">
-<meta property="article:modified_time" content="2022-04-13T01:45:46.463Z">
-<meta property="article:author" content="John Doe">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
-
-  
-  
-<link rel="stylesheet" href="/css/style.css">
-
-  
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
-
-  
-<meta name="generator" content="Hexo 6.1.0"></head>
-
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-
-      <div class="outer">
-        <section id="main"><article id="post-求vector和数组中的最大值" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/04/13/%E6%B1%82vector%E5%92%8C%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC/" class="article-date">
-  <time class="dt-published" datetime="2022-04-13T01:40:06.000Z" itemprop="datePublished">2022-04-13</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="p-name article-title" itemprop="headline name">
-      求vector和数组中的最大值
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="C-数组或vector求最大值或最小值"><a href="#C-数组或vector求最大值或最小值" class="headerlink" title="C++数组或vector求最大值或最小值"></a>C++数组或vector求最大值或最小值</h1><p>可以用max_element()和min_element()函数，二者返回的都是迭代器或指针.</p>
-<p>头文件：<code>#include&lt;algorithm&gt;</code></p>
-<p>vector容器：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> maxValue = *<span class="built_in">max_element</span>(v.<span class="built_in">begin</span>(),v.<span class="built_in">end</span>());</span><br><span class="line"><span class="type">int</span> maxPosition = <span class="built_in">max_element</span>(v.<span class="built_in">begin</span>(),v.<span class="built_in">end</span>())-v.<span class="built_in">begin</span>();</span><br></pre></td></tr></table></figure>
-
-<p>普通数组：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a[]=&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>&#125;;</span><br><span class="line"><span class="comment">//最大值：</span></span><br><span class="line"><span class="type">int</span> maxValue = *<span class="built_in">max_element</span>(a,a+<span class="number">6</span>);</span><br><span class="line"><span class="type">int</span> maxPosition = <span class="built_in">max_element</span>(a,a+<span class="number">6</span>)-a;</span><br></pre></td></tr></table></figure>
+{% extends '_layout.swig' %}
+{% import '_macro/post.swig' as post_template %}
+{% import '_macro/sidebar.swig' as sidebar_template %}
 
 
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/04/13/%E6%B1%82vector%E5%92%8C%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC/" data-id="cl1x4tbhj00040wvdfu5oc6so" data-title="求vector和数组中的最大值" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2022/04/14/C++sort/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          C++ sort
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2022/04/11/C++vector%E6%B5%85%E6%9E%90/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">C++容器浅析</div>
-    </a>
-  
-</nav>
+{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-  
-</article>
+{% block page_class %}page-post-detail{% endblock %}
 
 
-</section>
-        
-          <aside id="sidebar">
-  
-    
+{% block content %}
 
-  
-    
+  <div id="posts" class="posts-expand">
+    {{ post_template.render(page) }}
 
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a></li></ul>
+    <div class="post-spread">
+      {% if theme.jiathis %}
+        {% include '_partials/share/jiathis.swig' %}
+      {% elseif theme.baidushare %}
+        {% include '_partials/share/baidushare.swig' %}
+      {% elseif theme.add_this_id %}
+        {% include '_partials/share/add-this.swig' %}
+      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
+        {% include '_partials/share/duoshuo_share.swig' %}
+      {% endif %}
     </div>
   </div>
 
+{% endblock %}
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2022/04/14/C++stack/">C++ stack queue deque</a>
-          </li>
-        
-          <li>
-            <a href="/2022/04/14/C++sort/">C++ sort</a>
-          </li>
-        
-          <li>
-            <a href="/2022/04/13/%E6%B1%82vector%E5%92%8C%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC/">求vector和数组中的最大值</a>
-          </li>
-        
-          <li>
-            <a href="/2022/04/11/C++vector%E6%B5%85%E6%9E%90/">C++容器浅析</a>
-          </li>
-        
-          <li>
-            <a href="/2022/04/11/%E5%A6%82%E4%BD%95%E5%9C%A8hexo%E4%B8%8A%E5%88%9B%E5%BB%BA%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/">如何在hexo上创建一篇文章</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
+{% block sidebar %}
+  {{ sidebar_template.render(true) }}
+{% endblock %}
 
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2022 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-
-<script src="/js/jquery-3.4.1.min.js"></script>
-
-
-
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-
-  </div>
-</body>
-</html>
+{% block script_extra %}
+  {% include '_scripts/pages/post-details.swig' %}
+{% endblock %}

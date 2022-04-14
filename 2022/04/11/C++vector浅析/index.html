@@ -1,300 +1,37 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  
-  <title>C++容器浅析 | Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="C++容器浅析一、什么是vector？vector就是一个封装了动态大小数组的顺序容器。和任意其他类型容器一样，它能够存放各种类型的对象。可以简单认为，是一个能够存放任意类型的动态数组。 二、容器特性1.顺序排列2.动态数组3.能够感知内存分类器的（Allocator-aware）三、基本函数实现1.构造函数创建空vector：vector() 创建一个vector，元素的个数为nSize：vec">
-<meta property="og:type" content="article">
-<meta property="og:title" content="C++容器浅析">
-<meta property="og:url" content="http://example.com/2022/04/11/C++vector%E6%B5%85%E6%9E%90/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="C++容器浅析一、什么是vector？vector就是一个封装了动态大小数组的顺序容器。和任意其他类型容器一样，它能够存放各种类型的对象。可以简单认为，是一个能够存放任意类型的动态数组。 二、容器特性1.顺序排列2.动态数组3.能够感知内存分类器的（Allocator-aware）三、基本函数实现1.构造函数创建空vector：vector() 创建一个vector，元素的个数为nSize：vec">
-<meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-04-11T06:38:33.000Z">
-<meta property="article:modified_time" content="2022-04-11T06:39:03.882Z">
-<meta property="article:author" content="John Doe">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
-
-  
-  
-<link rel="stylesheet" href="/css/style.css">
-
-  
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
-
-  
-<meta name="generator" content="Hexo 6.1.0"></head>
-
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-
-      <div class="outer">
-        <section id="main"><article id="post-C++vector浅析" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/04/11/C++vector%E6%B5%85%E6%9E%90/" class="article-date">
-  <time class="dt-published" datetime="2022-04-11T06:38:33.000Z" itemprop="datePublished">2022-04-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="p-name article-title" itemprop="headline name">
-      C++容器浅析
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="C-容器浅析"><a href="#C-容器浅析" class="headerlink" title="C++容器浅析"></a>C++容器浅析</h1><h2 id="一、什么是vector？"><a href="#一、什么是vector？" class="headerlink" title="一、什么是vector？"></a>一、什么是vector？</h2><p>vector就是一个封装了动态大小数组的顺序容器。和任意其他类型容器一样，它能够存放各种类型的对象。可以简单认为，是一个能够存放任意类型的动态数组。</p>
-<h2 id="二、容器特性"><a href="#二、容器特性" class="headerlink" title="二、容器特性"></a>二、容器特性</h2><h3 id="1-顺序排列"><a href="#1-顺序排列" class="headerlink" title="1.顺序排列"></a>1.顺序排列</h3><h3 id="2-动态数组"><a href="#2-动态数组" class="headerlink" title="2.动态数组"></a>2.动态数组</h3><h3 id="3-能够感知内存分类器的（Allocator-aware）"><a href="#3-能够感知内存分类器的（Allocator-aware）" class="headerlink" title="3.能够感知内存分类器的（Allocator-aware）"></a>3.能够感知内存分类器的（Allocator-aware）</h3><h2 id="三、基本函数实现"><a href="#三、基本函数实现" class="headerlink" title="三、基本函数实现"></a>三、基本函数实现</h2><h3 id="1-构造函数"><a href="#1-构造函数" class="headerlink" title="1.构造函数"></a>1.构造函数</h3><p>创建空vector：vector()</p>
-<p>创建一个vector，元素的个数为nSize：vector(int nSize)</p>
-<p>创建一个vector，元素个数为nSize，且值均为t：vector(int nSize,const t&amp; t)</p>
-<p>复制构造函数：vector(const vector&amp;)</p>
-<p>复制[begin,end)区间内的元素到另一个vector中：vector(begin,end)</p>
-<h3 id="2-增加函数"><a href="#2-增加函数" class="headerlink" title="2.增加函数"></a>2.增加函数</h3><ul>
-<li>void push_back(const T&amp; x):向量尾部增加一个元素X</li>
-<li>iterator insert(iterator it,const T&amp; x):向量中迭代器指向元素前增加一个元素x</li>
-<li>iterator insert(iterator it,int n,const T&amp; x):向量中迭代器指向元素前增加n个相同的元素x</li>
-<li>iterator insert(iterator it,const_iterator first,const_iterator last):向量中迭代器指向元素前插入另一个相同类型向量的[first,last)间的数据</li>
-</ul>
-<h3 id="3-删除函数"><a href="#3-删除函数" class="headerlink" title="3.删除函数"></a>3.删除函数</h3><ul>
-<li>iterator erase(iterator it):删除向量中迭代器指向元素</li>
-<li>iterator erase(iterator first,iterator last):删除向量中[first,last)中元素</li>
-<li>void pop_back():删除向量中最后一个元素</li>
-<li>void clear():清空向量中所有元素</li>
-</ul>
-<h3 id="4-遍历函数"><a href="#4-遍历函数" class="headerlink" title="4.遍历函数"></a>4.遍历函数</h3><ul>
-<li>reference at(int pos):返回pos位置元素的引用</li>
-<li>reference front():返回首元素的引用</li>
-<li>reference back():返回尾元素的引用</li>
-<li>iterator begin():返回向量头指针，指向第一个元素</li>
-<li>iterator end():返回向量尾指针，指向向量最后一个元素的下一个位置</li>
-<li>reverse_iterator rbegin():反向迭代器，指向最后一个元素</li>
-<li>reverse_iterator rend():反向迭代器，指向第一个元素之前的位置</li>
-</ul>
-<h3 id="5-判断函数"><a href="#5-判断函数" class="headerlink" title="5.判断函数"></a>5.判断函数</h3><ul>
-<li>bool empty() const:判断向量是否为空，若为空，则向量中无元素</li>
-</ul>
-<h3 id="6-大小函数"><a href="#6-大小函数" class="headerlink" title="6.大小函数"></a>6.大小函数</h3><ul>
-<li>int size() const:返回向量中元素的个数</li>
-<li>int capacity() const:返回当前向量所能容纳的最大元素值</li>
-<li>int max_size() const:返回最大可允许的vector元素数量值</li>
-</ul>
-<h3 id="7-其他函数"><a href="#7-其他函数" class="headerlink" title="7.其他函数"></a>7.其他函数</h3><ul>
-<li>void swap(vector&amp;):交换两个同类型向量的数据</li>
-<li>void assign(int n,const T&amp; x):设置向量中前n个元素的值为x</li>
-<li>void assign(const_iterator first,const_iterator last):向量中[first,last)中元素设置成当前向量元素</li>
-</ul>
-<h3 id="8-看着清楚"><a href="#8-看着清楚" class="headerlink" title="8.看着清楚"></a>8.看着清楚</h3><blockquote>
-<p>1.push_back 在数组的最后添加一个数据</p>
-<p>2.pop_back 去掉数组的最后一个数据</p>
-<p>3.at 得到编号位置的数据</p>
-<p>4.begin 得到数组头的指针</p>
-<p>5.end 得到数组的最后一个单元+1的指针</p>
-<p>6.front 得到数组头的引用</p>
-<p>7.back 得到数组的最后一个单元的引用</p>
-<p>8.max_size 得到vector最大可以是多大</p>
-<p>9.capacity 当前vector分配的大小</p>
-<p>10.size 当前使用数据的大小</p>
-<p>11.resize 改变当前使用数据的大小，如果它比当前使用的大，者填充默认值</p>
-<p>12.reserve 改变当前vecotr所分配空间的大小</p>
-<p>13.erase 删除指针指向的数据项</p>
-<p>14.clear 清空当前的vector</p>
-<p>15.rbegin 将vector反转后的开始指针返回(其实就是原来的end-1)</p>
-<p>16.rend 将vector反转构的结束指针返回(其实就是原来的begin-1)</p>
-<p>17.empty 判断vector是否为空</p>
-<p>18.swap 与另一个vector交换数据</p>
-</blockquote>
-<h2 id="四、基本用法"><a href="#四、基本用法" class="headerlink" title="四、基本用法"></a>四、基本用法</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#include &lt; vector&gt; </span><br><span class="line">using namespace std;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="五、简单介绍"><a href="#五、简单介绍" class="headerlink" title="五、简单介绍"></a>五、简单介绍</h2><ol>
-<li>Vector&lt;类型&gt;标识符</li>
-<li>Vector&lt;类型&gt;标识符(最大容量)</li>
-<li>Vector&lt;类型&gt;标识符(最大容量,初始所有值)</li>
-<li>Int i[5]&#x3D;{1,2,3,4,5}<br>Vector&lt;类型&gt;vi(I,i+2);&#x2F;&#x2F;得到i索引值为3以后的值</li>
-<li>Vector&lt; vector&lt; int&gt; &gt;v; 二维向量&#x2F;&#x2F;这里最外的&lt;&gt;要有空格。否则在比较旧的编译器下无法通过</li>
-</ol>
-<p>具体使用见<a target="_blank" rel="noopener" href="https://www.runoob.com/w3cnote/cpp-vector-container-analysis.html">https://www.runoob.com/w3cnote/cpp-vector-container-analysis.html</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/04/11/C++vector%E6%B5%85%E6%9E%90/" data-id="cl1x4tbh400000wvd7c7f45rn" data-title="C++容器浅析" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2022/04/13/%E6%B1%82vector%E5%92%8C%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          求vector和数组中的最大值
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2022/04/11/%E5%A6%82%E4%BD%95%E5%9C%A8hexo%E4%B8%8A%E5%88%9B%E5%BB%BA%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">如何在hexo上创建一篇文章</div>
-    </a>
-  
-</nav>
-
-  
-</article>
+{% extends '_layout.swig' %}
+{% import '_macro/post.swig' as post_template %}
+{% import '_macro/sidebar.swig' as sidebar_template %}
 
 
-</section>
-        
-          <aside id="sidebar">
-  
-    
+{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-  
-    
+{% block page_class %}page-post-detail{% endblock %}
 
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a></li></ul>
+
+{% block content %}
+
+  <div id="posts" class="posts-expand">
+    {{ post_template.render(page) }}
+
+    <div class="post-spread">
+      {% if theme.jiathis %}
+        {% include '_partials/share/jiathis.swig' %}
+      {% elseif theme.baidushare %}
+        {% include '_partials/share/baidushare.swig' %}
+      {% elseif theme.add_this_id %}
+        {% include '_partials/share/add-this.swig' %}
+      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
+        {% include '_partials/share/duoshuo_share.swig' %}
+      {% endif %}
     </div>
   </div>
 
+{% endblock %}
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2022/04/14/C++stack/">C++ stack queue deque</a>
-          </li>
-        
-          <li>
-            <a href="/2022/04/14/C++sort/">C++ sort</a>
-          </li>
-        
-          <li>
-            <a href="/2022/04/13/%E6%B1%82vector%E5%92%8C%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC/">求vector和数组中的最大值</a>
-          </li>
-        
-          <li>
-            <a href="/2022/04/11/C++vector%E6%B5%85%E6%9E%90/">C++容器浅析</a>
-          </li>
-        
-          <li>
-            <a href="/2022/04/11/%E5%A6%82%E4%BD%95%E5%9C%A8hexo%E4%B8%8A%E5%88%9B%E5%BB%BA%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/">如何在hexo上创建一篇文章</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
+{% block sidebar %}
+  {{ sidebar_template.render(true) }}
+{% endblock %}
 
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2022 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-
-<script src="/js/jquery-3.4.1.min.js"></script>
-
-
-
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-
-  </div>
-</body>
-</html>
+{% block script_extra %}
+  {% include '_scripts/pages/post-details.swig' %}
+{% endblock %}
