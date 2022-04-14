@@ -71,6 +71,56 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-C++sort" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/04/14/C++sort/" class="article-date">
+  <time class="dt-published" datetime="2022-04-14T02:39:19.000Z" itemprop="datePublished">2022-04-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/04/14/C++sort/">C++ sort</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line">vector&lt;<span class="type">int</span>&gt; v;</span><br><span class="line">std::<span class="built_in">sort</span>(v.<span class="built_in">begin</span>(),v.<span class="built_in">end</span>());</span><br><span class="line"><span class="type">int</span> arr[] = &#123;<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">8</span>&#125;</span><br><span class="line">std::<span class="built_in">sort</span>(a,a+<span class="number">6</span>);</span><br></pre></td></tr></table></figure>
+
+<p>加入sort函数样板：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">less&lt;Type&gt;</span><br><span class="line"></span><br><span class="line">less_equal&lt;Type&gt;</span><br><span class="line"></span><br><span class="line">greater&lt;Type&gt;</span><br><span class="line"></span><br><span class="line">greater_equal&lt;Type&gt;</span><br><span class="line"></span><br><span class="line">equal_to&lt;Type&gt;</span><br><span class="line"></span><br><span class="line">not_equal_to&lt;Type&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> arr[] = &#123;<span class="number">4</span>, <span class="number">5</span>, <span class="number">8</span>, <span class="number">3</span>, <span class="number">7</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">6</span>, <span class="number">10</span>, <span class="number">9</span>&#125;;</span><br><span class="line">std::<span class="built_in">sort</span>(arr, arr+<span class="number">10</span>, std::<span class="built_in">greater</span>&lt;<span class="type">int</span>&gt;());</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">std::<span class="built_in">sort</span>(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>(), mycompare);</span><br></pre></td></tr></table></figure>
+
+<p>配合lambda匿名函数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">std::sort(v.begin(), v.end(), [](int a, int b)&#123;</span><br><span class="line">    return a &lt; b; // 升序排列</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/04/14/C++sort/" data-id="cl1yem6bq00000kvd5ll44zif" data-title="C++ sort" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-求vector和数组中的最大值" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/04/13/%E6%B1%82vector%E5%92%8C%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC/" class="article-date">
@@ -472,6 +522,10 @@
       <ul>
         
           <li>
+            <a href="/2022/04/14/C++sort/">C++ sort</a>
+          </li>
+        
+          <li>
             <a href="/2022/04/13/%E6%B1%82vector%E5%92%8C%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC/">求vector和数组中的最大值</a>
           </li>
         
@@ -485,10 +539,6 @@
         
           <li>
             <a href="/2022/04/11/Springboot/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2022/04/11/%E8%AE%A1%E7%BD%91%E5%AE%9E%E9%AA%8C%EF%BC%88%E7%BD%91%E7%BB%9C%E7%89%88%EF%BC%89/">(no title)</a>
           </li>
         
       </ul>

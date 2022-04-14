@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>C++ sort | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="12345#include &lt;algorithm&gt;vector&lt;int&gt; v;std::sort(v.begin(),v.end());int arr[] &#x3D; &amp;#123;4,3,2,5,7,8&amp;#125;std::sort(a,a+6);  加入sort函数样板： 1234567891011less&lt;Type&gt;less_equal&lt;Type&gt;gre">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++ sort">
+<meta property="og:url" content="http://example.com/2022/04/14/C++sort/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="12345#include &lt;algorithm&gt;vector&lt;int&gt; v;std::sort(v.begin(),v.end());int arr[] &#x3D; &amp;#123;4,3,2,5,7,8&amp;#125;std::sort(a,a+6);  加入sort函数样板： 1234567891011less&lt;Type&gt;less_equal&lt;Type&gt;gre">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-04-14T02:39:19.000Z">
+<meta property="article:modified_time" content="2022-04-14T02:49:18.758Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-C++sort" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/04/14/C++sort/" class="article-date">
+  <time class="dt-published" datetime="2022-04-14T02:39:19.000Z" itemprop="datePublished">2022-04-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      C++ sort
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line">vector&lt;<span class="type">int</span>&gt; v;</span><br><span class="line">std::<span class="built_in">sort</span>(v.<span class="built_in">begin</span>(),v.<span class="built_in">end</span>());</span><br><span class="line"><span class="type">int</span> arr[] = &#123;<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">8</span>&#125;</span><br><span class="line">std::<span class="built_in">sort</span>(a,a+<span class="number">6</span>);</span><br></pre></td></tr></table></figure>
+
+<p>加入sort函数样板：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">less&lt;Type&gt;</span><br><span class="line"></span><br><span class="line">less_equal&lt;Type&gt;</span><br><span class="line"></span><br><span class="line">greater&lt;Type&gt;</span><br><span class="line"></span><br><span class="line">greater_equal&lt;Type&gt;</span><br><span class="line"></span><br><span class="line">equal_to&lt;Type&gt;</span><br><span class="line"></span><br><span class="line">not_equal_to&lt;Type&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> arr[] = &#123;<span class="number">4</span>, <span class="number">5</span>, <span class="number">8</span>, <span class="number">3</span>, <span class="number">7</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">6</span>, <span class="number">10</span>, <span class="number">9</span>&#125;;</span><br><span class="line">std::<span class="built_in">sort</span>(arr, arr+<span class="number">10</span>, std::<span class="built_in">greater</span>&lt;<span class="type">int</span>&gt;());</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">std::<span class="built_in">sort</span>(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>(), mycompare);</span><br></pre></td></tr></table></figure>
+
+<p>配合lambda匿名函数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">std::sort(v.begin(), v.end(), [](int a, int b)&#123;</span><br><span class="line">    return a &lt; b; // 升序排列</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/04/14/C++sort/" data-id="cl1yem6bq00000kvd5ll44zif" data-title="C++ sort" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2022/04/13/%E6%B1%82vector%E5%92%8C%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">求vector和数组中的最大值</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/04/14/C++sort/">C++ sort</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/13/%E6%B1%82vector%E5%92%8C%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC/">求vector和数组中的最大值</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/11/C++vector%E6%B5%85%E6%9E%90/">C++容器浅析</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/11/git%E6%9B%B4%E6%96%B0%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/11/Springboot/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
