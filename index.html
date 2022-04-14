@@ -71,6 +71,115 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-C++stack" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/04/14/C++stack/" class="article-date">
+  <time class="dt-published" datetime="2022-04-14T05:57:42.000Z" itemprop="datePublished">2022-04-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/04/14/C++stack/">C++ stack queue deque</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="C-Stack-Queue-Deque-PriorityQueue-Pair-（Vector-Set略）"><a href="#C-Stack-Queue-Deque-PriorityQueue-Pair-（Vector-Set略）" class="headerlink" title="C++ Stack Queue Deque PriorityQueue Pair （Vector Set略）"></a>C++ Stack Queue Deque PriorityQueue Pair （Vector Set略）</h1><p>Stack:</p>
+<p>头文件：</p>
+<p><code>#include&lt;stack&gt;</code></p>
+<p>简介：</p>
+<p>stack（栈），是一种后进先出（Last-In-First-Out，LIFO）的线性结构，支持两种操作：push和pop。</p>
+<p>push操作是把一个元素加入栈中，pop操作是把最晚进入的元素删除。</p>
+<p>常用的member function：</p>
+<p>empty()：空则返回true。</p>
+<p>size()：返回当前stack中有多少元素。</p>
+<p>push()：在stack中加入一个元素。注意，被加入的元素会复制一份，而非Reference。</p>
+<p>pop()：移除顶层元素，如果为空则发生Runtime Error。</p>
+<p>top()：返回最上层的reference。如果为空，则发生Runtime Error。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stack&gt;</span></span></span><br><span class="line">stack&lt;<span class="type">int</span>&gt; st;</span><br><span class="line">st.<span class="built_in">push</span>(i);</span><br></pre></td></tr></table></figure>
+
+
+
+<p>Queue:</p>
+<p>头文件：</p>
+<p><code>#include&lt;queue&gt;</code></p>
+<p>简介：</p>
+<p>Queue（队列），是一种先进先出（FIFO）的线性结构，虽然习惯上称为enqueue和dequeue，但是在STL中名称为push和pop。</p>
+<p>常用的member function：</p>
+<p>empty()：空则返回true。</p>
+<p>size()：返回当前queue中有多少元素。</p>
+<p>push()：在queue中加入一个元素。注意，被加入的元素会复制一份，而非Reference。</p>
+<p>pop()：移除最前端元素，如果为空则发生Runtime Error。</p>
+<p>front()：返回最前端的reference。如果为空，则发生Runtime Error。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;queue&gt;</span></span></span><br><span class="line">queue&lt;<span class="type">int</span>&gt; que;</span><br><span class="line">que.<span class="built_in">push</span>(i);</span><br></pre></td></tr></table></figure>
+
+
+
+<p>Deque：</p>
+<p>头文件：</p>
+<p><code>#include&lt;deque&gt;</code></p>
+<p>简介：</p>
+<p>Deque（双端队列，Double-ended queue，念作“deck”，勿与dequeue混淆），线性结构，支持四种基本操作：push，inject，pop，eject。</p>
+<p>Push操作是把一个元素加入deque的前端，inject操作是把一个元素加入deque的猴拳；pop操作是把deque最前端的元素移除，eject操作是把的却最后全的元素移除。</p>
+<p>注：我们都还是喜欢将push_front、push_back、pop_front、pop_back，并且在STL的名称亦是如此。</p>
+<p>常用的member function：</p>
+<p>empty()：空则返回true。</p>
+<p>size()：返回当前deque中有多少元素。</p>
+<p>push_front()：在deque前端中加入一个元素。注意，被加入的元素会复制一份，而非Reference。</p>
+<p>push_back()：在deque后端中加入一个元素。注意，被加入的元素会复制一份，而非Reference。</p>
+<p>pop_front()：移除deque最前端元素，如果为空则发生Runtime Error。</p>
+<p>pop_back()：移除deque最后端元素，如果为空则发生Runtime Error。</p>
+<p>front()：返回最前端的reference。如果为空，则发生Runtime Error。</p>
+<p>back()：返回最后端的reference。如果为空，则发生Runtime Error。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;deque&gt;</span></span></span><br><span class="line">deque&lt;<span class="type">int</span>&gt; de;</span><br><span class="line">de.<span class="built_in">push_back</span>(i);</span><br></pre></td></tr></table></figure>
+
+
+
+<p>PriorityQueue:</p>
+<p>头文件：</p>
+<p><code>#include&lt;queue&gt;</code></p>
+<p>简介：</p>
+<p>PriorityQueue（优先队列），是一种按照优先程度来排列的结构，支持两种操作：push和pop。</p>
+<p>push是把一个元素加入队列中，pop是把优先顺序最高的元素移除。</p>
+<p>常用的member function：</p>
+<p>empty()：空则返回true。</p>
+<p>size()：返回当前有多少元素。</p>
+<p>push()：在queue中加入一个元素。注意，被加入的元素会复制一份，而非Reference。</p>
+<p>pop()：移除优先顺序最高的元素，如果为空则发生Runtime Error。</p>
+<p>front()：返回优先顺序最高元素的constant reference。如果为空，则发生Runtime Error。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;queue&gt;</span></span></span><br><span class="line">priority_queue&lt;<span class="type">int</span>&gt; pq;</span><br><span class="line">pq.<span class="built_in">push</span>(i);</span><br></pre></td></tr></table></figure>
+
+
+
+<p>Pair:</p>
+<p>头文件：</p>
+<p><code>#include&lt;utility&gt;</code></p>
+<p>将两个元素绑在一起，第一个元素为first，第二个元素为second。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/04/14/C++stack/" data-id="cl1ynlyru0000bgvdbxm60d7n" data-title="C++ stack queue deque" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-C++sort" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/04/14/C++sort/" class="article-date">
@@ -615,6 +724,10 @@
       <ul>
         
           <li>
+            <a href="/2022/04/14/C++stack/">C++ stack queue deque</a>
+          </li>
+        
+          <li>
             <a href="/2022/04/14/C++sort/">C++ sort</a>
           </li>
         
@@ -628,10 +741,6 @@
         
           <li>
             <a href="/2022/04/11/%E5%A6%82%E4%BD%95%E5%9C%A8hexo%E4%B8%8A%E5%88%9B%E5%BB%BA%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/">如何在hexo上创建一篇文章</a>
-          </li>
-        
-          <li>
-            <a href="/2022/04/11/git%E6%9B%B4%E6%96%B0%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81/">(no title)</a>
           </li>
         
       </ul>
