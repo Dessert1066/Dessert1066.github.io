@@ -298,7 +298,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-18 14:16:07" itemprop="dateModified" datetime="2022-04-18T14:16:07+08:00">2022-04-18</time>
+                <time title="修改时间：2022-04-18 15:19:27" itemprop="dateModified" datetime="2022-04-18T15:19:27+08:00">2022-04-18</time>
               </span>
 
           
@@ -313,39 +313,14 @@
 
       
           <p>本文介绍git常见操作，仅仅设计四个命令：<code>add</code>，<code>commit</code>，<code>reset</code>，<code>checkout</code>.</p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在进行git操作前，一定要明白git的三个【分区】是什么，否则的话肯定没办法真正理解Git的原理。</p>
-<p>Git的三个分区分别是：<code>working directory</code> ，<code>stage/index area</code> ，<code>commit history</code>。</p>
-<p>working directory是工作目录，也就是我们肉眼能看到的文件。在执行git add相关相关命令后，就会把work dir中的修改添加到暂存区stage area（或者叫index area）中。</p>
-<p>当stage中存在修改时，我们使用git commit相关命令之后，就会把stage中的额修改保存到提交历史中，也就是HEAD指针指向的位置。</p>
-<p>任何修改只要进入commit history，基本可以认为永远不会丢失了。每个commit都有唯一的hash值，我们经常说的HEAD或者master分支，都可以理解为一个只想某个commit的指针。</p>
-<p>work dir和stage区域的状态，可以通过命令git status来查看，history区域的提交历史可以通过git log来查看。</p>
-<h2 id="本地Git极简教程"><a href="#本地Git极简教程" class="headerlink" title="本地Git极简教程"></a>本地Git极简教程</h2><h3 id="需求一，如何把work-dir中的修改加入stage。"><a href="#需求一，如何把work-dir中的修改加入stage。" class="headerlink" title="需求一，如何把work dir中的修改加入stage。"></a>需求一，如何把work dir中的修改加入stage。</h3><p>使用git add相关命令就行了。顺便一提，add有个别名叫做stage，也就是git stage和git add命令是完全一样的。</p>
-<h3 id="需求二，如何把stage中的修改还原到work-dir中。"><a href="#需求二，如何把stage中的修改还原到work-dir中。" class="headerlink" title="需求二，如何把stage中的修改还原到work dir中。"></a>需求二，如何把stage中的修改还原到work dir中。</h3><p>使用checkout命令，比如修改了a.txt，现在想要还原成原来的文件，使用<code>git checkout a.txt</code> ，那么就能还原成stage中的状态。</p>
-<p>如果需要还原全部文件，可以用点（.）通配符。</p>
-<p>work dir中的修改会被stage覆盖，无法恢复，所以使用该命令是需要确定work dir中的修改可以抛弃。</p>
-<h3 id="需求三，将stage区的文件添加到history区。"><a href="#需求三，将stage区的文件添加到history区。" class="headerlink" title="需求三，将stage区的文件添加到history区。"></a>需求三，将stage区的文件添加到history区。</h3><p>使用<code>git commmit -m ‘一些描述’</code></p>
-<p>如果commit完之后，发现一些错别字需要修改，又不想为改几个错别字而新开一个commit到history区，那么可以用 <code>git commit --amend</code> 这样就是把错别字的修改和之前的哪个commit中的修改合并，作为一个commit提交到history区。</p>
-<h3 id="需求四，将history区的文件还原到stage区。"><a href="#需求四，将history区的文件还原到stage区。" class="headerlink" title="需求四，将history区的文件还原到stage区。"></a>需求四，将history区的文件还原到stage区。</h3><p>如果修改了一个文件，使用了git add . ，然后发现这个文件还需要求改，不想commit，想从stage中撤销，那么可以使用<code>git reset</code>命令：<code>git reset a.txt</code></p>
-<p>这样就可以把a.txt文件从stage区移除，这时候进行commit操作就不会一起提交到history区了。上面的这个命令是一个简写，实际上reset命令的完整写法如下： <code>git reset --mixed HEAD a.txt</code> ，其中，mixed是一个模式（mode）参数，如果reset省略这个选项的话默认是mixed模式，HEAD指定了一个历史提交的hash值，a.txt指定了一个文件或者多个文件。</p>
-<p>该命令的自然语言描述是：不改变work dir中的任何数据，将stage区域中的a.txt文件还原成HEAD指向的commit history中的样子。就相当于把对a.txt的修改从stage区撤销，但依然保存在work dir中，变为unstage的状态。</p>
-<p>不会改变work dir中的数据，会改变stage区的数据，所以应确保stage中被改动的数据是可以抛弃的。</p>
-<h3 id="需求五，将work-dir的修改提交到history区。"><a href="#需求五，将work-dir的修改提交到history区。" class="headerlink" title="需求五，将work dir的修改提交到history区。"></a>需求五，将work dir的修改提交到history区。</h3><p>先git add 然后 git commit就行了，或者一个快捷方法是使用命令 git commit -a。</p>
-<h3 id="需求六，将history区里的历史提交还原到work-dir中。"><a href="#需求六，将history区里的历史提交还原到work-dir中。" class="headerlink" title="需求六，将history区里的历史提交还原到work dir中。"></a>需求六，将history区里的历史提交还原到work dir中。</h3><p>依然是使用checkout命令，但和之前的使用方式有一些不同：</p>
-<p><code>git checkout HEAD .</code></p>
-<p>这样，work dir 和stage中的所有修改都会被撤销，恢复成HEAD指向的哪个history commit。</p>
-<p>注意，这里撤销的也只是修改，新增的文件不会被撤销。</p>
-<p>当然，只要找到任意一个commit的HASH值，checkout命令就可以将文件恢复成任一个history commit中的样子。</p>
-<p><code>git checkout 2bdf04a some_test.go</code></p>
-<p>这个操作会将指定文件在work dir的数据恢复成commit的样子，且会删除该文件在stage中的数据，都无法恢复。</p>
-<h2 id="三、其他技巧"><a href="#三、其他技巧" class="headerlink" title="三、其他技巧"></a>三、其他技巧</h2><h3 id="需求一，合并多个commit"><a href="#需求一，合并多个commit" class="headerlink" title="需求一，合并多个commit"></a>需求一，合并多个commit</h3><p>比如说我本地从17bd20c到HEAD有多个commit，但我希望把他们合并成一个commit推到远程仓库，这时候就可以使用reset命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git reset 17bd20c</span><br><span class="line">git add .</span><br><span class="line">git commit -m &#x27;&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>相当于把HEAD已到了17bd20c这个commit，而且不会修改work dir中的数据，只要add再commit，就相当于把中间的多个commit合并到一个了。</p>
-<h3 id="需求二，由于HEAD指针的回退，导致有的commit在git-log命令中无法看到，怎么得到它们的Hash值呢？"><a href="#需求二，由于HEAD指针的回退，导致有的commit在git-log命令中无法看到，怎么得到它们的Hash值呢？" class="headerlink" title="需求二，由于HEAD指针的回退，导致有的commit在git log命令中无法看到，怎么得到它们的Hash值呢？"></a>需求二，由于HEAD指针的回退，导致有的commit在git log命令中无法看到，怎么得到它们的Hash值呢？</h3><p>只要不乱动本地的.git文件夹，任何修改只要提交到commit history中，都永远不会丢失。看不到某些commit只是因为他们不是我们当前HEAD位置的历史提交，我们能可以使用如下命令查看操作记录：</p>
-<p><code>git reflog</code></p>
-<p>比如reset，checkout等等关键操作都会在这里留下记录，所有commit的Hash值都能在这里找到。</p>
-<h3 id="需求三，怎么解决冲突"><a href="#需求三，怎么解决冲突" class="headerlink" title="需求三，怎么解决冲突"></a>需求三，怎么解决冲突</h3><p>比较流行的代码编辑器或者IDE都会集成方便的可视化Git工具，至于解决冲突，可视化的表现方式比在命令行里git diff清晰多了。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/04/15/git-%E5%B8%B8%E8%A7%81%E5%A5%97%E8%B7%AF/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -543,7 +518,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-18 14:14:25" itemprop="dateModified" datetime="2022-04-18T14:14:25+08:00">2022-04-18</time>
+                <time title="修改时间：2022-04-18 15:19:45" itemprop="dateModified" datetime="2022-04-18T15:19:45+08:00">2022-04-18</time>
               </span>
 
           
@@ -559,38 +534,14 @@
       
           <h1 id="C-std-set用法与范例"><a href="#C-std-set用法与范例" class="headerlink" title="C++ std::set用法与范例"></a>C++ std::set用法与范例</h1><p>set是一个关联式容器，里面的元素是唯一的，而且是有排序的容器。set容器里面的元素的值是不可修改的，但set容器可以插入或删除元素。set通常是用红黑树（red-black tree）操作的。</p>
 <p>要使用set容器，需要引入头文件<code>&lt;set&gt;</code></p>
-<p>c++初始化用法：</p>
-<p><code>std::set&lt;int&gt; myset&#123;1,2,3,4,5&#125;;</code></p>
-<p>从c-style阵列来初始化：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> arr[] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</span><br><span class="line"><span class="function">std::set&lt;<span class="type">int</span>&gt; <span class="title">mytest</span><span class="params">(arr,arr+<span class="number">5</span>)</span></span>;</span><br></pre></td></tr></table></figure>
-
-<p>set中插入元素：</p>
-<p><code>myset.insert(1)</code></p>
-<p>由于set容器中没有at()成员函数，也没有operator[]，set无法单纯地随机读取某元素。但能通过iterator来读取元素。</p>
-<p>下面先介绍使用range-based for loop来遍历set容器：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">std-set.cpp<span class="comment">// g++ std-set.cpp -o a.out -std=c++11</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;set&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    std::set&lt;<span class="type">int</span>&gt; myset = &#123;<span class="number">3</span>, <span class="number">1</span>&#125;;</span><br><span class="line">    myset.<span class="built_in">insert</span>(<span class="number">2</span>);</span><br><span class="line">    myset.<span class="built_in">insert</span>(<span class="number">5</span>);</span><br><span class="line">    myset.<span class="built_in">insert</span>(<span class="number">4</span>);</span><br><span class="line">    myset.<span class="built_in">insert</span>(<span class="number">5</span>);</span><br><span class="line">    myset.<span class="built_in">insert</span>(<span class="number">4</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">const</span> <span class="keyword">auto</span> &amp;s : myset) &#123;</span><br><span class="line">        std::cout &lt;&lt; s &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>输出：1 2 3 4 5</p>
-<p>由此可见元素是从小到大排序的，所以set容器在插入元素的同时会根据元素来进行排序，并且没有元素重复。</p>
-<p>也可以使用迭代器的方式：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (std::set&lt;<span class="type">int</span>&gt;::iterator it = myset.<span class="built_in">begin</span>(); it != myset.<span class="built_in">end</span>(); it++) &#123;</span><br><span class="line"><span class="comment">// or</span></span><br><span class="line"><span class="comment">// for (auto it = myset.begin(); it != myset.end(); it++) &#123;</span></span><br><span class="line">    std::cout &lt;&lt; *it &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line">std::cout &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br></pre></td></tr></table></figure>
-
-<p>（如果用rbegin()和rend()，就是反向迭代器，从大到小输出）</p>
-<p>set中删除指定元素：<code>erase()</code></p>
-<p><code>myset.erase(2);</code></p>
-<p>这个函数有返回值，即是删除的元素的个数。如果要删除的元素在set中不存在，那么返回值就是0，并不会产生错误。</p>
-<p>set中清空容器：<code>clear()</code></p>
-<p><code>myset.clear()</code></p>
-<p>set中判断元素是否存在：</p>
-<p>第一种方法是用<code>count()</code>成员函数，如果存在则返回1，不存在则返回0。</p>
-<p>第二种方法是使用<code>find()</code>成员函数，如果又找到就返回该特定元素的iterator，否则返回<a target="_blank" rel="noopener" href="https://en.cppreference.com/w/cpp/container/set/end">past-the-end(end()) iterator</a>。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">std::set&lt;<span class="type">int</span>&gt; myset = &#123;<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>&#125;;</span><br><span class="line"><span class="keyword">auto</span> search = myset.<span class="built_in">find</span>(<span class="number">2</span>);</span><br><span class="line"><span class="keyword">if</span> (search != myset.<span class="built_in">end</span>()) &#123;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;Found &quot;</span> &lt;&lt; *search &lt;&lt; <span class="string">&quot;\n&quot;</span>; <span class="comment">// Found 2</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;Not found\n&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>set中判断容器是否为空：<code>empty()</code></p>
-<p>返回值布尔类型</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/04/14/C++Set/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -757,7 +708,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-18 14:15:27" itemprop="dateModified" datetime="2022-04-18T14:15:27+08:00">2022-04-18</time>
+                <time title="修改时间：2022-04-18 15:20:18" itemprop="dateModified" datetime="2022-04-18T15:20:18+08:00">2022-04-18</time>
               </span>
 
           
@@ -776,68 +727,14 @@
 <p>简介：</p>
 <p>stack（栈），是一种后进先出（Last-In-First-Out，LIFO）的线性结构，支持两种操作：push和pop。</p>
 <p>push操作是把一个元素加入栈中，pop操作是把最晚进入的元素删除。</p>
-<p>常用的member function：</p>
-<p>empty()：空则返回true。</p>
-<p>size()：返回当前stack中有多少元素。</p>
-<p>push()：在stack中加入一个元素。注意，被加入的元素会复制一份，而非Reference。</p>
-<p>pop()：移除顶层元素，如果为空则发生Runtime Error。</p>
-<p>top()：返回最上层的reference。如果为空，则发生Runtime Error。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stack&gt;</span></span></span><br><span class="line">stack&lt;<span class="type">int</span>&gt; st;</span><br><span class="line">st.<span class="built_in">push</span>(i);</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="Queue"><a href="#Queue" class="headerlink" title="Queue:"></a>Queue:</h2><p>头文件：</p>
-<p><code>#include&lt;queue&gt;</code></p>
-<p>简介：</p>
-<p>Queue（队列），是一种先进先出（FIFO）的线性结构，虽然习惯上称为enqueue和dequeue，但是在STL中名称为push和pop。</p>
-<p>常用的member function：</p>
-<p>empty()：空则返回true。</p>
-<p>size()：返回当前queue中有多少元素。</p>
-<p>push()：在queue中加入一个元素。注意，被加入的元素会复制一份，而非Reference。</p>
-<p>pop()：移除最前端元素，如果为空则发生Runtime Error。</p>
-<p>front()：返回最前端的reference。如果为空，则发生Runtime Error。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;queue&gt;</span></span></span><br><span class="line">queue&lt;<span class="type">int</span>&gt; que;</span><br><span class="line">que.<span class="built_in">push</span>(i);</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="Deque："><a href="#Deque：" class="headerlink" title="Deque："></a>Deque：</h2><p>头文件：</p>
-<p><code>#include&lt;deque&gt;</code></p>
-<p>简介：</p>
-<p>Deque（双端队列，Double-ended queue，念作“deck”，勿与dequeue混淆），线性结构，支持四种基本操作：push，inject，pop，eject。</p>
-<p>Push操作是把一个元素加入deque的前端，inject操作是把一个元素加入deque的猴拳；pop操作是把deque最前端的元素移除，eject操作是把的却最后全的元素移除。</p>
-<p>注：我们都还是喜欢将push_front、push_back、pop_front、pop_back，并且在STL的名称亦是如此。</p>
-<p>常用的member function：</p>
-<p>empty()：空则返回true。</p>
-<p>size()：返回当前deque中有多少元素。</p>
-<p>push_front()：在deque前端中加入一个元素。注意，被加入的元素会复制一份，而非Reference。</p>
-<p>push_back()：在deque后端中加入一个元素。注意，被加入的元素会复制一份，而非Reference。</p>
-<p>pop_front()：移除deque最前端元素，如果为空则发生Runtime Error。</p>
-<p>pop_back()：移除deque最后端元素，如果为空则发生Runtime Error。</p>
-<p>front()：返回最前端的reference。如果为空，则发生Runtime Error。</p>
-<p>back()：返回最后端的reference。如果为空，则发生Runtime Error。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;deque&gt;</span></span></span><br><span class="line">deque&lt;<span class="type">int</span>&gt; de;</span><br><span class="line">de.<span class="built_in">push_back</span>(i);</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="PriorityQueue"><a href="#PriorityQueue" class="headerlink" title="PriorityQueue:"></a>PriorityQueue:</h2><p>头文件：</p>
-<p><code>#include&lt;queue&gt;</code></p>
-<p>简介：</p>
-<p>PriorityQueue（优先队列），是一种按照优先程度来排列的结构，支持两种操作：push和pop。</p>
-<p>push是把一个元素加入队列中，pop是把优先顺序最高的元素移除。</p>
-<p>常用的member function：</p>
-<p>empty()：空则返回true。</p>
-<p>size()：返回当前有多少元素。</p>
-<p>push()：在queue中加入一个元素。注意，被加入的元素会复制一份，而非Reference。</p>
-<p>pop()：移除优先顺序最高的元素，如果为空则发生Runtime Error。</p>
-<p>front()：返回优先顺序最高元素的constant reference。如果为空，则发生Runtime Error。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;queue&gt;</span></span></span><br><span class="line">priority_queue&lt;<span class="type">int</span>&gt; pq;</span><br><span class="line">pq.<span class="built_in">push</span>(i);</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="Pair"><a href="#Pair" class="headerlink" title="Pair:"></a>Pair:</h2><p>头文件：</p>
-<p><code>#include&lt;utility&gt;</code></p>
-<p>将两个元素绑在一起，第一个元素为first，第二个元素为second。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/04/14/C++stack/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
