@@ -193,6 +193,156 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/18/%E5%85%83%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B9%B1%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="RRX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小戎的学习历程">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/18/%E5%85%83%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B9%B1%EF%BC%89/" class="post-title-link" itemprop="url">元学习（乱）</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-04-18 15:41:20 / 修改时间：15:41:50" itemprop="dateCreated datePublished" datetime="2022-04-18T15:41:20+08:00">2022-04-18</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>传统的机器学习-&gt;需要大量的数据-&gt;但是元学习即使是少量的数据也能达到相同的（compatible）效果。</p>
+<p>样本过少可能产生过拟合-&gt;应用转移学习，先用充足的common classes训练</p>
+<p>N-way and K-shot: N classes, K support samples and Q query samples</p>
+<p>The goal: classify these N x Q query samples into N classes based on the N x K support samples.</p>
+<p>元学习（meta-learning）在某些地方不如全分类（whole-classification）</p>
+<p>Classifier-Baseline</p>
+<p>Meta-Baseline</p>
+<p> inheriting one of the most effective evaluation metrics of the whole-classification model</p>
+<p>meta-learning 的框架可以分成三类：1.Memory-based methods 2.Optimization-based methods 3.metric-based methods</p>
+<p>该文章主要的内容：探讨whole-classification 和 meta-learning objectives的区别。</p>
+<p>传统的few-shot classification是给大容量的base数据集，然后用少量样本训练出新的数据集。在N-way K-shot few shot classification中，support-set有N classes with K samples per class，the query-set 在n类每类中有Q samples，目标就是分类N x Q query images into N classes。</p>
+<p>做了个实验。。。</p>
+<p>很多其他的方法都需要更多的参数，更加复杂的设计，而meta-baseline更加简单。</p>
+<p>meta-baseline和classifier-baseline之前的差异很小。</p>
+<p>base class generation上升，novel class generation在下降。让base更好的时候的副作用。</p>
+<p>meta-baseline trained without classification training stage 在base class generalization方面更好，但是在novel class generalization上meta-baseline with whole-classification training 更好。也就是说whole-classification提供了更强的转移能力，有助于在新的分类上产生更好的效果。但也有trade-off发生在base class上。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/18/Lifelong-Learning%E7%AE%80%E4%BB%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="RRX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小戎的学习历程">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/18/Lifelong-Learning%E7%AE%80%E4%BB%8B/" class="post-title-link" itemprop="url">Lifelong Learning简介</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-04-18 15:25:10 / 修改时间：15:36:40" itemprop="dateCreated datePublished" datetime="2022-04-18T15:25:10+08:00">2022-04-18</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="2020机器学习前沿技术—-LifeLong-learning"><a href="#2020机器学习前沿技术—-LifeLong-learning" class="headerlink" title="2020机器学习前沿技术—-LifeLong learning"></a>2020机器学习前沿技术—-LifeLong learning</h1><h2 id="1-为什么要研究LifeLong-learning"><a href="#1-为什么要研究LifeLong-learning" class="headerlink" title="1.为什么要研究LifeLong learning"></a>1.为什么要研究LifeLong learning</h2><p>细数机器学习处理的问题，概括地讲，可以分为如下几类：</p>
+<ul>
+<li>计算机视觉（CV）： object classification, object detection, object segmentation, style transfer, denoising, image generation, image caption</li>
+<li>语音（Speech) : speech recogniton， speech synthesis</li>
+<li>自然语言处理（NLP): Machine translation, text classfication， emotional recogniton</li>
+<li>推荐系统: Recommendation, CRT</li>
+</ul>
+<p>目前针对各个大类的不同子问题，都会设计不同的网络结构，设计不同的loss，采用不同的数据据处理。这使得机器学习”偏科严重“。</p>
+<h2 id="2-概念"><a href="#2-概念" class="headerlink" title="2. 概念"></a>2. 概念</h2><p>LifeLong learning意味着以前学到的知识，能够促进下一个任务Task B的学习，在学习完Task B之后，要不仅可以很好地处理Task B，同时在Task A上不能有明显的下降，最好是有所提升或者保持。</p>
+<p>学完Task A再学Task B，Task A的准确率就会下降很多，这就是Forget，这就是Transfer Learning所带来的问题，也是LifeLong learning需要解决的问题。</p>
+<p>如果采用Multi-task Learning，需要把Task A 和Task B的训练数据都存储起来，需要的时候放在一起训练。虽然Task A和B都达到了不错的效果，但是所有数据的存储会是一个很大的问题。</p>
+<p>因此，如何解决数据存储的问题呢？可以借助于GAN网络来完成，减少了数据存储，但带来了更大的计算量。</p>
+<h2 id="3-这个领域还有那些前沿的研究方向"><a href="#3-这个领域还有那些前沿的研究方向" class="headerlink" title="3.这个领域还有那些前沿的研究方向"></a>3.这个领域还有那些前沿的研究方向</h2><ul>
+<li><p><strong>Curriculum Learning</strong> 类似于一个课程系的学习， 研究的是如何安排课程学习的先后顺序。</p>
+</li>
+<li><p><strong>Taskonomy</strong> 研究的是各个任务之间的关系， 即该先学哪个，后学哪个。</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/18/prompt%E7%AE%80%E4%BB%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -824,147 +974,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/13/%E6%B1%82vector%E5%92%8C%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="RRX">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小戎的学习历程">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/04/13/%E6%B1%82vector%E5%92%8C%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC/" class="post-title-link" itemprop="url">求vector和数组中的最大值</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-04-13 09:40:06" itemprop="dateCreated datePublished" datetime="2022-04-13T09:40:06+08:00">2022-04-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-18 14:17:54" itemprop="dateModified" datetime="2022-04-18T14:17:54+08:00">2022-04-18</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="C-数组或vector求最大值或最小值"><a href="#C-数组或vector求最大值或最小值" class="headerlink" title="C++数组或vector求最大值或最小值"></a>C++数组或vector求最大值或最小值</h1><p>可以用max_element()和min_element()函数，二者返回的都是迭代器或指针.</p>
-<p>头文件：<code>#include&lt;algorithm&gt;</code></p>
-<p>vector容器：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> maxValue = *<span class="built_in">max_element</span>(v.<span class="built_in">begin</span>(),v.<span class="built_in">end</span>());</span><br><span class="line"><span class="type">int</span> maxPosition = <span class="built_in">max_element</span>(v.<span class="built_in">begin</span>(),v.<span class="built_in">end</span>())-v.<span class="built_in">begin</span>();</span><br></pre></td></tr></table></figure>
-
-<p>普通数组：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a[]=&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>&#125;;</span><br><span class="line"><span class="comment">//最大值：</span></span><br><span class="line"><span class="type">int</span> maxValue = *<span class="built_in">max_element</span>(a,a+<span class="number">6</span>);</span><br><span class="line"><span class="type">int</span> maxPosition = <span class="built_in">max_element</span>(a,a+<span class="number">6</span>)-a;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/12/Springboot/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="RRX">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小戎的学习历程">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/04/12/Springboot/" class="post-title-link" itemprop="url">Spring boot</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-04-12 09:40:06" itemprop="dateCreated datePublished" datetime="2022-04-12T09:40:06+08:00">2022-04-12</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-18 14:17:24" itemprop="dateModified" datetime="2022-04-18T14:17:24+08:00">2022-04-18</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Springboot"><a href="#Springboot" class="headerlink" title="Springboot"></a>Springboot</h1><h2 id="创建第一个springboot项目"><a href="#创建第一个springboot项目" class="headerlink" title="创建第一个springboot项目"></a>创建第一个springboot项目</h2><p>1.File-&gt;创建maven-&gt;导入父工程，添加web依赖-&gt;在Java文件夹中创建class（有很多层文件夹）-&gt;添加注解@SpringBootApplication,创建main函数-&gt;创建controller，添加注解@Controller，添加注解@RequestMapping，添加注解@ResponseBody，可以和Controller合二为一，变为@RestController-&gt;run</p>
-<p>2.修改端口：在resources中创建application.properties，在其中添加server.port&#x3D;8888</p>
-<ol start="3">
-<li></li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1034,14 +1043,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">15</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
