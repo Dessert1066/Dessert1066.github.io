@@ -193,6 +193,79 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/19/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%EF%BC%88BFS%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="RRX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小戎的学习历程">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/19/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%EF%BC%88BFS%EF%BC%89/" class="post-title-link" itemprop="url">广度优先搜索（BFS）</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-04-19 15:57:55 / 修改时间：19:30:49" itemprop="dateCreated datePublished" datetime="2022-04-19T15:57:55+08:00">2022-04-19</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="广度优先搜索-BFS"><a href="#广度优先搜索-BFS" class="headerlink" title="广度优先搜索-BFS"></a>广度优先搜索-BFS</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>广度优先搜索算法是一种图形搜索算法。简单的说，BDFS是从根节点开始，沿着树的宽度遍历树的结点。如果所有节点均被访问，则算法终止。广度优先搜索一般用队列（Queue）实现。</p>
+<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><p>BFS是一种暴力搜索算法，目的是系统地展开并检查图红的所有节点，以寻找结果。换句话说，它并不考虑结果的可能地址，彻底地搜索整张图，知道找到结果为止。BFS并不使用经验法则算法。</p>
+<p>从算法的观点，所有展开节点得到的子节点都会被加进一个先进先出的队列中，从队列中取出第一个节点，并检验它是否为目标。如果找到目标，则结束搜索并回传结果。否则将它所有尚未检验过的直接子节点加入队列中。如果队列为空，表示整张图都检查过了，即图中没有搜索的目标，那么就结束搜索并回传“找不到目标”。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">std::queue&lt;node *&gt; visited, unvisited;</span><br><span class="line">node nodes[<span class="number">9</span>];</span><br><span class="line">node *current;</span><br><span class="line"></span><br><span class="line">unvisited.<span class="built_in">push</span>(&amp;nodes[<span class="number">0</span>]); </span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> (!unvisited.<span class="built_in">empty</span>()) &#123; </span><br><span class="line">    current = (unvisited.<span class="built_in">front</span>()); <span class="comment">// 目前的应该检验的</span></span><br><span class="line">    <span class="keyword">if</span> (current-&gt;left != <span class="literal">NULL</span>)</span><br><span class="line">        unvisited.<span class="built_in">push</span>(current-&gt;left); </span><br><span class="line">    <span class="keyword">if</span> (current-&gt;right != <span class="literal">NULL</span>) </span><br><span class="line">        unvisited.<span class="built_in">push</span>(current-&gt;right);</span><br><span class="line">    visited.<span class="built_in">push</span>(current);</span><br><span class="line">    cout &lt;&lt; current-&gt;self &lt;&lt; endl;</span><br><span class="line">    unvisited.<span class="built_in">pop</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="广度优先搜索算法的应用"><a href="#广度优先搜索算法的应用" class="headerlink" title="广度优先搜索算法的应用"></a>广度优先搜索算法的应用</h2><p>广度优先搜索能用来解决图论中的许多问题，例如：</p>
+<ul>
+<li>查找图中的所有连接组件（Connected Component）。一个连接组件是图中的最大相连子图。</li>
+<li>查找连接组件中的所有节点。</li>
+<li>查找非加权图中任两点的最短路径</li>
+<li>测试一个图是否为二分图</li>
+<li>（Reverse）Cuthill-McKee算法</li>
+</ul>
+<h3 id="查找连接组件"><a href="#查找连接组件" class="headerlink" title="查找连接组件"></a>查找连接组件</h3><p>从起点开始，执行DFS后经过的所有节点，即包含起点的一个连接组件。</p>
+<h3 id="测试是否为二分图"><a href="#测试是否为二分图" class="headerlink" title="测试是否为二分图"></a>测试是否为二分图</h3><p>从任意结点开始搜索，并在搜索过程中给节点不同的标签。例如，给开始节点标签0，开始节点所有邻居标签1，开始节点所有邻居的邻居标签0……以此类推。若在此搜索过程中，任一节点有跟其相同标签的邻居，则此图就不是二分图，否则是二分图。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/18/%E5%85%83%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B9%B1%EF%BC%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -601,7 +674,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-18 14:15:46" itemprop="dateModified" datetime="2022-04-18T14:15:46+08:00">2022-04-18</time>
+                <time title="修改时间：2022-04-19 10:11:07" itemprop="dateModified" datetime="2022-04-19T10:11:07+08:00">2022-04-19</time>
               </span>
 
           
@@ -616,7 +689,28 @@
 
       
           <h1 id="C-std-unordered-set用法与范例"><a href="#C-std-unordered-set用法与范例" class="headerlink" title="C++ std::unordered_set用法与范例"></a>C++ std::unordered_set用法与范例</h1><p>unordered_set是一种关联式容器，里面的元素是唯一的，并且是无排序容器，里面的值不可修改，但是可以插入或删除元素。</p>
-<p>unordered_set和set不同之处是：set是红黑树操作，红黑树具有排序功能。unordered_set是哈希表（hash table）操作的，插入和查询的时间复杂度很低，为常数级别，相对代价是消耗较多的空间。</p>
+<p>unordered_set和set不同之处是：set是红黑树操作，红黑树具有排序功能。unordered_set是哈希表（hash table）操作的，插入和查询的时间复杂度很低，为常数级别，相对代价是消耗较多的空间，无自动排序功能。</p>
+<p>需要引入头文件：<code>#include&lt;unordered_set&gt;</code></p>
+<h2 id="unordered-set-初始化用法"><a href="#unordered-set-初始化用法" class="headerlink" title="unordered_set 初始化用法"></a>unordered_set 初始化用法</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">std::unordered_set&lt;<span class="type">int</span>&gt; myyunordered_set&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>从c-style阵列来初始化：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> arr[] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</span><br><span class="line">std::unordered_set&lt;<span class="type">int</span>&gt;<span class="built_in">myunordered_set</span>(arr,arr+<span class="number">5</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="unordered-set插入元素"><a href="#unordered-set插入元素" class="headerlink" title="unordered_set插入元素"></a>unordered_set插入元素</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">myunordered_set.<span class="built_in">insert</span>(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="遍历unordered-sort容器"><a href="#遍历unordered-sort容器" class="headerlink" title="遍历unordered_sort容器"></a>遍历unordered_sort容器</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">const</span> <span class="keyword">auto</span> &amp;s : myunordered_set)&#123;</span><br><span class="line">	std::cout&lt;&lt;s&lt;&lt;<span class="string">&quot; &quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>也可以使用迭代器的方法：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (std::unordered_set&lt;<span class="type">int</span>&gt;::iterator it = myunordered_set.<span class="built_in">begin</span>(); it != myunordered_set.<span class="built_in">end</span>(); it++) &#123;</span><br><span class="line">    std::cout &lt;&lt; *it &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="unordered-set删除指定元素"><a href="#unordered-set删除指定元素" class="headerlink" title="unordered_set删除指定元素"></a>unordered_set删除指定元素</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">myunordered_set.<span class="built_in">erase</span>(<span class="number">2</span>);</span><br></pre></td></tr></table></figure>
+
+<p>如果删除了不存在的元素，上述代码返回值为0；否则返回值为1。</p>
+<h2 id="清空unordered-set元素"><a href="#清空unordered-set元素" class="headerlink" title="清空unordered_set元素"></a>清空unordered_set元素</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">myunordered_set.<span class="built_in">clear</span>();</span><br></pre></td></tr></table></figure>
+
+<h2 id="判断unordered-set中元素是否存在"><a href="#判断unordered-set中元素是否存在" class="headerlink" title="判断unordered_set中元素是否存在"></a>判断unordered_set中元素是否存在</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">myunordered_set.<span class="built_in">count</span>(<span class="number">4</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="判断unordered-set是否为空"><a href="#判断unordered-set是否为空" class="headerlink" title="判断unordered_set是否为空"></a>判断unordered_set是否为空</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">myunordered_set.<span class="built_in">empty</span>();</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -898,82 +992,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/14/C++sort/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="RRX">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小戎的学习历程">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/04/14/C++sort/" class="post-title-link" itemprop="url">C++ sort</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-04-14 10:39:19" itemprop="dateCreated datePublished" datetime="2022-04-14T10:39:19+08:00">2022-04-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-18 14:14:37" itemprop="dateModified" datetime="2022-04-18T14:14:37+08:00">2022-04-18</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line">vector&lt;<span class="type">int</span>&gt; v;</span><br><span class="line">std::<span class="built_in">sort</span>(v.<span class="built_in">begin</span>(),v.<span class="built_in">end</span>());</span><br><span class="line"><span class="type">int</span> arr[] = &#123;<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">8</span>&#125;</span><br><span class="line">std::<span class="built_in">sort</span>(a,a+<span class="number">6</span>);</span><br></pre></td></tr></table></figure>
-
-<p>加入sort函数样板：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">less&lt;Type&gt;</span><br><span class="line"></span><br><span class="line">less_equal&lt;Type&gt;</span><br><span class="line"></span><br><span class="line">greater&lt;Type&gt;</span><br><span class="line"></span><br><span class="line">greater_equal&lt;Type&gt;</span><br><span class="line"></span><br><span class="line">equal_to&lt;Type&gt;</span><br><span class="line"></span><br><span class="line">not_equal_to&lt;Type&gt;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> arr[] = &#123;<span class="number">4</span>, <span class="number">5</span>, <span class="number">8</span>, <span class="number">3</span>, <span class="number">7</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">6</span>, <span class="number">10</span>, <span class="number">9</span>&#125;;</span><br><span class="line">std::<span class="built_in">sort</span>(arr, arr+<span class="number">10</span>, std::<span class="built_in">greater</span>&lt;<span class="type">int</span>&gt;());</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">std::<span class="built_in">sort</span>(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>(), mycompare);</span><br></pre></td></tr></table></figure>
-
-<p>配合lambda匿名函数：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">std::sort(v.begin(), v.end(), [](int a, int b)&#123;</span><br><span class="line">    return a &lt; b; // 升序排列</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1043,14 +1061,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-count">16</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

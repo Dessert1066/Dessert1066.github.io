@@ -20,20 +20,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="C++ std::set用法与范例set是一个关联式容器，里面的元素是唯一的，而且是有排序的容器。set容器里面的元素的值是不可修改的，但set容器可以插入或删除元素。set通常是用红黑树（red-black tree）操作的。 要使用set容器，需要引入头文件&lt;set&gt;">
+  <meta name="description" content="广度优先搜索-BFS定义广度优先搜索算法是一种图形搜索算法。简单的说，BDFS是从根节点开始，沿着树的宽度遍历树的结点。如果所有节点均被访问，则算法终止。广度优先搜索一般用队列（Queue）实现。 用法BFS是一种暴力搜索算法，目的是系统地展开并检查图红的所有节点，以寻找结果。换句话说，它并不考虑结果的可能地址，彻底地搜索整张图，知道找到结果为止。BFS并不使用经验法则算法。 从算法的观点，所有展">
 <meta property="og:type" content="article">
-<meta property="og:title" content="c++ Set">
-<meta property="og:url" content="http://example.com/2022/04/14/C++Set/index.html">
+<meta property="og:title" content="广度优先搜索（BFS）">
+<meta property="og:url" content="http://example.com/2022/04/19/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%EF%BC%88BFS%EF%BC%89/index.html">
 <meta property="og:site_name" content="小戎的学习历程">
-<meta property="og:description" content="C++ std::set用法与范例set是一个关联式容器，里面的元素是唯一的，而且是有排序的容器。set容器里面的元素的值是不可修改的，但set容器可以插入或删除元素。set通常是用红黑树（red-black tree）操作的。 要使用set容器，需要引入头文件&lt;set&gt;">
+<meta property="og:description" content="广度优先搜索-BFS定义广度优先搜索算法是一种图形搜索算法。简单的说，BDFS是从根节点开始，沿着树的宽度遍历树的结点。如果所有节点均被访问，则算法终止。广度优先搜索一般用队列（Queue）实现。 用法BFS是一种暴力搜索算法，目的是系统地展开并检查图红的所有节点，以寻找结果。换句话说，它并不考虑结果的可能地址，彻底地搜索整张图，知道找到结果为止。BFS并不使用经验法则算法。 从算法的观点，所有展">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-04-14T08:10:01.000Z">
-<meta property="article:modified_time" content="2022-04-18T07:19:45.731Z">
+<meta property="article:published_time" content="2022-04-19T07:57:55.000Z">
+<meta property="article:modified_time" content="2022-04-19T11:30:49.368Z">
 <meta property="article:author" content="RRX">
-<meta property="article:tag" content="C++">
+<meta property="article:tag" content="数据结构与算法">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2022/04/14/C++Set/">
+<link rel="canonical" href="http://example.com/2022/04/19/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%EF%BC%88BFS%EF%BC%89/">
 
 
 <script id="page-configurations">
@@ -46,7 +46,7 @@
   };
 </script>
 
-  <title>c++ Set | 小戎的学习历程</title>
+  <title>广度优先搜索（BFS） | 小戎的学习历程</title>
   
 
 
@@ -199,7 +199,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/14/C++Set/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/19/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%EF%BC%88BFS%EF%BC%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -212,7 +212,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          c++ Set
+          广度优先搜索（BFS）
         </h1>
 
         <div class="post-meta">
@@ -221,16 +221,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2022-04-14 16:10:01" itemprop="dateCreated datePublished" datetime="2022-04-14T16:10:01+08:00">2022-04-14</time>
+              <time title="创建时间：2022-04-19 15:57:55 / 修改时间：19:30:49" itemprop="dateCreated datePublished" datetime="2022-04-19T15:57:55+08:00">2022-04-19</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-18 15:19:45" itemprop="dateModified" datetime="2022-04-18T15:19:45+08:00">2022-04-18</time>
-              </span>
 
           
 
@@ -243,41 +237,21 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="C-std-set用法与范例"><a href="#C-std-set用法与范例" class="headerlink" title="C++ std::set用法与范例"></a>C++ std::set用法与范例</h1><p>set是一个关联式容器，里面的元素是唯一的，而且是有排序的容器。set容器里面的元素的值是不可修改的，但set容器可以插入或删除元素。set通常是用红黑树（red-black tree）操作的。</p>
-<p>要使用set容器，需要引入头文件<code>&lt;set&gt;</code></p>
-<span id="more"></span>
+        <h1 id="广度优先搜索-BFS"><a href="#广度优先搜索-BFS" class="headerlink" title="广度优先搜索-BFS"></a>广度优先搜索-BFS</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>广度优先搜索算法是一种图形搜索算法。简单的说，BDFS是从根节点开始，沿着树的宽度遍历树的结点。如果所有节点均被访问，则算法终止。广度优先搜索一般用队列（Queue）实现。</p>
+<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><p>BFS是一种暴力搜索算法，目的是系统地展开并检查图红的所有节点，以寻找结果。换句话说，它并不考虑结果的可能地址，彻底地搜索整张图，知道找到结果为止。BFS并不使用经验法则算法。</p>
+<p>从算法的观点，所有展开节点得到的子节点都会被加进一个先进先出的队列中，从队列中取出第一个节点，并检验它是否为目标。如果找到目标，则结束搜索并回传结果。否则将它所有尚未检验过的直接子节点加入队列中。如果队列为空，表示整张图都检查过了，即图中没有搜索的目标，那么就结束搜索并回传“找不到目标”。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">std::queue&lt;node *&gt; visited, unvisited;</span><br><span class="line">node nodes[<span class="number">9</span>];</span><br><span class="line">node *current;</span><br><span class="line"></span><br><span class="line">unvisited.<span class="built_in">push</span>(&amp;nodes[<span class="number">0</span>]); </span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> (!unvisited.<span class="built_in">empty</span>()) &#123; </span><br><span class="line">    current = (unvisited.<span class="built_in">front</span>()); <span class="comment">// 目前的应该检验的</span></span><br><span class="line">    <span class="keyword">if</span> (current-&gt;left != <span class="literal">NULL</span>)</span><br><span class="line">        unvisited.<span class="built_in">push</span>(current-&gt;left); </span><br><span class="line">    <span class="keyword">if</span> (current-&gt;right != <span class="literal">NULL</span>) </span><br><span class="line">        unvisited.<span class="built_in">push</span>(current-&gt;right);</span><br><span class="line">    visited.<span class="built_in">push</span>(current);</span><br><span class="line">    cout &lt;&lt; current-&gt;self &lt;&lt; endl;</span><br><span class="line">    unvisited.<span class="built_in">pop</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>c++初始化用法：</p>
-<p><code>std::set&lt;int&gt; myset&#123;1,2,3,4,5&#125;;</code></p>
-<p>从c-style阵列来初始化：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> arr[] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</span><br><span class="line"><span class="function">std::set&lt;<span class="type">int</span>&gt; <span class="title">mytest</span><span class="params">(arr,arr+<span class="number">5</span>)</span></span>;</span><br></pre></td></tr></table></figure>
-
-<p>set中插入元素：</p>
-<p><code>myset.insert(1)</code></p>
-<p>由于set容器中没有at()成员函数，也没有operator[]，set无法单纯地随机读取某元素。但能通过iterator来读取元素。</p>
-<p>下面先介绍使用range-based for loop来遍历set容器：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">std-set.cpp<span class="comment">// g++ std-set.cpp -o a.out -std=c++11</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;set&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    std::set&lt;<span class="type">int</span>&gt; myset = &#123;<span class="number">3</span>, <span class="number">1</span>&#125;;</span><br><span class="line">    myset.<span class="built_in">insert</span>(<span class="number">2</span>);</span><br><span class="line">    myset.<span class="built_in">insert</span>(<span class="number">5</span>);</span><br><span class="line">    myset.<span class="built_in">insert</span>(<span class="number">4</span>);</span><br><span class="line">    myset.<span class="built_in">insert</span>(<span class="number">5</span>);</span><br><span class="line">    myset.<span class="built_in">insert</span>(<span class="number">4</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">const</span> <span class="keyword">auto</span> &amp;s : myset) &#123;</span><br><span class="line">        std::cout &lt;&lt; s &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>输出：1 2 3 4 5</p>
-<p>由此可见元素是从小到大排序的，所以set容器在插入元素的同时会根据元素来进行排序，并且没有元素重复。</p>
-<p>也可以使用迭代器的方式：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (std::set&lt;<span class="type">int</span>&gt;::iterator it = myset.<span class="built_in">begin</span>(); it != myset.<span class="built_in">end</span>(); it++) &#123;</span><br><span class="line"><span class="comment">// or</span></span><br><span class="line"><span class="comment">// for (auto it = myset.begin(); it != myset.end(); it++) &#123;</span></span><br><span class="line">    std::cout &lt;&lt; *it &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line">std::cout &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br></pre></td></tr></table></figure>
-
-<p>（如果用rbegin()和rend()，就是反向迭代器，从大到小输出）</p>
-<p>set中删除指定元素：<code>erase()</code></p>
-<p><code>myset.erase(2);</code></p>
-<p>这个函数有返回值，即是删除的元素的个数。如果要删除的元素在set中不存在，那么返回值就是0，并不会产生错误。</p>
-<p>set中清空容器：<code>clear()</code></p>
-<p><code>myset.clear()</code></p>
-<p>set中判断元素是否存在：</p>
-<p>第一种方法是用<code>count()</code>成员函数，如果存在则返回1，不存在则返回0。</p>
-<p>第二种方法是使用<code>find()</code>成员函数，如果又找到就返回该特定元素的iterator，否则返回<a target="_blank" rel="noopener" href="https://en.cppreference.com/w/cpp/container/set/end">past-the-end(end()) iterator</a>。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">std::set&lt;<span class="type">int</span>&gt; myset = &#123;<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>&#125;;</span><br><span class="line"><span class="keyword">auto</span> search = myset.<span class="built_in">find</span>(<span class="number">2</span>);</span><br><span class="line"><span class="keyword">if</span> (search != myset.<span class="built_in">end</span>()) &#123;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;Found &quot;</span> &lt;&lt; *search &lt;&lt; <span class="string">&quot;\n&quot;</span>; <span class="comment">// Found 2</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;Not found\n&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>set中判断容器是否为空：<code>empty()</code></p>
-<p>返回值布尔类型</p>
+<h2 id="广度优先搜索算法的应用"><a href="#广度优先搜索算法的应用" class="headerlink" title="广度优先搜索算法的应用"></a>广度优先搜索算法的应用</h2><p>广度优先搜索能用来解决图论中的许多问题，例如：</p>
+<ul>
+<li>查找图中的所有连接组件（Connected Component）。一个连接组件是图中的最大相连子图。</li>
+<li>查找连接组件中的所有节点。</li>
+<li>查找非加权图中任两点的最短路径</li>
+<li>测试一个图是否为二分图</li>
+<li>（Reverse）Cuthill-McKee算法</li>
+</ul>
+<h3 id="查找连接组件"><a href="#查找连接组件" class="headerlink" title="查找连接组件"></a>查找连接组件</h3><p>从起点开始，执行DFS后经过的所有节点，即包含起点的一个连接组件。</p>
+<h3 id="测试是否为二分图"><a href="#测试是否为二分图" class="headerlink" title="测试是否为二分图"></a>测试是否为二分图</h3><p>从任意结点开始搜索，并在搜索过程中给节点不同的标签。例如，给开始节点标签0，开始节点所有邻居标签1，开始节点所有邻居的邻居标签0……以此类推。若在此搜索过程中，任一节点有跟其相同标签的邻居，则此图就不是二分图，否则是二分图。</p>
 
     </div>
 
@@ -287,7 +261,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/C/" rel="tag"># C++</a>
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" rel="tag"># 数据结构与算法</a>
           </div>
 
         
@@ -296,13 +270,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/04/14/%E8%AE%A1%E7%BD%91%E5%AE%9E%E9%AA%8C%EF%BC%88%E7%BD%91%E7%BB%9C%E7%89%88%EF%BC%89/" rel="prev" title="计网实验（网络版）">
-      <i class="fa fa-chevron-left"></i> 计网实验（网络版）
+    <a href="/2022/04/18/%E5%85%83%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B9%B1%EF%BC%89/" rel="prev" title="元学习（乱）">
+      <i class="fa fa-chevron-left"></i> 元学习（乱）
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2022/04/14/C++unordered-set/" rel="next" title="c++ unordered_set">
-      c++ unordered_set <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -361,7 +332,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#C-std-set%E7%94%A8%E6%B3%95%E4%B8%8E%E8%8C%83%E4%BE%8B"><span class="nav-number">1.</span> <span class="nav-text">C++ std::set用法与范例</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2-BFS"><span class="nav-number">1.</span> <span class="nav-text">广度优先搜索-BFS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-number">1.3.</span> <span class="nav-text">广度优先搜索算法的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%E8%BF%9E%E6%8E%A5%E7%BB%84%E4%BB%B6"><span class="nav-number">1.3.1.</span> <span class="nav-text">查找连接组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E6%98%AF%E5%90%A6%E4%B8%BA%E4%BA%8C%E5%88%86%E5%9B%BE"><span class="nav-number">1.3.2.</span> <span class="nav-text">测试是否为二分图</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
