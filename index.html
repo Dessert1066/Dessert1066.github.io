@@ -20,12 +20,14 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="website">
+  <meta name="description" content="hey">
+<meta property="og:type" content="website">
 <meta property="og:title" content="小戎的学习历程">
 <meta property="og:url" content="http://example.com/index.html">
 <meta property="og:site_name" content="小戎的学习历程">
+<meta property="og:description" content="hey">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:author" content="RRX">
+<meta property="article:author" content="戎菜菜">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://example.com/">
@@ -95,6 +97,7 @@
       <h1 class="site-title">小戎的学习历程</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
+      <p class="site-subtitle" itemprop="description">梦想下酒</p>
   </div>
 
   <div class="site-nav-right">
@@ -193,12 +196,70 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/20/%E5%AF%B9%E8%B1%A1%E4%B8%8Ethis/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/p1.jpg">
+      <meta itemprop="name" content="戎菜菜">
+      <meta itemprop="description" content="hey">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小戎的学习历程">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/20/%E5%AF%B9%E8%B1%A1%E4%B8%8Ethis/" class="post-title-link" itemprop="url">对象与this</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-04-20 13:04:27 / 修改时间：13:05:40" itemprop="dateCreated datePublished" datetime="2022-04-20T13:04:27+08:00">2022-04-20</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/20/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%EF%BC%88DFS%EF%BC%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/p1.jpg">
-      <meta itemprop="name" content="RRX">
-      <meta itemprop="description" content="">
+      <meta itemprop="name" content="戎菜菜">
+      <meta itemprop="description" content="hey">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -218,7 +279,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-04-20 10:11:46 / 修改时间：12:35:28" itemprop="dateCreated datePublished" datetime="2022-04-20T10:11:46+08:00">2022-04-20</time>
+              <time title="创建时间：2022-04-20 10:11:46 / 修改时间：13:06:01" itemprop="dateCreated datePublished" datetime="2022-04-20T10:11:46+08:00">2022-04-20</time>
             </span>
 
           
@@ -232,7 +293,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="深度优先搜索-DFS"><a href="#深度优先搜索-DFS" class="headerlink" title="深度优先搜索-DFS"></a>深度优先搜索-DFS</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>深度优先搜索算法是一种用于遍历或搜索树或图的算法。这个算法会尽可能深地搜索树的分支。当节点v的所在边都已被探寻过，搜索将回溯到发现节点v的那条边的起始节点。这一过程一直进行到已大仙从源节点可达的所有节点为止。如果还存在未被发现的节点，则选择其中一个作为源节点并重复以上过程。整个进程反复进行直到所有节点都被访问为止。</p>
+          <h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>深度优先搜索算法是一种用于遍历或搜索树或图的算法。这个算法会尽可能深地搜索树的分支。当节点v的所在边都已被探寻过，搜索将回溯到发现节点v的那条边的起始节点。这一过程一直进行到已大仙从源节点可达的所有节点为止。如果还存在未被发现的节点，则选择其中一个作为源节点并重复以上过程。整个进程反复进行直到所有节点都被访问为止。</p>
 <p>深度优先搜索是图论中的经典算法，利用深度优先搜索算法可以产生目标图的拓扑排序表。利用拓扑排序表可以方便的解决很有相关的图论问题，如无权最长路径问题等等。</p>
 <p>因发明“深度优先搜索算法”，约翰·霍普克罗夫特与罗伯特·塔扬在1986年共同获得计算机领域的最高奖：图灵奖。</p>
 <h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><p>1.首先将根节点放入stack中。</p>
@@ -269,8 +330,8 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/p1.jpg">
-      <meta itemprop="name" content="RRX">
-      <meta itemprop="description" content="">
+      <meta itemprop="name" content="戎菜菜">
+      <meta itemprop="description" content="hey">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -288,10 +349,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-04-19 15:57:55 / 修改时间：19:30:49" itemprop="dateCreated datePublished" datetime="2022-04-19T15:57:55+08:00">2022-04-19</time>
+              <time title="创建时间：2022-04-19 15:57:55" itemprop="dateCreated datePublished" datetime="2022-04-19T15:57:55+08:00">2022-04-19</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-20 13:06:12" itemprop="dateModified" datetime="2022-04-20T13:06:12+08:00">2022-04-20</time>
+              </span>
 
           
 
@@ -304,7 +371,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="广度优先搜索-BFS"><a href="#广度优先搜索-BFS" class="headerlink" title="广度优先搜索-BFS"></a>广度优先搜索-BFS</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>广度优先搜索算法是一种图形搜索算法。简单的说，BDFS是从根节点开始，沿着树的宽度遍历树的结点。如果所有节点均被访问，则算法终止。广度优先搜索一般用队列（Queue）实现。</p>
+          <h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>广度优先搜索算法是一种图形搜索算法。简单的说，BDFS是从根节点开始，沿着树的宽度遍历树的结点。如果所有节点均被访问，则算法终止。广度优先搜索一般用队列（Queue）实现。</p>
 <h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><p>BFS是一种暴力搜索算法，目的是系统地展开并检查图红的所有节点，以寻找结果。换句话说，它并不考虑结果的可能地址，彻底地搜索整张图，知道找到结果为止。BFS并不使用经验法则算法。</p>
 <p>从算法的观点，所有展开节点得到的子节点都会被加进一个先进先出的队列中，从队列中取出第一个节点，并检验它是否为目标。如果找到目标，则结束搜索并回传结果。否则将它所有尚未检验过的直接子节点加入队列中。如果队列为空，表示整张图都检查过了，即图中没有搜索的目标，那么就结束搜索并回传“找不到目标”。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">std::queue&lt;node *&gt; visited, unvisited;</span><br><span class="line">node nodes[<span class="number">9</span>];</span><br><span class="line">node *current;</span><br><span class="line"></span><br><span class="line">unvisited.<span class="built_in">push</span>(&amp;nodes[<span class="number">0</span>]); </span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> (!unvisited.<span class="built_in">empty</span>()) &#123; </span><br><span class="line">    current = (unvisited.<span class="built_in">front</span>()); <span class="comment">// 目前的应该检验的</span></span><br><span class="line">    <span class="keyword">if</span> (current-&gt;left != <span class="literal">NULL</span>)</span><br><span class="line">        unvisited.<span class="built_in">push</span>(current-&gt;left); </span><br><span class="line">    <span class="keyword">if</span> (current-&gt;right != <span class="literal">NULL</span>) </span><br><span class="line">        unvisited.<span class="built_in">push</span>(current-&gt;right);</span><br><span class="line">    visited.<span class="built_in">push</span>(current);</span><br><span class="line">    cout &lt;&lt; current-&gt;self &lt;&lt; endl;</span><br><span class="line">    unvisited.<span class="built_in">pop</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -342,8 +409,8 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/p1.jpg">
-      <meta itemprop="name" content="RRX">
-      <meta itemprop="description" content="">
+      <meta itemprop="name" content="戎菜菜">
+      <meta itemprop="description" content="hey">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -416,8 +483,8 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/p1.jpg">
-      <meta itemprop="name" content="RRX">
-      <meta itemprop="description" content="">
+      <meta itemprop="name" content="戎菜菜">
+      <meta itemprop="description" content="hey">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -492,8 +559,8 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/p1.jpg">
-      <meta itemprop="name" content="RRX">
-      <meta itemprop="description" content="">
+      <meta itemprop="name" content="戎菜菜">
+      <meta itemprop="description" content="hey">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -565,8 +632,8 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/p1.jpg">
-      <meta itemprop="name" content="RRX">
-      <meta itemprop="description" content="">
+      <meta itemprop="name" content="戎菜菜">
+      <meta itemprop="description" content="hey">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -637,8 +704,8 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/p1.jpg">
-      <meta itemprop="name" content="RRX">
-      <meta itemprop="description" content="">
+      <meta itemprop="name" content="戎菜菜">
+      <meta itemprop="description" content="hey">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -719,8 +786,8 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/p1.jpg">
-      <meta itemprop="name" content="RRX">
-      <meta itemprop="description" content="">
+      <meta itemprop="name" content="戎菜菜">
+      <meta itemprop="description" content="hey">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -806,8 +873,8 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/p1.jpg">
-      <meta itemprop="name" content="RRX">
-      <meta itemprop="description" content="">
+      <meta itemprop="name" content="戎菜菜">
+      <meta itemprop="description" content="hey">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -857,123 +924,6 @@
             </div>
           <!--/noindex-->
         
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/14/%E8%AE%A1%E7%BD%91%E5%AE%9E%E9%AA%8C%EF%BC%88%E7%BD%91%E7%BB%9C%E7%89%88%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/p1.jpg">
-      <meta itemprop="name" content="RRX">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小戎的学习历程">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/04/14/%E8%AE%A1%E7%BD%91%E5%AE%9E%E9%AA%8C%EF%BC%88%E7%BD%91%E7%BB%9C%E7%89%88%EF%BC%89/" class="post-title-link" itemprop="url">计网实验（网络版）</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-04-14 16:06:13" itemprop="dateCreated datePublished" datetime="2022-04-14T16:06:13+08:00">2022-04-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-18 14:17:41" itemprop="dateModified" datetime="2022-04-18T14:17:41+08:00">2022-04-18</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="计网实验（网络版）"><a href="#计网实验（网络版）" class="headerlink" title="计网实验（网络版）"></a>计网实验（网络版）</h1><h2 id="路由器"><a href="#路由器" class="headerlink" title="路由器"></a>路由器</h2><p>1）打开packet tracer，在里面新建路由器（routers）和pc（End Devices），用console线（蓝色）连接路由器console口和pc的串口（com1,i.e. RS232)，即可完成连接。</p>
-<p>2）双击pc，打开terminal，波特率选择9600，其余默认，然后就能进入用户模式。</p>
-<p>3）用户模式：router&gt;</p>
-<p>​      特权模式：router#</p>
-<p>​      全局配置模式：router(config)#</p>
-<p>要进入特权模式，输入enable；要进入全局配置模式，在特权模式下输入configure terminal；在全局配置模式中可以选择端口；按Ctrl+Z可以退出全局配置模式。</p>
-<p>4）编辑路由器登陆信息：</p>
-<p>Router(config)#banner motd “Welcomee to NJU”</p>
-<p>5）配置端口描述：</p>
-<p>Router(config)#int fa 0&#x2F;0</p>
-<p>Router(config-if)#description To ISP</p>
-<p>6）关闭域名解析功能：</p>
-<p>Router(config)#no ip domain-lookup</p>
-<p>7）将实验端口恢复默认设置：</p>
-<p>Router(config)#default interface f0&#x2F;0</p>
-<p>8）设置系统时间：</p>
-<p>Router#clock set 08:00:00 1jan 2016 </p>
-<p>9)给路由器命名：</p>
-<p>进入全局配置模式，用hostname<name>命令来设定路由器名称</p>
-<p>10）给端口配IP地址：在全局配置模式下，进入各端口配置模式配置IP地址</p>
-<p>​        1.以太网口配置</p>
-<p>​            Router(config)# int f0&#x2F;0</p>
-<p>​            Router(config-if) #ip address <ip address><subnet mask></p>
-<p>​            Router(config-if)# no shutdown</p>
-<p>​        2.串行线：根据串口是DTE还是DCE来选择（略）</p>
-<p>11）Ping命令</p>
-<p>Router#ping <ip address></p>
-<p>12）设置Telnet</p>
-<p>能进行Telnet的前提：主机能ping通路由器；路由器设置了telnet密码；路由器允许通过telnet登录；如果需要进入特权模式，还需要配置enable密码。</p>
-<p>配置命令：Router#telnet <ip address></p>
-<p>​                   Router#telnet <hostname></p>
-<p>启动telnet：</p>
-<p>Router#config t</p>
-<p>Router(config)#line vty 0 4 &#x2F;&#x2F;同时允许0-4共5个连接</p>
-<p>Router(config-line)# login</p>
-<p>Router(config-line)#password cisco &#x2F;&#x2F;设置密码为cisco</p>
-<p>设置enable密码：</p>
-<p>Router(config)#enable password cisco</p>
-<p>Router(config-line)# password cisco</p>
-<h2 id="交换机"><a href="#交换机" class="headerlink" title="交换机"></a>交换机</h2><p>1）连接方法同路由器</p>
-<p>2）将hostname改为nju</p>
-<p>先enable进入特权模式，在con t 进入全局配置模式（命令在不引起歧义的情况下可以省略），然后</p>
-<p>Switch(config)#hostname nju</p>
-<p>3）设置特权密码和vty线路密码</p>
-<p>nju(config)#enable password ccna</p>
-<p>nju(config)#line vty 0 4</p>
-<p>nju(config-line)#passwoed ccnp</p>
-<p>4）设置管理ip地址</p>
-<p>nju(config)#inter vlan1</p>
-<p>nju(config-if)#ip add 192.168.1.1 255.255.255.0</p>
-<p>nju(config-if)#no shut</p>
-<p>nju(config-if)#exit</p>
-<p>nju(config)#ip default0gateway 192.168.1.100</p>
-
       
     </div>
 
@@ -1049,24 +999,24 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="RRX"
+    <img class="site-author-image" itemprop="image" alt="戎菜菜"
       src="/images/p1.jpg">
-  <p class="site-author-name" itemprop="name">RRX</p>
-  <div class="site-description" itemprop="description"></div>
+  <p class="site-author-name" itemprop="name">戎菜菜</p>
+  <div class="site-description" itemprop="description">hey</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-count">18</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1097,7 +1047,7 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">RRX</span>
+  <span class="author" itemprop="copyrightHolder">戎菜菜</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
