@@ -193,6 +193,78 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/20/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%EF%BC%88DFS%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/p1.jpg">
+      <meta itemprop="name" content="RRX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小戎的学习历程">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/20/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%EF%BC%88DFS%EF%BC%89/" class="post-title-link" itemprop="url">深度优先搜索（DFS）</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-04-20 10:11:46 / 修改时间：12:35:28" itemprop="dateCreated datePublished" datetime="2022-04-20T10:11:46+08:00">2022-04-20</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="深度优先搜索-DFS"><a href="#深度优先搜索-DFS" class="headerlink" title="深度优先搜索-DFS"></a>深度优先搜索-DFS</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>深度优先搜索算法是一种用于遍历或搜索树或图的算法。这个算法会尽可能深地搜索树的分支。当节点v的所在边都已被探寻过，搜索将回溯到发现节点v的那条边的起始节点。这一过程一直进行到已大仙从源节点可达的所有节点为止。如果还存在未被发现的节点，则选择其中一个作为源节点并重复以上过程。整个进程反复进行直到所有节点都被访问为止。</p>
+<p>深度优先搜索是图论中的经典算法，利用深度优先搜索算法可以产生目标图的拓扑排序表。利用拓扑排序表可以方便的解决很有相关的图论问题，如无权最长路径问题等等。</p>
+<p>因发明“深度优先搜索算法”，约翰·霍普克罗夫特与罗伯特·塔扬在1986年共同获得计算机领域的最高奖：图灵奖。</p>
+<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><p>1.首先将根节点放入stack中。</p>
+<p>2.从stack中取出第一个节点，并检验它是否为目标。</p>
+<p>​            如果找到目标，则结束搜寻并回传结果。</p>
+<p>​            否则将它某一个尚未检验过的直接子节点加入stack中。</p>
+<p>3.重复步骤2.</p>
+<p>4.如果不存在未检测过的直接子节点。</p>
+<p>​            将上一级节点加入stack中。</p>
+<p>​            重复步骤2.</p>
+<p>5.重复步骤4。</p>
+<p>6.如果stack为空，表示整张图都检查过了——亦即图中没有欲搜寻的目标。结束搜寻并回传“找不到目标”。</p>
+<h2 id="实现代码（略）"><a href="#实现代码（略）" class="headerlink" title="实现代码（略）"></a>实现代码（略）</h2><p>用for循环遍历某一步的所有可能，使用递归实现进入下一个节点，并修改状态。递归结束后恢复初始状态。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/19/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%EF%BC%88BFS%EF%BC%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -916,82 +988,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/14/C++stack/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/p1.jpg">
-      <meta itemprop="name" content="RRX">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小戎的学习历程">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/04/14/C++stack/" class="post-title-link" itemprop="url">C++ STL简介</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-04-14 13:57:42" itemprop="dateCreated datePublished" datetime="2022-04-14T13:57:42+08:00">2022-04-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-18 15:20:18" itemprop="dateModified" datetime="2022-04-18T15:20:18+08:00">2022-04-18</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="C-Stack-Queue-Deque-PriorityQueue-Pair-（Vector-Set略）"><a href="#C-Stack-Queue-Deque-PriorityQueue-Pair-（Vector-Set略）" class="headerlink" title="C++ Stack Queue Deque PriorityQueue Pair （Vector Set略）"></a>C++ Stack Queue Deque PriorityQueue Pair （Vector Set略）</h1><h2 id="Stack"><a href="#Stack" class="headerlink" title="Stack:"></a>Stack:</h2><p>头文件：</p>
-<p><code>#include&lt;stack&gt;</code></p>
-<p>简介：</p>
-<p>stack（栈），是一种后进先出（Last-In-First-Out，LIFO）的线性结构，支持两种操作：push和pop。</p>
-<p>push操作是把一个元素加入栈中，pop操作是把最晚进入的元素删除。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/04/14/C++stack/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1063,7 +1059,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-count">17</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
