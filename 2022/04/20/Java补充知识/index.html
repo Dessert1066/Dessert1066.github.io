@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="1.java的继承和多态继承就是子类继承父类的方法，多态就是同一个方法可以有多种不同的实现形式（通过调用函数的传参来加以区分） 2.多态的弊端以及解决方法弊端：Fu f &#x3D; new Zi() f不能用子类特有方法 解决方法：Zi z &#x3D; (Zi)f 由于本身是子类对象，可以向下转型成子类引用，再调用子类特有方法。 3.抽象类和接口的区别：A：成员区别 ​        抽象类：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java补充知识">
+<meta property="og:url" content="http://example.com/2022/04/20/Java%E8%A1%A5%E5%85%85%E7%9F%A5%E8%AF%86/index.html">
+<meta property="og:site_name" content="小戎的学习历程">
+<meta property="og:description" content="1.java的继承和多态继承就是子类继承父类的方法，多态就是同一个方法可以有多种不同的实现形式（通过调用函数的传参来加以区分） 2.多态的弊端以及解决方法弊端：Fu f &#x3D; new Zi() f不能用子类特有方法 解决方法：Zi z &#x3D; (Zi)f 由于本身是子类对象，可以向下转型成子类引用，再调用子类特有方法。 3.抽象类和接口的区别：A：成员区别 ​        抽象类：">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-04-20T08:39:21.000Z">
+<meta property="article:modified_time" content="2022-04-20T09:14:12.200Z">
+<meta property="article:author" content="戎菜菜">
+<meta property="article:tag" content="java">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2022/04/20/Java%E8%A1%A5%E5%85%85%E7%9F%A5%E8%AF%86/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Java补充知识 | 小戎的学习历程</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">小戎的学习历程</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">梦想下酒</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/20/Java%E8%A1%A5%E5%85%85%E7%9F%A5%E8%AF%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/p1.jpg">
+      <meta itemprop="name" content="戎菜菜">
+      <meta itemprop="description" content="hey">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小戎的学习历程">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java补充知识
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-04-20 16:39:21 / 修改时间：17:14:12" itemprop="dateCreated datePublished" datetime="2022-04-20T16:39:21+08:00">2022-04-20</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="1-java的继承和多态"><a href="#1-java的继承和多态" class="headerlink" title="1.java的继承和多态"></a>1.java的继承和多态</h2><p>继承就是子类继承父类的方法，多态就是同一个方法可以有多种不同的实现形式（通过调用函数的传参来加以区分）</p>
+<h2 id="2-多态的弊端以及解决方法"><a href="#2-多态的弊端以及解决方法" class="headerlink" title="2.多态的弊端以及解决方法"></a>2.多态的弊端以及解决方法</h2><p>弊端：Fu f &#x3D; new Zi() f不能用子类特有方法</p>
+<p>解决方法：Zi z &#x3D; (Zi)f 由于本身是子类对象，可以向下转型成子类引用，再调用子类特有方法。</p>
+<h2 id="3-抽象类和接口的区别："><a href="#3-抽象类和接口的区别：" class="headerlink" title="3.抽象类和接口的区别："></a>3.抽象类和接口的区别：</h2><p>A：成员区别</p>
+<p>​        抽象类：成员变量：可以变量，可以常量</p>
+<p>​        构造方法：有</p>
+<p>​        成员方法：可以抽象，也可以非抽象</p>
+<p>B：关系区别</p>
+<p>​        类与类：继承，单继承</p>
+<p>​        类与接口：实现，单实现，多实现</p>
+<p>​        接口与接口：继承，单继承，多继承</p>
+<p>C：设计理念区别：</p>
+<p>​        抽象类：被继承体现的是“is a”的关系，抽象类中定义的是该继承体系的共性功能。</p>
+<p>​        接口：被实现体现的是“like a”的关系，接口中定义的是该继承体系的扩展功能。</p>
+<h2 id="4-抽象类的特点"><a href="#4-抽象类的特点" class="headerlink" title="4.抽象类的特点"></a>4.抽象类的特点</h2><p>​    A：抽象类和抽象方法必须用abstract关键字修饰。</p>
+<p>​    B：抽象类中不一定有抽象方法，但是有抽象方法的累必须定义为抽象类</p>
+<p>​    C：抽象类不能被实例化，因为它不是具体的。</p>
+<p>​            抽象类有构造方法，但是不能实例化？构造方法的作用是什么呢？</p>
+<p>​            答：用于子类访问父类数据的初始化</p>
+<p>​    D：抽象的子类</p>
+<p>​            a.如果不想重写抽象方法，该子类是一个抽象类。</p>
+<p>​            b.重写所有抽象方法，这时候子类是一个具体的类。</p>
+<p>​    抽象类的实例化其实是靠具体的子类实现的，是多态的方式。</p>
+<p>​    Animal a &#x3D; new Cat();</p>
+<p>多态其实主要用于抽象类和其具体子类，而不是具体类和具体类之间。</p>
+<h2 id="5-为什么new子类要先执行父类的构造方法"><a href="#5-为什么new子类要先执行父类的构造方法" class="headerlink" title="5.为什么new子类要先执行父类的构造方法"></a>5.为什么new子类要先执行父类的构造方法</h2><p>实例化的本质，是调用构造函数分配实例标识，申请内存存放实例中各成员变量的初始值。如果该类继承了某个父类，也就继承了（相当于复制）了父类的所有非私有成员变量，而入伏哦没有给继承过来的成员变量赋初值，那后续施加在该成员变量的操作便无法进行。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Parent</span> &#123;</span><br><span class="line">    <span class="comment">// 静态变量</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">String</span> <span class="variable">p_StaticField</span> <span class="operator">=</span> <span class="string">&quot;父类--静态变量&quot;</span>;</span><br><span class="line">    <span class="comment">// 变量(其实这用对象更好能体同这一点，如专门写一个类的实例)</span></span><br><span class="line">　　</span><br><span class="line">    <span class="comment">//如果这个变量放在初始化块的后面，是会报错的，因为你根本没有被初始化</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">String</span> <span class="variable">p_Field</span> <span class="operator">=</span> <span class="string">&quot;父类--变量&quot;</span>;</span><br><span class="line">    <span class="comment">// 静态初始化块</span></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        System.out.println(p_StaticField);</span><br><span class="line">        System.out.println(<span class="string">&quot;父类--静态初始化块&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 初始化块</span></span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(p_Field);</span><br><span class="line">        System.out.println(<span class="string">&quot;父类--初始化块&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 构造器</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Parent</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;父类--构造器&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SubClass</span> <span class="keyword">extends</span> <span class="title class_">Parent</span> &#123;</span><br><span class="line">    <span class="comment">// 静态变量</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">String</span> <span class="variable">s_StaticField</span> <span class="operator">=</span> <span class="string">&quot;子类--静态变量&quot;</span>;</span><br><span class="line">    <span class="comment">// 变量</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">String</span> <span class="variable">s_Field</span> <span class="operator">=</span> <span class="string">&quot;子类--变量&quot;</span>;</span><br><span class="line">    <span class="comment">// 静态初始化块</span></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        System.out.println(s_StaticField);</span><br><span class="line">        System.out.println(<span class="string">&quot;子类--静态初始化块&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 初始化块</span></span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(s_Field);</span><br><span class="line">        System.out.println(<span class="string">&quot;子类--初始化块&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 构造器</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">SubClass</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">//super();</span></span><br><span class="line">        System.out.println(<span class="string">&quot;子类--构造器&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 程序入口</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;*************in main***************&quot;</span>);</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">SubClass</span>();</span><br><span class="line">        System.out.println(<span class="string">&quot;*************second subClass***************&quot;</span>);</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">SubClass</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">父类--静态变量</span><br><span class="line">父类--静态初始化块</span><br><span class="line">子类--静态变量</span><br><span class="line">子类--静态初始化块</span><br><span class="line">*************in main***************</span><br><span class="line">父类--变量</span><br><span class="line">父类--初始化块</span><br><span class="line">父类--构造器</span><br><span class="line">子类--变量</span><br><span class="line">子类--初始化块</span><br><span class="line">子类--构造器</span><br><span class="line">*************second subClass***************</span><br><span class="line">父类--变量</span><br><span class="line">父类--初始化块</span><br><span class="line">父类--构造器</span><br><span class="line">子类--变量</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/java/" rel="tag"># java</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/04/20/%E5%AF%B9%E8%B1%A1%E4%B8%8Ethis/" rel="prev" title="对象与this">
+      <i class="fa fa-chevron-left"></i> 对象与this
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/04/20/C++%20Map/" rel="next" title="C++ Map">
+      C++ Map <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-java%E7%9A%84%E7%BB%A7%E6%89%BF%E5%92%8C%E5%A4%9A%E6%80%81"><span class="nav-number">1.</span> <span class="nav-text">1.java的继承和多态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%A4%9A%E6%80%81%E7%9A%84%E5%BC%8A%E7%AB%AF%E4%BB%A5%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">2.多态的弊端以及解决方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9A"><span class="nav-number">3.</span> <span class="nav-text">3.抽象类和接口的区别：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E6%8A%BD%E8%B1%A1%E7%B1%BB%E7%9A%84%E7%89%B9%E7%82%B9"><span class="nav-number">4.</span> <span class="nav-text">4.抽象类的特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E4%B8%BA%E4%BB%80%E4%B9%88new%E5%AD%90%E7%B1%BB%E8%A6%81%E5%85%88%E6%89%A7%E8%A1%8C%E7%88%B6%E7%B1%BB%E7%9A%84%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95"><span class="nav-number">5.</span> <span class="nav-text">5.为什么new子类要先执行父类的构造方法</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="戎菜菜"
+      src="/images/p1.jpg">
+  <p class="site-author-name" itemprop="name">戎菜菜</p>
+  <div class="site-description" itemprop="description">hey</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2022-04 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">戎菜菜</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/clicklove.js"></script>
+
+</html>
