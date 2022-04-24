@@ -20,20 +20,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="计网实验（网络版）路由器1）打开packet tracer，在里面新建路由器（routers）和pc（End Devices），用console线（蓝色）连接路由器console口和pc的串口（com1,i.e. RS232)，即可完成连接。 2）双击pc，打开terminal，波特率选择9600，其余默认，然后就能进入用户模式。 3）用户模式：router&gt; ​      特权模式：rou">
+  <meta name="description" content="Class 类概念 Class 也是一个 Java 类，保存的是与之对应 Java 类的 meta信息（元信息），用来描述这个类的结构，比如描述一个类有哪些成员，有哪些方法等，一般在反射中使用。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="计网实验（网络版）">
-<meta property="og:url" content="http://example.com/2022/04/14/%E8%AE%A1%E7%BD%91%E5%AE%9E%E9%AA%8C%EF%BC%88%E7%BD%91%E7%BB%9C%E7%89%88%EF%BC%89/index.html">
+<meta property="og:title" content="理解java-Class.forname()">
+<meta property="og:url" content="http://example.com/2022/04/23/%E7%90%86%E8%A7%A3java-Class-forname/index.html">
 <meta property="og:site_name" content="小戎的学习历程">
-<meta property="og:description" content="计网实验（网络版）路由器1）打开packet tracer，在里面新建路由器（routers）和pc（End Devices），用console线（蓝色）连接路由器console口和pc的串口（com1,i.e. RS232)，即可完成连接。 2）双击pc，打开terminal，波特率选择9600，其余默认，然后就能进入用户模式。 3）用户模式：router&gt; ​      特权模式：rou">
+<meta property="og:description" content="Class 类概念 Class 也是一个 Java 类，保存的是与之对应 Java 类的 meta信息（元信息），用来描述这个类的结构，比如描述一个类有哪些成员，有哪些方法等，一般在反射中使用。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-04-14T08:06:13.000Z">
-<meta property="article:modified_time" content="2022-04-18T06:17:41.501Z">
+<meta property="article:published_time" content="2022-04-23T06:55:28.000Z">
+<meta property="article:modified_time" content="2022-04-23T06:58:47.241Z">
 <meta property="article:author" content="戎菜菜">
-<meta property="article:tag" content="计算机网络">
+<meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2022/04/14/%E8%AE%A1%E7%BD%91%E5%AE%9E%E9%AA%8C%EF%BC%88%E7%BD%91%E7%BB%9C%E7%89%88%EF%BC%89/">
+<link rel="canonical" href="http://example.com/2022/04/23/%E7%90%86%E8%A7%A3java-Class-forname/">
 
 
 <script id="page-configurations">
@@ -46,7 +46,7 @@
   };
 </script>
 
-  <title>计网实验（网络版） | 小戎的学习历程</title>
+  <title>理解java-Class.forname() | 小戎的学习历程</title>
   
 
 
@@ -200,7 +200,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/14/%E8%AE%A1%E7%BD%91%E5%AE%9E%E9%AA%8C%EF%BC%88%E7%BD%91%E7%BB%9C%E7%89%88%EF%BC%89/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/23/%E7%90%86%E8%A7%A3java-Class-forname/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/p1.jpg">
@@ -213,7 +213,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          计网实验（网络版）
+          理解java-Class.forname()
         </h1>
 
         <div class="post-meta">
@@ -222,16 +222,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2022-04-14 16:06:13" itemprop="dateCreated datePublished" datetime="2022-04-14T16:06:13+08:00">2022-04-14</time>
+              <time title="创建时间：2022-04-23 14:55:28 / 修改时间：14:58:47" itemprop="dateCreated datePublished" datetime="2022-04-23T14:55:28+08:00">2022-04-23</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-18 14:17:41" itemprop="dateModified" datetime="2022-04-18T14:17:41+08:00">2022-04-18</time>
-              </span>
 
           
 
@@ -244,59 +238,28 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="计网实验（网络版）"><a href="#计网实验（网络版）" class="headerlink" title="计网实验（网络版）"></a>计网实验（网络版）</h1><h2 id="路由器"><a href="#路由器" class="headerlink" title="路由器"></a>路由器</h2><p>1）打开packet tracer，在里面新建路由器（routers）和pc（End Devices），用console线（蓝色）连接路由器console口和pc的串口（com1,i.e. RS232)，即可完成连接。</p>
-<p>2）双击pc，打开terminal，波特率选择9600，其余默认，然后就能进入用户模式。</p>
-<p>3）用户模式：router&gt;</p>
-<p>​      特权模式：router#</p>
-<p>​      全局配置模式：router(config)#</p>
-<p>要进入特权模式，输入enable；要进入全局配置模式，在特权模式下输入configure terminal；在全局配置模式中可以选择端口；按Ctrl+Z可以退出全局配置模式。</p>
-<p>4）编辑路由器登陆信息：</p>
-<p>Router(config)#banner motd “Welcomee to NJU”</p>
-<p>5）配置端口描述：</p>
-<p>Router(config)#int fa 0&#x2F;0</p>
-<p>Router(config-if)#description To ISP</p>
-<p>6）关闭域名解析功能：</p>
-<p>Router(config)#no ip domain-lookup</p>
-<p>7）将实验端口恢复默认设置：</p>
-<p>Router(config)#default interface f0&#x2F;0</p>
-<p>8）设置系统时间：</p>
-<p>Router#clock set 08:00:00 1jan 2016 </p>
-<p>9)给路由器命名：</p>
-<p>进入全局配置模式，用hostname<name>命令来设定路由器名称</p>
-<p>10）给端口配IP地址：在全局配置模式下，进入各端口配置模式配置IP地址</p>
-<p>​        1.以太网口配置</p>
-<p>​            Router(config)# int f0&#x2F;0</p>
-<p>​            Router(config-if) #ip address <ip address><subnet mask></p>
-<p>​            Router(config-if)# no shutdown</p>
-<p>​        2.串行线：根据串口是DTE还是DCE来选择（略）</p>
-<p>11）Ping命令</p>
-<p>Router#ping <ip address></p>
-<p>12）设置Telnet</p>
-<p>能进行Telnet的前提：主机能ping通路由器；路由器设置了telnet密码；路由器允许通过telnet登录；如果需要进入特权模式，还需要配置enable密码。</p>
-<p>配置命令：Router#telnet <ip address></p>
-<p>​                   Router#telnet <hostname></p>
-<p>启动telnet：</p>
-<p>Router#config t</p>
-<p>Router(config)#line vty 0 4 &#x2F;&#x2F;同时允许0-4共5个连接</p>
-<p>Router(config-line)# login</p>
-<p>Router(config-line)#password cisco &#x2F;&#x2F;设置密码为cisco</p>
-<p>设置enable密码：</p>
-<p>Router(config)#enable password cisco</p>
-<p>Router(config-line)# password cisco</p>
-<h2 id="交换机"><a href="#交换机" class="headerlink" title="交换机"></a>交换机</h2><p>1）连接方法同路由器</p>
-<p>2）将hostname改为nju</p>
-<p>先enable进入特权模式，在con t 进入全局配置模式（命令在不引起歧义的情况下可以省略），然后</p>
-<p>Switch(config)#hostname nju</p>
-<p>3）设置特权密码和vty线路密码</p>
-<p>nju(config)#enable password ccna</p>
-<p>nju(config)#line vty 0 4</p>
-<p>nju(config-line)#passwoed ccnp</p>
-<p>4）设置管理ip地址</p>
-<p>nju(config)#inter vlan1</p>
-<p>nju(config-if)#ip add 192.168.1.1 255.255.255.0</p>
-<p>nju(config-if)#no shut</p>
-<p>nju(config-if)#exit</p>
-<p>nju(config)#ip default0gateway 192.168.1.100</p>
+        <p><strong>Class 类概念</strong></p>
+<p>Class 也是一个 Java 类，保存的是与之对应 Java 类的 meta信息（元信息），用来描述这个类的结构，比如描述一个类有哪些成员，有哪些方法等，一般在反射中使用。</p>
+<span id="more"></span>
+
+<p><strong>详细解释：</strong>Java 源程序（.java 文件）在经过 Java 编译器编译之后就被转换成 Java 字节代码（.class 文件）。类加载器负责读取 Java 字节代码，并转换成 java.lang.Class类的一个实例（Class 对象）。也就是说，在 Java 中，每个 java 类都有一个相应的 Class 对象，用于表示这个 java 类的类型信息。</p>
+<p><strong>类加载概念</strong></p>
+<p>当使用一个类的时候（比如 new 一个类的实例），会检查此类是否被加载到内存，如果没有，则会执行加载操作。</p>
+<p>读取类对应的 class 文件数据，解析此数据，构造一个此类对应的 Class 类的实例。此时JVM就可以使用该类了，比如实例化此类，或者调用此类的静态方法。</p>
+<p>Java 也提供了手动加载类的接口，class.forName()方法就是其中之一。（说来说去，其实就是生成这个类的 Class）</p>
+<p><strong>类加载器的概念</strong></p>
+<p>顾名思义，类加载器（class loader）用来加载 Java 类到 Java 虚拟机中。一般来说，Java 虚拟机使用 Java 类的方式如下：Java 源程序（.java 文件）在经过 Java 编译器编译之后就被转换成 Java 字节代码（.class 文件）。类加载器负责读取 Java 字节代码，并转换成 java.lang.Class 类的一个实例。每个这样的实例用来表示一个 Java 类。通过此实例的 newInstance() 方法就可以创建出该类的一个对象。 基本上所有的类加载器都是 java.lang.ClassLoader 类的一个实例。</p>
+<p><strong>类初始化概念</strong></p>
+<p>类被加载之后，jvm 已经获得了一个描述类结构的 Class 实例。但是还需要进行类初始化操作之后才能正常使用此类，类初始化操作就是执行一遍类的静态语句，包括静态变量的声明还有静态代码块。</p>
+<p><strong>Class.forName() 方法</strong></p>
+<p>此方法含义是：加载参数指定的类，并且初始化它。</p>
+<p>在 jdbc 连接数据库中的应用</p>
+<p>到这里，不用解释，读者也会明白，在使用 jdbc 方式连接数据库时，为什么要执行 <strong>Class.forName(‘驱动类名’)</strong> 方法了：将驱动类的 class 文件装载到内存中，并且形成一个描述此驱动类结构的 Class 类实例，并且初始化此驱动类，这样 jvm 就可以使用它了，这就是 Class.forName() 方法的含义。</p>
+<p>有数据库开发经验朋友会发现，为什么在我们加载数据库驱动包的时候有的却没有调用 newInstance() 方法呢？即有的 jdbc 连接数据库的写法里是 Class.forName(xxx.xx.xx);而有一 些：Class.forName(xxx.xx.xx).newInstance()，为什么会有这两种写法呢？</p>
+<p>刚才提到，<strong>Class.forName(“”);</strong> 的作用是要求 JVM 查找并加载指定的类，如果在类中有静态初始化器的话，JVM 必然会执行该类的静态代码 段。而在 JDBC 规范中明确要求这个 Driver 类必须向 DriverManager 注册自己，即任何一个 JDBC Driver 的 Driver 类的代码都必须类似如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyJDBCDriver</span> <span class="keyword">implements</span> <span class="title class_">Driver</span> &#123; </span><br><span class="line">    <span class="keyword">static</span> &#123; </span><br><span class="line">        DriverManager.registerDriver(<span class="keyword">new</span> <span class="title class_">MyJDBCDriver</span>()); </span><br><span class="line">    &#125; </span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<p>既然在静态初始化器的中已经进行了注册，所以我们在使用 JDBC 时只需要 <strong>Class.forName(XXX.XXX);</strong> 就可以了。</p>
 
     </div>
 
@@ -306,7 +269,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag"># 计算机网络</a>
+              <a href="/tags/java/" rel="tag"># java</a>
           </div>
 
         
@@ -315,13 +278,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/04/14/C++stack/" rel="prev" title="C++ STL简介">
-      <i class="fa fa-chevron-left"></i> C++ STL简介
+    <a href="/2022/04/22/Spring%E6%95%99%E7%A8%8B-Day4/" rel="prev" title="Spring教程 Day4">
+      <i class="fa fa-chevron-left"></i> Spring教程 Day4
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2022/04/14/C++Set/" rel="next" title="c++ Set">
-      c++ Set <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -380,7 +340,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%A1%E7%BD%91%E5%AE%9E%E9%AA%8C%EF%BC%88%E7%BD%91%E7%BB%9C%E7%89%88%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">计网实验（网络版）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B7%AF%E7%94%B1%E5%99%A8"><span class="nav-number">1.1.</span> <span class="nav-text">路由器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%A4%E6%8D%A2%E6%9C%BA"><span class="nav-number">1.2.</span> <span class="nav-text">交换机</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

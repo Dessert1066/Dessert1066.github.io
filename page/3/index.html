@@ -196,6 +196,434 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/14/C++stack/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/p1.jpg">
+      <meta itemprop="name" content="戎菜菜">
+      <meta itemprop="description" content="hey">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小戎的学习历程">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/14/C++stack/" class="post-title-link" itemprop="url">C++ STL简介</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-04-14 13:57:42" itemprop="dateCreated datePublished" datetime="2022-04-14T13:57:42+08:00">2022-04-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-22 11:50:55" itemprop="dateModified" datetime="2022-04-22T11:50:55+08:00">2022-04-22</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="C-Stack-Queue-Deque-PriorityQueue-Pair-（Vector-Set略）"><a href="#C-Stack-Queue-Deque-PriorityQueue-Pair-（Vector-Set略）" class="headerlink" title="C++ Stack Queue Deque PriorityQueue Pair （Vector Set略）"></a>C++ Stack Queue Deque PriorityQueue Pair （Vector Set略）</h1><h2 id="Stack"><a href="#Stack" class="headerlink" title="Stack:"></a>Stack:</h2><p>头文件：</p>
+<p><code>#include&lt;stack&gt;</code></p>
+<p>简介：</p>
+<p>stack（栈），是一种后进先出（Last-In-First-Out，LIFO）的线性结构，支持两种操作：push和pop。</p>
+<p>push操作是把一个元素加入栈中，pop操作是把最晚进入的元素删除。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/04/14/C++stack/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/14/C++sort/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/p1.jpg">
+      <meta itemprop="name" content="戎菜菜">
+      <meta itemprop="description" content="hey">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小戎的学习历程">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/14/C++sort/" class="post-title-link" itemprop="url">C++ sort</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-04-14 10:39:19" itemprop="dateCreated datePublished" datetime="2022-04-14T10:39:19+08:00">2022-04-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-22 11:51:12" itemprop="dateModified" datetime="2022-04-22T11:51:12+08:00">2022-04-22</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line">vector&lt;<span class="type">int</span>&gt; v;</span><br><span class="line">std::<span class="built_in">sort</span>(v.<span class="built_in">begin</span>(),v.<span class="built_in">end</span>());</span><br><span class="line"><span class="type">int</span> arr[] = &#123;<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">8</span>&#125;</span><br><span class="line">std::<span class="built_in">sort</span>(a,a+<span class="number">6</span>);</span><br></pre></td></tr></table></figure>
+
+<p>加入sort函数样板：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">less&lt;Type&gt;</span><br><span class="line"></span><br><span class="line">less_equal&lt;Type&gt;</span><br><span class="line"></span><br><span class="line">greater&lt;Type&gt;</span><br><span class="line"></span><br><span class="line">greater_equal&lt;Type&gt;</span><br><span class="line"></span><br><span class="line">equal_to&lt;Type&gt;</span><br><span class="line"></span><br><span class="line">not_equal_to&lt;Type&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> arr[] = &#123;<span class="number">4</span>, <span class="number">5</span>, <span class="number">8</span>, <span class="number">3</span>, <span class="number">7</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">6</span>, <span class="number">10</span>, <span class="number">9</span>&#125;;</span><br><span class="line">std::<span class="built_in">sort</span>(arr, arr+<span class="number">10</span>, std::<span class="built_in">greater</span>&lt;<span class="type">int</span>&gt;());</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">std::<span class="built_in">sort</span>(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>(), mycompare);</span><br></pre></td></tr></table></figure>
+
+<p>配合lambda匿名函数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">std::sort(v.begin(), v.end(), [](int a, int b)&#123;</span><br><span class="line">    return a &lt; b; // 升序排列</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/13/%E6%B1%82vector%E5%92%8C%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/p1.jpg">
+      <meta itemprop="name" content="戎菜菜">
+      <meta itemprop="description" content="hey">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小戎的学习历程">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/13/%E6%B1%82vector%E5%92%8C%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC/" class="post-title-link" itemprop="url">求vector和数组中的最大值</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-04-13 09:40:06" itemprop="dateCreated datePublished" datetime="2022-04-13T09:40:06+08:00">2022-04-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-18 14:17:54" itemprop="dateModified" datetime="2022-04-18T14:17:54+08:00">2022-04-18</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="C-数组或vector求最大值或最小值"><a href="#C-数组或vector求最大值或最小值" class="headerlink" title="C++数组或vector求最大值或最小值"></a>C++数组或vector求最大值或最小值</h1><p>可以用max_element()和min_element()函数，二者返回的都是迭代器或指针.</p>
+<p>头文件：<code>#include&lt;algorithm&gt;</code></p>
+<p>vector容器：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> maxValue = *<span class="built_in">max_element</span>(v.<span class="built_in">begin</span>(),v.<span class="built_in">end</span>());</span><br><span class="line"><span class="type">int</span> maxPosition = <span class="built_in">max_element</span>(v.<span class="built_in">begin</span>(),v.<span class="built_in">end</span>())-v.<span class="built_in">begin</span>();</span><br></pre></td></tr></table></figure>
+
+<p>普通数组：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a[]=&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>&#125;;</span><br><span class="line"><span class="comment">//最大值：</span></span><br><span class="line"><span class="type">int</span> maxValue = *<span class="built_in">max_element</span>(a,a+<span class="number">6</span>);</span><br><span class="line"><span class="type">int</span> maxPosition = <span class="built_in">max_element</span>(a,a+<span class="number">6</span>)-a;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/12/Springboot/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/p1.jpg">
+      <meta itemprop="name" content="戎菜菜">
+      <meta itemprop="description" content="hey">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小戎的学习历程">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/12/Springboot/" class="post-title-link" itemprop="url">Spring boot</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-04-12 09:40:06" itemprop="dateCreated datePublished" datetime="2022-04-12T09:40:06+08:00">2022-04-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-18 14:17:24" itemprop="dateModified" datetime="2022-04-18T14:17:24+08:00">2022-04-18</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Springboot"><a href="#Springboot" class="headerlink" title="Springboot"></a>Springboot</h1><h2 id="创建第一个springboot项目"><a href="#创建第一个springboot项目" class="headerlink" title="创建第一个springboot项目"></a>创建第一个springboot项目</h2><p>1.File-&gt;创建maven-&gt;导入父工程，添加web依赖-&gt;在Java文件夹中创建class（有很多层文件夹）-&gt;添加注解@SpringBootApplication,创建main函数-&gt;创建controller，添加注解@Controller，添加注解@RequestMapping，添加注解@ResponseBody，可以和Controller合二为一，变为@RestController-&gt;run</p>
+<p>2.修改端口：在resources中创建application.properties，在其中添加server.port&#x3D;8888</p>
+<ol start="3">
+<li></li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/11/C++vector%E6%B5%85%E6%9E%90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/p1.jpg">
+      <meta itemprop="name" content="戎菜菜">
+      <meta itemprop="description" content="hey">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小戎的学习历程">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/11/C++vector%E6%B5%85%E6%9E%90/" class="post-title-link" itemprop="url">C++Vector浅析</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-04-11 14:38:33" itemprop="dateCreated datePublished" datetime="2022-04-11T14:38:33+08:00">2022-04-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-22 11:51:04" itemprop="dateModified" datetime="2022-04-22T11:51:04+08:00">2022-04-22</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="C-Vector浅析"><a href="#C-Vector浅析" class="headerlink" title="C++Vector浅析"></a>C++Vector浅析</h1><h2 id="一、什么是vector？"><a href="#一、什么是vector？" class="headerlink" title="一、什么是vector？"></a>一、什么是vector？</h2><p>vector就是一个封装了动态大小数组的顺序容器。和任意其他类型容器一样，它能够存放各种类型的对象。可以简单认为，是一个能够存放任意类型的动态数组。</p>
+<h2 id="二、容器特性"><a href="#二、容器特性" class="headerlink" title="二、容器特性"></a>二、容器特性</h2><h3 id="1-顺序排列"><a href="#1-顺序排列" class="headerlink" title="1.顺序排列"></a>1.顺序排列</h3><h3 id="2-动态数组"><a href="#2-动态数组" class="headerlink" title="2.动态数组"></a>2.动态数组</h3><h3 id="3-能够感知内存分类器的（Allocator-aware）"><a href="#3-能够感知内存分类器的（Allocator-aware）" class="headerlink" title="3.能够感知内存分类器的（Allocator-aware）"></a>3.能够感知内存分类器的（Allocator-aware）</h3><h2 id="三、基本函数实现"><a href="#三、基本函数实现" class="headerlink" title="三、基本函数实现"></a>三、基本函数实现</h2><h3 id="1-构造函数"><a href="#1-构造函数" class="headerlink" title="1.构造函数"></a>1.构造函数</h3><p>创建空vector：vector()</p>
+<p>创建一个vector，元素的个数为nSize：vector(int nSize)</p>
+<p>创建一个vector，元素个数为nSize，且值均为t：vector(int nSize,const t&amp; t)</p>
+<p>复制构造函数：vector(const vector&amp;)</p>
+<p>复制[begin,end)区间内的元素到另一个vector中：vector(begin,end)</p>
+<h3 id="2-增加函数"><a href="#2-增加函数" class="headerlink" title="2.增加函数"></a>2.增加函数</h3><ul>
+<li>void push_back(const T&amp; x):向量尾部增加一个元素X</li>
+<li>iterator insert(iterator it,const T&amp; x):向量中迭代器指向元素前增加一个元素x</li>
+<li>iterator insert(iterator it,int n,const T&amp; x):向量中迭代器指向元素前增加n个相同的元素x</li>
+<li>iterator insert(iterator it,const_iterator first,const_iterator last):向量中迭代器指向元素前插入另一个相同类型向量的[first,last)间的数据</li>
+</ul>
+<h3 id="3-删除函数"><a href="#3-删除函数" class="headerlink" title="3.删除函数"></a>3.删除函数</h3><ul>
+<li>iterator erase(iterator it):删除向量中迭代器指向元素</li>
+<li>iterator erase(iterator first,iterator last):删除向量中[first,last)中元素</li>
+<li>void pop_back():删除向量中最后一个元素</li>
+<li>void clear():清空向量中所有元素</li>
+</ul>
+<h3 id="4-遍历函数"><a href="#4-遍历函数" class="headerlink" title="4.遍历函数"></a>4.遍历函数</h3><ul>
+<li>reference at(int pos):返回pos位置元素的引用</li>
+<li>reference front():返回首元素的引用</li>
+<li>reference back():返回尾元素的引用</li>
+<li>iterator begin():返回向量头指针，指向第一个元素</li>
+<li>iterator end():返回向量尾指针，指向向量最后一个元素的下一个位置</li>
+<li>reverse_iterator rbegin():反向迭代器，指向最后一个元素</li>
+<li>reverse_iterator rend():反向迭代器，指向第一个元素之前的位置</li>
+</ul>
+<h3 id="5-判断函数"><a href="#5-判断函数" class="headerlink" title="5.判断函数"></a>5.判断函数</h3><ul>
+<li>bool empty() const:判断向量是否为空，若为空，则向量中无元素</li>
+</ul>
+<h3 id="6-大小函数"><a href="#6-大小函数" class="headerlink" title="6.大小函数"></a>6.大小函数</h3><ul>
+<li>int size() const:返回向量中元素的个数</li>
+<li>int capacity() const:返回当前向量所能容纳的最大元素值</li>
+<li>int max_size() const:返回最大可允许的vector元素数量值</li>
+</ul>
+<h3 id="7-其他函数"><a href="#7-其他函数" class="headerlink" title="7.其他函数"></a>7.其他函数</h3><ul>
+<li>void swap(vector&amp;):交换两个同类型向量的数据</li>
+<li>void assign(int n,const T&amp; x):设置向量中前n个元素的值为x</li>
+<li>void assign(const_iterator first,const_iterator last):向量中[first,last)中元素设置成当前向量元素</li>
+</ul>
+<h3 id="8-看着清楚"><a href="#8-看着清楚" class="headerlink" title="8.看着清楚"></a>8.看着清楚</h3><blockquote>
+<p>1.push_back 在数组的最后添加一个数据</p>
+<p>2.pop_back 去掉数组的最后一个数据</p>
+<p>3.at 得到编号位置的数据</p>
+<p>4.begin 得到数组头的指针</p>
+<p>5.end 得到数组的最后一个单元+1的指针</p>
+<p>6.front 得到数组头的引用</p>
+<p>7.back 得到数组的最后一个单元的引用</p>
+<p>8.max_size 得到vector最大可以是多大</p>
+<p>9.capacity 当前vector分配的大小</p>
+<p>10.size 当前使用数据的大小</p>
+<p>11.resize 改变当前使用数据的大小，如果它比当前使用的大，者填充默认值</p>
+<p>12.reserve 改变当前vecotr所分配空间的大小</p>
+<p>13.erase 删除指针指向的数据项</p>
+<p>14.clear 清空当前的vector</p>
+<p>15.rbegin 将vector反转后的开始指针返回(其实就是原来的end-1)</p>
+<p>16.rend 将vector反转构的结束指针返回(其实就是原来的begin-1)</p>
+<p>17.empty 判断vector是否为空</p>
+<p>18.swap 与另一个vector交换数据</p>
+</blockquote>
+<h2 id="四、基本用法"><a href="#四、基本用法" class="headerlink" title="四、基本用法"></a>四、基本用法</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#include &lt; vector&gt; </span><br><span class="line">using namespace std;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="五、简单介绍"><a href="#五、简单介绍" class="headerlink" title="五、简单介绍"></a>五、简单介绍</h2><ol>
+<li>Vector&lt;类型&gt;标识符</li>
+<li>Vector&lt;类型&gt;标识符(最大容量)</li>
+<li>Vector&lt;类型&gt;标识符(最大容量,初始所有值)</li>
+<li>Int i[5]&#x3D;{1,2,3,4,5}<br>Vector&lt;类型&gt;vi(I,i+2);&#x2F;&#x2F;得到i索引值为3以后的值</li>
+<li>Vector&lt; vector&lt; int&gt; &gt;v; 二维向量&#x2F;&#x2F;这里最外的&lt;&gt;要有空格。否则在比较旧的编译器下无法通过</li>
+</ol>
+<p>具体使用见<a target="_blank" rel="noopener" href="https://www.runoob.com/w3cnote/cpp-vector-container-analysis.html">https://www.runoob.com/w3cnote/cpp-vector-container-analysis.html</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/11/%E5%A6%82%E4%BD%95%E5%9C%A8hexo%E4%B8%8A%E5%88%9B%E5%BB%BA%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -455,14 +883,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-count">27</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
