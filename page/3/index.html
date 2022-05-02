@@ -196,7 +196,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/14/C++stack/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/24/Java%E6%A0%B8%E5%BF%83%E7%B1%BB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/p1.jpg">
@@ -210,7 +210,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/04/14/C++stack/" class="post-title-link" itemprop="url">C++ STL简介</a>
+            <a href="/2022/04/24/Java%E6%A0%B8%E5%BF%83%E7%B1%BB/" class="post-title-link" itemprop="url">Java核心类</a>
         </h2>
 
         <div class="post-meta">
@@ -220,14 +220,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2022-04-14 13:57:42" itemprop="dateCreated datePublished" datetime="2022-04-14T13:57:42+08:00">2022-04-14</time>
+              <time title="创建时间：2022-04-24 22:28:10" itemprop="dateCreated datePublished" datetime="2022-04-24T22:28:10+08:00">2022-04-24</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-22 11:50:55" itemprop="dateModified" datetime="2022-04-22T11:50:55+08:00">2022-04-22</time>
+                <time title="修改时间：2022-04-25 13:52:44" itemprop="dateModified" datetime="2022-04-25T13:52:44+08:00">2022-04-25</time>
               </span>
 
           
@@ -241,488 +241,246 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="C-Stack-Queue-Deque-PriorityQueue-Pair-（Vector-Set略）"><a href="#C-Stack-Queue-Deque-PriorityQueue-Pair-（Vector-Set略）" class="headerlink" title="C++ Stack Queue Deque PriorityQueue Pair （Vector Set略）"></a>C++ Stack Queue Deque PriorityQueue Pair （Vector Set略）</h1><h2 id="Stack"><a href="#Stack" class="headerlink" title="Stack:"></a>Stack:</h2><p>头文件：</p>
-<p><code>#include&lt;stack&gt;</code></p>
-<p>简介：</p>
-<p>stack（栈），是一种后进先出（Last-In-First-Out，LIFO）的线性结构，支持两种操作：push和pop。</p>
-<p>push操作是把一个元素加入栈中，pop操作是把最晚进入的元素删除。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/04/14/C++stack/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
+          <h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">s1</span> <span class="operator">=</span> <span class="string">&quot;Hello!&quot;</span>;</span><br><span class="line"><span class="type">String</span> <span class="variable">s2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(<span class="keyword">new</span> <span class="title class_">char</span>[]&#123;<span class="string">&#x27;H&#x27;</span>,<span class="string">&#x27;e&#x27;</span>,<span class="string">&#x27;l&#x27;</span>,<span class="string">&#x27;l&#x27;</span>,<span class="string">&#x27;o&#x27;</span>,<span class="string">&#x27;!&#x27;</span>&#125;);</span><br></pre></td></tr></table></figure>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+<p>字符串是不可变的，存储来常量池中。</p>
+<h3 id="字符串操作"><a href="#字符串操作" class="headerlink" title="字符串操作"></a>字符串操作</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">s1.equals(s2);</span><br><span class="line">s1.equalsIgnoreCase(s2);</span><br><span class="line"><span class="string">&quot;Hello&quot;</span>.contains(<span class="string">&quot;ll&quot;</span>);<span class="comment">//true</span></span><br><span class="line"><span class="string">&quot;Hello&quot;</span>.indexOf(<span class="string">&quot;l&quot;</span>); <span class="comment">// 2</span></span><br><span class="line"><span class="string">&quot;Hello&quot;</span>.lastIndexOf(<span class="string">&quot;l&quot;</span>); <span class="comment">// 3</span></span><br><span class="line"><span class="string">&quot;Hello&quot;</span>.startsWith(<span class="string">&quot;He&quot;</span>); <span class="comment">// true</span></span><br><span class="line"><span class="string">&quot;Hello&quot;</span>.endsWith(<span class="string">&quot;lo&quot;</span>); <span class="comment">// true</span></span><br><span class="line"><span class="string">&quot;Hello&quot;</span>.substring(<span class="number">2</span>); <span class="comment">// &quot;llo&quot;</span></span><br><span class="line"><span class="string">&quot;Hello&quot;</span>.substring(<span class="number">2</span>, <span class="number">4</span>); <span class="string">&quot;ll&quot;</span></span><br><span class="line"><span class="string">&quot;  \tHello\r\n &quot;</span>.trim(); <span class="comment">// &quot;Hello&quot;,移除首尾空格、换行符、制表符</span></span><br></pre></td></tr></table></figure>
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/14/C++sort/">
+<p>注意：<code>trim()</code>并没有改变字符串的内容，而是返回了一个新字符串。</p>
+<p>另一个<code>strip()</code>方法也可以移除字符串首尾空白字符。它和<code>trim()</code>不同的是，类似中文的空格字符<code>\u3000</code>也会被移除：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;\u3000Hello\u3000&quot;</span>.strip(); <span class="comment">// &quot;Hello&quot;</span></span><br><span class="line"><span class="string">&quot; Hello &quot;</span>.stripLeading(); <span class="comment">// &quot;Hello &quot;</span></span><br><span class="line"><span class="string">&quot; Hello &quot;</span>.stripTrailing(); <span class="comment">// &quot; Hello&quot;</span></span><br><span class="line"><span class="string">&quot;&quot;</span>.isEmpty(); <span class="comment">// true，因为字符串长度为0</span></span><br><span class="line"><span class="string">&quot;  &quot;</span>.isEmpty(); <span class="comment">// false，因为字符串长度不为0</span></span><br><span class="line"><span class="string">&quot;  \n&quot;</span>.isBlank(); <span class="comment">// true，因为只包含空白字符</span></span><br><span class="line"><span class="string">&quot; Hello &quot;</span>.isBlank(); <span class="comment">// false，因为包含非空白字符</span></span><br><span class="line"><span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> <span class="string">&quot;hello&quot;</span>;</span><br><span class="line">s.replace(<span class="string">&#x27;l&#x27;</span>, <span class="string">&#x27;w&#x27;</span>); <span class="comment">// &quot;hewwo&quot;，所有字符&#x27;l&#x27;被替换为&#x27;w&#x27;</span></span><br><span class="line">s.replace(<span class="string">&quot;ll&quot;</span>, <span class="string">&quot;~~&quot;</span>); <span class="comment">// &quot;he~~o&quot;，所有子串&quot;ll&quot;被替换为&quot;~~&quot;</span></span><br><span class="line"><span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> <span class="string">&quot;A,,B;C ,D&quot;</span>;</span><br><span class="line">s.replaceAll(<span class="string">&quot;[\\,\\;\\s]+&quot;</span>, <span class="string">&quot;,&quot;</span>); <span class="comment">// &quot;A,B,C,D&quot;</span></span><br><span class="line"><span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> <span class="string">&quot;A,B,C,D&quot;</span>;</span><br><span class="line">String[] ss = s.split(<span class="string">&quot;\\,&quot;</span>); <span class="comment">// &#123;&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;&#125;</span></span><br><span class="line">String[] arr = &#123;<span class="string">&quot;A&quot;</span>, <span class="string">&quot;B&quot;</span>, <span class="string">&quot;C&quot;</span>&#125;;</span><br><span class="line"><span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> String.join(<span class="string">&quot;***&quot;</span>, arr); <span class="comment">// &quot;A***B***C&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> <span class="string">&quot;Hi %s, your score is %d!&quot;</span>;</span><br><span class="line">        System.out.println(s.formatted(<span class="string">&quot;Alice&quot;</span>, <span class="number">80</span>));</span><br><span class="line">        System.out.println(String.format(<span class="string">&quot;Hi %s, your score is %.2f!&quot;</span>, <span class="string">&quot;Bob&quot;</span>, <span class="number">59.5</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">String.valueOf(<span class="number">123</span>); <span class="comment">// &quot;123&quot;</span></span><br><span class="line">String.valueOf(<span class="number">45.67</span>); <span class="comment">// &quot;45.67&quot;</span></span><br><span class="line">String.valueOf(<span class="literal">true</span>); <span class="comment">// &quot;true&quot;</span></span><br><span class="line">String.valueOf(<span class="keyword">new</span> <span class="title class_">Object</span>()); <span class="comment">// 类似java.lang.Object@636be97c</span></span><br><span class="line"><span class="type">int</span> <span class="variable">n1</span> <span class="operator">=</span> Integer.parseInt(<span class="string">&quot;123&quot;</span>); <span class="comment">// 123</span></span><br><span class="line"><span class="type">int</span> <span class="variable">n2</span> <span class="operator">=</span> Integer.parseInt(<span class="string">&quot;ff&quot;</span>, <span class="number">16</span>); <span class="comment">// 按十六进制转换，255</span></span><br><span class="line"><span class="type">boolean</span> <span class="variable">b1</span> <span class="operator">=</span> Boolean.parseBoolean(<span class="string">&quot;true&quot;</span>); <span class="comment">// true</span></span><br><span class="line"><span class="type">boolean</span> <span class="variable">b2</span> <span class="operator">=</span> Boolean.parseBoolean(<span class="string">&quot;FALSE&quot;</span>); <span class="comment">// false</span></span><br><span class="line">Integer.getInteger(<span class="string">&quot;java.version&quot;</span>); <span class="comment">// 版本号，11</span></span><br><span class="line"><span class="type">char</span>[] cs = <span class="string">&quot;Hello&quot;</span>.toCharArray(); <span class="comment">// String -&gt; char[]</span></span><br><span class="line"><span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(cs); <span class="comment">// char[] -&gt; String</span></span><br><span class="line"></span><br><span class="line"><span class="type">byte</span>[] b1 = <span class="string">&quot;Hello&quot;</span>.getBytes(); <span class="comment">// 按系统默认编码转换，不推荐</span></span><br><span class="line"><span class="type">byte</span>[] b2 = <span class="string">&quot;Hello&quot;</span>.getBytes(<span class="string">&quot;UTF-8&quot;</span>); <span class="comment">// 按UTF-8编码转换</span></span><br><span class="line"><span class="type">byte</span>[] b2 = <span class="string">&quot;Hello&quot;</span>.getBytes(<span class="string">&quot;GBK&quot;</span>); <span class="comment">// 按GBK编码转换</span></span><br><span class="line"><span class="type">byte</span>[] b3 = <span class="string">&quot;Hello&quot;</span>.getBytes(StandardCharsets.UTF_8); <span class="comment">// 按UTF-8编码转换</span></span><br></pre></td></tr></table></figure>
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/p1.jpg">
-      <meta itemprop="name" content="戎菜菜">
-      <meta itemprop="description" content="hey">
-    </span>
+<h2 id="StringBuilder"><a href="#StringBuilder" class="headerlink" title="StringBuilder"></a>StringBuilder</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">StringBuilder</span> <span class="variable">sb</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>(<span class="number">1024</span>);</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">1000</span>; i++) &#123;</span><br><span class="line">    sb.append(<span class="string">&#x27;,&#x27;</span>);</span><br><span class="line">    sb.append(i);</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> sb.toString();</span><br></pre></td></tr></table></figure>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小戎的学习历程">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/04/14/C++sort/" class="post-title-link" itemprop="url">C++ sort</a>
-        </h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123; <span class="comment">//链式操作</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">var</span> <span class="variable">sb</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>(<span class="number">1024</span>);</span><br><span class="line">        sb.append(<span class="string">&quot;Mr &quot;</span>)</span><br><span class="line">          .append(<span class="string">&quot;Bob&quot;</span>)</span><br><span class="line">          .append(<span class="string">&quot;!&quot;</span>)</span><br><span class="line">          .insert(<span class="number">0</span>, <span class="string">&quot;Hello, &quot;</span>);</span><br><span class="line">        System.out.println(sb.toString());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
+<p>定义一个链式操作的类（方法返回this）：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Adder</span> <span class="variable">adder</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Adder</span>();</span><br><span class="line">        adder.add(<span class="number">3</span>)</span><br><span class="line">             .add(<span class="number">5</span>)</span><br><span class="line">             .inc()</span><br><span class="line">             .add(<span class="number">10</span>);</span><br><span class="line">        System.out.println(adder.value());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Adder</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Adder <span class="title function_">add</span><span class="params">(<span class="type">int</span> n)</span> &#123;</span><br><span class="line">        sum += n;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Adder <span class="title function_">inc</span><span class="params">()</span> &#123;</span><br><span class="line">        sum ++;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">value</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-              <time title="创建时间：2022-04-14 10:39:19" itemprop="dateCreated datePublished" datetime="2022-04-14T10:39:19+08:00">2022-04-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-22 11:51:12" itemprop="dateModified" datetime="2022-04-22T11:51:12+08:00">2022-04-22</time>
-              </span>
+<h2 id="StringJoiner"><a href="#StringJoiner" class="headerlink" title="StringJoiner"></a>StringJoiner</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String[] names = &#123;<span class="string">&quot;Bob&quot;</span>, <span class="string">&quot;Alice&quot;</span>, <span class="string">&quot;Grace&quot;</span>&#125;;</span><br><span class="line"><span class="type">var</span> <span class="variable">s</span> <span class="operator">=</span> String.join(<span class="string">&quot;, &quot;</span>, names);</span><br></pre></td></tr></table></figure>
 
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line">vector&lt;<span class="type">int</span>&gt; v;</span><br><span class="line">std::<span class="built_in">sort</span>(v.<span class="built_in">begin</span>(),v.<span class="built_in">end</span>());</span><br><span class="line"><span class="type">int</span> arr[] = &#123;<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">8</span>&#125;</span><br><span class="line">std::<span class="built_in">sort</span>(a,a+<span class="number">6</span>);</span><br></pre></td></tr></table></figure>
-
-<p>加入sort函数样板：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">less&lt;Type&gt;</span><br><span class="line"></span><br><span class="line">less_equal&lt;Type&gt;</span><br><span class="line"></span><br><span class="line">greater&lt;Type&gt;</span><br><span class="line"></span><br><span class="line">greater_equal&lt;Type&gt;</span><br><span class="line"></span><br><span class="line">equal_to&lt;Type&gt;</span><br><span class="line"></span><br><span class="line">not_equal_to&lt;Type&gt;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> arr[] = &#123;<span class="number">4</span>, <span class="number">5</span>, <span class="number">8</span>, <span class="number">3</span>, <span class="number">7</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">6</span>, <span class="number">10</span>, <span class="number">9</span>&#125;;</span><br><span class="line">std::<span class="built_in">sort</span>(arr, arr+<span class="number">10</span>, std::<span class="built_in">greater</span>&lt;<span class="type">int</span>&gt;());</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">std::<span class="built_in">sort</span>(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>(), mycompare);</span><br></pre></td></tr></table></figure>
-
-<p>配合lambda匿名函数：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">std::sort(v.begin(), v.end(), [](int a, int b)&#123;</span><br><span class="line">    return a &lt; b; // 升序排列</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/13/%E6%B1%82vector%E5%92%8C%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/p1.jpg">
-      <meta itemprop="name" content="戎菜菜">
-      <meta itemprop="description" content="hey">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小戎的学习历程">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/04/13/%E6%B1%82vector%E5%92%8C%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC/" class="post-title-link" itemprop="url">求vector和数组中的最大值</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-04-13 09:40:06" itemprop="dateCreated datePublished" datetime="2022-04-13T09:40:06+08:00">2022-04-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-18 14:17:54" itemprop="dateModified" datetime="2022-04-18T14:17:54+08:00">2022-04-18</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="C-数组或vector求最大值或最小值"><a href="#C-数组或vector求最大值或最小值" class="headerlink" title="C++数组或vector求最大值或最小值"></a>C++数组或vector求最大值或最小值</h1><p>可以用max_element()和min_element()函数，二者返回的都是迭代器或指针.</p>
-<p>头文件：<code>#include&lt;algorithm&gt;</code></p>
-<p>vector容器：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> maxValue = *<span class="built_in">max_element</span>(v.<span class="built_in">begin</span>(),v.<span class="built_in">end</span>());</span><br><span class="line"><span class="type">int</span> maxPosition = <span class="built_in">max_element</span>(v.<span class="built_in">begin</span>(),v.<span class="built_in">end</span>())-v.<span class="built_in">begin</span>();</span><br></pre></td></tr></table></figure>
-
-<p>普通数组：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a[]=&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>&#125;;</span><br><span class="line"><span class="comment">//最大值：</span></span><br><span class="line"><span class="type">int</span> maxValue = *<span class="built_in">max_element</span>(a,a+<span class="number">6</span>);</span><br><span class="line"><span class="type">int</span> maxPosition = <span class="built_in">max_element</span>(a,a+<span class="number">6</span>)-a;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/12/Springboot/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/p1.jpg">
-      <meta itemprop="name" content="戎菜菜">
-      <meta itemprop="description" content="hey">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小戎的学习历程">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/04/12/Springboot/" class="post-title-link" itemprop="url">Spring boot</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-04-12 09:40:06" itemprop="dateCreated datePublished" datetime="2022-04-12T09:40:06+08:00">2022-04-12</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-18 14:17:24" itemprop="dateModified" datetime="2022-04-18T14:17:24+08:00">2022-04-18</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Springboot"><a href="#Springboot" class="headerlink" title="Springboot"></a>Springboot</h1><h2 id="创建第一个springboot项目"><a href="#创建第一个springboot项目" class="headerlink" title="创建第一个springboot项目"></a>创建第一个springboot项目</h2><p>1.File-&gt;创建maven-&gt;导入父工程，添加web依赖-&gt;在Java文件夹中创建class（有很多层文件夹）-&gt;添加注解@SpringBootApplication,创建main函数-&gt;创建controller，添加注解@Controller，添加注解@RequestMapping，添加注解@ResponseBody，可以和Controller合二为一，变为@RestController-&gt;run</p>
-<p>2.修改端口：在resources中创建application.properties，在其中添加server.port&#x3D;8888</p>
-<ol start="3">
-<li></li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/11/C++vector%E6%B5%85%E6%9E%90/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/p1.jpg">
-      <meta itemprop="name" content="戎菜菜">
-      <meta itemprop="description" content="hey">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小戎的学习历程">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/04/11/C++vector%E6%B5%85%E6%9E%90/" class="post-title-link" itemprop="url">C++Vector浅析</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-04-11 14:38:33" itemprop="dateCreated datePublished" datetime="2022-04-11T14:38:33+08:00">2022-04-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-22 11:51:04" itemprop="dateModified" datetime="2022-04-22T11:51:04+08:00">2022-04-22</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="C-Vector浅析"><a href="#C-Vector浅析" class="headerlink" title="C++Vector浅析"></a>C++Vector浅析</h1><h2 id="一、什么是vector？"><a href="#一、什么是vector？" class="headerlink" title="一、什么是vector？"></a>一、什么是vector？</h2><p>vector就是一个封装了动态大小数组的顺序容器。和任意其他类型容器一样，它能够存放各种类型的对象。可以简单认为，是一个能够存放任意类型的动态数组。</p>
-<h2 id="二、容器特性"><a href="#二、容器特性" class="headerlink" title="二、容器特性"></a>二、容器特性</h2><h3 id="1-顺序排列"><a href="#1-顺序排列" class="headerlink" title="1.顺序排列"></a>1.顺序排列</h3><h3 id="2-动态数组"><a href="#2-动态数组" class="headerlink" title="2.动态数组"></a>2.动态数组</h3><h3 id="3-能够感知内存分类器的（Allocator-aware）"><a href="#3-能够感知内存分类器的（Allocator-aware）" class="headerlink" title="3.能够感知内存分类器的（Allocator-aware）"></a>3.能够感知内存分类器的（Allocator-aware）</h3><h2 id="三、基本函数实现"><a href="#三、基本函数实现" class="headerlink" title="三、基本函数实现"></a>三、基本函数实现</h2><h3 id="1-构造函数"><a href="#1-构造函数" class="headerlink" title="1.构造函数"></a>1.构造函数</h3><p>创建空vector：vector()</p>
-<p>创建一个vector，元素的个数为nSize：vector(int nSize)</p>
-<p>创建一个vector，元素个数为nSize，且值均为t：vector(int nSize,const t&amp; t)</p>
-<p>复制构造函数：vector(const vector&amp;)</p>
-<p>复制[begin,end)区间内的元素到另一个vector中：vector(begin,end)</p>
-<h3 id="2-增加函数"><a href="#2-增加函数" class="headerlink" title="2.增加函数"></a>2.增加函数</h3><ul>
-<li>void push_back(const T&amp; x):向量尾部增加一个元素X</li>
-<li>iterator insert(iterator it,const T&amp; x):向量中迭代器指向元素前增加一个元素x</li>
-<li>iterator insert(iterator it,int n,const T&amp; x):向量中迭代器指向元素前增加n个相同的元素x</li>
-<li>iterator insert(iterator it,const_iterator first,const_iterator last):向量中迭代器指向元素前插入另一个相同类型向量的[first,last)间的数据</li>
+<h2 id="包装类型"><a href="#包装类型" class="headerlink" title="包装类型"></a>包装类型</h2><p>我们已经知道，java的数据类型分为两种：</p>
+<ul>
+<li>基本类型：byte，short，int，long，boolean，float，double，char</li>
+<li>引用类型：所有的class和interface类型</li>
 </ul>
-<h3 id="3-删除函数"><a href="#3-删除函数" class="headerlink" title="3.删除函数"></a>3.删除函数</h3><ul>
-<li>iterator erase(iterator it):删除向量中迭代器指向元素</li>
-<li>iterator erase(iterator first,iterator last):删除向量中[first,last)中元素</li>
-<li>void pop_back():删除向量中最后一个元素</li>
-<li>void clear():清空向量中所有元素</li>
-</ul>
-<h3 id="4-遍历函数"><a href="#4-遍历函数" class="headerlink" title="4.遍历函数"></a>4.遍历函数</h3><ul>
-<li>reference at(int pos):返回pos位置元素的引用</li>
-<li>reference front():返回首元素的引用</li>
-<li>reference back():返回尾元素的引用</li>
-<li>iterator begin():返回向量头指针，指向第一个元素</li>
-<li>iterator end():返回向量尾指针，指向向量最后一个元素的下一个位置</li>
-<li>reverse_iterator rbegin():反向迭代器，指向最后一个元素</li>
-<li>reverse_iterator rend():反向迭代器，指向第一个元素之前的位置</li>
-</ul>
-<h3 id="5-判断函数"><a href="#5-判断函数" class="headerlink" title="5.判断函数"></a>5.判断函数</h3><ul>
-<li>bool empty() const:判断向量是否为空，若为空，则向量中无元素</li>
-</ul>
-<h3 id="6-大小函数"><a href="#6-大小函数" class="headerlink" title="6.大小函数"></a>6.大小函数</h3><ul>
-<li>int size() const:返回向量中元素的个数</li>
-<li>int capacity() const:返回当前向量所能容纳的最大元素值</li>
-<li>int max_size() const:返回最大可允许的vector元素数量值</li>
-</ul>
-<h3 id="7-其他函数"><a href="#7-其他函数" class="headerlink" title="7.其他函数"></a>7.其他函数</h3><ul>
-<li>void swap(vector&amp;):交换两个同类型向量的数据</li>
-<li>void assign(int n,const T&amp; x):设置向量中前n个元素的值为x</li>
-<li>void assign(const_iterator first,const_iterator last):向量中[first,last)中元素设置成当前向量元素</li>
-</ul>
-<h3 id="8-看着清楚"><a href="#8-看着清楚" class="headerlink" title="8.看着清楚"></a>8.看着清楚</h3><blockquote>
-<p>1.push_back 在数组的最后添加一个数据</p>
-<p>2.pop_back 去掉数组的最后一个数据</p>
-<p>3.at 得到编号位置的数据</p>
-<p>4.begin 得到数组头的指针</p>
-<p>5.end 得到数组的最后一个单元+1的指针</p>
-<p>6.front 得到数组头的引用</p>
-<p>7.back 得到数组的最后一个单元的引用</p>
-<p>8.max_size 得到vector最大可以是多大</p>
-<p>9.capacity 当前vector分配的大小</p>
-<p>10.size 当前使用数据的大小</p>
-<p>11.resize 改变当前使用数据的大小，如果它比当前使用的大，者填充默认值</p>
-<p>12.reserve 改变当前vecotr所分配空间的大小</p>
-<p>13.erase 删除指针指向的数据项</p>
-<p>14.clear 清空当前的vector</p>
-<p>15.rbegin 将vector反转后的开始指针返回(其实就是原来的end-1)</p>
-<p>16.rend 将vector反转构的结束指针返回(其实就是原来的begin-1)</p>
-<p>17.empty 判断vector是否为空</p>
-<p>18.swap 与另一个vector交换数据</p>
-</blockquote>
-<h2 id="四、基本用法"><a href="#四、基本用法" class="headerlink" title="四、基本用法"></a>四、基本用法</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#include &lt; vector&gt; </span><br><span class="line">using namespace std;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="五、简单介绍"><a href="#五、简单介绍" class="headerlink" title="五、简单介绍"></a>五、简单介绍</h2><ol>
-<li>Vector&lt;类型&gt;标识符</li>
-<li>Vector&lt;类型&gt;标识符(最大容量)</li>
-<li>Vector&lt;类型&gt;标识符(最大容量,初始所有值)</li>
-<li>Int i[5]&#x3D;{1,2,3,4,5}<br>Vector&lt;类型&gt;vi(I,i+2);&#x2F;&#x2F;得到i索引值为3以后的值</li>
-<li>Vector&lt; vector&lt; int&gt; &gt;v; 二维向量&#x2F;&#x2F;这里最外的&lt;&gt;要有空格。否则在比较旧的编译器下无法通过</li>
-</ol>
-<p>具体使用见<a target="_blank" rel="noopener" href="https://www.runoob.com/w3cnote/cpp-vector-container-analysis.html">https://www.runoob.com/w3cnote/cpp-vector-container-analysis.html</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/11/%E5%A6%82%E4%BD%95%E5%9C%A8hexo%E4%B8%8A%E5%88%9B%E5%BB%BA%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/p1.jpg">
-      <meta itemprop="name" content="戎菜菜">
-      <meta itemprop="description" content="hey">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小戎的学习历程">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/04/11/%E5%A6%82%E4%BD%95%E5%9C%A8hexo%E4%B8%8A%E5%88%9B%E5%BB%BA%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/" class="post-title-link" itemprop="url">如何在hexo上创建一篇文章</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-04-11 13:23:18" itemprop="dateCreated datePublished" datetime="2022-04-11T13:23:18+08:00">2022-04-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-18 14:18:19" itemprop="dateModified" datetime="2022-04-18T14:18:19+08:00">2022-04-18</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="新建文章："><a href="#新建文章：" class="headerlink" title="新建文章："></a>新建文章：</h2><p>使用命令来新建文章：<br><code>hexo new [layout] &lt;title&gt;</code><br>layout是文章的布局，默认为post，可以先不写。<br>title是文章的标题，也是文件的名字，存储在source&#x2F;_posts下。<br>然后再MarkDown编辑器上打开编辑。</p>
-<h2 id="Font-matter设置"><a href="#Font-matter设置" class="headerlink" title="Font-matter设置"></a>Font-matter设置</h2><p>Font-matter是文章最上方分隔的区域，用于指定文章的变量设置。</p>
+<p>引用类型可以赋值为null，表示空，但基本类型不能赋值为null。</p>
+<p>那么，如何把一个基本类型视为对象（引用类型）？</p>
+<p>比如，想把int变为引用类型，我们可以定义一个Integer类，它只包含一个实例字段int，这样Integer类就可以视为int的包装类（Wrapper Class）</p>
+<p>Java核心库为每种类型都提供了对应的包装类型：</p>
 <table>
 <thead>
 <tr>
-<th>参数</th>
-<th>描述</th>
-<th>默认值</th>
+<th align="left">基本类型</th>
+<th align="left">对应的引用类型</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>layout</td>
-<td>布局</td>
-<td>无</td>
+<td align="left">boolean</td>
+<td align="left">java.lang.Boolean</td>
 </tr>
 <tr>
-<td>title</td>
-<td>标题</td>
-<td>无</td>
+<td align="left">byte</td>
+<td align="left">java.lang.Byte</td>
 </tr>
 <tr>
-<td>date</td>
-<td>建立日期</td>
-<td>文件建立日期</td>
+<td align="left">short</td>
+<td align="left">java.lang.Short</td>
 </tr>
 <tr>
-<td>update</td>
-<td>更新日期</td>
-<td>文件更新日期</td>
+<td align="left">int</td>
+<td align="left">java.lang.Integer</td>
 </tr>
 <tr>
-<td>comments</td>
-<td>开启文章的评论功能</td>
-<td>true</td>
+<td align="left">long</td>
+<td align="left">java.lang.Long</td>
 </tr>
 <tr>
-<td>tags</td>
-<td>标签</td>
-<td>（不适用于分页）</td>
+<td align="left">float</td>
+<td align="left">java.lang.Float</td>
 </tr>
 <tr>
-<td>categories</td>
-<td>分类</td>
-<td>（不适用于分页）</td>
+<td align="left">double</td>
+<td align="left">java.lang.Double</td>
 </tr>
 <tr>
-<td>permalink</td>
-<td>覆盖文章网址</td>
-<td>无</td>
+<td align="left">char</td>
+<td align="left">java.lang.Character</td>
 </tr>
 </tbody></table>
+<h3 id="Auto-Boxing"><a href="#Auto-Boxing" class="headerlink" title="Auto Boxing"></a>Auto Boxing</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Integer</span> <span class="variable">n</span> <span class="operator">=</span> <span class="number">100</span>; <span class="comment">// 编译器自动使用Integer.valueOf(int)</span></span><br><span class="line"><span class="type">int</span> <span class="variable">x</span> <span class="operator">=</span> n; <span class="comment">// 编译器自动使用Integer.intValue()</span></span><br></pre></td></tr></table></figure>
+
+<p>这种直接把<code>int</code>变为<code>Integer</code>的赋值写法，称为自动装箱（Auto Boxing），反过来，把<code>Integer</code>变为<code>int</code>的赋值写法，称为自动拆箱（Auto Unboxing）。</p>
+<h3 id="不变类"><a href="#不变类" class="headerlink" title="不变类"></a>不变类</h3><p>所有的包装都是不变类，一旦创建该对象就是不变的。用equals()比较。</p>
+<p>因为<code>Integer.valueOf()</code>可能始终返回同一个<code>Integer</code>实例，因此，在我们自己创建<code>Integer</code>的时候，以下两种方法：</p>
+<ul>
+<li>方法1：<code>Integer n = new Integer(100);</code></li>
+<li>方法2：<code>Integer n = Integer.valueOf(100);</code></li>
+</ul>
+<p>方法2更好，因为方法1总是创建新的<code>Integer</code>实例，方法2把内部优化留给<code>Integer</code>的实现者去做，即使在当前版本没有优化，也有可能在下一个版本进行优化。</p>
+<p>我们把能创建“新”对象的静态方法称为静态工厂方法。<code>Integer.valueOf()</code>就是静态工厂方法，它尽可能地返回缓存的实例以节省内存。</p>
+<p><strong>创建新对象时，优先选用静态工厂方法而不是new操作符。</strong></p>
+<h3 id="进制转换"><a href="#进制转换" class="headerlink" title="进制转换"></a>进制转换</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">x2</span> <span class="operator">=</span> Integer.parseInt(<span class="string">&quot;100&quot;</span>, <span class="number">16</span>); <span class="comment">// 256,因为按16进制解析</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="JavaBean"><a href="#JavaBean" class="headerlink" title="JavaBean"></a>JavaBean</h2><p>在Java中，有很多class的定义都符合这样的规范：</p>
+<ul>
+<li>若干private实例字段</li>
+<li>通过public方法来读写实例字段（get，set方法）</li>
+</ul>
+<p>如果读写方法符合这样的规范，那么这种class就称为JavaBean</p>
+<h3 id="JavaBean的作用"><a href="#JavaBean的作用" class="headerlink" title="JavaBean的作用"></a>JavaBean的作用</h3><p>JavaBean主要用来传递数据，即把一组数据组合成一个JavaBean便于传输。此外，JavaBean可以方便地被IDE工具分析，生成读写属性的代码，主要用在图形界面的可视化设计中。通过IDE，可以快速生成getter和setter。</p>
+<h2 id="枚举类enum"><a href="#枚举类enum" class="headerlink" title="枚举类enum"></a>枚举类enum</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Weekday</span> <span class="variable">day</span> <span class="operator">=</span> Weekday.SUN;</span><br><span class="line">        <span class="keyword">if</span> (day == Weekday.SAT || day == Weekday.SUN) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;Work at home!&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;Work at office!&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">enum</span> <span class="title class_">Weekday</span> &#123;</span><br><span class="line">    SUN, MON, TUE, WED, THU, FRI, SAT;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>因为枚举类的比较和赋值要符合相同类型，这样就使得编译器可以在编译期自动检查除可能的潜在错误。</p>
+<h3 id="enum的比较"><a href="#enum的比较" class="headerlink" title="enum的比较"></a>enum的比较</h3><p>使用enum定义的枚举类是一种引用类型，引用类型的比较需要使用equals()方法，如果使用&#x3D;&#x3D;比较，会比较两个引用类型的变量是否指向同一对象。但是，<strong>enum类型可以例外</strong>。</p>
+<p>这是因为enum类型的每个变量在JVM中只有一个唯一实例，所以可以直接用&#x3D;&#x3D;比较。</p>
+<h3 id="enum类型"><a href="#enum类型" class="headerlink" title="enum类型"></a>enum类型</h3><p>enum枚举类和其他的class有什么区别？</p>
+<p>答案是没有区别。enum定义的类型就是class，只不过有一下几个特点：</p>
+<ul>
+<li>定义的<code>enum</code>类型总是继承自<code>java.lang.Enum</code>，且无法被继承；</li>
+<li>只能定义出<code>enum</code>的实例，而无法通过<code>new</code>操作符创建<code>enum</code>的实例；</li>
+<li>定义的每个实例都是引用类型的唯一实例；</li>
+<li>可以将<code>enum</code>类型用于<code>switch</code>语句。</li>
+</ul>
+<h3 id="name"><a href="#name" class="headerlink" title="name()"></a>name()</h3><p>返回常量名，例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> Weekday.SUN.name(); <span class="comment">// &quot;SUN&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="ordinal"><a href="#ordinal" class="headerlink" title="ordinal()"></a>ordinal()</h3><p>返回定义的常量的顺序，从0开始计数。例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> Weekday.MON.ordinal(); <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+
+<p>改变枚举常量的顺序会导致变化。</p>
+<p>可以定义private构造方法，并且给每个枚举常量添加字段：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Weekday</span> <span class="variable">day</span> <span class="operator">=</span> Weekday.SUN;</span><br><span class="line">        <span class="keyword">if</span> (day.dayValue == <span class="number">6</span> || day.dayValue == <span class="number">0</span>) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;Work at home!&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;Work at office!&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">enum</span> <span class="title class_">Weekday</span> &#123;</span><br><span class="line">    MON(<span class="number">1</span>), TUE(<span class="number">2</span>), WED(<span class="number">3</span>), THU(<span class="number">4</span>), FRI(<span class="number">5</span>), SAT(<span class="number">6</span>), SUN(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> <span class="type">int</span> dayValue;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Weekday</span><span class="params">(<span class="type">int</span> dayValue)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.dayValue = dayValue;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>这样就无需担心顺序的变化。</p>
+<p>可以给enum类型添加toString方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Weekday</span> <span class="variable">day</span> <span class="operator">=</span> Weekday.SUN;</span><br><span class="line">        <span class="keyword">if</span> (day.dayValue == <span class="number">6</span> || day.dayValue == <span class="number">0</span>) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;Today is &quot;</span> + day + <span class="string">&quot;. Work at home!&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;Today is &quot;</span> + day + <span class="string">&quot;. Work at office!&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">enum</span> <span class="title class_">Weekday</span> &#123;</span><br><span class="line">    MON(<span class="number">1</span>, <span class="string">&quot;星期一&quot;</span>), TUE(<span class="number">2</span>, <span class="string">&quot;星期二&quot;</span>), WED(<span class="number">3</span>, <span class="string">&quot;星期三&quot;</span>), THU(<span class="number">4</span>, <span class="string">&quot;星期四&quot;</span>), FRI(<span class="number">5</span>, <span class="string">&quot;星期五&quot;</span>), SAT(<span class="number">6</span>, <span class="string">&quot;星期六&quot;</span>), SUN(<span class="number">0</span>, <span class="string">&quot;星期日&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> <span class="type">int</span> dayValue;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String chinese;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Weekday</span><span class="params">(<span class="type">int</span> dayValue, String chinese)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.dayValue = dayValue;</span><br><span class="line">        <span class="built_in">this</span>.chinese = chinese;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">toString</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.chinese;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>这样输出时更有可读性。</p>
+<p><strong>判断枚举常量的名字，要始终使用name()方法，绝不能调用toString()！</strong></p>
+<h3 id="switch"><a href="#switch" class="headerlink" title="switch"></a>switch</h3><p>枚举类可以应用在switch语句中。因为枚举类天生具有类型信息和有限个枚举常量，因此更适合用在switch中：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Weekday</span> <span class="variable">day</span> <span class="operator">=</span> Weekday.SUN;</span><br><span class="line">        <span class="keyword">switch</span>(day) &#123;</span><br><span class="line">        <span class="keyword">case</span> MON:</span><br><span class="line">        <span class="keyword">case</span> TUE:</span><br><span class="line">        <span class="keyword">case</span> WED:</span><br><span class="line">        <span class="keyword">case</span> THU:</span><br><span class="line">        <span class="keyword">case</span> FRI:</span><br><span class="line">            System.out.println(<span class="string">&quot;Today is &quot;</span> + day + <span class="string">&quot;. Work at office!&quot;</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> SAT:</span><br><span class="line">        <span class="keyword">case</span> SUN:</span><br><span class="line">            System.out.println(<span class="string">&quot;Today is &quot;</span> + day + <span class="string">&quot;. Work at home!&quot;</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(<span class="string">&quot;cannot process &quot;</span> + day);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">enum</span> <span class="title class_">Weekday</span> &#123;</span><br><span class="line">    MON, TUE, WED, THU, FRI, SAT, SUN;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>加上default语句，可以在漏写，某个枚举常量时自动报错，从而及时发现错误。</p>
+<h2 id="纪录类"><a href="#纪录类" class="headerlink" title="纪录类"></a>纪录类</h2><p>使用String，Integer等类型的时候，这些类型都是不变类，一个不变类具有以下特点：</p>
+<ul>
+<li>定义class时使用final，无法派生子类</li>
+<li>每个字段使用final，保证创建实例后无法修改任何字段</li>
+</ul>
+<p>如果我们需要定义一个不变类point，除了要将变量改为final外，还需要正确覆写equals()和hashCode()方法，这样才能在集合类中正常使用。这些代码写起来都非常简单，但是很繁琐。</p>
+<h3 id="record"><a href="#record" class="headerlink" title="record"></a>record</h3><p>从Java14开始，引入了新的Record类。我们定义Record类时，使用关键字record。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Point</span> <span class="variable">p</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Point</span>(<span class="number">123</span>, <span class="number">456</span>);</span><br><span class="line">        System.out.println(p.x());</span><br><span class="line">        System.out.println(p.y());</span><br><span class="line">        System.out.println(p);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">record</span> <span class="title class_">Point</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span> &#123;&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>point的定义如果改为class，相当于一下代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">class</span> <span class="title class_">Point</span> <span class="keyword">extends</span> <span class="title class_">Record</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="type">int</span> x;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="type">int</span> y;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Point</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.x = x;</span><br><span class="line">        <span class="built_in">this</span>.y = y;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">x</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">y</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.y;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">toString</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> String.format(<span class="string">&quot;Point[x=%s, y=%s]&quot;</span>, x, y);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">equals</span><span class="params">(Object o)</span> &#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">hashCode</span><span class="params">()</span> &#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>除了用final修饰class以及每个字段外，编译器还自动为我们创建了构造方法，和字段名同名的方法，以及覆写toString(), equals()和hashCode()方法。</p>
+<p>换句话说，使用record关键字，可以一行写出一个不变类。</p>
+<p>和enum类似，我们自己不能直接从Record派生，只能通过record关键字由编译器实现继承。</p>
+<h3 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h3><p>编译器默认按照record声明的变量顺序自动创建一个构造方法，并在方法内给字段赋值。那么如果我们要检查参数，应该怎么办？</p>
+<p>比如x,y不允许负数：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">record</span> <span class="title class_">Point</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> Point &#123;</span><br><span class="line">        <span class="keyword">if</span> (x &lt; <span class="number">0</span> || y &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">IllegalArgumentException</span>();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意到方法public Point{…}被称为Compact Constructor，它的目的时让我们编写检查逻辑，编译器最终生成的构造方法如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">class</span> <span class="title class_">Point</span> <span class="keyword">extends</span> <span class="title class_">Record</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Point</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span> &#123;</span><br><span class="line">        <span class="comment">// 这是我们编写的Compact Constructor:</span></span><br><span class="line">        <span class="keyword">if</span> (x &lt; <span class="number">0</span> || y &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">IllegalArgumentException</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 这是编译器继续生成的赋值代码:</span></span><br><span class="line">        <span class="built_in">this</span>.x = x;</span><br><span class="line">        <span class="built_in">this</span>.y = y;</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>作为record的Point仍然可以添加静态方法。一种常用的静态方法时of()方法，用来创建Point：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">record</span> <span class="title class_">Point</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Point <span class="title function_">of</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Point</span>(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Point <span class="title function_">of</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Point</span>(x, y);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样我们可以写出更简洁的代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">var</span> <span class="variable">z</span> <span class="operator">=</span> Point.of();</span><br><span class="line"><span class="type">var</span> <span class="variable">p</span> <span class="operator">=</span> Point.of(<span class="number">123</span>, <span class="number">456</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="BigInteger"><a href="#BigInteger" class="headerlink" title="BigInteger"></a>BigInteger</h2><p><code>java.math.BigInteger</code>用来表示任意大小的整数：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">BigInteger</span> <span class="variable">bi</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BigInteger</span>(<span class="string">&quot;1234567890&quot;</span>);</span><br><span class="line">System.out.println(bi.pow(<span class="number">5</span>)); <span class="comment">// 2867971860299718107233761438093672048294900000</span></span><br></pre></td></tr></table></figure>
+
+<p>对<code>BigInteger</code>做运算的时候，只能使用实例方法，例如，加法运算：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">BigInteger</span> <span class="variable">i1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BigInteger</span>(<span class="string">&quot;1234567890&quot;</span>);</span><br><span class="line"><span class="type">BigInteger</span> <span class="variable">i2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BigInteger</span>(<span class="string">&quot;12345678901234567890&quot;</span>);</span><br><span class="line"><span class="type">BigInteger</span> <span class="variable">sum</span> <span class="operator">=</span> i1.add(i2); <span class="comment">// 12345678902469135780</span></span><br></pre></td></tr></table></figure>
+
+<p>和<code>long</code>型整数运算比，<code>BigInteger</code>不会有范围限制，但缺点是速度比较慢。</p>
+<p>也可以把<code>BigInteger</code>转换成<code>long</code>型：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">BigInteger</span> <span class="variable">i</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BigInteger</span>(<span class="string">&quot;123456789000&quot;</span>);</span><br><span class="line">System.out.println(i.longValue()); <span class="comment">// 123456789000</span></span><br><span class="line">System.out.println(i.multiply(i).longValueExact()); <span class="comment">// java.lang.ArithmeticException: BigInteger out of long range</span></span><br></pre></td></tr></table></figure>
+
+<p>使用<code>longValueExact()</code>方法时，如果超出了<code>long</code>型的范围，会抛出<code>ArithmeticException</code>。</p>
+<p><code>BigInteger</code>和<code>Integer</code>、<code>Long</code>一样，也是不可变类，并且也继承自<code>Number</code>类。因为<code>Number</code>定义了转换为基本类型的几个方法：</p>
+<ul>
+<li>转换为<code>byte</code>：<code>byteValue()</code></li>
+<li>转换为<code>short</code>：<code>shortValue()</code></li>
+<li>转换为<code>int</code>：<code>intValue()</code></li>
+<li>转换为<code>long</code>：<code>longValue()</code></li>
+<li>转换为<code>float</code>：<code>floatValue()</code></li>
+<li>转换为<code>double</code>：<code>doubleValue()</code></li>
+</ul>
+<p>因此，通过上述方法，可以把<code>BigInteger</code>转换成基本类型。如果<code>BigInteger</code>表示的范围超过了基本类型的范围，转换时将丢失高位信息，即结果不一定是准确的。如果需要准确地转换成基本类型，可以使用<code>intValueExact()</code>、<code>longValueExact()</code>等方法，在转换时如果超出范围，将直接抛出<code>ArithmeticException</code>异常。</p>
+<h2 id="BigDecimal"><a href="#BigDecimal" class="headerlink" title="BigDecimal"></a>BigDecimal</h2><p>可以表示一个任意大小且精度完全准确的浮点数。</p>
+<p><strong>用compareTo()比较两个BigDecimal的值，不要使用equals()！</strong></p>
+<h2 id="常用工具类"><a href="#常用工具类" class="headerlink" title="常用工具类"></a>常用工具类</h2><ul>
+<li>Math</li>
+<li>Random</li>
+<li>SecureRandom</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/23/%E7%90%86%E8%A7%A3java-Class-forname/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/p1.jpg">
+      <meta itemprop="name" content="戎菜菜">
+      <meta itemprop="description" content="hey">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小戎的学习历程">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/23/%E7%90%86%E8%A7%A3java-Class-forname/" class="post-title-link" itemprop="url">理解java-Class.forname()</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-04-23 14:55:28 / 修改时间：14:58:47" itemprop="dateCreated datePublished" datetime="2022-04-23T14:55:28+08:00">2022-04-23</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><strong>Class 类概念</strong></p>
+<p>Class 也是一个 Java 类，保存的是与之对应 Java 类的 meta信息（元信息），用来描述这个类的结构，比如描述一个类有哪些成员，有哪些方法等，一般在反射中使用。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2022/04/11/%E5%A6%82%E4%BD%95%E5%9C%A8hexo%E4%B8%8A%E5%88%9B%E5%BB%BA%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/#more" rel="contents">
+              <a class="btn" href="/2022/04/23/%E7%90%86%E8%A7%A3java-Class-forname/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -746,7 +504,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/08/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/22/Spring%E6%95%99%E7%A8%8B-Day4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/p1.jpg">
@@ -760,7 +518,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/04/08/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
+            <a href="/2022/04/22/Spring%E6%95%99%E7%A8%8B-Day4/" class="post-title-link" itemprop="url">Spring教程 Day4</a>
         </h2>
 
         <div class="post-meta">
@@ -770,7 +528,152 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2022-04-08 10:03:28" itemprop="dateCreated datePublished" datetime="2022-04-08T10:03:28+08:00">2022-04-08</time>
+              <time title="创建时间：2022-04-22 17:13:53" itemprop="dateCreated datePublished" datetime="2022-04-22T17:13:53+08:00">2022-04-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-23 18:41:36" itemprop="dateModified" datetime="2022-04-23T18:41:36+08:00">2022-04-23</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>本文为spring教程笔记4，视频资源为b站黑马程序员<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Sb411s7vP?p=1%E3%80%82">https://www.bilibili.com/video/BV1Sb411s7vP?p=1。</a></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/04/22/Spring%E6%95%99%E7%A8%8B-Day4/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/22/Spring%E6%95%99%E7%A8%8B-Day3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/p1.jpg">
+      <meta itemprop="name" content="戎菜菜">
+      <meta itemprop="description" content="hey">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小戎的学习历程">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/22/Spring%E6%95%99%E7%A8%8B-Day3/" class="post-title-link" itemprop="url">Spring教程 Day3</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-04-22 16:43:20" itemprop="dateCreated datePublished" datetime="2022-04-22T16:43:20+08:00">2022-04-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-23 09:29:44" itemprop="dateModified" datetime="2022-04-23T09:29:44+08:00">2022-04-23</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>本文为spring教程笔记3，视频资源为b站黑马程序员<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Sb411s7vP?p=1%E3%80%82">https://www.bilibili.com/video/BV1Sb411s7vP?p=1。</a></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/04/22/Spring%E6%95%99%E7%A8%8B-Day3/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/22/Spring%E6%95%99%E7%A8%8B-Day2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/p1.jpg">
+      <meta itemprop="name" content="戎菜菜">
+      <meta itemprop="description" content="hey">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小戎的学习历程">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/22/Spring%E6%95%99%E7%A8%8B-Day2/" class="post-title-link" itemprop="url">Spring教程 Day2</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-04-22 14:27:52 / 修改时间：16:43:00" itemprop="dateCreated datePublished" datetime="2022-04-22T14:27:52+08:00">2022-04-22</time>
             </span>
 
           
@@ -784,20 +687,358 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+          <p>本文为spring教程笔记2，视频资源为b站黑马程序员<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Sb411s7vP?p=1%E3%80%82">https://www.bilibili.com/video/BV1Sb411s7vP?p=1。</a></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/04/22/Spring%E6%95%99%E7%A8%8B-Day2/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/22/C++%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1-%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/">
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/p1.jpg">
+      <meta itemprop="name" content="戎菜菜">
+      <meta itemprop="description" content="hey">
+    </span>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小戎的学习历程">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/22/C++%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1-%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/" class="post-title-link" itemprop="url">C++高级程序设计-学习小记</a>
+        </h2>
 
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-04-22 11:49:25 / 修改时间：11:49:26" itemprop="dateCreated datePublished" datetime="2022-04-22T11:49:25+08:00">2022-04-22</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/21/Spring%E6%95%99%E7%A8%8B%20Day1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/p1.jpg">
+      <meta itemprop="name" content="戎菜菜">
+      <meta itemprop="description" content="hey">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小戎的学习历程">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/21/Spring%E6%95%99%E7%A8%8B%20Day1/" class="post-title-link" itemprop="url">Spring教程 Day1</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-04-21 20:30:00" itemprop="dateCreated datePublished" datetime="2022-04-21T20:30:00+08:00">2022-04-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-22 14:27:07" itemprop="dateModified" datetime="2022-04-22T14:27:07+08:00">2022-04-22</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>本文为spring教程笔记，视频资源为b站黑马程序员<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Sb411s7vP?p=1%E3%80%82">https://www.bilibili.com/video/BV1Sb411s7vP?p=1。</a></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/04/21/Spring%E6%95%99%E7%A8%8B%20Day1/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/21/%E7%9C%8B%E6%9D%BF%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/p1.jpg">
+      <meta itemprop="name" content="戎菜菜">
+      <meta itemprop="description" content="hey">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小戎的学习历程">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/21/%E7%9C%8B%E6%9D%BF%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">看板开发方法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-04-21 16:03:58 / 修改时间：16:42:53" itemprop="dateCreated datePublished" datetime="2022-04-21T16:03:58+08:00">2022-04-21</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>看板开发方法是近年来（2013年）最热门的敏捷和精益开发方法。越来越多的案例表明，它能够改善协作、优化管理、显著提高交付速度、质量和灵活性。看板开发方法的规则简单，但其有效实施依赖于对原理的理解、对原则的坚持和实践的应变。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/04/21/%E7%9C%8B%E6%9D%BF%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/20/C++%20Map/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/p1.jpg">
+      <meta itemprop="name" content="戎菜菜">
+      <meta itemprop="description" content="hey">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小戎的学习历程">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/20/C++%20Map/" class="post-title-link" itemprop="url">C++ Map</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-04-20 18:20:01" itemprop="dateCreated datePublished" datetime="2022-04-20T18:20:01+08:00">2022-04-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-22 11:51:49" itemprop="dateModified" datetime="2022-04-22T11:51:49+08:00">2022-04-22</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="C-std-map-用法与范例"><a href="#C-std-map-用法与范例" class="headerlink" title="C++ std::map 用法与范例"></a>C++ std::map 用法与范例</h1><p>C++map是一个关联式容器，把键和值联系起来，并用该键来执行查找元素、插入元素、删除元素等操作。<br>map是有排序的关联式容器，会根据元素对应的键来排序，而且key是唯一值。如果同样的key再insert，就会覆盖原本的value。<br>map的运作方式通常是红黑树，这样可以保证在O(log n)时间内完成查找、插入、删除等操作。<br>需要引入头文件<code>&lt;map&gt;</code></p>
+<h2 id="map-常用功能"><a href="#map-常用功能" class="headerlink" title="map 常用功能"></a>map 常用功能</h2><ul>
+<li>元素存取：operator[]：存取指定的[i]元素的资料</li>
+<li>迭代器：<code>begin()</code>,<code>end()</code>,<code>rbegin()</code>,<code>rend()</code></li>
+<li>容量：<code>empty()</code>,<code>size()</code>,<code>max_size()</code></li>
+<li>修改器：<code>clear()</code>,<code>insert()</code>,<code>erase()</code>,<code>swap()</code></li>
+<li>查找：<code>count()</code>,<code>find()</code></li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">std::map&lt;<span class="type">int</span>, std::string&gt; studentMap;</span><br><span class="line"><span class="comment">//初始化</span></span><br><span class="line">studentMap.<span class="built_in">insert</span>(std::<span class="built_in">pair</span>&lt;<span class="type">int</span>, std::string&gt;(<span class="number">1</span>, <span class="string">&quot;Tom&quot;</span>));</span><br><span class="line">studentMap[<span class="number">1</span>] = <span class="string">&quot;Tom&quot;</span>;<span class="comment">//如果存在则覆盖</span></span><br><span class="line">std::map&lt;<span class="type">int</span>, std::string&gt; studentMap = &#123;</span><br><span class="line">    &#123;<span class="number">1</span>, <span class="string">&quot;Tom&quot;</span>&#125;,</span><br><span class="line">    &#123;<span class="number">2</span>, <span class="string">&quot;Jack&quot;</span>&#125;,</span><br><span class="line">    &#123;<span class="number">3</span>, <span class="string">&quot;John&quot;</span>&#125;</span><br><span class="line">&#125;;</span><br><span class="line">studentMap.<span class="built_in">erase</span>(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+
+<p>具体和其他STL容器相似。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/20/Java%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/p1.jpg">
+      <meta itemprop="name" content="戎菜菜">
+      <meta itemprop="description" content="hey">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小戎的学习历程">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/20/Java%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80/" class="post-title-link" itemprop="url">Java面向对象基础</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-04-20 16:39:21" itemprop="dateCreated datePublished" datetime="2022-04-20T16:39:21+08:00">2022-04-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-24 22:25:08" itemprop="dateModified" datetime="2022-04-24T22:25:08+08:00">2022-04-24</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>本文为Java学习笔记，主要来自于廖雪峰网站。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/04/20/Java%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -815,7 +1056,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -883,7 +1124,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-count">48</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

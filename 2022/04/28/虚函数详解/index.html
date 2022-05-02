@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="一、多态与重载1、多态的概念面向对象的语言有三大特性：封装、继承和多态。虚函数作为多态的实现方式，重要性毋庸置疑。 多态指给予不同的对象会引发不同的动作（一个接口，多种方法）。其实现更简单地来说，就是“在用父类指针调用函数时，实际调用的时指针指向的实际类型（子类）的成员函数”。多态性使得程序调用的函数是在运行时动态确定，而不是在编译器静态确定。 2、重载–编译期多态的体现重载，是指在一个类中的同名">
+<meta property="og:type" content="article">
+<meta property="og:title" content="虚函数详解">
+<meta property="og:url" content="http://example.com/2022/04/28/%E8%99%9A%E5%87%BD%E6%95%B0%E8%AF%A6%E8%A7%A3/index.html">
+<meta property="og:site_name" content="小戎的学习历程">
+<meta property="og:description" content="一、多态与重载1、多态的概念面向对象的语言有三大特性：封装、继承和多态。虚函数作为多态的实现方式，重要性毋庸置疑。 多态指给予不同的对象会引发不同的动作（一个接口，多种方法）。其实现更简单地来说，就是“在用父类指针调用函数时，实际调用的时指针指向的实际类型（子类）的成员函数”。多态性使得程序调用的函数是在运行时动态确定，而不是在编译器静态确定。 2、重载–编译期多态的体现重载，是指在一个类中的同名">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-04-28T02:01:30.000Z">
+<meta property="article:modified_time" content="2022-04-28T02:57:52.500Z">
+<meta property="article:author" content="戎菜菜">
+<meta property="article:tag" content="C++">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2022/04/28/%E8%99%9A%E5%87%BD%E6%95%B0%E8%AF%A6%E8%A7%A3/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>虚函数详解 | 小戎的学习历程</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">小戎的学习历程</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">梦想下酒</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/28/%E8%99%9A%E5%87%BD%E6%95%B0%E8%AF%A6%E8%A7%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/p1.jpg">
+      <meta itemprop="name" content="戎菜菜">
+      <meta itemprop="description" content="hey">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小戎的学习历程">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          虚函数详解
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-04-28 10:01:30 / 修改时间：10:57:52" itemprop="dateCreated datePublished" datetime="2022-04-28T10:01:30+08:00">2022-04-28</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="一、多态与重载"><a href="#一、多态与重载" class="headerlink" title="一、多态与重载"></a>一、多态与重载</h2><h3 id="1、多态的概念"><a href="#1、多态的概念" class="headerlink" title="1、多态的概念"></a>1、多态的概念</h3><p>面向对象的语言有三大特性：封装、继承和多态。虚函数作为多态的实现方式，重要性毋庸置疑。</p>
+<p>多态指给予不同的对象会引发不同的动作（一个接口，多种方法）。其实现更简单地来说，就是“在用父类指针调用函数时，实际调用的时指针指向的实际类型（子类）的成员函数”。多态性使得程序调用的函数是在运行时动态确定，而不是在编译器静态确定。</p>
+<h3 id="2、重载–编译期多态的体现"><a href="#2、重载–编译期多态的体现" class="headerlink" title="2、重载–编译期多态的体现"></a>2、重载–编译期多态的体现</h3><p>重载，是指在一个类中的同名不同参的函数调用，这样的方法调用是在编译器确定的。</p>
+<h3 id="3、虚函数–运行期多态的体现"><a href="#3、虚函数–运行期多态的体现" class="headerlink" title="3、虚函数–运行期多态的体现"></a>3、虚函数–运行期多态的体现</h3><p>运行期多态发生的三个条件：继承关系、虚函数覆盖、父类指针或引用指向子类对象。</p>
+<h2 id="二、虚函数实例"><a href="#二、虚函数实例" class="headerlink" title="二、虚函数实例"></a>二、虚函数实例</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">base</span>&#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">vir_func</span><span class="params">()</span></span>&#123;cout&lt;&lt;<span class="string">&quot;virtual function, this is class base&quot;</span>&lt;&lt;endl;&#125;</span><br><span class="line">        <span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">()</span></span>&#123;cout&lt;&lt;<span class="string">&quot;normal function, this is class base&quot;</span>&lt;&lt;endl;&#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">A</span>:<span class="keyword">public</span> base&#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">vir_func</span><span class="params">()</span></span>&#123;cout&lt;&lt;<span class="string">&quot;virtual function, this is class A&quot;</span>&lt;&lt;endl;&#125;</span><br><span class="line">        <span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">()</span></span>&#123;cout&lt;&lt;<span class="string">&quot;normal function, this is class A&quot;</span>&lt;&lt;endl;&#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">B</span>:<span class="keyword">public</span> base&#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">vir_func</span><span class="params">()</span></span>&#123;cout&lt;&lt;<span class="string">&quot;virtual function, this is class B&quot;</span>&lt;&lt;endl;&#125;</span><br><span class="line">        <span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">()</span></span>&#123;cout&lt;&lt;<span class="string">&quot;normal function, this is class B&quot;</span>&lt;&lt;endl;&#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    base *Base = <span class="built_in">new</span>(base);</span><br><span class="line">    base *a = <span class="built_in">new</span>(A);</span><br><span class="line">    base *b = <span class="built_in">new</span>(B);</span><br><span class="line">    Base-&gt;<span class="built_in">func</span>();a-&gt;<span class="built_in">func</span>();b-&gt;<span class="built_in">func</span>();</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;#########################&quot;</span>&lt;&lt;endl;</span><br><span class="line">    Base-&gt;<span class="built_in">vir_func</span>();a-&gt;<span class="built_in">vir_func</span>();b-&gt;<span class="built_in">vir_func</span>();</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;#########################&quot;</span>&lt;&lt;endl;</span><br><span class="line">    ((A *)b)-&gt;<span class="built_in">vir_func</span>();((A *)b)-&gt;<span class="built_in">func</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">normal function, this is class base</span><br><span class="line">normal function, this is class base</span><br><span class="line">normal function, this is class base</span><br><span class="line">#########################</span><br><span class="line">virtual function, this is class base</span><br><span class="line">virtual function, this is class A</span><br><span class="line">virtual function, this is class B</span><br><span class="line">#########################</span><br><span class="line">virtual function, this is class B</span><br><span class="line">normal function, this is class A</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>可以看到，当这三个指针调用func函数时，调用的都是基类base的函数。而调用虚函数vir_func时，调用的是指针指向的实际类型的函数。最后对b做强制类型转换，转换为A类型的指针，发现普通函数调用类A的函数，虚函数调用类B的函数。</p>
+<p>以上，我们可以得出结论：<strong>当使用类的指针调用成员函数时，普通函数由指针类型决定，而虚函数由指针指向的实际类型决定</strong></p>
+<p>虚函数的实现过程：通过对象内存中的vptr找到虚函数表vtbl，接着通过vtbl找到对应虚函数的实现区域并进行调用。</p>
+<h2 id="三、虚函数的实现（内存布局）"><a href="#三、虚函数的实现（内存布局）" class="headerlink" title="三、虚函数的实现（内存布局）"></a>三、虚函数的实现（内存布局）</h2><p>虚函数表中只存有一个虚函数的指针地址，不存放普通函数或是构造函数的指针地址。只要有虚函数，C++类都会存在这样的一张虚函数表。不管是普通函数亦或是纯虚函数，亦或是派生类中隐式声明的这些虚函数都会生成这张虚函数表。</p>
+<p>虚函数表创建的时间：在一个类构造的时候，创建这张虚函数表，而这个虚函数表是供整个类所共有的。虚函数表存储在对象最开始的位置。虚函数表其实就是函数指针的地址。函数调用的时候，通过函数指针指向的函数来调用函数。</p>
+<p>虚函数表存储在对象的最开始的位置，按照声明顺序存放在表中，父类的虚函数在子类的虚函数前面。如果有虚函数覆盖，覆盖的f()函数被放在虚表中原来父类虚函数的位置，没有被覆盖的函数依旧在原来的位置。</p>
+<p>如果有多重继承，每个父类都有自己的虚表（有几个基类就有几个虚函数表），子类的成员函数被放到了第一个父类的表中（按声明顺序来判断）。如果有虚函数覆盖，那么所有父类中的f()位置都会被替换成子类的函数指针。</p>
+<h2 id="四、虚函数的相关问题"><a href="#四、虚函数的相关问题" class="headerlink" title="四、虚函数的相关问题"></a>四、虚函数的相关问题</h2><h3 id="1、构造函数为什么不能定义为虚函数？"><a href="#1、构造函数为什么不能定义为虚函数？" class="headerlink" title="1、构造函数为什么不能定义为虚函数？"></a>1、构造函数为什么不能定义为虚函数？</h3><p><strong>构造函数不能是虚函数</strong></p>
+<p>首先，我们已经知道虚函数的实现是通过对象内存中的vptr来实现的。而构造函数是用来实例化一个对象的，通俗来说就是为对象内存中的值做初始化操作。那么在构造函数完成之前，vptr是没有值的，也就无法通过vptr找到作为虚函数的构造函数所在代码区。</p>
+<h3 id="2、析构函数为什么要定义为虚函数？"><a href="#2、析构函数为什么要定义为虚函数？" class="headerlink" title="2、析构函数为什么要定义为虚函数？"></a>2、析构函数为什么要定义为虚函数？</h3><p><strong>析构函数可以是虚函数且推荐最好设置为虚函数。</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">B</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">B</span>() &#123; <span class="built_in">printf</span>(<span class="string">&quot;B()\n&quot;</span>); &#125;</span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">B</span>() &#123; <span class="built_in">printf</span>(<span class="string">&quot;~B()\n&quot;</span>); &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> m_b;</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">class</span> <span class="title class_">D</span> : <span class="keyword">public</span> B</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">D</span>() &#123; <span class="built_in">printf</span>(<span class="string">&quot;D()\n&quot;</span>); &#125;</span><br><span class="line">    ~<span class="built_in">D</span>() &#123; <span class="built_in">printf</span>(<span class="string">&quot;~D()\n&quot;</span>); &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> m_d;</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    B* pB = <span class="keyword">new</span> <span class="built_in">D</span>();</span><br><span class="line">    <span class="keyword">delete</span> pB;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">B&lt;&gt;</span><br><span class="line">D&lt;&gt;</span><br><span class="line">~D&lt;&gt;</span><br><span class="line">~B&lt;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>C++中有这样的约束：执行子类构造函数之前一定会执行父类的构造函数；同理，执行子类的析构函数后，一定会执行父类的析构函数，这也是为什么建议析构函数写成虚函数的原因。</p>
+<p>如果析构函数不是虚函数，那么delete(a)时，调用的将是基类base的析构函数。而继承时派生类通常会在基类的基础上定义自己的成员，此时我们当然是希望可以调用派生类的析构函数对新定义的成员也进行析构了。</p>
+<h3 id="3、如何取验证虚函数表的存在？"><a href="#3、如何取验证虚函数表的存在？" class="headerlink" title="3、如何取验证虚函数表的存在？"></a>3、如何取验证虚函数表的存在？</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">typedef</span> <span class="title">void</span><span class="params">(*Fun)</span><span class="params">(<span class="type">void</span>)</span></span>;</span><br><span class="line"><span class="comment">// 取类的一个实例</span></span><br><span class="line">Base b;</span><br><span class="line">Fun pFun = <span class="literal">NULL</span>;</span><br><span class="line"><span class="comment">// 把&amp;b转成int ，取得虚函数表的地址</span></span><br><span class="line">cout &lt;&lt; <span class="string">&quot;虚函数表地址：&quot;</span> &lt;&lt; (<span class="type">int</span>*)(&amp;b) &lt;&lt; endl;</span><br><span class="line"><span class="comment">// 再次取址就可以得到第一个虚函数的地址了</span></span><br><span class="line">cout &lt;&lt; <span class="string">&quot;虚函数表 — 第一个函数地址：&quot;</span> &lt;&lt; (<span class="type">int</span>*)*(<span class="type">int</span>*)(&amp;b) &lt;&lt; endl;</span><br><span class="line">pFun = (Fun)*((<span class="type">int</span>*)*(<span class="type">int</span>*)(&amp;b));</span><br><span class="line"><span class="built_in">pFun</span>();</span><br></pre></td></tr></table></figure>
+
+<h2 id="4、纯虚函数"><a href="#4、纯虚函数" class="headerlink" title="4、纯虚函数"></a>4、纯虚函数</h2><p>纯虚函数：不能实例化对象，可以做指针和引用，拥有纯虚函数的类是抽象类。</p>
+<p>作用：在基类中为其派生类保留一个函数的名字，以便派生类根据需要对他进行定义。如果在基类中没有保留函数名字，则无法实现多态性。</p>
+<p>声明格式：virtual  类型  函数名(参数列表）&#x3D; 0</p>
+<p>（1）纯虚函数没有函数体；<br>（2）最后面的“&#x3D;0”并不表示函数返回值为0，它只起形式上的作用，告诉编译系统“这是虚函数”；<br>（3）这是一个声明语句，最后有分号。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">bark</span><span class="params">()</span> </span>= <span class="number">0</span>;  <span class="comment">//声明为纯虚函数</span></span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/C/" rel="tag"># C++</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/04/25/java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="prev" title="java设计模式">
+      <i class="fa fa-chevron-left"></i> java设计模式
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/05/02/Java%E5%AF%B9%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8E%92%E5%BA%8F/" rel="next" title="Java对字符串排序">
+      Java对字符串排序 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%A4%9A%E6%80%81%E4%B8%8E%E9%87%8D%E8%BD%BD"><span class="nav-number">1.</span> <span class="nav-text">一、多态与重载</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E5%A4%9A%E6%80%81%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="nav-number">1.1.</span> <span class="nav-text">1、多态的概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E9%87%8D%E8%BD%BD%E2%80%93%E7%BC%96%E8%AF%91%E6%9C%9F%E5%A4%9A%E6%80%81%E7%9A%84%E4%BD%93%E7%8E%B0"><span class="nav-number">1.2.</span> <span class="nav-text">2、重载–编译期多态的体现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81%E8%99%9A%E5%87%BD%E6%95%B0%E2%80%93%E8%BF%90%E8%A1%8C%E6%9C%9F%E5%A4%9A%E6%80%81%E7%9A%84%E4%BD%93%E7%8E%B0"><span class="nav-number">1.3.</span> <span class="nav-text">3、虚函数–运行期多态的体现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E8%99%9A%E5%87%BD%E6%95%B0%E5%AE%9E%E4%BE%8B"><span class="nav-number">2.</span> <span class="nav-text">二、虚函数实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E8%99%9A%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9E%E7%8E%B0%EF%BC%88%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80%EF%BC%89"><span class="nav-number">3.</span> <span class="nav-text">三、虚函数的实现（内存布局）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E8%99%9A%E5%87%BD%E6%95%B0%E7%9A%84%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98"><span class="nav-number">4.</span> <span class="nav-text">四、虚函数的相关问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E8%83%BD%E5%AE%9A%E4%B9%89%E4%B8%BA%E8%99%9A%E5%87%BD%E6%95%B0%EF%BC%9F"><span class="nav-number">4.1.</span> <span class="nav-text">1、构造函数为什么不能定义为虚函数？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%AE%9A%E4%B9%89%E4%B8%BA%E8%99%9A%E5%87%BD%E6%95%B0%EF%BC%9F"><span class="nav-number">4.2.</span> <span class="nav-text">2、析构函数为什么要定义为虚函数？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81%E5%A6%82%E4%BD%95%E5%8F%96%E9%AA%8C%E8%AF%81%E8%99%9A%E5%87%BD%E6%95%B0%E8%A1%A8%E7%9A%84%E5%AD%98%E5%9C%A8%EF%BC%9F"><span class="nav-number">4.3.</span> <span class="nav-text">3、如何取验证虚函数表的存在？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4%E3%80%81%E7%BA%AF%E8%99%9A%E5%87%BD%E6%95%B0"><span class="nav-number">5.</span> <span class="nav-text">4、纯虚函数</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="戎菜菜"
+      src="/images/p1.jpg">
+  <p class="site-author-name" itemprop="name">戎菜菜</p>
+  <div class="site-description" itemprop="description">hey</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">48</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2022-04 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">戎菜菜</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/clicklove.js"></script>
+
+</html>
