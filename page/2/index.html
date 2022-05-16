@@ -191,6 +191,216 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/02/Java%E5%AF%B9%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8E%92%E5%BA%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/p1.jpg">
+      <meta itemprop="name" content="戎菜菜">
+      <meta itemprop="description" content="hey">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小戎的学习历程">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/05/02/Java%E5%AF%B9%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8E%92%E5%BA%8F/" class="post-title-link" itemprop="url">Java对字符串排序</a>
+        </h2>
+
+        <div class="post-meta">
+
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-05-02 12:59:21 / 修改时间：13:01:55" itemprop="dateCreated datePublished" datetime="2022-05-02T12:59:21+08:00">2022-05-02</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>方法1：冒泡排序 ：<br>思路：先获取字符串数组里的每个字符串，然后使用toCharArray()方法得到这个字符串的char[] 再对char数组里的元素进行对比，冒泡排序前面大的与后面交换顺序，再把得到的char数组重新转换为String，存入到一个新的String数组中，然后在整体对新数组中各个字符串使用冒泡排序从而得到结果)<br>方法2：使用 Arrays.sort(s)；方法进行排序</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">public</span> class 字符排序 &#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">		String[] str  = <span class="keyword">new</span> <span class="title class_">String</span>[]&#123;<span class="string">&quot;abc&quot;</span>,<span class="string">&quot;fcc&quot;</span>,<span class="string">&quot;egfd&quot;</span>,<span class="string">&quot;asd&quot;</span>,<span class="string">&quot;rtgh&quot;</span>,<span class="string">&quot;deghk&quot;</span>,<span class="string">&quot;fcc&quot;</span>&#125;;</span><br><span class="line"><span class="comment">/*方法1：冒泡排序   ：</span></span><br><span class="line"><span class="comment">		思路：先获取字符串数组里的每个字符串，然后使用toCharArray()方法得到这个字符串的char[] 再对char数</span></span><br><span class="line"><span class="comment">			组里的元素进行对比，冒泡排序前面大的与后面交换顺序，再把得到的char数组重新转换为String，存入到一个新的String</span></span><br><span class="line"><span class="comment">			数组中，然后在整体对新数组中各个字符串使用冒泡排序从而得到结果)</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	printArr(stringRank(test(str)));</span><br><span class="line"></span><br><span class="line">	<span class="comment">//方法2：使用 Arrays.sort(s)；方法进行排序</span></span><br><span class="line">	String[] s = sortChar(str);</span><br><span class="line">	Arrays.sort(s);</span><br><span class="line">	printArr(s);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//得到一个每个字符串里元素已经进行过排序的新字符串数组</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> String[] test(String[] str)&#123;</span><br><span class="line">	String st[] =  st = <span class="keyword">new</span> <span class="title class_">String</span>[str.length];</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; str.length; i++) &#123;</span><br><span class="line">		<span class="type">char</span>[] c =  str[i].toCharArray();</span><br><span class="line">		charRank(c);</span><br><span class="line">		<span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(c);</span><br><span class="line">		st[i]  = s; </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> st;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//对字符串里元素进行排序</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">charRank</span><span class="params">(<span class="type">char</span>[] c)</span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; c.length; j++) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j2</span> <span class="operator">=</span> <span class="number">0</span>; j2 &lt; c.length-j-<span class="number">1</span>; j2++) &#123;</span><br><span class="line">			<span class="keyword">if</span>(c[j2]&gt;c[j2+<span class="number">1</span>])&#123;</span><br><span class="line">				<span class="type">char</span> <span class="variable">len</span> <span class="operator">=</span> c[j2];</span><br><span class="line">				c[j2] = c[j2+<span class="number">1</span>];</span><br><span class="line">				c[j2+<span class="number">1</span>] = len;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> 对新字符串数组里的字符串进行排序(升序)字符串比较使用compareTo()方法，</span></span><br><span class="line"><span class="comment">String本身并不具备比较大小功能，它的String对象实现了Comparable接口，这个接口是具有比较大小功能的接口，里面定义了比较方法compareTo()方法，</span></span><br><span class="line"><span class="comment">所以如果我们定义了一个类，这个类产生的对象需要比较大小就需要去实现Comparable接口，重写compareTo()方法，这种</span></span><br><span class="line"><span class="comment">排序成为类的自然排序，compareTo()方法称为自然比较方法，因为String类已经实现了compareTo()方法，所以这里可以直接使用</span></span><br><span class="line"><span class="comment">该方法的比较对象与指定对象的顺序。</span></span><br><span class="line"><span class="comment">compareTo(T  o)    返回值：int  返回0(两者相等)，负数(对象小于参数)，正数(对象大于参数)     参数o为要比较的对象</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> String[] stringRank(String[] str) &#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; str.length; i++) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; str.length - i - <span class="number">1</span>; j++) &#123;</span><br><span class="line">			<span class="keyword">if</span> (str[j].compareTo(str[j + <span class="number">1</span>]) &gt; <span class="number">0</span>) &#123;</span><br><span class="line">				<span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> str[j];</span><br><span class="line">				str[j] = str[j + <span class="number">1</span>];</span><br><span class="line">				str[j + <span class="number">1</span>] = s;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//方法2</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> String[] sortChar(String[] str) &#123;</span><br><span class="line">	String[] s = <span class="keyword">new</span> <span class="title class_">String</span>[str.length];</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; str.length; i++) &#123;</span><br><span class="line">		<span class="type">char</span>[] c = str[i].toCharArray();</span><br><span class="line">		Arrays.sort(c);</span><br><span class="line">		s[i] = String.valueOf(c);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> s;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//打印字符串数组</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">printArr</span><span class="params">(String[] str)</span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; str.length; i++) &#123;</span><br><span class="line">		System.out.print(str[i]+<span class="string">&quot;\t&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	System.out.println();</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/28/%E8%99%9A%E5%87%BD%E6%95%B0%E8%AF%A6%E8%A7%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/p1.jpg">
+      <meta itemprop="name" content="戎菜菜">
+      <meta itemprop="description" content="hey">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小戎的学习历程">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/28/%E8%99%9A%E5%87%BD%E6%95%B0%E8%AF%A6%E8%A7%A3/" class="post-title-link" itemprop="url">虚函数详解</a>
+        </h2>
+
+        <div class="post-meta">
+
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-04-28 10:01:30 / 修改时间：10:57:52" itemprop="dateCreated datePublished" datetime="2022-04-28T10:01:30+08:00">2022-04-28</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="一、多态与重载"><a href="#一、多态与重载" class="headerlink" title="一、多态与重载"></a>一、多态与重载</h2><h3 id="1、多态的概念"><a href="#1、多态的概念" class="headerlink" title="1、多态的概念"></a>1、多态的概念</h3><p>面向对象的语言有三大特性：封装、继承和多态。虚函数作为多态的实现方式，重要性毋庸置疑。</p>
+<p>多态指给予不同的对象会引发不同的动作（一个接口，多种方法）。其实现更简单地来说，就是“在用父类指针调用函数时，实际调用的时指针指向的实际类型（子类）的成员函数”。多态性使得程序调用的函数是在运行时动态确定，而不是在编译器静态确定。</p>
+<h3 id="2、重载–编译期多态的体现"><a href="#2、重载–编译期多态的体现" class="headerlink" title="2、重载–编译期多态的体现"></a>2、重载–编译期多态的体现</h3><p>重载，是指在一个类中的同名不同参的函数调用，这样的方法调用是在编译器确定的。</p>
+<h3 id="3、虚函数–运行期多态的体现"><a href="#3、虚函数–运行期多态的体现" class="headerlink" title="3、虚函数–运行期多态的体现"></a>3、虚函数–运行期多态的体现</h3><p>运行期多态发生的三个条件：继承关系、虚函数覆盖、父类指针或引用指向子类对象。</p>
+<h2 id="二、虚函数实例"><a href="#二、虚函数实例" class="headerlink" title="二、虚函数实例"></a>二、虚函数实例</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">base</span>&#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">vir_func</span><span class="params">()</span></span>&#123;cout&lt;&lt;<span class="string">&quot;virtual function, this is class base&quot;</span>&lt;&lt;endl;&#125;</span><br><span class="line">        <span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">()</span></span>&#123;cout&lt;&lt;<span class="string">&quot;normal function, this is class base&quot;</span>&lt;&lt;endl;&#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">A</span>:<span class="keyword">public</span> base&#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">vir_func</span><span class="params">()</span></span>&#123;cout&lt;&lt;<span class="string">&quot;virtual function, this is class A&quot;</span>&lt;&lt;endl;&#125;</span><br><span class="line">        <span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">()</span></span>&#123;cout&lt;&lt;<span class="string">&quot;normal function, this is class A&quot;</span>&lt;&lt;endl;&#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">B</span>:<span class="keyword">public</span> base&#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">vir_func</span><span class="params">()</span></span>&#123;cout&lt;&lt;<span class="string">&quot;virtual function, this is class B&quot;</span>&lt;&lt;endl;&#125;</span><br><span class="line">        <span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">()</span></span>&#123;cout&lt;&lt;<span class="string">&quot;normal function, this is class B&quot;</span>&lt;&lt;endl;&#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    base *Base = <span class="built_in">new</span>(base);</span><br><span class="line">    base *a = <span class="built_in">new</span>(A);</span><br><span class="line">    base *b = <span class="built_in">new</span>(B);</span><br><span class="line">    Base-&gt;<span class="built_in">func</span>();a-&gt;<span class="built_in">func</span>();b-&gt;<span class="built_in">func</span>();</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;#########################&quot;</span>&lt;&lt;endl;</span><br><span class="line">    Base-&gt;<span class="built_in">vir_func</span>();a-&gt;<span class="built_in">vir_func</span>();b-&gt;<span class="built_in">vir_func</span>();</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;#########################&quot;</span>&lt;&lt;endl;</span><br><span class="line">    ((A *)b)-&gt;<span class="built_in">vir_func</span>();((A *)b)-&gt;<span class="built_in">func</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">normal function, this is class base</span><br><span class="line">normal function, this is class base</span><br><span class="line">normal function, this is class base</span><br><span class="line">#########################</span><br><span class="line">virtual function, this is class base</span><br><span class="line">virtual function, this is class A</span><br><span class="line">virtual function, this is class B</span><br><span class="line">#########################</span><br><span class="line">virtual function, this is class B</span><br><span class="line">normal function, this is class A</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>可以看到，当这三个指针调用func函数时，调用的都是基类base的函数。而调用虚函数vir_func时，调用的是指针指向的实际类型的函数。最后对b做强制类型转换，转换为A类型的指针，发现普通函数调用类A的函数，虚函数调用类B的函数。</p>
+<p>以上，我们可以得出结论：<strong>当使用类的指针调用成员函数时，普通函数由指针类型决定，而虚函数由指针指向的实际类型决定</strong></p>
+<p>虚函数的实现过程：通过对象内存中的vptr找到虚函数表vtbl，接着通过vtbl找到对应虚函数的实现区域并进行调用。</p>
+<h2 id="三、虚函数的实现（内存布局）"><a href="#三、虚函数的实现（内存布局）" class="headerlink" title="三、虚函数的实现（内存布局）"></a>三、虚函数的实现（内存布局）</h2><p>虚函数表中只存有一个虚函数的指针地址，不存放普通函数或是构造函数的指针地址。只要有虚函数，C++类都会存在这样的一张虚函数表。不管是普通函数亦或是纯虚函数，亦或是派生类中隐式声明的这些虚函数都会生成这张虚函数表。</p>
+<p>虚函数表创建的时间：在一个类构造的时候，创建这张虚函数表，而这个虚函数表是供整个类所共有的。虚函数表存储在对象最开始的位置。虚函数表其实就是函数指针的地址。函数调用的时候，通过函数指针指向的函数来调用函数。</p>
+<p>虚函数表存储在对象的最开始的位置，按照声明顺序存放在表中，父类的虚函数在子类的虚函数前面。如果有虚函数覆盖，覆盖的f()函数被放在虚表中原来父类虚函数的位置，没有被覆盖的函数依旧在原来的位置。</p>
+<p>如果有多重继承，每个父类都有自己的虚表（有几个基类就有几个虚函数表），子类的成员函数被放到了第一个父类的表中（按声明顺序来判断）。如果有虚函数覆盖，那么所有父类中的f()位置都会被替换成子类的函数指针。</p>
+<h2 id="四、虚函数的相关问题"><a href="#四、虚函数的相关问题" class="headerlink" title="四、虚函数的相关问题"></a>四、虚函数的相关问题</h2><h3 id="1、构造函数为什么不能定义为虚函数？"><a href="#1、构造函数为什么不能定义为虚函数？" class="headerlink" title="1、构造函数为什么不能定义为虚函数？"></a>1、构造函数为什么不能定义为虚函数？</h3><p><strong>构造函数不能是虚函数</strong></p>
+<p>首先，我们已经知道虚函数的实现是通过对象内存中的vptr来实现的。而构造函数是用来实例化一个对象的，通俗来说就是为对象内存中的值做初始化操作。那么在构造函数完成之前，vptr是没有值的，也就无法通过vptr找到作为虚函数的构造函数所在代码区。</p>
+<h3 id="2、析构函数为什么要定义为虚函数？"><a href="#2、析构函数为什么要定义为虚函数？" class="headerlink" title="2、析构函数为什么要定义为虚函数？"></a>2、析构函数为什么要定义为虚函数？</h3><p><strong>析构函数可以是虚函数且推荐最好设置为虚函数。</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">B</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">B</span>() &#123; <span class="built_in">printf</span>(<span class="string">&quot;B()\n&quot;</span>); &#125;</span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">B</span>() &#123; <span class="built_in">printf</span>(<span class="string">&quot;~B()\n&quot;</span>); &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> m_b;</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">class</span> <span class="title class_">D</span> : <span class="keyword">public</span> B</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">D</span>() &#123; <span class="built_in">printf</span>(<span class="string">&quot;D()\n&quot;</span>); &#125;</span><br><span class="line">    ~<span class="built_in">D</span>() &#123; <span class="built_in">printf</span>(<span class="string">&quot;~D()\n&quot;</span>); &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> m_d;</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    B* pB = <span class="keyword">new</span> <span class="built_in">D</span>();</span><br><span class="line">    <span class="keyword">delete</span> pB;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">B&lt;&gt;</span><br><span class="line">D&lt;&gt;</span><br><span class="line">~D&lt;&gt;</span><br><span class="line">~B&lt;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>C++中有这样的约束：执行子类构造函数之前一定会执行父类的构造函数；同理，执行子类的析构函数后，一定会执行父类的析构函数，这也是为什么建议析构函数写成虚函数的原因。</p>
+<p>如果析构函数不是虚函数，那么delete(a)时，调用的将是基类base的析构函数。而继承时派生类通常会在基类的基础上定义自己的成员，此时我们当然是希望可以调用派生类的析构函数对新定义的成员也进行析构了。</p>
+<h3 id="3、如何取验证虚函数表的存在？"><a href="#3、如何取验证虚函数表的存在？" class="headerlink" title="3、如何取验证虚函数表的存在？"></a>3、如何取验证虚函数表的存在？</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">typedef</span> <span class="title">void</span><span class="params">(*Fun)</span><span class="params">(<span class="type">void</span>)</span></span>;</span><br><span class="line"><span class="comment">// 取类的一个实例</span></span><br><span class="line">Base b;</span><br><span class="line">Fun pFun = <span class="literal">NULL</span>;</span><br><span class="line"><span class="comment">// 把&amp;b转成int ，取得虚函数表的地址</span></span><br><span class="line">cout &lt;&lt; <span class="string">&quot;虚函数表地址：&quot;</span> &lt;&lt; (<span class="type">int</span>*)(&amp;b) &lt;&lt; endl;</span><br><span class="line"><span class="comment">// 再次取址就可以得到第一个虚函数的地址了</span></span><br><span class="line">cout &lt;&lt; <span class="string">&quot;虚函数表 — 第一个函数地址：&quot;</span> &lt;&lt; (<span class="type">int</span>*)*(<span class="type">int</span>*)(&amp;b) &lt;&lt; endl;</span><br><span class="line">pFun = (Fun)*((<span class="type">int</span>*)*(<span class="type">int</span>*)(&amp;b));</span><br><span class="line"><span class="built_in">pFun</span>();</span><br></pre></td></tr></table></figure>
+
+<h2 id="4、纯虚函数"><a href="#4、纯虚函数" class="headerlink" title="4、纯虚函数"></a>4、纯虚函数</h2><p>纯虚函数：不能实例化对象，可以做指针和引用，拥有纯虚函数的类是抽象类。</p>
+<p>作用：在基类中为其派生类保留一个函数的名字，以便派生类根据需要对他进行定义。如果在基类中没有保留函数名字，则无法实现多态性。</p>
+<p>声明格式：virtual  类型  函数名(参数列表）&#x3D; 0</p>
+<p>（1）纯虚函数没有函数体；<br>（2）最后面的“&#x3D;0”并不表示函数返回值为0，它只起形式上的作用，告诉编译系统“这是虚函数”；<br>（3）这是一个声明语句，最后有分号。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">bark</span><span class="params">()</span> </span>= <span class="number">0</span>;  <span class="comment">//声明为纯虚函数</span></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/25/java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/p1.jpg">
+      <meta itemprop="name" content="戎菜菜">
+      <meta itemprop="description" content="hey">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小戎的学习历程">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/25/java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-title-link" itemprop="url">java设计模式</a>
+        </h2>
+
+        <div class="post-meta">
+
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-04-25 15:13:36" itemprop="dateCreated datePublished" datetime="2022-04-25T15:13:36+08:00">2022-04-25</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/25/java%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -844,320 +1054,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/25/java%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/p1.jpg">
-      <meta itemprop="name" content="戎菜菜">
-      <meta itemprop="description" content="hey">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小戎的学习历程">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/04/25/java%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="post-title-link" itemprop="url">java正则表达式</a>
-        </h2>
-
-        <div class="post-meta">
-
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-04-25 15:12:27" itemprop="dateCreated datePublished" datetime="2022-04-25T15:12:27+08:00">2022-04-25</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-30 10:44:27" itemprop="dateModified" datetime="2022-04-30T10:44:27+08:00">2022-04-30</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>正则表达式可以用字符串来描述规则，名用来匹配字符串。</p>
-<h2 id="匹配规则"><a href="#匹配规则" class="headerlink" title="匹配规则"></a>匹配规则</h2><p>正则表达式的匹配规则是从左到右按规则匹配。</p>
-<ul>
-<li><p>有特殊字符，那需要用<code>\</code>转义。</p>
-</li>
-<li><p>要匹配非Ascii字符，那就用<code>\u####</code>的十六进制表示，例如<code>\u548cc</code>匹配<code>和</code>。</p>
-</li>
-<li><p>匹配任意一个字符，用<code>.</code></p>
-</li>
-<li><p>匹配任意一个数字，用<code>\d</code></p>
-</li>
-<li><p>匹配任意一个字母，用<code>\w</code></p>
-</li>
-<li><p>匹配一个空格字符，用<code>\s</code>（包括<code>\t</code>字符）</p>
-</li>
-<li><p>匹配一个非数字，用<code>\D</code>（类似，<code>\W</code>，<code>\S</code>）</p>
-</li>
-<li><p>修饰符<code>*</code>可以匹配任意个字符。例如，用<code>A\d*</code>匹配A后面跟任意个数字</p>
-</li>
-<li><p>修饰符<code>+</code>可以匹配至少一个字符</p>
-</li>
-<li><p>修饰符<code>？</code>可以匹配0个或1个字符</p>
-</li>
-<li><p>修饰符<code>&#123;n&#125;</code>可以精确匹配n个字符，<code>n,m</code>匹配n~m个字符，<code>&#123;n,&#125;</code>匹配至少n个字符</p>
-</li>
-</ul>
-<h2 id="复杂匹配规则"><a href="#复杂匹配规则" class="headerlink" title="复杂匹配规则"></a>复杂匹配规则</h2><h3 id="匹配开头或结尾"><a href="#匹配开头或结尾" class="headerlink" title="匹配开头或结尾"></a>匹配开头或结尾</h3><p>在用正则表达式进行多行匹配时，我们用<code>^</code>表示开头，<code>$</code>表示结尾。例如：<code>^A\d&#123;3&#125;$</code></p>
-<h3 id="匹配指定范围"><a href="#匹配指定范围" class="headerlink" title="匹配指定范围"></a>匹配指定范围</h3><p>用<code>[...]</code>匹配范围内的字符串。例如：<code>[123456789]\d&#123;6,7&#125;</code>匹配非0开头的电话号码</p>
-<p>字符全列出来太麻烦，<code>[...]</code>也可以写为<code>[1-9]</code></p>
-<p>要六位匹配大小写不限的十六进制数，我们可以这样写：<code>[0-9a-fA-f]&#123;6&#125;</code></p>
-<p><code>[...]</code>还有一种排除写法，例如：<code>[^1-9]&#123;3&#125;</code>表示不包含1-9的三位字符</p>
-<h3 id="或匹配规则"><a href="#或匹配规则" class="headerlink" title="或匹配规则"></a>或匹配规则</h3><p><code>|</code>表示或，例如：<code>AB|CD</code>匹配<code>AB</code>或者<code>CD</code></p>
-<h3 id="使用括号"><a href="#使用括号" class="headerlink" title="使用括号"></a>使用括号</h3><p><code>learn\\s(java|php|go)</code></p>
-<h2 id="分组匹配"><a href="#分组匹配" class="headerlink" title="分组匹配"></a>分组匹配</h2><p>例如，用正则匹配<code>区号-电话号</code>码这个规则，可以用<code>(...)</code>先把要提取的规则分组，把上述正则表达式变为<code>(\d&#123;3,4&#125;)\-(\d&#123;6,8&#125;)</code>。引入<code>java.util.regex</code>包，用<code>Pattern</code>对象匹配，匹配后获得一个<code>Matcher</code>对象，如果匹配成功，就可以直接从<code>Matcher.group(index)</code>返回子串。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.regex.*;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Pattern</span> <span class="variable">p</span> <span class="operator">=</span> Pattern.compile(<span class="string">&quot;(\\d&#123;3,4&#125;)\\-(\\d&#123;7,8&#125;)&quot;</span>);</span><br><span class="line">        <span class="type">Matcher</span> <span class="variable">m</span> <span class="operator">=</span> p.matcher(<span class="string">&quot;010-12345678&quot;</span>);</span><br><span class="line">        <span class="keyword">if</span> (m.matches()) &#123;</span><br><span class="line">            <span class="type">String</span> <span class="variable">g1</span> <span class="operator">=</span> m.group(<span class="number">1</span>);</span><br><span class="line">            <span class="type">String</span> <span class="variable">g2</span> <span class="operator">=</span> m.group(<span class="number">2</span>);</span><br><span class="line">            System.out.println(g1);</span><br><span class="line">            System.out.println(g2);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;匹配失败!&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>要特别注意，<code>Matcher.group(index)</code>方法的参数用1表示第一个子串，2表示第二个子串。如果我们传入0会得到什么呢？答案是<code>010-12345678</code>，即整个正则匹配到的字符串。</p>
-<h3 id="Pattern"><a href="#Pattern" class="headerlink" title="Pattern"></a>Pattern</h3><p>我们在前面的代码中用到的正则表达式代码是<code>String.matches()</code>方法，而我们在分组提取的代码中用的是<code>java.util.regex</code>包里面的<code>Pattern</code>类和<code>Matcher</code>类。实际上这两种代码本质上是一样的，因为<code>String.matches()</code>方法内部调用的就是<code>Pattern</code>和<code>Matcher</code>类的方法。</p>
-<p>但是反复使用<code>String.matches()</code>对同一个正则表达式进行多次匹配效率较低，因为每次都会创建出一样的<code>Pattern</code>对象。完全可以先创建出一个<code>Pattern</code>对象，然后反复使用，就可以实现编译一次，多次匹配：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.regex.*;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Pattern</span> <span class="variable">pattern</span> <span class="operator">=</span> Pattern.compile(<span class="string">&quot;(\\d&#123;3,4&#125;)\\-(\\d&#123;7,8&#125;)&quot;</span>);</span><br><span class="line">        pattern.matcher(<span class="string">&quot;010-12345678&quot;</span>).matches(); <span class="comment">// true</span></span><br><span class="line">        pattern.matcher(<span class="string">&quot;021-123456&quot;</span>).matches(); <span class="comment">// false</span></span><br><span class="line">        pattern.matcher(<span class="string">&quot;022#1234567&quot;</span>).matches(); <span class="comment">// false</span></span><br><span class="line">        <span class="comment">// 获得Matcher对象:</span></span><br><span class="line">        <span class="type">Matcher</span> <span class="variable">matcher</span> <span class="operator">=</span> pattern.matcher(<span class="string">&quot;010-12345678&quot;</span>);</span><br><span class="line">        <span class="keyword">if</span> (matcher.matches()) &#123;</span><br><span class="line">            <span class="type">String</span> <span class="variable">whole</span> <span class="operator">=</span> matcher.group(<span class="number">0</span>); <span class="comment">// &quot;010-12345678&quot;, 0表示匹配的整个字符串</span></span><br><span class="line">            <span class="type">String</span> <span class="variable">area</span> <span class="operator">=</span> matcher.group(<span class="number">1</span>); <span class="comment">// &quot;010&quot;, 1表示匹配的第1个子串</span></span><br><span class="line">            <span class="type">String</span> <span class="variable">tel</span> <span class="operator">=</span> matcher.group(<span class="number">2</span>); <span class="comment">// &quot;12345678&quot;, 2表示匹配的第2个子串</span></span><br><span class="line">            System.out.println(area);</span><br><span class="line">            System.out.println(tel);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>使用<code>Matcher</code>时，必须首先调用<code>matches()</code>判断是否匹配成功，匹配成功后，才能调用<code>group()</code>提取子串。</p>
-<h2 id="非贪婪匹配"><a href="#非贪婪匹配" class="headerlink" title="非贪婪匹配"></a>非贪婪匹配</h2><p>正则表达式默认使用贪婪匹配，任何一个规则，它总是尽可能多地向后匹配。</p>
-<p>在规则后面加个<code>?</code>即可表示非贪婪匹配。例如：<code>(\d+?)(0*)</code>就会用非贪婪地规则匹配<code>\d+</code></p>
-<h2 id="搜索和替换"><a href="#搜索和替换" class="headerlink" title="搜索和替换"></a>搜索和替换</h2><h3 id="分割字符串"><a href="#分割字符串" class="headerlink" title="分割字符串"></a>分割字符串</h3><p><code>String.split()</code>方法传入的正是正则表达式。我们来看下面的代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;a b c&quot;</span>.split(<span class="string">&quot;\\s&quot;</span>); <span class="comment">// &#123; &quot;a&quot;, &quot;b&quot;, &quot;c&quot; &#125;</span></span><br><span class="line"><span class="string">&quot;a b  c&quot;</span>.split(<span class="string">&quot;\\s&quot;</span>); <span class="comment">// &#123; &quot;a&quot;, &quot;b&quot;, &quot;&quot;, &quot;c&quot; &#125;</span></span><br><span class="line"><span class="string">&quot;a, b ;; c&quot;</span>.split(<span class="string">&quot;[\\,\\;\\s]+&quot;</span>); <span class="comment">// &#123; &quot;a&quot;, &quot;b&quot;, &quot;c&quot; &#125;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="搜索字符串"><a href="#搜索字符串" class="headerlink" title="搜索字符串"></a>搜索字符串</h3><p>看个例子：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.regex.*;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> <span class="string">&quot;the quick brown fox jumps over the lazy dog.&quot;</span>;</span><br><span class="line">        <span class="type">Pattern</span> <span class="variable">p</span> <span class="operator">=</span> Pattern.compile(<span class="string">&quot;\\wo\\w&quot;</span>);</span><br><span class="line">        <span class="type">Matcher</span> <span class="variable">m</span> <span class="operator">=</span> p.matcher(s);</span><br><span class="line">        <span class="keyword">while</span> (m.find()) &#123;</span><br><span class="line">            <span class="type">String</span> <span class="variable">sub</span> <span class="operator">=</span> s.substring(m.start(), m.end());</span><br><span class="line">            System.out.println(sub);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="替换字符串"><a href="#替换字符串" class="headerlink" title="替换字符串"></a>替换字符串</h3><p>使用正则表达式替换字符串可以直接调用<code>String.replaceAll()</code>，它的第一个参数是正则表达式，第二个参数是待替换的字符串。我们还是来看例子：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> <span class="string">&quot;The     quick\t\t brown   fox  jumps   over the  lazy dog.&quot;</span>;</span><br><span class="line">        <span class="type">String</span> <span class="variable">r</span> <span class="operator">=</span> s.replaceAll(<span class="string">&quot;\\s+&quot;</span>, <span class="string">&quot; &quot;</span>);</span><br><span class="line">        System.out.println(r); <span class="comment">// &quot;The quick brown fox jumps over the lazy dog.&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>上面的代码把不规范的连续空格分隔的句子变成了规范的句子。可见，灵活使用正则表达式可以大大降低代码量。</p>
-<h3 id="反向引用"><a href="#反向引用" class="headerlink" title="反向引用"></a>反向引用</h3><p>如果我们要把搜索到的指定字符串按规则匹配，比如前后各加一个<code>&lt;b&gt;xxxx&lt;/b&gt;</code>，这时候，使用<code>replaceAll()</code>的时候，我们传入的第二个参数可以使用<code>$1</code>、<code>$2</code>来反向引用匹配到的字串。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> <span class="string">&quot;the quick brown fox jumps over the lazy dog.&quot;</span>;</span><br><span class="line">        <span class="type">String</span> <span class="variable">r</span> <span class="operator">=</span> s.replaceAll(<span class="string">&quot;\\s([a-z]&#123;4&#125;)\\s&quot;</span>, <span class="string">&quot; &lt;b&gt;$1&lt;/b&gt; &quot;</span>);</span><br><span class="line">        System.out.println(r);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/25/java%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/p1.jpg">
-      <meta itemprop="name" content="戎菜菜">
-      <meta itemprop="description" content="hey">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小戎的学习历程">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/04/25/java%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/" class="post-title-link" itemprop="url">java单元测试</a>
-        </h2>
-
-        <div class="post-meta">
-
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-04-25 15:12:19" itemprop="dateCreated datePublished" datetime="2022-04-25T15:12:19+08:00">2022-04-25</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-29 17:01:40" itemprop="dateModified" datetime="2022-04-29T17:01:40+08:00">2022-04-29</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="编写Junit测试"><a href="#编写Junit测试" class="headerlink" title="编写Junit测试"></a>编写Junit测试</h2><p>单元测试就是针对最小的功能单元编写测试代码。Java程序最小的功能单元是方法，因此，对Java程序进行单元测试就是针对整个Java方法的测试。</p>
-<p>测试驱动开发（Test-Driven Development）：是指先编写接口，紧接着编写测试，编写玩测试后，才开始真正编写实现代码。在编写实现代码的过程中，一边写，一边测，什么时候测试全部通过了，那就表示编写的实现完成了。</p>
-<p>如果使用main方法，不能把测试代码分离；不能打印出测试结果和期望结果；很难编写一组通用的测试代码。</p>
-<p>因此，我们需要一种测试框架，帮助我们编写测试。</p>
-<h3 id="JUnit"><a href="#JUnit" class="headerlink" title="JUnit"></a>JUnit</h3><p>JUnit是一个开源的Java语言的单元测试框架，专门针对Java设计。使用JUnit编写单元测试的好处在于，我们可以非常简单的组织测试代码，并随时运行它们。JUnit会给出成功的测试和失败的测试，还可以生成测试报告，不仅包含测试的成功率，还可以统计测试的代码覆盖率。对高质量的代码来说，测试覆盖率应该在80%以上。</p>
-<p>此外，几乎所有的IDE工具都继承了JUnit，这样我们就可以直接在IDE中编写并运行JUnit测试。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.itranswarp.learnjava;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.junit.jupiter.api.Assertions.*;</span><br><span class="line"><span class="keyword">import</span> org.junit.jupiter.api.Test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">FactorialTest</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">testFact</span><span class="params">()</span> &#123;</span><br><span class="line">        assertEquals(<span class="number">1</span>, Factorial.fact(<span class="number">1</span>));</span><br><span class="line">        assertEquals(<span class="number">2</span>, Factorial.fact(<span class="number">2</span>));</span><br><span class="line">        assertEquals(<span class="number">6</span>, Factorial.fact(<span class="number">3</span>));</span><br><span class="line">        assertEquals(<span class="number">3628800</span>, Factorial.fact(<span class="number">10</span>));</span><br><span class="line">        assertEquals(<span class="number">2432902008176640000L</span>, Factorial.fact(<span class="number">20</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>assertTrue()</code>: 期待结果为<code>true</code></li>
-<li><code>assertFalse()</code>: 期待结果为<code>false</code></li>
-<li><code>assertNotNull()</code>: 期待结果为非<code>null</code></li>
-<li><code>assertArrayEquals()</code>: 期待结果为数组并与期望数组每个元素的值均相等</li>
-<li>…</li>
-</ul>
-<h3 id="单元测试的好处"><a href="#单元测试的好处" class="headerlink" title="单元测试的好处"></a>单元测试的好处</h3><ul>
-<li>确保单个方法正确按预期运行</li>
-<li>作为示例代码，演示如何调用该方法</li>
-</ul>
-<h2 id="使用Fixture"><a href="#使用Fixture" class="headerlink" title="使用Fixture"></a>使用Fixture</h2><p>在测试的时候，我们经常遇到一个对象需要初始化，测试完可能还需要清理的情况。如果每个<code>@Test</code>方法都写一遍这样的重复代码，显然比较麻烦。</p>
-<p>JUnit提供了编写测试前准备、测试后清理的固定代码，我们称之为Fixture。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@BeforeEach</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setUp</span><span class="params">()</span> &#123;</span><br><span class="line">       <span class="built_in">this</span>.calculator = <span class="keyword">new</span> <span class="title class_">Calculator</span>();</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@AfterEach</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">tearDown</span><span class="params">()</span> &#123;</span><br><span class="line">       <span class="built_in">this</span>.calculator = <span class="literal">null</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>@BeforeEach</code>和<code>@AfterEach</code>的方法会在运行每个@Test方法前后自动运行。</p>
-<p>JUnit还提供了<code>@BeforeAll</code>和<code>@AfterAll</code>，它们在运行所有@Test前后运行，并且仅运行一次。因此，它们只能初始化静态变量。事实上，它们也只能标注在静态方法上。</p>
-<h2 id="异常测试"><a href="#异常测试" class="headerlink" title="异常测试"></a>异常测试</h2><p>在编写JUnit测试的时候，除了正常的输入输出，我们还要特别针对可能导致异常的情况进行测试。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">testNegative</span><span class="params">()</span> &#123;</span><br><span class="line">    assertThrows(IllegalArgumentException.class, <span class="keyword">new</span> <span class="title class_">Executable</span>() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">execute</span><span class="params">()</span> <span class="keyword">throws</span> Throwable &#123;</span><br><span class="line">            Factorial.fact(-<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>JUnit提供<code>assertThrows()</code>来期望捕获一个指定的异常。第二个参数<code>Executable</code>封装了我们要执行的会产生异常的代码。当我们执行<code>Factorial.fact(-1)</code>时，必定抛出<code>IllegalArgumentException</code>。<code>assertThrows()</code>在捕获到指定异常时表示通过测试，未捕获到异常，或者捕获到的异常类型不对，均表示测试失败。</p>
-<p>有些童鞋会觉得编写一个<code>Executable</code>的匿名类太繁琐了。实际上，Java 8开始引入了函数式编程，所有单方法接口都可以简写如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">testNegative</span><span class="params">()</span> &#123;</span><br><span class="line">    assertThrows(IllegalArgumentException.class, () -&gt; &#123;</span><br><span class="line">        Factorial.fact(-<span class="number">1</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>上述奇怪的<code>-&gt;</code>语法就是函数式接口的实现代码，我们会在后面详细介绍。现在，我们只需要通过这种固定的代码编写能抛出异常的语句即可。</p>
-<h2 id="条件测试"><a href="#条件测试" class="headerlink" title="条件测试"></a>条件测试</h2><p>可以在测试前面加注解，满足某个条件才进行的测试。</p>
-<h2 id="参数化测试"><a href="#参数化测试" class="headerlink" title="参数化测试"></a>参数化测试</h2><p>参数化测试和普通测试稍微不同的地方在于，一个测试方法需要接收至少一个参数，然后，传入一组参数反复运行。</p>
-<p>JUnit提供了一个<code>@ParameterizedTest</code>注解，用来进行参数化测试。</p>
-<p>假设我们想对<code>Math.abs()</code>进行测试，先用一组正数进行测试：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ParameterizedTest</span></span><br><span class="line"><span class="meta">@ValueSource(ints = &#123; 0, 1, 5, 100 &#125;)</span></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">testAbs</span><span class="params">(<span class="type">int</span> x)</span> &#123;</span><br><span class="line">    assertEquals(x, Math.abs(x));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>再用一组负数进行测试：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ParameterizedTest</span></span><br><span class="line"><span class="meta">@ValueSource(ints = &#123; -1, -5, -100 &#125;)</span></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">testAbsNegative</span><span class="params">(<span class="type">int</span> x)</span> &#123;</span><br><span class="line">    assertEquals(-x, Math.abs(x));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>参数如何传入？</p>
-<p>最简单的方法是通过<code>@MethodSource</code>注解，它允许我们编写一个同名的静态方法来提供测试参数：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ParameterizedTest</span></span><br><span class="line"><span class="meta">@MethodSource</span></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">testCapitalize</span><span class="params">(String input, String result)</span> &#123;</span><br><span class="line">    assertEquals(result, StringUtils.capitalize(input));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> List&lt;Arguments&gt; <span class="title function_">testCapitalize</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> List.of( <span class="comment">// arguments:</span></span><br><span class="line">            Arguments.arguments(<span class="string">&quot;abc&quot;</span>, <span class="string">&quot;Abc&quot;</span>), <span class="comment">//</span></span><br><span class="line">            Arguments.arguments(<span class="string">&quot;APPLE&quot;</span>, <span class="string">&quot;Apple&quot;</span>), <span class="comment">//</span></span><br><span class="line">            Arguments.arguments(<span class="string">&quot;gooD&quot;</span>, <span class="string">&quot;Good&quot;</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>上面的代码很容易理解：静态方法<code>testCapitalize()</code>返回了一组测试参数，每个参数都包含两个<code>String</code>，正好作为测试方法的两个参数传入。</p>
-<p>如果静态方法和测试方法的名称不同，@MethodSource也允许指定方法名。但使用默认同名方法最方便。</p>
-<p>另一种传入测试参数的方法是使用<code>@CsvSource</code>，它的每一个字符串表示一行，一行包含的若干参数用<code>,</code>分隔，因此，上述测试又可以改写如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ParameterizedTest</span></span><br><span class="line"><span class="meta">@CsvSource(&#123; &quot;abc, Abc&quot;, &quot;APPLE, Apple&quot;, &quot;gooD, Good&quot; &#125;)</span></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">testCapitalize</span><span class="params">(String input, String result)</span> &#123;</span><br><span class="line">    assertEquals(result, StringUtils.capitalize(input));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>如果有成百上千的测试输入，那么，直接写<code>@CsvSource</code>就很不方便。这个时候，我们可以把测试数据提到一个独立的CSV文件中，然后标注上<code>@CsvFileSource</code>：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ParameterizedTest</span></span><br><span class="line"><span class="meta">@CsvFileSource(resources = &#123; &quot;/test-capitalize.csv&quot; &#125;)</span></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">testCapitalizeUsingCsvFile</span><span class="params">(String input, String result)</span> &#123;</span><br><span class="line">    assertEquals(result, StringUtils.capitalize(input));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>JUnit只在classpath中查找指定的CSV文件，因此，<code>test-capitalize.csv</code>这个文件要放到<code>test</code>目录下，内容如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">apple, Apple</span><br><span class="line">HELLO, Hello</span><br><span class="line">JUnit, Junit</span><br><span class="line">reSource, Resource</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/25/java%E6%97%B6%E9%97%B4%E4%B8%8E%E6%97%A5%E6%9C%9F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/p1.jpg">
-      <meta itemprop="name" content="戎菜菜">
-      <meta itemprop="description" content="hey">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小戎的学习历程">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/04/25/java%E6%97%B6%E9%97%B4%E4%B8%8E%E6%97%A5%E6%9C%9F/" class="post-title-link" itemprop="url">java时间与日期</a>
-        </h2>
-
-        <div class="post-meta">
-
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-04-25 15:12:11" itemprop="dateCreated datePublished" datetime="2022-04-25T15:12:11+08:00">2022-04-25</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-29 11:12:15" itemprop="dateModified" datetime="2022-04-29T11:12:15+08:00">2022-04-29</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="Date和Calendar"><a href="#Date和Calendar" class="headerlink" title="Date和Calendar"></a>Date和Calendar</h2><p>要获取当前时间戳，可以使用<code>System.currentTimeMillis()</code>，这是Java程序获取时间戳最常用的方法。</p>
-<h3 id="标准库API"><a href="#标准库API" class="headerlink" title="标准库API"></a>标准库API</h3><p>我们再来看一下Java标准库提供的API。Java标准库有两套处理日期和时间的API：</p>
-<ul>
-<li>一套定义在<code>java.util</code>这个包里面，主要包括<code>Date</code>、<code>Calendar</code>和<code>TimeZone</code>这几个类；</li>
-<li>一套新的API是在Java 8引入的，定义在<code>java.time</code>这个包里面，主要包括<code>LocalDateTime</code>、<code>ZonedDateTime</code>、<code>ZoneId</code>等。</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1229,14 +1125,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">54</span>
+          <span class="site-state-item-count">57</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

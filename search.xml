@@ -81,6 +81,72 @@
       </tags>
   </entry>
   <entry>
+    <title>CSMA/CA与CSMA/CD</title>
+    <url>/2022/05/16/CSMA-CA%E4%B8%8ECSMA-CD/</url>
+    <content><![CDATA[<p>1.CSMA&#x2F;CD媒体访问控制协议</p>
+<p>　　由于以太网（Ethernet）成为现存局域网络结构的绝大多形式，CSMA&#x2F;CD（Carrier Sense Multiple ACcess&#x2F;Collision Detection）载波监测多址接人协议也成为局域网采用最多的MAC协议。CSMA&#x2F;CD适宜于总线型局域网拓扑结构的随机竞争型媒体访问控制。总线型网络允许同一时刻只有一个节点（Node）发送数据，一旦两个或以上节点同时发送数据，则会发生数据碰撞，数据不能正常发送和接收。CSMA&#x2F;CD协议就是尽可能保证网络上同时只有一个节点发送数据，减小数据“碰撞”概率。</p>
+<p>　　CSMA&#x2F;CD工作过程：</p>
+<p>　　当MAC收到LLG发来的数据以后，首先监测网络电缆上是否具有数据，即载波传送。<del>如果网络空闲，即没有载波传送，则将数据装帧，经物理层发送出去。如果网络繁忙，则监测网络直到网络空闲，再将数据装帧发送。</del></p>
+<p>发送数据前 先侦听信道是否空闲 ,若空闲 则立即发送数据.在发送数据时,边发送边继续侦听.若侦听到冲突,则立即停止发送数据.等待一段随机时间,再重新尝试.</p>
+<p>　 先听后发， 边发边听，冲突停发，随即延迟后重发</p>
+<p>　　2.CSMA&#x2F;CA协议</p>
+<p>　　CSMA作为随机竞争类MAC协议，具算法简单而且性能丰富，所以在实际局域网的使用中得到了广泛的应用。但是在无线局域网中，由于无线传输媒体固有的特性及移动性的影响，无线局域网的MAC在差错控制、解决隐藏终端等方面存在应有别于有线局域网。因此WLAN与有线局域网所采用的CSMA备一定的差异。WLAN采用CSMA&#x2F;CA（CSMA&#x2F;Collision　Avoidance）协议，其与CSMA&#x2F;CD最大的不同点在于其采取避免冲突工作方式。</p>
+<p>　　与CSMA&#x2F;CD不同，WLAN媒体访问控制（MAC）层采用的CSMA&#x2F;CA（CSMA&#x2F;Collision Avoidance）协议，由于在RF传输网络中冲突检测比较困难，所以该协议用避免冲突检测代替802.3协议使用的冲突检测，采用冲突避免机制尽量减小冲突碰撞发生的概率，以提高网络吞吐性能与迟延性能。协议使用信道空闲评估（CCA）算法来决定信道是否空闲，通过测试天线能量和决定接收信号强度RSSI来完成，并且使用RTS、CTS和ACK帧减少冲突。数据加密与普通局域网的等同加密（WEP）算法一样，使用64位密钥和RC4加密算法。</p>
+<p>　　CSMA&#x2F;CA工作过程</p>
+<p>　　当发射端希望发送数据时，首先检测介质是否空闲，若是介质为空闲时，送出RTS（Request To Send请求发送），RTS信号包括发射端的地址、接收端的地址、下一笔数据将持续发送的时间等信息，接收端收到RTS信号后，将响应短信号CTS（Clear To Send），CTS信号上也RTS内记录的持续发送的时间，当发射端收到CTS包后，随即开始发送数据包。接收端收到数据包后，将以包内的CRC（CyClic Redundancy Check，循环冗余校验）的数值来检验包数据是否正确，若是检验结果正确时，接收端将响应ACK包，告知发射端数据己经被成功地接收。当发射端没有收到接收端的ACK包时，将认为包在传输过程中丢失，而一直重新发送包。</p>
+<p>　　3.CSMA&#x2F;CA与CSMA&#x2F;CD的区别</p>
+<p>　　（1）载波检测方式：因传输介质不同，CSMA&#x2F;CD与CSMA&#x2F;CA的检测方式也不同。CSMA&#x2F;CD通过电缆中电压的变化来检测，当数据发生碰撞时，电缆中的电压就会随着发生变化；而CSMA&#x2F;CA采用能量检测（ED）、载波检测（CS）和能量载波混合检测三种检测信道空闲的方式。</p>
+<p>　　（2）信道利用率比较CSMA&#x2F;CA协议信道利用率低于CSMA&#x2F;CD协议信道利用率。但是由于无线传输的特性，在无线局域网不能采用有线局域网的CSMA&#x2F;CD协议。信道利用率受传输距离和空旷程度的影响，当距离远或者有障碍物影响时会存在隐藏终端问题，降低信道利用率。</p>
+<p>　　具体最高的信道利用率与传输速率有关。在IEEE802.11b无线局域网中，在1Mb&#x2F;s速率时最高信道利用率可到90%，而在11Mb&#x2F;s时最高信道利用率只有65%左右。</p>
+<p>区别：</p>
+<p>从名字上就可以看出， 不同就是一个是ca（collision avoidance）, 而另一个是cd（collision detection）。802.3以太网用的是cd，就是冲突检测，发生冲突并且检测到冲突后重传。 802.11无线局域网用的是ca， 就是冲突避免， 也是就是在传输以前先检测信道，然后通过RTS&#x2F;CTS来预约信道，达到冲突避免的目的。<br>csma, 就是carrier sense，也就是说两者都是在发送前检测信道是否繁忙，不同当然就是以上所说。</p>
+<p><a href="https://blog.csdn.net/Esther_Heesch/article/details/51173722">(45条消息) CSMA&#x2F;CA与CSMA&#x2F;CD的区别_王胜飞的博客-CSDN博客_csmaca和csmacd的区别</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/20731045">802.11协议精读3：CSMA&#x2F;CD与CSMA&#x2F;CA - 知乎 (zhihu.com)</a></p>
+]]></content>
+      <tags>
+        <tag>计网</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>计网ARP</title>
+    <url>/2022/05/15/%E8%AE%A1%E7%BD%91ARP/</url>
+    <content><![CDATA[<p>我们知道，在浏览器输入网址，DNS服务器会自动解析为IP地址。那么IP地址是如何转换为第二层MAC地址呢？在局域网中，这是用过ARP协议来完成的。</p>
+<span id="more"></span>
+
+<h2 id="什么是ARP协议"><a href="#什么是ARP协议" class="headerlink" title="什么是ARP协议"></a>什么是ARP协议</h2><p>ARP协议就是“Address Resolution Protocol”（地址解析协议）的缩写。在以太网中，一个主机和另一个主机直接进行通信，必须知道目标主机的MAC地址，而它就是通过ARP协议获得的。所谓“地址解析”就是主机在发送帧前将目标地址转换成目标MAC地址的过程。ARP协议的基本功能就是通过目标设备的IP地址，查询目标设备的MAC地址，以保证通信的顺利进行。</p>
+<h2 id="ARP协议的工作原理"><a href="#ARP协议的工作原理" class="headerlink" title="ARP协议的工作原理"></a>ARP协议的工作原理</h2><p>每台安装有TCP&#x2F;IP协议的电脑里都有一个ARP缓存表，表里的IP地址与MAC地址是一一对应的。在发送数据时，主机A会在自己的ARP缓存表中寻找是狗有目标IP地址，如果找到了，也就知道了目标MAC地址，直接把目标MAC地址写入帧中就可以发送。如果ARP缓存表中没有找到对应的MAC地址，主机A就会在网络上发送一个广播，目标MAC地址是“FF.FF.FF.FF.FF.FF”，这表示向同一网段内的所有主机发出询问，目标IP的MAC地址是什么？网络上其他主机并不相应ARP询问，只有主机B接收到这和帧时，才向主机A做出回应其MAC地址。这样主机A就知道了B的MAC地址，就可以向主机B发送消息了。同时它还更新了自己的ARP缓存表，下次再向B发送消息时，直接从ARP缓存表里查找。ARP缓存中如果某一行在一段时间内没有使用，就会被删除。这样可以减少ARP缓存表的长度，加快查询速度。</p>
+<p>ARP攻击就是伪造IP地址和MAC地址实现ARP欺骗，能够在网络中产生大量ARP通信量使网络拥塞，攻击者只要持续不断地发出伪造的ARP相应包就能更改目标主机ARP缓存中的IP-MAC条目，造成网络中断或中间人攻击。</p>
+<p>ARP攻击主要是存在于局域网中，局域网中若有一个人感染ARP木马，则该感染木马的系统将会试图通过“ARP欺骗”手段截获所在网络内其它计算机的通信信息，并因此造成网内其它计算机的通信故障。</p>
+<p>RARP的工作原理：</p>
+<ol>
+<li>发送主机发送一个本地的RARP广播，在此广播包中，声明自己的MAC地址并且请求任何收到此请求的RARP服务器分配一个IP地址； </li>
+<li>本地网段上的RARP服务器收到此请求后，检查其RARP列表，查找该MAC地址对应的IP地址； </li>
+<li>如果存在，RARP服务器就给源主机发送一个响应数据包并将此IP地址提供给对方主机使用； </li>
+<li>如果不存在，RARP服务器对此不做任何的响应； </li>
+<li>源主机收到从RARP服务器的响应信息，就利用得到的IP地址进行通讯；如果一直没有收到RARP服务器的响应信息，表示初始化失败。</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>计网</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据库ACID</title>
+    <url>/2022/05/15/%E6%95%B0%E6%8D%AE%E5%BA%93ACID/</url>
+    <content><![CDATA[<p>ACID，是指数据库管理系统（DBMS）在写入或更新资料的过程中，为保证事务（transaction）的正确可靠的，所必须具有的四个特性：原子性（atomicity）、一致性（consistency）、隔离性（isolation）、持久性（durability）。</p>
+<span id="more"></span>
+
+<p>原子性：一个事务中的所有操作，要么全部完成，要么全部不完成。如果发生错误就会Rollback，回到事务开始前的状态，就像这个事务从来没有执行过一样。</p>
+<p>一致性：在事务开始之前和事务结束之后，数据库的完整性没有被破坏。</p>
+<p>隔离性：数据库允许多个并发事务同时对数据进行读写和修改的能力，隔离性可以防止多个事务并发执行时由于交叉执行而导致数据的不一致。事务的隔离分为不同级别，包括读未提交（Read Uncommitted)、读提交（Read committed）、可重复读（Repeatable read）、和串行化（Serializable）。</p>
+<p>持久性：事务处理结束后，对数据的修改就是永久的，即便系统故障也不会丢失。</p>
+]]></content>
+      <tags>
+        <tag>数据库</tag>
+        <tag>大二</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>C++ explicit</title>
     <url>/2022/05/14/C++explicit/</url>
     <content><![CDATA[<p>C++中有隐式转换（implicit conversion）和显示转换（explicit conversion）。如果要避免隐式转换，就要用到关键字explicit。</p>
