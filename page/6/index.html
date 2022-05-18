@@ -191,6 +191,251 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/15/git%E6%9B%B4%E6%96%B0%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/p1.jpg">
+      <meta itemprop="name" content="戎菜菜">
+      <meta itemprop="description" content="hey">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小戎的学习历程">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/15/git%E6%9B%B4%E6%96%B0%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81/" class="post-title-link" itemprop="url">git 常见套路</a>
+        </h2>
+
+        <div class="post-meta">
+
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-04-15 16:06:10" itemprop="dateCreated datePublished" datetime="2022-04-15T16:06:10+08:00">2022-04-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-18 14:16:52" itemprop="dateModified" datetime="2022-04-18T14:16:52+08:00">2022-04-18</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="git更新本地代码"><a href="#git更新本地代码" class="headerlink" title="git更新本地代码"></a>git更新本地代码</h1><h2 id="1-本地代码未修改，只有master分支，直接更新"><a href="#1-本地代码未修改，只有master分支，直接更新" class="headerlink" title="1.本地代码未修改，只有master分支，直接更新"></a>1.本地代码未修改，只有master分支，直接更新</h2><p>git pull</p>
+<p>前提是本地的代码没更改过。比如，你提交了代码到github后，随后别人也提交代码到github，然后你需要更新别人提交的代码到你本地，就可以直接使用该命令。假如你提交代码后再修改过本地的代码，就会产生冲突，直接使用该命令会失败。</p>
+<h2 id="2-本地代码有修改，多分支。"><a href="#2-本地代码有修改，多分支。" class="headerlink" title="2.本地代码有修改，多分支。"></a>2.本地代码有修改，多分支。</h2><p>&#x2F;&#x2F;切换到master分支</p>
+<p>git checkout master</p>
+<p>&#x2F;&#x2F;更新master分支</p>
+<p>git pull</p>
+<p>&#x2F;&#x2F;切换到自己的分支isso</p>
+<p>git checkout isso</p>
+<p>&#x2F;&#x2F;把master分支合并到自己分支</p>
+<p>git merge master</p>
+<h2 id="3-本地代码有修改，只有master分支，直接覆盖本地代码。"><a href="#3-本地代码有修改，只有master分支，直接覆盖本地代码。" class="headerlink" title="3.本地代码有修改，只有master分支，直接覆盖本地代码。"></a>3.本地代码有修改，只有master分支，直接覆盖本地代码。</h2><p>&#x2F;&#x2F;重置索引和工作目录</p>
+<p>git reset –hard</p>
+<p>&#x2F;&#x2F;更新代码</p>
+<p>git pull</p>
+<h2 id="4-本地代码有修改，直接覆盖远程仓库代码"><a href="#4-本地代码有修改，直接覆盖远程仓库代码" class="headerlink" title="4.本地代码有修改，直接覆盖远程仓库代码"></a>4.本地代码有修改，直接覆盖远程仓库代码</h2><p>&#x2F;&#x2F;覆盖isso分支</p>
+<p>git push –force origin isso</p>
+<p>&#x2F;&#x2F;覆盖主分支</p>
+<p>git push –force origin master</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/14/C++unordered-set/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/p1.jpg">
+      <meta itemprop="name" content="戎菜菜">
+      <meta itemprop="description" content="hey">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小戎的学习历程">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/14/C++unordered-set/" class="post-title-link" itemprop="url">c++ unordered_set</a>
+        </h2>
+
+        <div class="post-meta">
+
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-04-14 16:30:22" itemprop="dateCreated datePublished" datetime="2022-04-14T16:30:22+08:00">2022-04-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-22 11:51:21" itemprop="dateModified" datetime="2022-04-22T11:51:21+08:00">2022-04-22</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="C-std-unordered-set用法与范例"><a href="#C-std-unordered-set用法与范例" class="headerlink" title="C++ std::unordered_set用法与范例"></a>C++ std::unordered_set用法与范例</h1><p>unordered_set是一种关联式容器，里面的元素是唯一的，并且是无排序容器，里面的值不可修改，但是可以插入或删除元素。</p>
+<p>unordered_set和set不同之处是：set是红黑树操作，红黑树具有排序功能。unordered_set是哈希表（hash table）操作的，插入和查询的时间复杂度很低，为常数级别，相对代价是消耗较多的空间，无自动排序功能。</p>
+<p>需要引入头文件：<code>#include&lt;unordered_set&gt;</code></p>
+<h2 id="unordered-set-初始化用法"><a href="#unordered-set-初始化用法" class="headerlink" title="unordered_set 初始化用法"></a>unordered_set 初始化用法</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">std::unordered_set&lt;<span class="type">int</span>&gt; myyunordered_set&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>从c-style阵列来初始化：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> arr[] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</span><br><span class="line">std::unordered_set&lt;<span class="type">int</span>&gt;<span class="built_in">myunordered_set</span>(arr,arr+<span class="number">5</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="unordered-set插入元素"><a href="#unordered-set插入元素" class="headerlink" title="unordered_set插入元素"></a>unordered_set插入元素</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">myunordered_set.<span class="built_in">insert</span>(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="遍历unordered-sort容器"><a href="#遍历unordered-sort容器" class="headerlink" title="遍历unordered_sort容器"></a>遍历unordered_sort容器</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">const</span> <span class="keyword">auto</span> &amp;s : myunordered_set)&#123;</span><br><span class="line">	std::cout&lt;&lt;s&lt;&lt;<span class="string">&quot; &quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>也可以使用迭代器的方法：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (std::unordered_set&lt;<span class="type">int</span>&gt;::iterator it = myunordered_set.<span class="built_in">begin</span>(); it != myunordered_set.<span class="built_in">end</span>(); it++) &#123;</span><br><span class="line">    std::cout &lt;&lt; *it &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="unordered-set删除指定元素"><a href="#unordered-set删除指定元素" class="headerlink" title="unordered_set删除指定元素"></a>unordered_set删除指定元素</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">myunordered_set.<span class="built_in">erase</span>(<span class="number">2</span>);</span><br></pre></td></tr></table></figure>
+
+<p>如果删除了不存在的元素，上述代码返回值为0；否则返回值为1。</p>
+<h2 id="清空unordered-set元素"><a href="#清空unordered-set元素" class="headerlink" title="清空unordered_set元素"></a>清空unordered_set元素</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">myunordered_set.<span class="built_in">clear</span>();</span><br></pre></td></tr></table></figure>
+
+<h2 id="判断unordered-set中元素是否存在"><a href="#判断unordered-set中元素是否存在" class="headerlink" title="判断unordered_set中元素是否存在"></a>判断unordered_set中元素是否存在</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">myunordered_set.<span class="built_in">count</span>(<span class="number">4</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="判断unordered-set是否为空"><a href="#判断unordered-set是否为空" class="headerlink" title="判断unordered_set是否为空"></a>判断unordered_set是否为空</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">myunordered_set.<span class="built_in">empty</span>();</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/14/C++Set/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/p1.jpg">
+      <meta itemprop="name" content="戎菜菜">
+      <meta itemprop="description" content="hey">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小戎的学习历程">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/14/C++Set/" class="post-title-link" itemprop="url">c++ Set</a>
+        </h2>
+
+        <div class="post-meta">
+
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-04-14 16:10:01" itemprop="dateCreated datePublished" datetime="2022-04-14T16:10:01+08:00">2022-04-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-22 11:50:44" itemprop="dateModified" datetime="2022-04-22T11:50:44+08:00">2022-04-22</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="C-std-set用法与范例"><a href="#C-std-set用法与范例" class="headerlink" title="C++ std::set用法与范例"></a>C++ std::set用法与范例</h1><p>set是一个关联式容器，里面的元素是唯一的，而且是有排序的容器。set容器里面的元素的值是不可修改的，但set容器可以插入或删除元素。set通常是用红黑树（red-black tree）操作的。</p>
+<p>要使用set容器，需要引入头文件<code>&lt;set&gt;</code></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/04/14/C++Set/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/14/%E8%AE%A1%E7%BD%91%E5%AE%9E%E9%AA%8C%EF%BC%88%E7%BD%91%E7%BB%9C%E7%89%88%EF%BC%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -926,20 +1171,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">57</span>
+          <span class="site-state-item-count">60</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

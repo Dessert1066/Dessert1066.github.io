@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="C++类（Class）类声明与类定义类声明（declare）1class Screen;  在声明之后，定义之前，只知道Screen是一个类名，但不知道包含那些成员。只能以有限方式使用它，不能定义该类型的对象，只能用于定义指向该类型的指针或引用，声明（不是定义）使用该类型作为形参类型或者返回类型的函数。 12void Test1(Screen&amp; a)&amp;#123;&amp;#125;;void Te">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++类的声明与定义">
+<meta property="og:url" content="http://example.com/2022/05/17/C++%E7%B1%BB%E7%9A%84%E5%A3%B0%E6%98%8E%E4%B8%8E%E5%AE%9A%E4%B9%89/index.html">
+<meta property="og:site_name" content="小戎的学习历程">
+<meta property="og:description" content="C++类（Class）类声明与类定义类声明（declare）1class Screen;  在声明之后，定义之前，只知道Screen是一个类名，但不知道包含那些成员。只能以有限方式使用它，不能定义该类型的对象，只能用于定义指向该类型的指针或引用，声明（不是定义）使用该类型作为形参类型或者返回类型的函数。 12void Test1(Screen&amp; a)&amp;#123;&amp;#125;;void Te">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-05-17T14:31:18.000Z">
+<meta property="article:modified_time" content="2022-05-18T01:53:17.742Z">
+<meta property="article:author" content="戎菜菜">
+<meta property="article:tag" content="C++">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2022/05/17/C++%E7%B1%BB%E7%9A%84%E5%A3%B0%E6%98%8E%E4%B8%8E%E5%AE%9A%E4%B9%89/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>C++类的声明与定义 | 小戎的学习历程</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">小戎的学习历程</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">梦想下酒</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/17/C++%E7%B1%BB%E7%9A%84%E5%A3%B0%E6%98%8E%E4%B8%8E%E5%AE%9A%E4%B9%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/p1.jpg">
+      <meta itemprop="name" content="戎菜菜">
+      <meta itemprop="description" content="hey">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小戎的学习历程">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          C++类的声明与定义
+        </h1>
+
+        <div class="post-meta">
+
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-05-17 22:31:18" itemprop="dateCreated datePublished" datetime="2022-05-17T22:31:18+08:00">2022-05-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-05-18 09:53:17" itemprop="dateModified" datetime="2022-05-18T09:53:17+08:00">2022-05-18</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="C-类（Class）"><a href="#C-类（Class）" class="headerlink" title="C++类（Class）"></a>C++类（Class）</h1><h2 id="类声明与类定义"><a href="#类声明与类定义" class="headerlink" title="类声明与类定义"></a>类声明与类定义</h2><h3 id="类声明（declare）"><a href="#类声明（declare）" class="headerlink" title="类声明（declare）"></a>类声明（declare）</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Screen</span>;</span><br></pre></td></tr></table></figure>
+
+<p>在声明之后，定义之前，只知道Screen是一个类名，但不知道包含那些成员。只能以有限方式使用它，不能定义该类型的对象，只能用于定义指向该类型的指针或引用，声明（不是定义）使用该类型作为形参类型或者返回类型的函数。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">Test1</span><span class="params">(Screen&amp; a)</span></span>&#123;&#125;;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Test1</span><span class="params">(Screen* a)</span></span>&#123;&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="类定义（define）"><a href="#类定义（define）" class="headerlink" title="类定义（define）"></a>类定义（define）</h3><p>在创建类的对象之前，必须完整定义该类，而不只是声明类。所以，类不能具有自身类型的数据成员，但可以包含指向本类的指针或引用。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">LinkScreen</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	Screen window;</span><br><span class="line">	LinkScreen* next;</span><br><span class="line">	LinkScreen* prev;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//注意，分号不能丢，因为在类定义之后可以接一个对象定义列表，可类比内置类型，定义必须以分号结束。</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">LinkScreen</span>&#123;<span class="comment">/**...*/</span>&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">LinkScreen</span>&#123;<span class="comment">/*...*/</span>&#125;scr1,scr2;</span><br></pre></td></tr></table></figure>
+
+<h2 id="复制构造函数"><a href="#复制构造函数" class="headerlink" title="复制构造函数"></a>复制构造函数</h2><p>复制构造函数是一种特殊构造函数，只有一个形参，该形参（常用const&amp;修饰）是对该类类型的引用。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">People</span>&#123;</span><br><span class="line"><span class="keyword">public</span>：</span><br><span class="line">	<span class="built_in">People</span>();<span class="comment">//默认构造函数</span></span><br><span class="line">	<span class="built_in">People</span>(<span class="type">const</span> People&amp;);<span class="comment">//复制构造函数</span></span><br><span class="line">	~<span class="built_in">People</span>();<span class="comment">//析构函数</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当定义一个新对象并用一个同类型的对象对它进行初始化时，将显式使用复制构造函数。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">People a1;</span><br><span class="line">People a2 = a1;</span><br></pre></td></tr></table></figure>
+
+<p>当将该类型的对象传递给函数或者函数返回该类型的对象时，将隐式使用复制构造函数。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">People <span class="title">Func</span><span class="params">(People b)</span></span>&#123;...&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="复制控制"><a href="#复制控制" class="headerlink" title="复制控制"></a>复制控制</h3><p>复制构造函数、赋值操作符和析构函数总称为复制控制。编译器自动实现这些操作，但类也可以定义自己的版本。</p>
+<h3 id="两种初始化形式"><a href="#两种初始化形式" class="headerlink" title="两种初始化形式"></a>两种初始化形式</h3><p>直接初始化和复制初始化。直接初始化将初始化放在圆括号中，复制初始化使用&#x3D;号。</p>
+<p>对于内置类型，例如int，double等，直接初始化和复制初始化没有区别。</p>
+<p>对于类类型：直接初始化直接调用与实参匹配的构造函数；复制初始化先使用指定构造函数创建一个临时对象，然后用复制构造函数将那个临时对象复制到正在创建的对象。直接初始化比复制初始化更快。</p>
+<h2 id="赋值操作符"><a href="#赋值操作符" class="headerlink" title="赋值操作符"></a>赋值操作符</h2><h3 id="重载赋值操作符"><a href="#重载赋值操作符" class="headerlink" title="重载赋值操作符"></a>重载赋值操作符</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Sales_item&amp; <span class="keyword">operator</span>=(<span class="type">const</span> Sales_item &amp;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="友元"><a href="#友元" class="headerlink" title="友元"></a>友元</h2><p>友元机制允许一个类将其非公有成员的访问权授予指定的函数或类。友元可以出现在类定义的内部的任何地方。友元不是授予友元关系的那个类的成员，所以它们不受声明出现部分的访问控制影响。</p>
+<h3 id="友元类"><a href="#友元类" class="headerlink" title="友元类"></a>友元类</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Husband</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="keyword">friend</span> <span class="keyword">class</span> <span class="title class_">Wife</span>;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="type">double</span> money;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Wife</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">Consume</span><span class="params">(Husband&amp; h)</span></span>&#123;</span><br><span class="line">	h.money -=  <span class="number">1000</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Husband h;</span><br><span class="line">Wife w;</span><br><span class="line">w.<span class="built_in">Consume</span>(h);</span><br></pre></td></tr></table></figure>
+
+<h3 id="友元函数"><a href="#友元函数" class="headerlink" title="友元函数"></a>友元函数</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Husband</span>;<span class="comment">//声明Husband</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Wife</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">Consume</span><span class="params">(Husband&amp; h)</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Husband</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">friend</span> <span class="type">void</span> <span class="title">Wife::Consume</span><span class="params">(Husband&amp; h)</span></span>;<span class="comment">//声明Consume函数</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="type">double</span> money;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Wife::Consume</span><span class="params">(Husband&amp; h)</span></span>&#123;</span><br><span class="line">h.money -= <span class="number">100</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意类和函数的声明和定义的顺序：</p>
+<p>(1)声明类Husband </p>
+<p>(2)定义类Wife，声明Consume函数</p>
+<p>(3)定义类Husband</p>
+<p>(4)定义Consume函数。</p>
+<h2 id="static成员"><a href="#static成员" class="headerlink" title="static成员"></a>static成员</h2><p>static数据成员是与类关联的对象，并不与该类的对象相关联。static成员遵循正常的共有&#x2F;私有访问规则。</p>
+<h3 id="使用static成员而不是全局对象的三个优点："><a href="#使用static成员而不是全局对象的三个优点：" class="headerlink" title="使用static成员而不是全局对象的三个优点："></a>使用static成员而不是全局对象的三个优点：</h3><ul>
+<li>static成员的名字是在类的作用域中，因此可以避免与其他类的成员或全局对象名字冲突。</li>
+<li>可以实施封装。static成员可以是私有成员，而全局对象不可以。</li>
+<li>通过阅读程序容易看出static 成员是与特定类关联的，这种可见性清晰地显示程序员地意图。</li>
+</ul>
+<h3 id="static成员函数"><a href="#static成员函数" class="headerlink" title="static成员函数"></a>static成员函数</h3><p>在类的内部声明函数时需要添加static关键字，但是在类外部定义函数时就不需要了。因为static成员是类的组成部分但不是任何对象的组成部分，所以有以下几个特点：</p>
+<ul>
+<li>static函数没有this指针</li>
+<li>static成员函数不能被声明为const（将成员函数声明为const就是承诺不会修改该函数所属的对象）</li>
+<li>static成员函数也不能被声明为虚函数</li>
+</ul>
+<h3 id="static数据成员"><a href="#static数据成员" class="headerlink" title="static数据成员"></a>static数据成员</h3><p>应该在定义时初始化。</p>
+<p>static成员变量的特点：</p>
+<ul>
+<li>属于类本身，不属于对象</li>
+<li>程序运行过程中只有一个副本</li>
+<li>不能在生成对象时初始化，即不能再构造函数中初始化</li>
+</ul>
+<h4 id="static变量初始化"><a href="#static变量初始化" class="headerlink" title="static变量初始化"></a>static变量初始化</h4><p>类体外进行，变量前不加static限定符；不加访问控制符；使用作用域运算符表明它所属类。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">A</span>&#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="type">static</span> <span class="type">int</span> iCount;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="built_in">A</span>()&#123;&#125;</span><br><span class="line">	<span class="function"><span class="type">int</span> <span class="title">GetCount</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> iCount;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> A::iCount = <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>1.static数据成员的类型可以是该成员所属的类的类型。非static成员只能是自身类对象的指针或引用。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Screen</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="comment">//...</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="type">static</span> Screen scr1;<span class="comment">//OK</span></span><br><span class="line">	Screen *scr2;<span class="comment">//OK</span></span><br><span class="line">	Screen scr3;<span class="comment">//Error</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2.非static数据成员不能用作默认实参，static数据成员可靠用作默认实参。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Screen</span> </span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">          <span class="function">Screen&amp; <span class="title">clear</span><span class="params">(<span class="type">char</span> = bkground)</span></span>;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">         <span class="type">static</span> <span class="type">const</span> <span class="type">char</span> bkground = <span class="string">&#x27;#&#x27;</span>;<span class="comment">//static const整形变量可以在类内部初始化。</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/C/" rel="tag"># C++</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/05/16/CSMA-CA%E4%B8%8ECSMA-CD/" rel="prev" title="CSMA/CA与CSMA/CD">
+      <i class="fa fa-chevron-left"></i> CSMA/CA与CSMA/CD
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/05/18/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1%EF%BC%88OO-Design%EF%BC%89%E5%87%A0%E5%A4%A7%E5%8E%9F%E5%88%99/" rel="next" title="面向对象设计（OO Design）几大原则">
+      面向对象设计（OO Design）几大原则 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#C-%E7%B1%BB%EF%BC%88Class%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">C++类（Class）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB%E5%A3%B0%E6%98%8E%E4%B8%8E%E7%B1%BB%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.</span> <span class="nav-text">类声明与类定义</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E5%A3%B0%E6%98%8E%EF%BC%88declare%EF%BC%89"><span class="nav-number">1.1.1.</span> <span class="nav-text">类声明（declare）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E5%AE%9A%E4%B9%89%EF%BC%88define%EF%BC%89"><span class="nav-number">1.1.2.</span> <span class="nav-text">类定义（define）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%8D%E5%88%B6%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="nav-number">1.2.</span> <span class="nav-text">复制构造函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%8D%E5%88%B6%E6%8E%A7%E5%88%B6"><span class="nav-number">1.2.1.</span> <span class="nav-text">复制控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%A4%E7%A7%8D%E5%88%9D%E5%A7%8B%E5%8C%96%E5%BD%A2%E5%BC%8F"><span class="nav-number">1.2.2.</span> <span class="nav-text">两种初始化形式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B5%8B%E5%80%BC%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-number">1.3.</span> <span class="nav-text">赋值操作符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%87%8D%E8%BD%BD%E8%B5%8B%E5%80%BC%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-number">1.3.1.</span> <span class="nav-text">重载赋值操作符</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%8B%E5%85%83"><span class="nav-number">1.4.</span> <span class="nav-text">友元</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8B%E5%85%83%E7%B1%BB"><span class="nav-number">1.4.1.</span> <span class="nav-text">友元类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8B%E5%85%83%E5%87%BD%E6%95%B0"><span class="nav-number">1.4.2.</span> <span class="nav-text">友元函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#static%E6%88%90%E5%91%98"><span class="nav-number">1.5.</span> <span class="nav-text">static成员</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8static%E6%88%90%E5%91%98%E8%80%8C%E4%B8%8D%E6%98%AF%E5%85%A8%E5%B1%80%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%B8%89%E4%B8%AA%E4%BC%98%E7%82%B9%EF%BC%9A"><span class="nav-number">1.5.1.</span> <span class="nav-text">使用static成员而不是全局对象的三个优点：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#static%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0"><span class="nav-number">1.5.2.</span> <span class="nav-text">static成员函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#static%E6%95%B0%E6%8D%AE%E6%88%90%E5%91%98"><span class="nav-number">1.5.3.</span> <span class="nav-text">static数据成员</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#static%E5%8F%98%E9%87%8F%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">1.5.3.1.</span> <span class="nav-text">static变量初始化</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">1.5.4.</span> <span class="nav-text">其他</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="戎菜菜"
+      src="/images/p1.jpg">
+  <p class="site-author-name" itemprop="name">戎菜菜</p>
+  <div class="site-description" itemprop="description">hey</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">60</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">戎菜菜</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/clicklove.js"></script>
+
+</html>
