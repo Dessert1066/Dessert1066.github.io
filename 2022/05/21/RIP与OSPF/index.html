@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="计算机网络课程总结–RIP与OSPFhttps:&#x2F;&#x2F;wulc.me&#x2F;2016&#x2F;12&#x2F;27&#x2F;%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%AF%BE%E7%A8%8B%E6%80%BB%E7%BB%93--RIP%E4%B8%8EOSPF&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RIP与OSPF">
+<meta property="og:url" content="http://example.com/2022/05/21/RIP%E4%B8%8EOSPF/index.html">
+<meta property="og:site_name" content="小戎的学习历程">
+<meta property="og:description" content="计算机网络课程总结–RIP与OSPFhttps:&#x2F;&#x2F;wulc.me&#x2F;2016&#x2F;12&#x2F;27&#x2F;%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%AF%BE%E7%A8%8B%E6%80%BB%E7%BB%93--RIP%E4%B8%8EOSPF&#x2F;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdn.net/2018062420065145?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L04xbmVEaW5n/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://img-blog.csdn.net/20180624204400836?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L04xbmVEaW5n/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="article:published_time" content="2022-05-21T06:50:02.000Z">
+<meta property="article:modified_time" content="2022-05-21T09:12:27.175Z">
+<meta property="article:author" content="戎菜菜">
+<meta property="article:tag" content="计网">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdn.net/2018062420065145?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L04xbmVEaW5n/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+
+<link rel="canonical" href="http://example.com/2022/05/21/RIP%E4%B8%8EOSPF/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>RIP与OSPF | 小戎的学习历程</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">小戎的学习历程</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">梦想下酒</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/21/RIP%E4%B8%8EOSPF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/p1.jpg">
+      <meta itemprop="name" content="戎菜菜">
+      <meta itemprop="description" content="hey">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小戎的学习历程">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          RIP与OSPF
+        </h1>
+
+        <div class="post-meta">
+
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-05-21 14:50:02 / 修改时间：17:12:27" itemprop="dateCreated datePublished" datetime="2022-05-21T14:50:02+08:00">2022-05-21</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>计算机网络课程总结–RIP与OSPF<a target="_blank" rel="noopener" href="https://wulc.me/2016/12/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%AF%BE%E7%A8%8B%E6%80%BB%E7%BB%93--RIP%E4%B8%8EOSPF/">https://wulc.me/2016/12/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%AF%BE%E7%A8%8B%E6%80%BB%E7%BB%93--RIP%E4%B8%8EOSPF/</a></p>
+<span id="more"></span>
+
+<h1 id="RIP"><a href="#RIP" class="headerlink" title="RIP"></a>RIP</h1><h2 id="RIP协议"><a href="#RIP协议" class="headerlink" title="RIP协议"></a>RIP协议</h2><p>路由信息协议（Routing Information Protocol，RIP）是一种采用距离向量算法的路由协议。</p>
+<p>到目的网络的距离以跳为但是，最大距离为15，距离16表示无穷大，即目的网络不可达。正式这一规定限制了RIP的适用范围，是RIP局限于小型的局域网络中。</p>
+<p>初始时每个RIP路由器只有到直连网的路由，他们的距离为1。每30sRIP路由器把它的整个路由表发送给邻居，具体实现时每个邻居会错开发送，30s的时间也会随机变化一点。当收到邻居发来的路由表（update packet），路由器将更新它的路由表&lt;目的网络，开销，下一跳&gt;：</p>
+<p>（1）收到的路由的距离全部加1</p>
+<p>（2）利用上述路由修改路由表：</p>
+<ul>
+<li>把路由表中不存在的路由加入路由表。</li>
+<li>如果比路由表中的路由距离更小，则更新该路由的距离为新距离，并把下一跳改为邻居。</li>
+<li>如果路由存在，就要重置失效定时器。</li>
+</ul>
+<p>RIP路由表中每一项都有TTL（Time-To-Live），用失效定时器（invalid timer）计时，超时则让该路由失效。</p>
+<h2 id="RIP协议的问题"><a href="#RIP协议的问题" class="headerlink" title="RIP协议的问题"></a>RIP协议的问题</h2><p>慢收敛问题（slow convergence）：</p>
+<p><img src="https://img-blog.csdn.net/2018062420065145?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L04xbmVEaW5n/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70"></p>
+<p>慢收敛是RIP相对于OSPF而言的，就是RIP依靠定时器进行30s一次的周期更新路由器的路由表，但当网络拓扑结构发生变化时，它收敛于新拓扑的速度慢，就有可能导致环路的产生，使错误数据重复发送。</p>
+<h2 id="RIP协议的技术"><a href="#RIP协议的技术" class="headerlink" title="RIP协议的技术"></a>RIP协议的技术</h2><p>1.水平分割技术（split horizon）：从一个接口学来的路由不会从该接口发回去。</p>
+<p>2.毒性反转技术（poison reverse）：当一条路由变为无效之后，路由器并不立即将它从路由表中删除，而是将其距离改为16之后广播给邻居，使邻居所拥有的该路由器立即失效，而不是等待TTL到期后删除，以迅速消除路由环路，这种方法称为毒性反转，距离为16的路由称为毒化路由（poisoned route）。</p>
+<p>3.抑制技术（hold down）：距离被改为无穷大的路由在一段时间（180s）内其距离不允许被修改。</p>
+<p>4.触发更新（trigger update）：一旦出现路有变化将立即把增加或更新的路由发送给邻居。原有的30s发一次完整的路由表依然不变。</p>
+<h2 id="RIP计时器"><a href="#RIP计时器" class="headerlink" title="RIP计时器"></a>RIP计时器</h2><ol>
+<li><p>更新定时器（update timer）控制一个路由器如何定期把路由表发送给邻居。默认时间为30s。</p>
+</li>
+<li><p>一个路由的失效定时器（Invalid timer）到期时它将被标记为无效路由（距离改为16）。每次更新该路由时其失效定时器都会被复位。默认值为180s。</p>
+</li>
+<li><p>一个路由的清除定时器（flush timer）到期时将从路由表中删除。默认值为240s。</p>
+</li>
+<li><p>抑制定时器（hold-down timer）是在路由的距离变为无穷大（包括收到毒化路由）时启动并在其到期之前不允许修改该路由的距离。默认值为180s。</p>
+</li>
+</ol>
+<p>RIP协议对清除过时路径的处理是采用了两个定时器：超时(路由无效)计时器和垃圾收集(路由刷新)计时器。</p>
+<p>路由器对表中的每个项目都设置两个计时器，每增加一个新路由条目，就相应的增加两个计时器。当新的路由条目被装入到路由表中时，超时计时器被初始化为<em>0</em>，并开始计数。每当收到包含该路由条目的RIP消息，该条目的超时计时器就被重新设置为0。</p>
+<p>如果在180秒内没有接收到包含该路由条目的RIP消息，该路由的度量就被设置为16，而启动该路由的垃圾收集计时器。如果在接下来的60秒，仍没有收到该路由的RIP消息，该路由就从路由表中删除。如果在垃圾收集计时器到240秒之前，收到了包含路由的消息，路由条目被装入到路由表中，计时器被清0并重新启动超时计时器。</p>
+<p><img src="https://img-blog.csdn.net/20180624204400836?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L04xbmVEaW5n/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70"></p>
+<h2 id="RIP协议的特点："><a href="#RIP协议的特点：" class="headerlink" title="RIP协议的特点："></a>RIP协议的特点：</h2><ul>
+<li>RIP协议简单、容易实现</li>
+<li>网络的直径不能超过16跳</li>
+<li>不允许把一个大网络分成多个区</li>
+<li>开销缺乏灵活性</li>
+<li>存在慢收敛问题和计数到无穷问题</li>
+<li>每30s发送完整路由表会消耗大量的带宽</li>
+<li>实际运行的RIP协议具有以下特征：<ol>
+<li>可以保存多达六个等距离的路由在路由表中，默认为4个</li>
+<li>直连网的开销为0</li>
+<li>发送的路由表会把所有距离加1</li>
+</ol>
+</li>
+</ul>
+<h1 id="OSPF"><a href="#OSPF" class="headerlink" title="OSPF"></a>OSPF</h1><p>OSPF协议（Open Shortest Path First），采用链路状态路由算法（利用最短路径算法，以自己为根，求出源节点到所有其他节点的最短路径），它可能使在大型企业中使用最广泛的内部网关协议（IGP）。</p>
+<h2 id="OSPF区域"><a href="#OSPF区域" class="headerlink" title="OSPF区域"></a>OSPF区域</h2><p>为了适应大型的网络，OSPF在AS内划分多个区域，每个OSPF路由器只维护所在区域的完整链路状态信息，然后将一个区域的LSA简化和汇总后由边界路由（ABR）转发给另一个区域。</p>
+<h2 id="路由器（DR和BDR）"><a href="#路由器（DR和BDR）" class="headerlink" title="路由器（DR和BDR）"></a>路由器（DR和BDR）</h2><ul>
+<li><p>Router ID：OSPF区域内唯一标识路由器的IP地址</p>
+</li>
+<li><p>Router ID选取规则：</p>
+<p>（自动选取）选取路由器loopback接口上数值最高的ip地址。如果没有loopback接口，在物理端口中选取ip地址最高的。</p>
+<p>（手动选取）使用router-id命令指定Router ID</p>
+</li>
+<li><p>DR和BDR</p>
+<p>当多台OSPF路由器连到同一个多路访问网段时，如果每两台路由器之间都相互交换LSA，那么该网段将充满着众多LSA条目，为了能够尽量减少LSA的传播数量，这时候需要一个路由器和所有的路由器互换LSA，减少LSA的数量，那么这个路由器被称为DR；在选DR的时候，也会选出一个作为备份，称为BDR；最后其他路由器（DRothers）只和DR和BDR形成邻接关系。</p>
+</li>
+<li><p>DR和BDR的选举方法<br><strong>自动选举DR和BDR</strong><br>网段上Router ID最大的路由器将被选举为DR，第二大的将被选举为BDR<br><strong>手工选择DR和BDR</strong><br>优先级范围是0～255，数值越大，优先级越高，默认为1<br>如果优先级相同，则需要比较Router lD<br>如果路由器的优先级被设置为0，它将不参与DR和DBR的选举<br>现实中，很少能有路由器同时开机，所以先上线的是DR，第二上线的是BDR。<br><strong>注：当DR和BDR存在时，除非他俩down了，不然没法强制更换。</strong></p>
+</li>
+<li><p>在OSPF中使用224.0.0.5和224.0.0.6作为组播地址，选举时，大家都是用组播地址224.0.0.5发送Hello包（这个时候路由器都认为自己是DR），当DR和BDR选出来后，DR和BDR使用224.0.0.5发送，其他路由器使用224.0.0.6发送。</p>
+</li>
+</ul>
+<h2 id="OSPF的度量值：COST"><a href="#OSPF的度量值：COST" class="headerlink" title="OSPF的度量值：COST"></a>OSPF的度量值：COST</h2><p>规则：数值越小越优先。</p>
+<h2 id="OSPF数据包"><a href="#OSPF数据包" class="headerlink" title="OSPF数据包"></a>OSPF数据包</h2><p>OSPF数据包承载在lP数据包内，使用协议号89</p>
+<table>
+<thead>
+<tr>
+<th>OSPF的包类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Hello包</td>
+<td>用于发现和维持邻居关系，选举DR和BDR</td>
+</tr>
+<tr>
+<td>数据库描述包(DBD)</td>
+<td>用于向邻居发送摘要信息以同步链路状态数据库</td>
+</tr>
+<tr>
+<td>链路状态请求包(LSR)</td>
+<td>在路由器收到包含新信息的DBD后发送，用于请求更详细的信息</td>
+</tr>
+<tr>
+<td>链路状态更新包(LSU)</td>
+<td>收到LSR后发送链路状态通告(LSA)，一个LSU数据包可能包含几个LSA</td>
+</tr>
+<tr>
+<td>链路状态确认包(LSAck)</td>
+<td>确认已经收到DBD&#x2F; LSU，每个LSA需要被分别确认</td>
+</tr>
+</tbody></table>
+<h2 id="OSPF的7个状态"><a href="#OSPF的7个状态" class="headerlink" title="OSPF的7个状态"></a>OSPF的7个状态</h2><table>
+<thead>
+<tr>
+<th>状态</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Down状态</td>
+<td>初始化，没有来自邻居的Hello包</td>
+</tr>
+<tr>
+<td>Init状态</td>
+<td>收到第一个Hello包，但没发出去，建立了自己的邻居表</td>
+</tr>
+<tr>
+<td>2-Way状态</td>
+<td>双向建立会话，邻居表都建立完成</td>
+</tr>
+<tr>
+<td>Exstart状态</td>
+<td>建立主从关系</td>
+</tr>
+<tr>
+<td>Exchange状态</td>
+<td>交换摘要信息，到确认信息收到</td>
+</tr>
+<tr>
+<td>Loading状态</td>
+<td>加载详细信息</td>
+</tr>
+<tr>
+<td>Full状态</td>
+<td>完全连接，计算最短路径，并载入路由表</td>
+</tr>
+</tbody></table>
+<h2 id="OSPF的4个网络类型"><a href="#OSPF的4个网络类型" class="headerlink" title="OSPF的4个网络类型"></a>OSPF的4个网络类型</h2><table>
+<thead>
+<tr>
+<th>网络类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>点到点网络(Point-to-Point)</td>
+<td>自动发现邻居，不需DR&#x2F;BDR、组播224.0.0.5</td>
+</tr>
+<tr>
+<td>广播多路访问网络(Broadcast MultiAccess，BMA)</td>
+<td>自动发现邻居、选DR&#x2F;BDR、组播224.0.0.5、224.0.0.6</td>
+</tr>
+<tr>
+<td>非广播多路访问网络(None Broadcast MultiAccess，NBMA)</td>
+<td>手工指定邻居、选DR&#x2F;BDR、单播（AMT使用）</td>
+</tr>
+<tr>
+<td>点到多点网络(Point-to-Multipoint)</td>
+<td>自动发现邻居，不需DR&#x2F;BDR、组播224.0.0.5</td>
+</tr>
+</tbody></table>
+<h2 id="OSPF的特点"><a href="#OSPF的特点" class="headerlink" title="OSPF的特点"></a>OSPF的特点</h2><ul>
+<li>可适应大规模网络</li>
+<li>路由变化收敛速度快</li>
+<li>无路由环</li>
+<li>支持变长子网掩码VLSM</li>
+<li>支持区域划分</li>
+<li>支持以组播地址发送协议报<h2 id="OSPF与RIP的比较"><a href="#OSPF与RIP的比较" class="headerlink" title="OSPF与RIP的比较"></a>OSPF与RIP的比较</h2><table>
+<thead>
+<tr>
+<th>OSPF</th>
+<th>RIP V1</th>
+<th>RIP V2</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>链路状态路由协议</td>
+<td>距离矢量路由协议</td>
+<td>距离矢量路由协议</td>
+</tr>
+<tr>
+<td>没有跳数的限制</td>
+<td>RIP的15跳限制，超过15跳的路由被认为不可达</td>
+<td>RIP的15跳限制，超过15跳的路由被认为不可达</td>
+</tr>
+<tr>
+<td>支持可变长子网掩码(VLSM)</td>
+<td>不支持可变长子网掩码(VLSM)</td>
+<td>支持可变长子网掩码(VLSM)</td>
+</tr>
+<tr>
+<td>收敛速度快</td>
+<td>收敛速度慢</td>
+<td>收敛速度慢</td>
+</tr>
+<tr>
+<td>使用组播发送链路状态更新</td>
+<td>周期性广播更新整个路由表</td>
+<td>周期性组播更新整个路由表</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%A1%E7%BD%91/" rel="tag"># 计网</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/05/21/%E7%9B%B4%E9%80%9A%E7%BA%BF%E5%92%8C%E4%BA%A4%E5%8F%89%E7%BA%BF/" rel="prev" title="直通线和交叉线">
+      <i class="fa fa-chevron-left"></i> 直通线和交叉线
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/05/22/STP%E5%8D%8F%E8%AE%AE/" rel="next" title="STP协议">
+      STP协议 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#RIP"><span class="nav-number">1.</span> <span class="nav-text">RIP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#RIP%E5%8D%8F%E8%AE%AE"><span class="nav-number">1.1.</span> <span class="nav-text">RIP协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RIP%E5%8D%8F%E8%AE%AE%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">1.2.</span> <span class="nav-text">RIP协议的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RIP%E5%8D%8F%E8%AE%AE%E7%9A%84%E6%8A%80%E6%9C%AF"><span class="nav-number">1.3.</span> <span class="nav-text">RIP协议的技术</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RIP%E8%AE%A1%E6%97%B6%E5%99%A8"><span class="nav-number">1.4.</span> <span class="nav-text">RIP计时器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RIP%E5%8D%8F%E8%AE%AE%E7%9A%84%E7%89%B9%E7%82%B9%EF%BC%9A"><span class="nav-number">1.5.</span> <span class="nav-text">RIP协议的特点：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#OSPF"><span class="nav-number">2.</span> <span class="nav-text">OSPF</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#OSPF%E5%8C%BA%E5%9F%9F"><span class="nav-number">2.1.</span> <span class="nav-text">OSPF区域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B7%AF%E7%94%B1%E5%99%A8%EF%BC%88DR%E5%92%8CBDR%EF%BC%89"><span class="nav-number">2.2.</span> <span class="nav-text">路由器（DR和BDR）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OSPF%E7%9A%84%E5%BA%A6%E9%87%8F%E5%80%BC%EF%BC%9ACOST"><span class="nav-number">2.3.</span> <span class="nav-text">OSPF的度量值：COST</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OSPF%E6%95%B0%E6%8D%AE%E5%8C%85"><span class="nav-number">2.4.</span> <span class="nav-text">OSPF数据包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OSPF%E7%9A%847%E4%B8%AA%E7%8A%B6%E6%80%81"><span class="nav-number">2.5.</span> <span class="nav-text">OSPF的7个状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OSPF%E7%9A%844%E4%B8%AA%E7%BD%91%E7%BB%9C%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.6.</span> <span class="nav-text">OSPF的4个网络类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OSPF%E7%9A%84%E7%89%B9%E7%82%B9"><span class="nav-number">2.7.</span> <span class="nav-text">OSPF的特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OSPF%E4%B8%8ERIP%E7%9A%84%E6%AF%94%E8%BE%83"><span class="nav-number">2.8.</span> <span class="nav-text">OSPF与RIP的比较</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="戎菜菜"
+      src="/images/p1.jpg">
+  <p class="site-author-name" itemprop="name">戎菜菜</p>
+  <div class="site-description" itemprop="description">hey</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">64</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">戎菜菜</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/clicklove.js"></script>
+
+</html>
