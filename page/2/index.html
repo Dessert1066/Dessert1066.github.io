@@ -191,6 +191,425 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/18/C++%20Tricks/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/p1.jpg">
+      <meta itemprop="name" content="戎菜菜">
+      <meta itemprop="description" content="hey">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小戎的学习历程">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/05/18/C++%20Tricks/" class="post-title-link" itemprop="url">C++ Tricks</a>
+        </h2>
+
+        <div class="post-meta">
+
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-05-18 13:56:44 / 修改时间：15:54:15" itemprop="dateCreated datePublished" datetime="2022-05-18T13:56:44+08:00">2022-05-18</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="1-用-赋值。"><a href="#1-用-赋值。" class="headerlink" title="1.用{}赋值。"></a>1.用{}赋值。</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">pair&lt;<span class="type">int</span>,<span class="type">int</span>&gt; p;</span><br><span class="line">vector&lt;<span class="type">int</span>&gt; v;</span><br><span class="line">p = <span class="built_in">make_pair</span>(<span class="number">3</span>,<span class="number">4</span>);</span><br><span class="line">p = &#123;<span class="number">3</span>,<span class="number">4</span>&#125;;</span><br><span class="line">v = &#123;<span class="number">4</span>,<span class="number">5</span>&#125;;</span><br><span class="line"></span><br><span class="line">deque&lt;vector&lt;pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt;&gt;&gt; d;</span><br><span class="line">d = &#123;&#123;&#123;<span class="number">3</span>, <span class="number">4</span>&#125;, &#123;<span class="number">5</span>, <span class="number">6</span>&#125;&#125;, &#123;&#123;<span class="number">1</span>, <span class="number">2</span>&#125;, &#123;<span class="number">3</span>, <span class="number">4</span>&#125;&#125;&#125;;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">auto</span> i: d) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> j: i)</span><br><span class="line">        cout &lt;&lt; j.first &lt;&lt; <span class="string">&#x27; &#x27;</span> &lt;&lt; j.second &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;-\n&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">set&lt;<span class="type">int</span>&gt; s;</span><br><span class="line">s = &#123;<span class="number">4</span>,<span class="number">6</span>,<span class="number">2</span>,<span class="number">7</span>,<span class="number">4</span>&#125;; <span class="comment">//2 4 6 7</span></span><br><span class="line"></span><br><span class="line">list&lt;<span class="type">int</span>&gt; l;</span><br><span class="line">l = &#123;<span class="number">5</span>,<span class="number">6</span>,<span class="number">9</span>,<span class="number">1</span>&#125;;<span class="comment">//5 6 9 1</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-可以使用define定义宏指令（macros）"><a href="#2-可以使用define定义宏指令（macros）" class="headerlink" title="2.可以使用define定义宏指令（macros）"></a>2.可以使用define定义宏指令（macros）</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> what_is(x) cerr &lt;&lt; #x &lt;&lt; <span class="string">&quot; is &quot;</span> &lt;&lt; x &lt;&lt; endl;</span></span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line"><span class="type">int</span> a_variable = <span class="number">376</span>;</span><br><span class="line"><span class="built_in">what_is</span>(a_variable);</span><br><span class="line"><span class="comment">// prints &quot;a_variable is 376&quot;</span></span><br><span class="line"><span class="built_in">what_is</span>(a_variable * <span class="number">2</span> + <span class="number">1</span>)</span><br><span class="line"><span class="comment">// prints &quot;a_variable * 2 + 1 is 753&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="3-简化includes"><a href="#3-简化includes" class="headerlink" title="3.简化includes"></a>3.简化includes</h2><p>仅仅使用<code>#include &lt;bits/stdc++.h&gt;</code>，这个库包括了<code>algorithm</code>，<code>iostream</code>，<code>vector</code>等等，一般来说不用再调用其他库了。</p>
+<h2 id="4-Hidden-function"><a href="#4-Hidden-function" class="headerlink" title="4.Hidden function"></a>4.Hidden function</h2><p>略</p>
+<h2 id="5-变长参数"><a href="#5-变长参数" class="headerlink" title="5.变长参数"></a>5.变长参数</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">sum</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> <span class="number">0</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">typename</span>... Args&gt;</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">sum</span><span class="params">(<span class="type">int</span> a, Args... args)</span> </span>&#123; <span class="keyword">return</span> a + <span class="built_in">sum</span>(args...); &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123; cout &lt;&lt; <span class="built_in">sum</span>(<span class="number">5</span>, <span class="number">7</span>, <span class="number">2</span>, <span class="number">2</span>) + <span class="built_in">sum</span>(<span class="number">3</span>, <span class="number">4</span>); <span class="comment">/* prints &quot;23&quot; */</span> &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="C-11新特性"><a href="#C-11新特性" class="headerlink" title="C++11新特性"></a>C++11新特性</h2><ul>
+<li><p>auto关键字（也可以用auto&amp;）</p>
+</li>
+<li><p>tie和emplace_back</p>
+</li>
+<li><p>move</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="type">int</span>&gt; v = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;;</span><br><span class="line">vector&lt;<span class="type">int</span>&gt; w = <span class="built_in">move</span>(v);</span><br><span class="line"></span><br><span class="line">cout &lt;&lt; <span class="string">&quot;v: &quot;</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">auto</span> i: v)</span><br><span class="line">    cout &lt;&lt; i &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line"></span><br><span class="line">cout &lt;&lt; <span class="string">&quot;\nw: &quot;</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">auto</span> i: w)</span><br><span class="line">    cout &lt;&lt; i &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line"><span class="comment">//Output:</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//v: </span></span><br><span class="line"><span class="comment">//w: 1 2 3 4 </span></span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/18/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1%EF%BC%88OO-Design%EF%BC%89%E5%87%A0%E5%A4%A7%E5%8E%9F%E5%88%99/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/p1.jpg">
+      <meta itemprop="name" content="戎菜菜">
+      <meta itemprop="description" content="hey">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小戎的学习历程">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/05/18/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1%EF%BC%88OO-Design%EF%BC%89%E5%87%A0%E5%A4%A7%E5%8E%9F%E5%88%99/" class="post-title-link" itemprop="url">面向对象设计（OO Design）几大原则</a>
+        </h2>
+
+        <div class="post-meta">
+
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-05-18 10:27:11 / 修改时间：11:11:10" itemprop="dateCreated datePublished" datetime="2022-05-18T10:27:11+08:00">2022-05-18</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" itemprop="url" rel="index"><span itemprop="name">设计模式</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>本文分享面向对象设计的六个设计原则：</p>
+<table>
+<thead>
+<tr>
+<th>缩写</th>
+<th>英文名称</th>
+<th>中文名称</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SRP</td>
+<td>Single Responsibility Principle</td>
+<td>单一职责原则</td>
+</tr>
+<tr>
+<td>OCP</td>
+<td>Open Close Principle</td>
+<td>开闭原则</td>
+</tr>
+<tr>
+<td>LSP</td>
+<td>Liskov Substitution Principle</td>
+<td>里氏替换原则</td>
+</tr>
+<tr>
+<td>LoD</td>
+<td>Law of Demeter （ Least Knowledge Principle）</td>
+<td>迪米特法则（最少知道原则）</td>
+</tr>
+<tr>
+<td>ISP</td>
+<td>Interface Segregation Principle</td>
+<td>接口分离原则</td>
+</tr>
+<tr>
+<td>DIP</td>
+<td>Dependency Inversion Principle</td>
+<td>依赖倒置原则</td>
+</tr>
+</tbody></table>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903673672237063">https://juejin.cn/post/6844903673672237063</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/17/C++%E7%B1%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/p1.jpg">
+      <meta itemprop="name" content="戎菜菜">
+      <meta itemprop="description" content="hey">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小戎的学习历程">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/05/17/C++%E7%B1%BB/" class="post-title-link" itemprop="url">C++类</a>
+        </h2>
+
+        <div class="post-meta">
+
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-05-17 22:31:18" itemprop="dateCreated datePublished" datetime="2022-05-17T22:31:18+08:00">2022-05-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-05-19 16:13:53" itemprop="dateModified" datetime="2022-05-19T16:13:53+08:00">2022-05-19</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="C-类（Class）"><a href="#C-类（Class）" class="headerlink" title="C++类（Class）"></a>C++类（Class）</h1><h2 id="类声明与类定义"><a href="#类声明与类定义" class="headerlink" title="类声明与类定义"></a>类声明与类定义</h2><h3 id="类声明（declare）"><a href="#类声明（declare）" class="headerlink" title="类声明（declare）"></a>类声明（declare）</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Screen</span>;</span><br></pre></td></tr></table></figure>
+
+<p>在声明之后，定义之前，只知道Screen是一个类名，但不知道包含那些成员。只能以有限方式使用它，不能定义该类型的对象，只能用于定义指向该类型的指针或引用，声明（不是定义）使用该类型作为形参类型或者返回类型的函数。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">Test1</span><span class="params">(Screen&amp; a)</span></span>&#123;&#125;;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Test1</span><span class="params">(Screen* a)</span></span>&#123;&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="类定义（define）"><a href="#类定义（define）" class="headerlink" title="类定义（define）"></a>类定义（define）</h3><p>在创建类的对象之前，必须完整定义该类，而不只是声明类。所以，类不能具有自身类型的数据成员，但可以包含指向本类的指针或引用。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">LinkScreen</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	Screen window;</span><br><span class="line">	LinkScreen* next;</span><br><span class="line">	LinkScreen* prev;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//注意，分号不能丢，因为在类定义之后可以接一个对象定义列表，可类比内置类型，定义必须以分号结束。</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">LinkScreen</span>&#123;<span class="comment">/**...*/</span>&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">LinkScreen</span>&#123;<span class="comment">/*...*/</span>&#125;scr1,scr2;</span><br></pre></td></tr></table></figure>
+
+<h2 id="复制构造函数"><a href="#复制构造函数" class="headerlink" title="复制构造函数"></a>复制构造函数</h2><p>复制构造函数是一种特殊构造函数，只有一个形参，该形参（常用const&amp;修饰）是对该类类型的引用。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">People</span>&#123;</span><br><span class="line"><span class="keyword">public</span>：</span><br><span class="line">	<span class="built_in">People</span>();<span class="comment">//默认构造函数</span></span><br><span class="line">	<span class="built_in">People</span>(<span class="type">const</span> People&amp;);<span class="comment">//复制构造函数</span></span><br><span class="line">	~<span class="built_in">People</span>();<span class="comment">//析构函数</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当定义一个新对象并用一个同类型的对象对它进行初始化时，将显式使用复制构造函数。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">People a1;</span><br><span class="line">People a2 = a1;</span><br></pre></td></tr></table></figure>
+
+<p>当将该类型的对象传递给函数或者函数返回该类型的对象时，将隐式使用复制构造函数。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">People <span class="title">Func</span><span class="params">(People b)</span></span>&#123;...&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="复制控制"><a href="#复制控制" class="headerlink" title="复制控制"></a>复制控制</h3><p>复制构造函数、赋值操作符和析构函数总称为复制控制。编译器自动实现这些操作，但类也可以定义自己的版本。</p>
+<h3 id="两种初始化形式"><a href="#两种初始化形式" class="headerlink" title="两种初始化形式"></a>两种初始化形式</h3><p>直接初始化和复制初始化。直接初始化将初始化放在圆括号中，复制初始化使用&#x3D;号。</p>
+<p>对于内置类型，例如int，double等，直接初始化和复制初始化没有区别。</p>
+<p>对于类类型：直接初始化直接调用与实参匹配的构造函数；复制初始化先使用指定构造函数创建一个临时对象，然后用复制构造函数将那个临时对象复制到正在创建的对象。直接初始化比复制初始化更快。</p>
+<h2 id="赋值操作符"><a href="#赋值操作符" class="headerlink" title="赋值操作符"></a>赋值操作符</h2><h3 id="重载赋值操作符"><a href="#重载赋值操作符" class="headerlink" title="重载赋值操作符"></a>重载赋值操作符</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Sales_item&amp; <span class="keyword">operator</span>=(<span class="type">const</span> Sales_item &amp;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="友元"><a href="#友元" class="headerlink" title="友元"></a>友元</h2><p>友元机制允许一个类将其非公有成员的访问权授予指定的函数或类。友元可以出现在类定义的内部的任何地方。友元不是授予友元关系的那个类的成员，所以它们不受声明出现部分的访问控制影响。</p>
+<h3 id="友元类"><a href="#友元类" class="headerlink" title="友元类"></a>友元类</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Husband</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="keyword">friend</span> <span class="keyword">class</span> <span class="title class_">Wife</span>;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="type">double</span> money;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Wife</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">Consume</span><span class="params">(Husband&amp; h)</span></span>&#123;</span><br><span class="line">	h.money -=  <span class="number">1000</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Husband h;</span><br><span class="line">Wife w;</span><br><span class="line">w.<span class="built_in">Consume</span>(h);</span><br></pre></td></tr></table></figure>
+
+<h3 id="友元函数"><a href="#友元函数" class="headerlink" title="友元函数"></a>友元函数</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Husband</span>;<span class="comment">//声明Husband</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Wife</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">Consume</span><span class="params">(Husband&amp; h)</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Husband</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">friend</span> <span class="type">void</span> <span class="title">Wife::Consume</span><span class="params">(Husband&amp; h)</span></span>;<span class="comment">//声明Consume函数</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="type">double</span> money;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Wife::Consume</span><span class="params">(Husband&amp; h)</span></span>&#123;</span><br><span class="line">h.money -= <span class="number">100</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意类和函数的声明和定义的顺序：</p>
+<p>(1)声明类Husband </p>
+<p>(2)定义类Wife，声明Consume函数</p>
+<p>(3)定义类Husband</p>
+<p>(4)定义Consume函数。</p>
+<h2 id="static成员"><a href="#static成员" class="headerlink" title="static成员"></a>static成员</h2><p>static数据成员是与类关联的对象，并不与该类的对象相关联。static成员遵循正常的共有&#x2F;私有访问规则。</p>
+<h3 id="使用static成员而不是全局对象的三个优点："><a href="#使用static成员而不是全局对象的三个优点：" class="headerlink" title="使用static成员而不是全局对象的三个优点："></a>使用static成员而不是全局对象的三个优点：</h3><ul>
+<li>static成员的名字是在类的作用域中，因此可以避免与其他类的成员或全局对象名字冲突。</li>
+<li>可以实施封装。static成员可以是私有成员，而全局对象不可以。</li>
+<li>通过阅读程序容易看出static 成员是与特定类关联的，这种可见性清晰地显示程序员地意图。</li>
+</ul>
+<h3 id="static成员函数"><a href="#static成员函数" class="headerlink" title="static成员函数"></a>static成员函数</h3><p>在类的内部声明函数时需要添加static关键字，但是在类外部定义函数时就不需要了。因为static成员是类的组成部分但不是任何对象的组成部分，所以有以下几个特点：</p>
+<ul>
+<li>static函数没有this指针</li>
+<li>static成员函数不能被声明为const（将成员函数声明为const就是承诺不会修改该函数所属的对象）</li>
+<li>static成员函数也不能被声明为虚函数</li>
+</ul>
+<h3 id="static数据成员"><a href="#static数据成员" class="headerlink" title="static数据成员"></a>static数据成员</h3><p>应该在定义时初始化。</p>
+<p>static成员变量的特点：</p>
+<ul>
+<li>属于类本身，不属于对象</li>
+<li>程序运行过程中只有一个副本</li>
+<li>不能在生成对象时初始化，即不能再构造函数中初始化</li>
+</ul>
+<h4 id="static变量初始化"><a href="#static变量初始化" class="headerlink" title="static变量初始化"></a>static变量初始化</h4><p>类体外进行，变量前不加static限定符；不加访问控制符；使用作用域运算符表明它所属类。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">A</span>&#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="type">static</span> <span class="type">int</span> iCount;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="built_in">A</span>()&#123;&#125;</span><br><span class="line">	<span class="function"><span class="type">int</span> <span class="title">GetCount</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> iCount;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> A::iCount = <span class="number">10</span>; <span class="comment">//在main函数外面初始化！</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>1.static数据成员的类型可以是该成员所属的类的类型。非static成员只能是自身类对象的指针或引用。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Screen</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="comment">//...</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="type">static</span> Screen scr1;<span class="comment">//OK</span></span><br><span class="line">	Screen *scr2;<span class="comment">//OK</span></span><br><span class="line">	Screen scr3;<span class="comment">//Error</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2.非static数据成员不能用作默认实参，static数据成员可靠用作默认实参。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Screen</span> </span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">          <span class="function">Screen&amp; <span class="title">clear</span><span class="params">(<span class="type">char</span> = bkground)</span></span>;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">         <span class="type">static</span> <span class="type">const</span> <span class="type">char</span> bkground = <span class="string">&#x27;#&#x27;</span>;<span class="comment">//static const整形变量可以在类内部初始化。</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="嵌套类"><a href="#嵌套类" class="headerlink" title="嵌套类"></a>嵌套类</h2><p>嵌套类就是在一个类中定义另一个类。这个被嵌套的类的作用域就只在它的上一级类中。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">class</span> <span class="title class_">c1</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="type">int</span> a;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">foo</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">c2</span></span><br><span class="line">    &#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="type">int</span> a;</span><br><span class="line">        <span class="function"><span class="type">void</span> <span class="title">foo</span><span class="params">()</span></span>;</span><br><span class="line">    &#125; b;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">c1::foo</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    a = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">void</span> c1::c2::<span class="built_in">foo</span>()</span><br><span class="line">&#123;</span><br><span class="line">    a = <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">c1</span> f;</span><br><span class="line">    f.<span class="built_in">foo</span>();</span><br><span class="line">    f.b.<span class="built_in">foo</span>();</span><br><span class="line">    cout &lt;&lt; f.a &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; f.b.a &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>同样，被嵌套的类也可以是匿名的。匿名类的成员函数只能在类的声明中同时定义，因为这个类没有名称，没法再外部指代它。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">c3</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="type">int</span> a;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">foo</span><span class="params">()</span> </span>&#123;a = <span class="number">3</span>;&#125;</span><br><span class="line">    <span class="keyword">class</span></span><br><span class="line">    &#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="type">int</span> a;</span><br><span class="line">        <span class="function"><span class="type">void</span> <span class="title">foo</span><span class="params">()</span> </span>&#123;a = <span class="number">4</span>;&#125;</span><br><span class="line">    &#125; b;</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">c3</span> ff;</span><br><span class="line">    ff.<span class="built_in">foo</span>();</span><br><span class="line">    ff.b.<span class="built_in">foo</span>();</span><br><span class="line">    cout &lt;&lt; ff.a &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; ff.b.a &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="局部类"><a href="#局部类" class="headerlink" title="局部类"></a>局部类</h2><p>局部类就是定义在一个函数内部的类。这个类只能在这个函数内部使用。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">c4</span></span><br><span class="line">    &#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="type">int</span> a;</span><br><span class="line">        <span class="function"><span class="type">void</span> <span class="title">foo</span><span class="params">()</span> </span>&#123;a = <span class="number">4</span>;&#125;</span><br><span class="line">    &#125;;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">c4</span> ff;<span class="comment">//就是c4 ff</span></span><br><span class="line">    ff.<span class="built_in">foo</span>();</span><br><span class="line">    cout &lt;&lt; ff.a &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>通常，嵌套类和局部类的所有成员变量都会被声明为共有的。因为这两种类只能在很小的范围内使用，没有必要通过定义接口来隐藏内部的信息。所以，可以把class改换成struct，这样就可以不写public了。</p>
+<p>但是我们可以通过一些变通的方法来模拟出一个局部函数来。具体来说就是通过重载一个类的operator () 方法来模拟一个函数调用，下面给个例子：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">struct</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="type">void</span> <span class="title">operator</span> <span class="params">()</span> <span class="params">( <span class="type">void</span> )</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            cout &lt;&lt; <span class="string">&quot;HELLO&quot;</span> &lt;&lt; endl;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="type">int</span> <span class="title">operator</span><span class="params">()</span> <span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> a + b;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; foo;</span><br><span class="line"> </span><br><span class="line">    <span class="built_in">foo</span>();</span><br><span class="line">    cout &lt;&lt; <span class="built_in">foo</span>(<span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/16/CSMA-CA%E4%B8%8ECSMA-CD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/p1.jpg">
+      <meta itemprop="name" content="戎菜菜">
+      <meta itemprop="description" content="hey">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小戎的学习历程">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/05/16/CSMA-CA%E4%B8%8ECSMA-CD/" class="post-title-link" itemprop="url">CSMA/CA与CSMA/CD</a>
+        </h2>
+
+        <div class="post-meta">
+
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-05-16 09:25:46 / 修改时间：14:11:55" itemprop="dateCreated datePublished" datetime="2022-05-16T09:25:46+08:00">2022-05-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%BD%91/" itemprop="url" rel="index"><span itemprop="name">计网</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>1.CSMA&#x2F;CD媒体访问控制协议</p>
+<p>　　由于以太网（Ethernet）成为现存局域网络结构的绝大多形式，CSMA&#x2F;CD（Carrier Sense Multiple ACcess&#x2F;Collision Detection）载波监测多址接人协议也成为局域网采用最多的MAC协议。CSMA&#x2F;CD适宜于总线型局域网拓扑结构的随机竞争型媒体访问控制。总线型网络允许同一时刻只有一个节点（Node）发送数据，一旦两个或以上节点同时发送数据，则会发生数据碰撞，数据不能正常发送和接收。CSMA&#x2F;CD协议就是尽可能保证网络上同时只有一个节点发送数据，减小数据“碰撞”概率。</p>
+<p>　　CSMA&#x2F;CD工作过程：</p>
+<p>　　当MAC收到LLG发来的数据以后，首先监测网络电缆上是否具有数据，即载波传送。<del>如果网络空闲，即没有载波传送，则将数据装帧，经物理层发送出去。如果网络繁忙，则监测网络直到网络空闲，再将数据装帧发送。</del></p>
+<p>发送数据前 先侦听信道是否空闲 ,若空闲 则立即发送数据.在发送数据时,边发送边继续侦听.若侦听到冲突,则立即停止发送数据.等待一段随机时间,再重新尝试.</p>
+<p>　 先听后发， 边发边听，冲突停发，随即延迟后重发</p>
+<p>　　2.CSMA&#x2F;CA协议</p>
+<p>　　CSMA作为随机竞争类MAC协议，具算法简单而且性能丰富，所以在实际局域网的使用中得到了广泛的应用。但是在无线局域网中，由于无线传输媒体固有的特性及移动性的影响，无线局域网的MAC在差错控制、解决隐藏终端等方面存在应有别于有线局域网。因此WLAN与有线局域网所采用的CSMA备一定的差异。WLAN采用CSMA&#x2F;CA（CSMA&#x2F;Collision　Avoidance）协议，其与CSMA&#x2F;CD最大的不同点在于其采取避免冲突工作方式。</p>
+<p>　　与CSMA&#x2F;CD不同，WLAN媒体访问控制（MAC）层采用的CSMA&#x2F;CA（CSMA&#x2F;Collision Avoidance）协议，由于在RF传输网络中冲突检测比较困难，所以该协议用避免冲突检测代替802.3协议使用的冲突检测，采用冲突避免机制尽量减小冲突碰撞发生的概率，以提高网络吞吐性能与迟延性能。协议使用信道空闲评估（CCA）算法来决定信道是否空闲，通过测试天线能量和决定接收信号强度RSSI来完成，并且使用RTS、CTS和ACK帧减少冲突。数据加密与普通局域网的等同加密（WEP）算法一样，使用64位密钥和RC4加密算法。</p>
+<p>　　CSMA&#x2F;CA工作过程</p>
+<p>　　当发射端希望发送数据时，首先检测介质是否空闲，若是介质为空闲时，送出RTS（Request To Send请求发送），RTS信号包括发射端的地址、接收端的地址、下一笔数据将持续发送的时间等信息，接收端收到RTS信号后，将响应短信号CTS（Clear To Send），CTS信号上也RTS内记录的持续发送的时间，当发射端收到CTS包后，随即开始发送数据包。接收端收到数据包后，将以包内的CRC（CyClic Redundancy Check，循环冗余校验）的数值来检验包数据是否正确，若是检验结果正确时，接收端将响应ACK包，告知发射端数据己经被成功地接收。当发射端没有收到接收端的ACK包时，将认为包在传输过程中丢失，而一直重新发送包。</p>
+<p>　　3.CSMA&#x2F;CA与CSMA&#x2F;CD的区别</p>
+<p>　　（1）载波检测方式：因传输介质不同，CSMA&#x2F;CD与CSMA&#x2F;CA的检测方式也不同。CSMA&#x2F;CD通过电缆中电压的变化来检测，当数据发生碰撞时，电缆中的电压就会随着发生变化；而CSMA&#x2F;CA采用能量检测（ED）、载波检测（CS）和能量载波混合检测三种检测信道空闲的方式。</p>
+<p>　　（2）信道利用率比较CSMA&#x2F;CA协议信道利用率低于CSMA&#x2F;CD协议信道利用率。但是由于无线传输的特性，在无线局域网不能采用有线局域网的CSMA&#x2F;CD协议。信道利用率受传输距离和空旷程度的影响，当距离远或者有障碍物影响时会存在隐藏终端问题，降低信道利用率。</p>
+<p>　　具体最高的信道利用率与传输速率有关。在IEEE802.11b无线局域网中，在1Mb&#x2F;s速率时最高信道利用率可到90%，而在11Mb&#x2F;s时最高信道利用率只有65%左右。</p>
+<p>区别：</p>
+<p>从名字上就可以看出， 不同就是一个是ca（collision avoidance）, 而另一个是cd（collision detection）。802.3以太网用的是cd，就是冲突检测，发生冲突并且检测到冲突后重传。 802.11无线局域网用的是ca， 就是冲突避免， 也是就是在传输以前先检测信道，然后通过RTS&#x2F;CTS来预约信道，达到冲突避免的目的。<br>csma, 就是carrier sense，也就是说两者都是在发送前检测信道是否繁忙，不同当然就是以上所说。</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Esther_Heesch/article/details/51173722">(45条消息) CSMA&#x2F;CA与CSMA&#x2F;CD的区别_王胜飞的博客-CSDN博客_csmaca和csmacd的区别</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/20731045">802.11协议精读3：CSMA&#x2F;CD与CSMA&#x2F;CA - 知乎 (zhihu.com)</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/15/%E8%AE%A1%E7%BD%91ARP/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -584,305 +1003,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/11/C++%E6%93%8D%E4%BD%9C%E7%AC%A6%E9%87%8D%E8%BD%BD/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/p1.jpg">
-      <meta itemprop="name" content="戎菜菜">
-      <meta itemprop="description" content="hey">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小戎的学习历程">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/11/C++%E6%93%8D%E4%BD%9C%E7%AC%A6%E9%87%8D%E8%BD%BD/" class="post-title-link" itemprop="url">C++操作符重载</a>
-        </h2>
-
-        <div class="post-meta">
-
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-05-11 08:32:13 / 修改时间：09:40:10" itemprop="dateCreated datePublished" datetime="2022-05-11T08:32:13+08:00">2022-05-11</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>操作符重载是为了对自定义类进行运算，本质是一个函数，可以采用友元函数或者成员函数的方式实现。（成员函数默认传递this指针，可以少一个参数；而全局函数如果要访问私有变量，则需要转化为友元函数）</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/05/11/C++%E6%93%8D%E4%BD%9C%E7%AC%A6%E9%87%8D%E8%BD%BD/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/10/C++unordered-map/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/p1.jpg">
-      <meta itemprop="name" content="戎菜菜">
-      <meta itemprop="description" content="hey">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小戎的学习历程">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/10/C++unordered-map/" class="post-title-link" itemprop="url">C++unordered_map</a>
-        </h2>
-
-        <div class="post-meta">
-
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-05-10 10:18:35" itemprop="dateCreated datePublished" datetime="2022-05-10T10:18:35+08:00">2022-05-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-05-17 15:43:50" itemprop="dateModified" datetime="2022-05-17T15:43:50+08:00">2022-05-17</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="unordered-map-初始化"><a href="#unordered-map-初始化" class="headerlink" title="unordered_map 初始化"></a>unordered_map 初始化</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;unordered_map&gt;</span></span></span><br><span class="line">std::unordered_map&lt;std::string,<span class="type">int</span>&gt; umap = &#123;</span><br><span class="line">	&#123;<span class="string">&quot;Tom&quot;</span>,<span class="number">1</span>&#125;,</span><br><span class="line">	&#123;<span class="string">&quot;Ann&quot;</span>,<span class="number">4</span>&#125;,</span><br><span class="line">	&#123;<span class="string">&quot;Jack&quot;</span>,<span class="number">2</span>&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h2 id="unordered-map-插入元素"><a href="#unordered-map-插入元素" class="headerlink" title="unordered_map 插入元素"></a>unordered_map 插入元素</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">umap[<span class="string">&quot;John&quot;</span>] = <span class="number">3</span>;</span><br><span class="line">umap.<span class="built_in">insert</span>(std::<span class="built_in">pair</span>&lt;std::string,<span class="type">int</span>&gt;(<span class="string">&quot;John&quot;</span>,<span class="number">3</span>));</span><br></pre></td></tr></table></figure>
-
-<h2 id="unordered-map-根据key值查找元素"><a href="#unordered-map-根据key值查找元素" class="headerlink" title="unordered_map 根据key值查找元素"></a>unordered_map 根据key值查找元素</h2><p>直接用中括号获取，如果map中没有，则不会输出任何结果。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">std::cout &lt;&lt; <span class="string">&quot;id: &quot;</span> &lt;&lt; umap[<span class="string">&quot;John&quot;</span>] &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br></pre></td></tr></table></figure>
-
-<h2 id="unordered-map-移除元素"><a href="#unordered-map-移除元素" class="headerlink" title="unordered_map 移除元素"></a>unordered_map 移除元素</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">umap.<span class="built_in">erase</span>(umap.<span class="built_in">begin</span>());</span><br></pre></td></tr></table></figure>
-
-<h2 id="遍历unordered-map"><a href="#遍历unordered-map" class="headerlink" title="遍历unordered_map"></a>遍历unordered_map</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">const</span> <span class="keyword">auto</span>&amp; n : umap) &#123;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;name: &quot;</span> &lt;&lt; n.first &lt;&lt; <span class="string">&quot;, id: &quot;</span> &lt;&lt; n.second &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//或者使用迭代器</span></span><br><span class="line"><span class="keyword">for</span> (std::unordered_map&lt;std::string, <span class="type">int</span>&gt;::iterator it = umap.<span class="built_in">begin</span>(); it != umap.<span class="built_in">end</span>(); it++) &#123;</span><br><span class="line"><span class="comment">// or</span></span><br><span class="line"><span class="comment">// for (auto it = umap.begin(); it != umap.end(); it++) &#123;</span></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;name: &quot;</span> &lt;&lt; (*it).first &lt;&lt; <span class="string">&quot;, id: &quot;</span> &lt;&lt; (*it).second &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="清空，判断是否为空"><a href="#清空，判断是否为空" class="headerlink" title="清空，判断是否为空"></a>清空，判断是否为空</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">umap.<span class="built_in">clear</span>();</span><br><span class="line">umap.<span class="built_in">empty</span>();</span><br></pre></td></tr></table></figure>
-
-<h2 id="根据key查找元素"><a href="#根据key查找元素" class="headerlink" title="根据key查找元素"></a>根据key查找元素</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (um.<span class="built_in">find</span>(<span class="number">23</span>) == um.<span class="built_in">end</span>()) </span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;Element Not Present\n&quot;</span>; </span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;Element Present\n&quot;</span>; </span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/02/Java%E5%AF%B9%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8E%92%E5%BA%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/p1.jpg">
-      <meta itemprop="name" content="戎菜菜">
-      <meta itemprop="description" content="hey">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小戎的学习历程">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/02/Java%E5%AF%B9%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8E%92%E5%BA%8F/" class="post-title-link" itemprop="url">Java对字符串排序</a>
-        </h2>
-
-        <div class="post-meta">
-
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-05-02 12:59:21 / 修改时间：13:01:55" itemprop="dateCreated datePublished" datetime="2022-05-02T12:59:21+08:00">2022-05-02</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>方法1：冒泡排序 ：<br>思路：先获取字符串数组里的每个字符串，然后使用toCharArray()方法得到这个字符串的char[] 再对char数组里的元素进行对比，冒泡排序前面大的与后面交换顺序，再把得到的char数组重新转换为String，存入到一个新的String数组中，然后在整体对新数组中各个字符串使用冒泡排序从而得到结果)<br>方法2：使用 Arrays.sort(s)；方法进行排序</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">public</span> class 字符排序 &#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">		String[] str  = <span class="keyword">new</span> <span class="title class_">String</span>[]&#123;<span class="string">&quot;abc&quot;</span>,<span class="string">&quot;fcc&quot;</span>,<span class="string">&quot;egfd&quot;</span>,<span class="string">&quot;asd&quot;</span>,<span class="string">&quot;rtgh&quot;</span>,<span class="string">&quot;deghk&quot;</span>,<span class="string">&quot;fcc&quot;</span>&#125;;</span><br><span class="line"><span class="comment">/*方法1：冒泡排序   ：</span></span><br><span class="line"><span class="comment">		思路：先获取字符串数组里的每个字符串，然后使用toCharArray()方法得到这个字符串的char[] 再对char数</span></span><br><span class="line"><span class="comment">			组里的元素进行对比，冒泡排序前面大的与后面交换顺序，再把得到的char数组重新转换为String，存入到一个新的String</span></span><br><span class="line"><span class="comment">			数组中，然后在整体对新数组中各个字符串使用冒泡排序从而得到结果)</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	printArr(stringRank(test(str)));</span><br><span class="line"></span><br><span class="line">	<span class="comment">//方法2：使用 Arrays.sort(s)；方法进行排序</span></span><br><span class="line">	String[] s = sortChar(str);</span><br><span class="line">	Arrays.sort(s);</span><br><span class="line">	printArr(s);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//得到一个每个字符串里元素已经进行过排序的新字符串数组</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> String[] test(String[] str)&#123;</span><br><span class="line">	String st[] =  st = <span class="keyword">new</span> <span class="title class_">String</span>[str.length];</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; str.length; i++) &#123;</span><br><span class="line">		<span class="type">char</span>[] c =  str[i].toCharArray();</span><br><span class="line">		charRank(c);</span><br><span class="line">		<span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(c);</span><br><span class="line">		st[i]  = s; </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> st;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//对字符串里元素进行排序</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">charRank</span><span class="params">(<span class="type">char</span>[] c)</span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; c.length; j++) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j2</span> <span class="operator">=</span> <span class="number">0</span>; j2 &lt; c.length-j-<span class="number">1</span>; j2++) &#123;</span><br><span class="line">			<span class="keyword">if</span>(c[j2]&gt;c[j2+<span class="number">1</span>])&#123;</span><br><span class="line">				<span class="type">char</span> <span class="variable">len</span> <span class="operator">=</span> c[j2];</span><br><span class="line">				c[j2] = c[j2+<span class="number">1</span>];</span><br><span class="line">				c[j2+<span class="number">1</span>] = len;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> 对新字符串数组里的字符串进行排序(升序)字符串比较使用compareTo()方法，</span></span><br><span class="line"><span class="comment">String本身并不具备比较大小功能，它的String对象实现了Comparable接口，这个接口是具有比较大小功能的接口，里面定义了比较方法compareTo()方法，</span></span><br><span class="line"><span class="comment">所以如果我们定义了一个类，这个类产生的对象需要比较大小就需要去实现Comparable接口，重写compareTo()方法，这种</span></span><br><span class="line"><span class="comment">排序成为类的自然排序，compareTo()方法称为自然比较方法，因为String类已经实现了compareTo()方法，所以这里可以直接使用</span></span><br><span class="line"><span class="comment">该方法的比较对象与指定对象的顺序。</span></span><br><span class="line"><span class="comment">compareTo(T  o)    返回值：int  返回0(两者相等)，负数(对象小于参数)，正数(对象大于参数)     参数o为要比较的对象</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> String[] stringRank(String[] str) &#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; str.length; i++) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; str.length - i - <span class="number">1</span>; j++) &#123;</span><br><span class="line">			<span class="keyword">if</span> (str[j].compareTo(str[j + <span class="number">1</span>]) &gt; <span class="number">0</span>) &#123;</span><br><span class="line">				<span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> str[j];</span><br><span class="line">				str[j] = str[j + <span class="number">1</span>];</span><br><span class="line">				str[j + <span class="number">1</span>] = s;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//方法2</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> String[] sortChar(String[] str) &#123;</span><br><span class="line">	String[] s = <span class="keyword">new</span> <span class="title class_">String</span>[str.length];</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; str.length; i++) &#123;</span><br><span class="line">		<span class="type">char</span>[] c = str[i].toCharArray();</span><br><span class="line">		Arrays.sort(c);</span><br><span class="line">		s[i] = String.valueOf(c);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> s;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//打印字符串数组</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">printArr</span><span class="params">(String[] str)</span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; str.length; i++) &#123;</span><br><span class="line">		System.out.print(str[i]+<span class="string">&quot;\t&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	System.out.println();</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/28/%E8%99%9A%E5%87%BD%E6%95%B0%E8%AF%A6%E8%A7%A3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/p1.jpg">
-      <meta itemprop="name" content="戎菜菜">
-      <meta itemprop="description" content="hey">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小戎的学习历程">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/04/28/%E8%99%9A%E5%87%BD%E6%95%B0%E8%AF%A6%E8%A7%A3/" class="post-title-link" itemprop="url">虚函数详解</a>
-        </h2>
-
-        <div class="post-meta">
-
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-04-28 10:01:30 / 修改时间：10:57:52" itemprop="dateCreated datePublished" datetime="2022-04-28T10:01:30+08:00">2022-04-28</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="一、多态与重载"><a href="#一、多态与重载" class="headerlink" title="一、多态与重载"></a>一、多态与重载</h2><h3 id="1、多态的概念"><a href="#1、多态的概念" class="headerlink" title="1、多态的概念"></a>1、多态的概念</h3><p>面向对象的语言有三大特性：封装、继承和多态。虚函数作为多态的实现方式，重要性毋庸置疑。</p>
-<p>多态指给予不同的对象会引发不同的动作（一个接口，多种方法）。其实现更简单地来说，就是“在用父类指针调用函数时，实际调用的时指针指向的实际类型（子类）的成员函数”。多态性使得程序调用的函数是在运行时动态确定，而不是在编译器静态确定。</p>
-<h3 id="2、重载–编译期多态的体现"><a href="#2、重载–编译期多态的体现" class="headerlink" title="2、重载–编译期多态的体现"></a>2、重载–编译期多态的体现</h3><p>重载，是指在一个类中的同名不同参的函数调用，这样的方法调用是在编译器确定的。</p>
-<h3 id="3、虚函数–运行期多态的体现"><a href="#3、虚函数–运行期多态的体现" class="headerlink" title="3、虚函数–运行期多态的体现"></a>3、虚函数–运行期多态的体现</h3><p>运行期多态发生的三个条件：继承关系、虚函数覆盖、父类指针或引用指向子类对象。</p>
-<h2 id="二、虚函数实例"><a href="#二、虚函数实例" class="headerlink" title="二、虚函数实例"></a>二、虚函数实例</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">base</span>&#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">vir_func</span><span class="params">()</span></span>&#123;cout&lt;&lt;<span class="string">&quot;virtual function, this is class base&quot;</span>&lt;&lt;endl;&#125;</span><br><span class="line">        <span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">()</span></span>&#123;cout&lt;&lt;<span class="string">&quot;normal function, this is class base&quot;</span>&lt;&lt;endl;&#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">A</span>:<span class="keyword">public</span> base&#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">vir_func</span><span class="params">()</span></span>&#123;cout&lt;&lt;<span class="string">&quot;virtual function, this is class A&quot;</span>&lt;&lt;endl;&#125;</span><br><span class="line">        <span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">()</span></span>&#123;cout&lt;&lt;<span class="string">&quot;normal function, this is class A&quot;</span>&lt;&lt;endl;&#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">B</span>:<span class="keyword">public</span> base&#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">vir_func</span><span class="params">()</span></span>&#123;cout&lt;&lt;<span class="string">&quot;virtual function, this is class B&quot;</span>&lt;&lt;endl;&#125;</span><br><span class="line">        <span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">()</span></span>&#123;cout&lt;&lt;<span class="string">&quot;normal function, this is class B&quot;</span>&lt;&lt;endl;&#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    base *Base = <span class="built_in">new</span>(base);</span><br><span class="line">    base *a = <span class="built_in">new</span>(A);</span><br><span class="line">    base *b = <span class="built_in">new</span>(B);</span><br><span class="line">    Base-&gt;<span class="built_in">func</span>();a-&gt;<span class="built_in">func</span>();b-&gt;<span class="built_in">func</span>();</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;#########################&quot;</span>&lt;&lt;endl;</span><br><span class="line">    Base-&gt;<span class="built_in">vir_func</span>();a-&gt;<span class="built_in">vir_func</span>();b-&gt;<span class="built_in">vir_func</span>();</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;#########################&quot;</span>&lt;&lt;endl;</span><br><span class="line">    ((A *)b)-&gt;<span class="built_in">vir_func</span>();((A *)b)-&gt;<span class="built_in">func</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">normal function, this is class base</span><br><span class="line">normal function, this is class base</span><br><span class="line">normal function, this is class base</span><br><span class="line">#########################</span><br><span class="line">virtual function, this is class base</span><br><span class="line">virtual function, this is class A</span><br><span class="line">virtual function, this is class B</span><br><span class="line">#########################</span><br><span class="line">virtual function, this is class B</span><br><span class="line">normal function, this is class A</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>可以看到，当这三个指针调用func函数时，调用的都是基类base的函数。而调用虚函数vir_func时，调用的是指针指向的实际类型的函数。最后对b做强制类型转换，转换为A类型的指针，发现普通函数调用类A的函数，虚函数调用类B的函数。</p>
-<p>以上，我们可以得出结论：<strong>当使用类的指针调用成员函数时，普通函数由指针类型决定，而虚函数由指针指向的实际类型决定</strong></p>
-<p>虚函数的实现过程：通过对象内存中的vptr找到虚函数表vtbl，接着通过vtbl找到对应虚函数的实现区域并进行调用。</p>
-<h2 id="三、虚函数的实现（内存布局）"><a href="#三、虚函数的实现（内存布局）" class="headerlink" title="三、虚函数的实现（内存布局）"></a>三、虚函数的实现（内存布局）</h2><p>虚函数表中只存有一个虚函数的指针地址，不存放普通函数或是构造函数的指针地址。只要有虚函数，C++类都会存在这样的一张虚函数表。不管是普通函数亦或是纯虚函数，亦或是派生类中隐式声明的这些虚函数都会生成这张虚函数表。</p>
-<p>虚函数表创建的时间：在一个类构造的时候，创建这张虚函数表，而这个虚函数表是供整个类所共有的。虚函数表存储在对象最开始的位置。虚函数表其实就是函数指针的地址。函数调用的时候，通过函数指针指向的函数来调用函数。</p>
-<p>虚函数表存储在对象的最开始的位置，按照声明顺序存放在表中，父类的虚函数在子类的虚函数前面。如果有虚函数覆盖，覆盖的f()函数被放在虚表中原来父类虚函数的位置，没有被覆盖的函数依旧在原来的位置。</p>
-<p>如果有多重继承，每个父类都有自己的虚表（有几个基类就有几个虚函数表），子类的成员函数被放到了第一个父类的表中（按声明顺序来判断）。如果有虚函数覆盖，那么所有父类中的f()位置都会被替换成子类的函数指针。</p>
-<h2 id="四、虚函数的相关问题"><a href="#四、虚函数的相关问题" class="headerlink" title="四、虚函数的相关问题"></a>四、虚函数的相关问题</h2><h3 id="1、构造函数为什么不能定义为虚函数？"><a href="#1、构造函数为什么不能定义为虚函数？" class="headerlink" title="1、构造函数为什么不能定义为虚函数？"></a>1、构造函数为什么不能定义为虚函数？</h3><p><strong>构造函数不能是虚函数</strong></p>
-<p>首先，我们已经知道虚函数的实现是通过对象内存中的vptr来实现的。而构造函数是用来实例化一个对象的，通俗来说就是为对象内存中的值做初始化操作。那么在构造函数完成之前，vptr是没有值的，也就无法通过vptr找到作为虚函数的构造函数所在代码区。</p>
-<h3 id="2、析构函数为什么要定义为虚函数？"><a href="#2、析构函数为什么要定义为虚函数？" class="headerlink" title="2、析构函数为什么要定义为虚函数？"></a>2、析构函数为什么要定义为虚函数？</h3><p><strong>析构函数可以是虚函数且推荐最好设置为虚函数。</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">B</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">B</span>() &#123; <span class="built_in">printf</span>(<span class="string">&quot;B()\n&quot;</span>); &#125;</span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">B</span>() &#123; <span class="built_in">printf</span>(<span class="string">&quot;~B()\n&quot;</span>); &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> m_b;</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">class</span> <span class="title class_">D</span> : <span class="keyword">public</span> B</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">D</span>() &#123; <span class="built_in">printf</span>(<span class="string">&quot;D()\n&quot;</span>); &#125;</span><br><span class="line">    ~<span class="built_in">D</span>() &#123; <span class="built_in">printf</span>(<span class="string">&quot;~D()\n&quot;</span>); &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> m_d;</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    B* pB = <span class="keyword">new</span> <span class="built_in">D</span>();</span><br><span class="line">    <span class="keyword">delete</span> pB;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">B&lt;&gt;</span><br><span class="line">D&lt;&gt;</span><br><span class="line">~D&lt;&gt;</span><br><span class="line">~B&lt;&gt;</span><br></pre></td></tr></table></figure>
-
-<p>C++中有这样的约束：执行子类构造函数之前一定会执行父类的构造函数；同理，执行子类的析构函数后，一定会执行父类的析构函数，这也是为什么建议析构函数写成虚函数的原因。</p>
-<p>如果析构函数不是虚函数，那么delete(a)时，调用的将是基类base的析构函数。而继承时派生类通常会在基类的基础上定义自己的成员，此时我们当然是希望可以调用派生类的析构函数对新定义的成员也进行析构了。</p>
-<h3 id="3、如何取验证虚函数表的存在？"><a href="#3、如何取验证虚函数表的存在？" class="headerlink" title="3、如何取验证虚函数表的存在？"></a>3、如何取验证虚函数表的存在？</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">typedef</span> <span class="title">void</span><span class="params">(*Fun)</span><span class="params">(<span class="type">void</span>)</span></span>;</span><br><span class="line"><span class="comment">// 取类的一个实例</span></span><br><span class="line">Base b;</span><br><span class="line">Fun pFun = <span class="literal">NULL</span>;</span><br><span class="line"><span class="comment">// 把&amp;b转成int ，取得虚函数表的地址</span></span><br><span class="line">cout &lt;&lt; <span class="string">&quot;虚函数表地址：&quot;</span> &lt;&lt; (<span class="type">int</span>*)(&amp;b) &lt;&lt; endl;</span><br><span class="line"><span class="comment">// 再次取址就可以得到第一个虚函数的地址了</span></span><br><span class="line">cout &lt;&lt; <span class="string">&quot;虚函数表 — 第一个函数地址：&quot;</span> &lt;&lt; (<span class="type">int</span>*)*(<span class="type">int</span>*)(&amp;b) &lt;&lt; endl;</span><br><span class="line">pFun = (Fun)*((<span class="type">int</span>*)*(<span class="type">int</span>*)(&amp;b));</span><br><span class="line"><span class="built_in">pFun</span>();</span><br></pre></td></tr></table></figure>
-
-<h2 id="4、纯虚函数"><a href="#4、纯虚函数" class="headerlink" title="4、纯虚函数"></a>4、纯虚函数</h2><p>纯虚函数：不能实例化对象，可以做指针和引用，拥有纯虚函数的类是抽象类。</p>
-<p>作用：在基类中为其派生类保留一个函数的名字，以便派生类根据需要对他进行定义。如果在基类中没有保留函数名字，则无法实现多态性。</p>
-<p>声明格式：virtual  类型  函数名(参数列表）&#x3D; 0</p>
-<p>（1）纯虚函数没有函数体；<br>（2）最后面的“&#x3D;0”并不表示函数返回值为0，它只起形式上的作用，告诉编译系统“这是虚函数”；<br>（3）这是一个声明语句，最后有分号。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">bark</span><span class="params">()</span> </span>= <span class="number">0</span>;  <span class="comment">//声明为纯虚函数</span></span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -954,20 +1074,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">64</span>
+          <span class="site-state-item-count">68</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-count">23</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

@@ -91,6 +91,101 @@
       </tags>
   </entry>
   <entry>
+    <title>DHCP</title>
+    <url>/2022/05/23/DHCP/</url>
+    <content><![CDATA[<p>DHCP（Dynamic Host Configuration Protocol，动态主机配置协议）为局域网中的工作站动态分配IP地址，而不需要每个用户去设置静态IP。</p>
+<span id="more"></span>
+
+<h2 id="DHCP工作原理"><a href="#DHCP工作原理" class="headerlink" title="DHCP工作原理"></a>DHCP工作原理</h2><p>DHCP从一个IP地址池中提供IP地址，该池由DHCP服务器数据库定义。如果客户端接受这一地址，则它可在一个预定义的期限内使用该地址，称为租约。如果客户端无法从DHCP服务器获取IP地址，它就无法正常初始化TCP&#x2F;IP。</p>
+<p>在DHCP为客户端配置TCP&#x2F;IP参数时，DHCP服务器和客户端都要经历四个步骤。很多通讯是通过广播的方式来完成的。</p>
+<p><img src="https://pic1.zhimg.com/v2-22d46706777e40ed44e9c7a4a36e94f4_b.jpg"></p>
+<ul>
+<li>UDP:封装，服务器&#x3D;67，客户端&#x3D;68<ul>
+<li>UDP数据报协议</li>
+</ul>
+</li>
+<li>DHCP欺骗与防范</li>
+</ul>
+]]></content>
+      <categories>
+        <category>计算机网络</category>
+      </categories>
+      <tags>
+        <tag>计网</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>详细设计的设计模式</title>
+    <url>/2022/05/22/%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</url>
+    <content><![CDATA[<h2 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h2>]]></content>
+      <categories>
+        <category>软工二</category>
+      </categories>
+      <tags>
+        <tag>软工二</tag>
+        <tag>设计模式</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>详细设计中面向对象方法下的信息隐藏</title>
+    <url>/2022/05/22/%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1%E4%B8%AD%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%96%B9%E6%B3%95%E4%B8%8B%E7%9A%84%E4%BF%A1%E6%81%AF%E9%9A%90%E8%97%8F/</url>
+    <content><![CDATA[<ul>
+<li>封装类的职责，隐藏职责的实现</li>
+<li>预计将会发生的变更，抽象它的接口，隐藏它的内部机制</li>
+</ul>
+<h2 id="封装类的职责"><a href="#封装类的职责" class="headerlink" title="封装类的职责"></a>封装类的职责</h2><p>封装——分离接口与实现</p>
+<h3 id="封装实现的细节"><a href="#封装实现的细节" class="headerlink" title="封装实现的细节"></a>封装实现的细节</h3><h4 id="封装数据和行为"><a href="#封装数据和行为" class="headerlink" title="封装数据和行为"></a>封装数据和行为</h4><p>使用getter和setter</p>
+<h4 id="封装内部结构"><a href="#封装内部结构" class="headerlink" title="封装内部结构"></a>封装内部结构</h4><p>不能暴露内部数据结构的实现</p>
+<h4 id="封装对其他对象的引用"><a href="#封装对其他对象的引用" class="headerlink" title="封装对其他对象的引用"></a>封装对其他对象的引用</h4><p>如：设计模式中的代理模式、中介模式</p>
+<h4 id="封装类型信息"><a href="#封装类型信息" class="headerlink" title="封装类型信息"></a>封装类型信息</h4><p>隐藏具体子类型的类别，只需要知道其共性类别</p>
+<h4 id="封装潜在变更"><a href="#封装潜在变更" class="headerlink" title="封装潜在变更"></a>封装潜在变更</h4><p>如果预计类的实现中有特定地方会发生变更，就应该将其独立为单独的类或者方法，然后为单独的类或方法抽象建立稳定的接口，并在原类中使用该稳定接口以屏蔽潜在变更的影响。</p>
+<h2 id="为变更而设计"><a href="#为变更而设计" class="headerlink" title="为变更而设计"></a>为变更而设计</h2><h3 id="封装变更-x2F-开闭原则"><a href="#封装变更-x2F-开闭原则" class="headerlink" title="封装变更&#x2F;开闭原则"></a>封装变更&#x2F;开闭原则</h3><p>对扩展开放，对修改关闭</p>
+<h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><p>不同类型的值能够通过统一的接口来操纵。</p>
+<h3 id="依赖倒置原则（DIP）"><a href="#依赖倒置原则（DIP）" class="headerlink" title="依赖倒置原则（DIP）"></a>依赖倒置原则（DIP）</h3><p>利用DIP减少耦合</p>
+]]></content>
+      <categories>
+        <category>软工二</category>
+      </categories>
+      <tags>
+        <tag>面向对象</tag>
+        <tag>软工二</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>详细设计中面向对象方法下的模块化</title>
+    <url>/2022/05/22/%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1%E4%B8%AD%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%96%B9%E6%B3%95%E4%B8%8B%E7%9A%84%E6%A8%A1%E5%9D%97%E5%8C%96/</url>
+    <content><![CDATA[<p>模块化希望代码片段由两部分组成：接口和实现。同时，也希望各个模块之间尽可能独立（低耦合），希望集中信息与行为（高内聚）。</p>
+<span id="more"></span>
+
+<h2 id="访问耦合"><a href="#访问耦合" class="headerlink" title="访问耦合"></a>访问耦合</h2><p>类型：隐式访问（连点）、实现中访问、成员变量访问、参数变量访问、无访问</p>
+<h3 id="降低访问耦合的方法"><a href="#降低访问耦合的方法" class="headerlink" title="降低访问耦合的方法"></a>降低访问耦合的方法</h3><p>1.针对接口编程</p>
+<p>2.接口最小化&#x2F;接口分离原则</p>
+<p>3.访问耦合的合理范围&#x2F;迪米特法则</p>
+<h2 id="继承耦合"><a href="#继承耦合" class="headerlink" title="继承耦合"></a>继承耦合</h2><p>类型：修改、精化、扩展、无</p>
+<h3 id="降低继承耦合的方法"><a href="#降低继承耦合的方法" class="headerlink" title="降低继承耦合的方法"></a>降低继承耦合的方法</h3><p>1.Liskov替换原则（里氏替换原则，LSP）</p>
+<p>2.使用组合代替继承</p>
+<h2 id="内聚"><a href="#内聚" class="headerlink" title="内聚"></a>内聚</h2><p>类型：功能内聚、通信内聚、过程内聚、时间内聚、逻辑内聚、偶然内聚</p>
+<p>衡量标准：方法和属性是否一致、属性之间是否体现一个职责、属性之间是否可以抽象</p>
+<h3 id="提高内聚的方法"><a href="#提高内聚的方法" class="headerlink" title="提高内聚的方法"></a>提高内聚的方法</h3><p>1.集中信息与行为</p>
+<p>2.单一职责原则（SRP）</p>
+<h2 id="耦合与内聚的度量"><a href="#耦合与内聚的度量" class="headerlink" title="耦合与内聚的度量"></a>耦合与内聚的度量</h2><h3 id="耦合的度量"><a href="#耦合的度量" class="headerlink" title="耦合的度量"></a>耦合的度量</h3><h4 id="1-方法调用耦合"><a href="#1-方法调用耦合" class="headerlink" title="1.方法调用耦合"></a>1.方法调用耦合</h4><p>CBO（Coupling Between Objects）计算一个类与外界的耦合度，包括两个部分：①该类调用其他类的成员方法的数量；②其他类访问这个类的成员方法的数量。外界的其他类不包括存在继承关系的类。</p>
+<h4 id="2-访问耦合"><a href="#2-访问耦合" class="headerlink" title="2.访问耦合"></a>2.访问耦合</h4><p>DAC（Data Abstraction Coupling）统计一个类包含的其他类的实例的数量，不包括继承关系带来的实例引用。任何抽象数据类型中由其他抽象数据类型作为成员，就构成抽象数据类型的耦合。</p>
+<p>DAC越小越好，如果发现一个类的DAC过大，则需要慎重处理。</p>
+<h4 id="3-继承耦合"><a href="#3-继承耦合" class="headerlink" title="3.继承耦合"></a>3.继承耦合</h4><p>NOC（Number of Children）统计直接所属的子类的数目。当NOC变大的时候，服用增加了，抽象也变弱了。</p>
+<p>理论上说，NOC越大越好。因为NOC越大意味着继承机制减少耦合的小伙越强，服用海马的程度也越高。但NOC越大也意味着父类越难抽象、越脆弱。如果NOC较高（超过3），就要审查继承机制的正确性，保证其能够遵守LSP。</p>
+<p>DIT（Depth of the Inheritance Tree）统计从继承树的根节点到叶节点的长度。DIT同NOC类似，越大越好。实际适中（3以上审查）。</p>
+<h3 id="内聚的度量"><a href="#内聚的度量" class="headerlink" title="内聚的度量"></a>内聚的度量</h3><p>连通图，略。</p>
+]]></content>
+      <categories>
+        <category>软工二</category>
+      </categories>
+      <tags>
+        <tag>面向对象</tag>
+        <tag>模块化与信息隐藏</tag>
+        <tag>软工二</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>VLAN</title>
     <url>/2022/05/22/VLAN/</url>
     <content><![CDATA[<h2 id="1-为什么需要VLAN"><a href="#1-为什么需要VLAN" class="headerlink" title="1. 为什么需要VLAN"></a>1. 为什么需要VLAN</h2><p>需要将网络分割成多个广播域，减少网络带宽和CPU算力的大量无谓消耗。</p>
