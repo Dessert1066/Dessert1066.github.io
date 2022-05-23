@@ -191,6 +191,162 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/15/git-%E5%B8%B8%E8%A7%81%E5%A5%97%E8%B7%AF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/p1.jpg">
+      <meta itemprop="name" content="戎菜菜">
+      <meta itemprop="description" content="hey">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小戎的学习历程">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/15/git-%E5%B8%B8%E8%A7%81%E5%A5%97%E8%B7%AF/" class="post-title-link" itemprop="url">git 常见套路</a>
+        </h2>
+
+        <div class="post-meta">
+
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-04-15 16:06:13" itemprop="dateCreated datePublished" datetime="2022-04-15T16:06:13+08:00">2022-04-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-18 15:19:27" itemprop="dateModified" datetime="2022-04-18T15:19:27+08:00">2022-04-18</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>本文介绍git常见操作，仅仅设计四个命令：<code>add</code>，<code>commit</code>，<code>reset</code>，<code>checkout</code>.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/04/15/git-%E5%B8%B8%E8%A7%81%E5%A5%97%E8%B7%AF/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/15/git%E6%9B%B4%E6%96%B0%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/p1.jpg">
+      <meta itemprop="name" content="戎菜菜">
+      <meta itemprop="description" content="hey">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小戎的学习历程">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/15/git%E6%9B%B4%E6%96%B0%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81/" class="post-title-link" itemprop="url">git 常见套路</a>
+        </h2>
+
+        <div class="post-meta">
+
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-04-15 16:06:10" itemprop="dateCreated datePublished" datetime="2022-04-15T16:06:10+08:00">2022-04-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-18 14:16:52" itemprop="dateModified" datetime="2022-04-18T14:16:52+08:00">2022-04-18</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="git更新本地代码"><a href="#git更新本地代码" class="headerlink" title="git更新本地代码"></a>git更新本地代码</h1><h2 id="1-本地代码未修改，只有master分支，直接更新"><a href="#1-本地代码未修改，只有master分支，直接更新" class="headerlink" title="1.本地代码未修改，只有master分支，直接更新"></a>1.本地代码未修改，只有master分支，直接更新</h2><p>git pull</p>
+<p>前提是本地的代码没更改过。比如，你提交了代码到github后，随后别人也提交代码到github，然后你需要更新别人提交的代码到你本地，就可以直接使用该命令。假如你提交代码后再修改过本地的代码，就会产生冲突，直接使用该命令会失败。</p>
+<h2 id="2-本地代码有修改，多分支。"><a href="#2-本地代码有修改，多分支。" class="headerlink" title="2.本地代码有修改，多分支。"></a>2.本地代码有修改，多分支。</h2><p>&#x2F;&#x2F;切换到master分支</p>
+<p>git checkout master</p>
+<p>&#x2F;&#x2F;更新master分支</p>
+<p>git pull</p>
+<p>&#x2F;&#x2F;切换到自己的分支isso</p>
+<p>git checkout isso</p>
+<p>&#x2F;&#x2F;把master分支合并到自己分支</p>
+<p>git merge master</p>
+<h2 id="3-本地代码有修改，只有master分支，直接覆盖本地代码。"><a href="#3-本地代码有修改，只有master分支，直接覆盖本地代码。" class="headerlink" title="3.本地代码有修改，只有master分支，直接覆盖本地代码。"></a>3.本地代码有修改，只有master分支，直接覆盖本地代码。</h2><p>&#x2F;&#x2F;重置索引和工作目录</p>
+<p>git reset –hard</p>
+<p>&#x2F;&#x2F;更新代码</p>
+<p>git pull</p>
+<h2 id="4-本地代码有修改，直接覆盖远程仓库代码"><a href="#4-本地代码有修改，直接覆盖远程仓库代码" class="headerlink" title="4.本地代码有修改，直接覆盖远程仓库代码"></a>4.本地代码有修改，直接覆盖远程仓库代码</h2><p>&#x2F;&#x2F;覆盖isso分支</p>
+<p>git push –force origin isso</p>
+<p>&#x2F;&#x2F;覆盖主分支</p>
+<p>git push –force origin master</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/14/C++unordered-set/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -385,7 +541,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-18 14:17:41" itemprop="dateModified" datetime="2022-04-18T14:17:41+08:00">2022-04-18</time>
+                <time title="修改时间：2022-05-23 16:42:32" itemprop="dateModified" datetime="2022-05-23T16:42:32+08:00">2022-05-23</time>
               </span>
 
           
@@ -452,7 +608,16 @@
 <p>nju(config-if)#no shut</p>
 <p>nju(config-if)#exit</p>
 <p>nju(config)#ip default0gateway 192.168.1.100</p>
-
+<h2 id="静态路由和简单组网"><a href="#静态路由和简单组网" class="headerlink" title="静态路由和简单组网"></a>静态路由和简单组网</h2><p>1）完成拓扑图，其中pc和路由器通过fa口连接（可以不连），路由器和路由器之间通过s串口连接，pc连接console。</p>
+<p>路由器和路由器之间的线选择Serial DTE（最后一个），连接方向是从DTE路由器连接到DCE路由器（方向反了就ping不通了）</p>
+<p>2）按照实验手册配置ip地址（要设置clock rate(是否在这一步存疑，但是肯定是要设置的)）</p>
+<p>3）现在可以ping通相连的路由器</p>
+<p>4）为了连接相邻路由器的下一跳地址，需要配置路由表。格式为：<code>ip route &lt;目标网段&gt;&lt;子网掩码&gt;&lt;下一跳路由器地址（IP地址）&gt;</code></p>
+<p>5）现在可以ping通下一跳路由器</p>
+<p>6）可以删除静态路由配置，然后配置默认路由</p>
+<p>注）如果PC要连接路由器，需要配置一个不同的IP地址，同时，要配置网关gateway，设置为与路由器相连的端口的IP地址。配置正确即可ping通其他所有。（PC和路由器连接要用双交叉线）</p>
+<h2 id="动态RIP"><a href="#动态RIP" class="headerlink" title="动态RIP"></a>动态RIP</h2><p>根据实验手册</p>
+<h2 id="配置单域OSPF"><a href="#配置单域OSPF" class="headerlink" title="配置单域OSPF"></a>配置单域OSPF</h2>
       
     </div>
 
@@ -1026,7 +1191,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">68</span>
+          <span class="site-state-item-count">70</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
