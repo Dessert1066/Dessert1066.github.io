@@ -28,7 +28,7 @@
 <meta property="og:description" content="计网实验（网络版）路由器1）打开packet tracer，在里面新建路由器（routers）和pc（End Devices），用console线（蓝色）连接路由器console口和pc的串口（com1,i.e. RS232)，即可完成连接。 2）双击pc，打开terminal，波特率选择9600，其余默认，然后就能进入用户模式。 3）用户模式：router&gt; ​      特权模式：rou">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-04-14T08:06:13.000Z">
-<meta property="article:modified_time" content="2022-05-23T08:42:32.795Z">
+<meta property="article:modified_time" content="2022-05-25T03:03:05.287Z">
 <meta property="article:author" content="戎菜菜">
 <meta property="article:tag" content="计算机网络">
 <meta name="twitter:card" content="summary">
@@ -226,7 +226,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-05-23 16:42:32" itemprop="dateModified" datetime="2022-05-23T16:42:32+08:00">2022-05-23</time>
+                <time title="修改时间：2022-05-25 11:03:05" itemprop="dateModified" datetime="2022-05-25T11:03:05+08:00">2022-05-25</time>
               </span>
 
           
@@ -295,14 +295,27 @@
 <p>nju(config)#ip default0gateway 192.168.1.100</p>
 <h2 id="静态路由和简单组网"><a href="#静态路由和简单组网" class="headerlink" title="静态路由和简单组网"></a>静态路由和简单组网</h2><p>1）完成拓扑图，其中pc和路由器通过fa口连接（可以不连），路由器和路由器之间通过s串口连接，pc连接console。</p>
 <p>路由器和路由器之间的线选择Serial DTE（最后一个），连接方向是从DTE路由器连接到DCE路由器（方向反了就ping不通了）</p>
-<p>2）按照实验手册配置ip地址（要设置clock rate(是否在这一步存疑，但是肯定是要设置的)）</p>
+<p>2）按照实验手册配置ip地址,要设置clock rate</p>
 <p>3）现在可以ping通相连的路由器</p>
 <p>4）为了连接相邻路由器的下一跳地址，需要配置路由表。格式为：<code>ip route &lt;目标网段&gt;&lt;子网掩码&gt;&lt;下一跳路由器地址（IP地址）&gt;</code></p>
 <p>5）现在可以ping通下一跳路由器</p>
 <p>6）可以删除静态路由配置，然后配置默认路由</p>
-<p>注）如果PC要连接路由器，需要配置一个不同的IP地址，同时，要配置网关gateway，设置为与路由器相连的端口的IP地址。配置正确即可ping通其他所有。（PC和路由器连接要用双交叉线）</p>
-<h2 id="动态RIP"><a href="#动态RIP" class="headerlink" title="动态RIP"></a>动态RIP</h2><p>根据实验手册</p>
-<h2 id="配置单域OSPF"><a href="#配置单域OSPF" class="headerlink" title="配置单域OSPF"></a>配置单域OSPF</h2>
+<p>注）如果PC要连接路由器，需要配置一个不同的IP地址，同时，要配置网关gateway，设置为与路由器相连的端口的IP地址。配置正确即可ping通其他所有。（PC和路由器连接要用交叉线）</p>
+<p>再注）即使IP和网关都设置好了，依然是ping不通的。因为中间路由器没有10网段和40网段的路由表，因此消息在传到中间路由器的时候就会因为找不到目的地址而被丢弃。（左右两边的因为手动配置了路由表，所以路由表是完整的）</p>
+<h2 id="动态RIP"><a href="#动态RIP" class="headerlink" title="动态RIP"></a>动态RIP</h2><p>根据实验手册配置。</p>
+<p>在配置RIP之后，路由器每30秒就会和相邻路由器交换路由表，从而实现网络的互通。</p>
+<h2 id="配置单域OSPF"><a href="#配置单域OSPF" class="headerlink" title="配置单域OSPF"></a>配置单域OSPF</h2><p>1）配置IP地址（手册上没有）</p>
+<p>2）配置回环接口</p>
+<p>3）配置OSPF（DR&#x2F;BDR和手册不一样？）</p>
+<p>4）设置计时器、安全等等</p>
+<h2 id="VLAN间路由"><a href="#VLAN间路由" class="headerlink" title="VLAN间路由"></a>VLAN间路由</h2><p>1）按照拓扑连接</p>
+<p>2）在设置encapsulation dot1q时报错，这是因为encapsulation dot1q是不用配置的，也就是说它只支持dot1q协议。如果遇到一个支持sli和dot1q两个协议的交换机时才用。</p>
+<p>3）划分VLAN，为10和20（两个交换机都要配置两个，如果没有配置的话会自动配置）</p>
+<p>4）将交换机的以太网口划分不同的VLAN</p>
+<p>5）将交换机与路由器连接的接口设置为Trunk接口</p>
+<p>6）将Router设置Vlan地址</p>
+<p>7）PC设置IP地址和网关，发现不同网段也能ping通（等几秒钟，设置需要时间）</p>
+<h2 id="NAT网络地址转换"><a href="#NAT网络地址转换" class="headerlink" title="NAT网络地址转换"></a>NAT网络地址转换</h2>
     </div>
 
     
@@ -385,7 +398,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%A1%E7%BD%91%E5%AE%9E%E9%AA%8C%EF%BC%88%E7%BD%91%E7%BB%9C%E7%89%88%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">计网实验（网络版）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B7%AF%E7%94%B1%E5%99%A8"><span class="nav-number">1.1.</span> <span class="nav-text">路由器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%A4%E6%8D%A2%E6%9C%BA"><span class="nav-number">1.2.</span> <span class="nav-text">交换机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%84%E7%BD%91"><span class="nav-number">1.3.</span> <span class="nav-text">静态路由和简单组网</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A8%E6%80%81RIP"><span class="nav-number">1.4.</span> <span class="nav-text">动态RIP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E5%8D%95%E5%9F%9FOSPF"><span class="nav-number">1.5.</span> <span class="nav-text">配置单域OSPF</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%A1%E7%BD%91%E5%AE%9E%E9%AA%8C%EF%BC%88%E7%BD%91%E7%BB%9C%E7%89%88%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">计网实验（网络版）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B7%AF%E7%94%B1%E5%99%A8"><span class="nav-number">1.1.</span> <span class="nav-text">路由器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%A4%E6%8D%A2%E6%9C%BA"><span class="nav-number">1.2.</span> <span class="nav-text">交换机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%84%E7%BD%91"><span class="nav-number">1.3.</span> <span class="nav-text">静态路由和简单组网</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A8%E6%80%81RIP"><span class="nav-number">1.4.</span> <span class="nav-text">动态RIP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E5%8D%95%E5%9F%9FOSPF"><span class="nav-number">1.5.</span> <span class="nav-text">配置单域OSPF</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VLAN%E9%97%B4%E8%B7%AF%E7%94%B1"><span class="nav-number">1.6.</span> <span class="nav-text">VLAN间路由</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NAT%E7%BD%91%E7%BB%9C%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.7.</span> <span class="nav-text">NAT网络地址转换</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -401,7 +414,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">70</span>
+          <span class="site-state-item-count">74</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

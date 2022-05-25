@@ -272,6 +272,378 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/25/ACL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/p1.jpg">
+      <meta itemprop="name" content="戎菜菜">
+      <meta itemprop="description" content="hey">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小戎的学习历程">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/05/25/ACL/" class="post-title-link" itemprop="url">ACL</a>
+        </h2>
+
+        <div class="post-meta">
+
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-05-25 15:09:41 / 修改时间：15:28:00" itemprop="dateCreated datePublished" datetime="2022-05-25T15:09:41+08:00">2022-05-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="ACL的定义与作用"><a href="#ACL的定义与作用" class="headerlink" title="ACL的定义与作用"></a>ACL的定义与作用</h2><p>路由器为了过滤数据包，需要配置一系列的规则，以决定什么样的数据包能够通过，这些规则就是通过访问控制列表ACL（Access Control List）定义的。访问控制列表是由permit&#x2F;deny语句组成的一系列有顺序的规则，这些规则根据数据包的源地址、目的地址、端口号等来描述。</p>
+<p>当数据包从接口经过时，由于接口启用了ACL，此时路由器会对报文进行检查，然后做出相应的处理。</p>
+<h2 id="访问控制列表的分类"><a href="#访问控制列表的分类" class="headerlink" title="访问控制列表的分类"></a>访问控制列表的分类</h2><ul>
+<li>基本的访问控制列表（basic acl）：只能匹配源IP地址</li>
+<li>高级的访问控制列表（advanced acl）：可以匹配源IP地址、目标IP、源端口、目标端口等三层和四层的字段</li>
+<li>基于接口的访问控制列表（interface-based acl）</li>
+<li>基于MAC的控制访问列表（MAC-based acl）：根据数据包的源MAC地址、目的MAC地址、802.1q优先级、二层协议类型等二层信息制定规则。</li>
+</ul>
+<h2 id="ACL的应用原则"><a href="#ACL的应用原则" class="headerlink" title="ACL的应用原则"></a>ACL的应用原则</h2><ul>
+<li>基本ACL，尽量用在靠近目的点</li>
+<li>高级ACL，尽量用在靠近源的地方（可以保护带宽和其他资源）</li>
+</ul>
+<h2 id="ACL应用规则"><a href="#ACL应用规则" class="headerlink" title="ACL应用规则"></a>ACL应用规则</h2><ul>
+<li>一个接口的同一方向，只能调用一个ACL</li>
+<li>一个ACL里面可以有多个rule规则，按照规则ID从小到大排序，从上往下依次执行</li>
+<li>数据包一旦被某rule匹配，就不再继续往下匹配</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/25/NAT/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/p1.jpg">
+      <meta itemprop="name" content="戎菜菜">
+      <meta itemprop="description" content="hey">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小戎的学习历程">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/05/25/NAT/" class="post-title-link" itemprop="url">NAT</a>
+        </h2>
+
+        <div class="post-meta">
+
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-05-25 13:31:09 / 修改时间：14:28:07" itemprop="dateCreated datePublished" datetime="2022-05-25T13:31:09+08:00">2022-05-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="私有地址和全局地址"><a href="#私有地址和全局地址" class="headerlink" title="私有地址和全局地址"></a>私有地址和全局地址</h2><p>主机的IP地址是否必须时唯一的？</p>
+<p>1.的确，在一开始的时候，任何一台主机或者路由器都必须配有一个唯一的IP地址。</p>
+<p>2.但随着IP地址不足的问题日益显著，人们对IP地址做了新的处理方式：</p>
+<ul>
+<li>将IP地址分为私有IP地址和全局IP地址</li>
+<li>全局IP地址必须是唯一的</li>
+<li>私有IP地址不需要时唯一的，只要在同一个域里保持唯一便可，在不同域里可以重复</li>
+</ul>
+<p>私有IP地址的范围：（A&#x2F;B&#x2F;C类各有一段，一共三段）</p>
+<p>10.0.0.0~10.255.255.255（10&#x2F;8) A类</p>
+<p>172.16.0.0~172.31.255.255（172.16&#x2F;12）B类</p>
+<p>192.168.0.0~192.168.255.255（192.168&#x2F;16） C类</p>
+<h2 id="什么是NAT？"><a href="#什么是NAT？" class="headerlink" title="什么是NAT？"></a>什么是NAT？</h2><p>NAT（Network Address Translation，网络地址转换），是用于在本地网络中使用私有地址，在连接网络时转而使用全局IP地址的技术。</p>
+<p>这种方法需要在专用网连接到因特网的路由器上安装NAT软件。装有NAT软件的路由器叫做NAT路由器，它至少有一个有效的外部全球IP地址。这样，所有使用本地地址的主机和外界通信时，都要在NAT路由器上将其本地地址转换为全球IP地址，才能和因特网连接。</p>
+<h2 id="NAT的功能"><a href="#NAT的功能" class="headerlink" title="NAT的功能"></a>NAT的功能</h2><p>在NAT路由器内部，有一张自动生成的用于地址转换的表，当发送数据的时候，会按照表中的映射关系进行处理。</p>
+<p>当NAT路由器具有n各全球IP地址时，专用网内最多可以同时有n台主机接入到互联网。这样就可以使专用网内较多数量的主机，轮流使用NAT路由器有限数量的全球IP地址。</p>
+<p>通过NAT路由器的通信必须由专用网内的主机发起。专用网内部的主机不能充当服务器用，因为互联网上的客户无法请求专用网内的服务器提供服务。</p>
+<h2 id="网络地址与端口号转换NAPT"><a href="#网络地址与端口号转换NAPT" class="headerlink" title="网络地址与端口号转换NAPT"></a>网络地址与端口号转换NAPT</h2><ul>
+<li>为了更加有效地利用 NAT 路由器上的全球IP地址，现在常用的 NAT 转换表把运输层的端口号也利用上。这样，就可以使多个拥有本地地址的主机，共用一个 NAT 路由器上的全球 IP 地址，因而可以同时和互联网上的不同主机进行通信。</li>
+<li>使用端口号的 NAT 叫做网络地址与端口号转换NAPT (Network Address and Port Translation)，而不使用端口号的 NAT 就叫做传统的 NAT (traditional NAT)。（也叫PAT，Port Address Translation）</li>
+</ul>
+<p>NAT不仅能解决IP地址不足的问题，而且还能够有效地避免来自网络外部的攻击，隐藏并保护网络内部的主机。把内网的私有地主，转化成外网的公有地址，使得内部网络上的（被设置为私有IP地址的）主机可以访问Internet。</p>
+<h2 id="NAT的分类"><a href="#NAT的分类" class="headerlink" title="NAT的分类"></a>NAT的分类</h2><p>NAT分为Basic NAT和PAT：</p>
+<ul>
+<li>Basic NAT只转化IP，不映射端口。</li>
+<li>PAT除了转化IP，还做端口映射，可以用于多个内部地主映射到少量（甚至一个）外部地址。</li>
+</ul>
+<p>NAT还分为静态NAT和动态NAT：</p>
+<ul>
+<li>静态NAT：将内部网络中的每个主机都永久映射成外部网络中的某个合法的地址，多用于服务器。</li>
+<li>动态NAT：在外部网络中定义了一个或多个合法地址，采用动态分配的方法映射到内部网络。</li>
+</ul>
+<h2 id="NAT的映射方式"><a href="#NAT的映射方式" class="headerlink" title="NAT的映射方式"></a>NAT的映射方式</h2><p>对于第四层是TCP或UDP的数据报，NAT通过更改源端口号，来实现多对少的映射。</p>
+<blockquote>
+<p>例如：内部IP1~IP4，4个地址映射成外部一个地址IP5。</p>
+<p>(IP1，Port1）映射成（IP5，Port1）</p>
+<p>（IP2，Port1）映射成（IP5，Port2）</p>
+<p>（IP3，Port2）映射成（IP5，Port3）</p>
+<p>（IP4，Port2）映射成（IP5，Port4）</p>
+</blockquote>
+<p>对于ICMP包，NAT通过更改ICMP的ID，来实现多对少的映射。</p>
+<h2 id="NAT有什么弊端"><a href="#NAT有什么弊端" class="headerlink" title="NAT有什么弊端"></a>NAT有什么弊端</h2><p>在一个具有NAT功能的路由器下的主机并没有建立真正的端对端连接，并不能参与一些因特网协议。</p>
+<p>一些需要初始化从外部网络建立的TCP连接，和使用无状态协议（比如UDP）的服务将被终端。除非NAT路由器做一些具体的努力，否则送来的数据包将不能到达正确的地址。NAT也会使安全协议变得复杂。</p>
+<h2 id="NAT的局限性"><a href="#NAT的局限性" class="headerlink" title="NAT的局限性"></a>NAT的局限性</h2><p>（1）NAT违反了IP地址构建模型的设计原则。IP地址结构的基础是每个IP地址均标识了一个网络的连接。Internet的软件设计就是建立在这个前提之上，而NAT使得有很多主机可能在使用相同的地址，如10.0.0.1。</p>
+<p>（2）NAT使得IP协议从面向无连接编程面向连接。NAT必须维护专用IP地址与公用IP地址以及端口号的映射关系。在TCP&#x2F;IP协议体系中，如果一个路由器出现故障，不会影响到TCP协议的执行。因为只要几秒收不到应答，发送进程就会进入超时重传处理。而当存在NAT时，最初设计的TCP&#x2F;IP协议过程将发生变化，Internet可能变得非常脆弱。</p>
+<p>（3）NAT违反了基本的网络分层结构模型的设计原则。因为在传统的网络分层结构模型中，第N层是不能修改第N+1层的报头内容的。NAT破坏了这种各层独立的原则。</p>
+<p>（4）有些应用是将IP地址插入到正文的内容中，例如标准的FTP协议与IP　Phone协议H.323。如果NAT与这一类协议一起工作，那么NAT协议一定要做适当地修正。同时，网络的传输层也可能使用TCP与UDP协议之外的其他协议，那么NAT协议必须知道并且做相应的修改。由于NAT的存在，使得P2P应用实现出现困难，因为P2P的文件共享与语音共享都是建立在IP协议的基础上的。</p>
+<p>（5）NAT同时存在对高层协议和安全性的影响问题。RFC对NAT存在的问题进行了讨论。NAT的反对者认为这种临时性的缓解IP地址短缺的方案推迟了Ipv6迁移的进程，而并没有解决深层次的问题，他们认为是不可取的。</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/26992935">https://zhuanlan.zhihu.com/p/26992935</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/24/%E8%BD%AF%E5%B7%A5%E4%BA%8C%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/p1.jpg">
+      <meta itemprop="name" content="戎菜菜">
+      <meta itemprop="description" content="hey">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小戎的学习历程">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/05/24/%E8%BD%AF%E5%B7%A5%E4%BA%8C%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-title-link" itemprop="url">软工二设计模式</a>
+        </h2>
+
+        <div class="post-meta">
+
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-05-24 10:07:36 / 修改时间：16:02:32" itemprop="dateCreated datePublished" datetime="2022-05-24T10:07:36+08:00">2022-05-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%BD%AF%E5%B7%A5%E4%BA%8C/" itemprop="url" rel="index"><span itemprop="name">软工二</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h2><p>抽象策略（一个类的行为或者其算法）为一个接口，然后有不同的实现。</p>
+<p>[<a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10202506"> Day 3 ] 初探設計模式 - 策略模式 (Strategy Pattern) - IT 邦幫忙::一起幫忙解決難題，拯救 IT 人的一天 (ithome.com.tw)</a></p>
+<h2 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h2><p>工厂提供对象的创建方法接口，程序调用接口创建对象，并不清楚对象的创建细节。</p>
+<p>[<a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10202075"> Day 2 ] 初探設計模式 - 工廠方法模式 (Factory Method Pattern) - IT 邦幫忙::一起幫忙解決難題，拯救 IT 人的一天 (ithome.com.tw)</a></p>
+<h2 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h2><p>[<a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10203092"> Day 5 ] 初探設計模式 - 單例模式 (Singleton) - iT 邦幫忙::一起幫忙解決難題，拯救 IT 人的一天 (ithome.com.tw)</a></p>
+<h2 id="迭代器模式"><a href="#迭代器模式" class="headerlink" title="迭代器模式"></a>迭代器模式</h2><p>为了不暴露内部细节，减少其所担负的功能，所以将迭代器独立出来。</p>
+<p>[<a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10207704"> Day 20 ] 這樣每個月發薪水就輕鬆啦！迭代器模式 ( Iterator Pattern ) - iT 邦幫忙::一起幫忙解決難題，拯救 IT 人的一天 (ithome.com.tw)</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/23/%E7%8E%AF%E5%9B%9E%E6%8E%A5%E5%8F%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/p1.jpg">
+      <meta itemprop="name" content="戎菜菜">
+      <meta itemprop="description" content="hey">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小戎的学习历程">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/05/23/%E7%8E%AF%E5%9B%9E%E6%8E%A5%E5%8F%A3/" class="post-title-link" itemprop="url">环回接口</a>
+        </h2>
+
+        <div class="post-meta">
+
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-05-23 22:45:01 / 修改时间：23:23:17" itemprop="dateCreated datePublished" datetime="2022-05-23T22:45:01+08:00">2022-05-23</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>大多数产品都支持环回接口（Loopback Interface），以允许运行在同一台主机上的客户端程序和服务器通过TCP&#x2F;IP进行通信。A类网络号127就是为环回接口预留的。根据惯例，大多数系统把127.0.0.1分配给这个接口，子网掩码一般建议为255.255.255.255，并命名为localhost。一个传给环回接口的IP数据包不能再任何网络上出现。（实际上，127开头的所有网络都是环回地址，只是默认会用127.0.0.1，但传给其他127开头的地址的数据最终都会到环回接口，不会进入网络）</p>
+<p>环回接口有一个特性，除非设备瘫痪，否则其状态一直是up。这个特性对于路由协议来说非常重要。环回接口使使用广泛的一种逻辑接口。</p>
+<p>下图为环回接口处理IP数据报的简单过程。</p>
+<p><img src="https://box.kancloud.cn/2016-04-12_570c8933e28da.png"></p>
+<p>图中需要指出的关键点是：</p>
+<p>1）传给环回地址的任何数据均作为IP输入</p>
+<p>2）传给广播地址或多播地址的数据报复制一份传给环回地址，然后送到以太网上。这是因为广播传送和多播传送的定义包含主机本身。</p>
+<p>3）任何传给该主机Ip地址的数据均送到环回接口。</p>
+<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><p>OSPF router-id可以手工指定，只要保证区域内只有一个就行，可以是设备上不存在的地址。环回接口使用可以模拟网段，或者主机地址。环回口还可以用来建立邻居，比如BGP，使邻居更稳定，即使路由器其中一个物理口down了，还可以从其他途径访问到环回口，保证邻居的稳定，以节省资源。</p>
+<h2 id="创建环回接口的原因"><a href="#创建环回接口的原因" class="headerlink" title="创建环回接口的原因"></a>创建环回接口的原因</h2><ol>
+<li><p>用来建立路由邻居</p>
+<p>我们知道路由协议要想正常运行，大多需要先建立邻居关系，邻居关系的稳定是路由计算正确的基石。实际运用中，常常使用环回接口来建立两个路由器之间的邻居关系，例如BGP协议。比起使用物理接口建立连接，使用环回接口可以使邻居关系更加牢固，因为就算某个物理链路和接口发生了故障，只要能从其他途径访问到该设备，那么邻居关系就不会中断。</p>
+</li>
+<li><p>用来作为Router-ID</p>
+<p>在常用的OSPF、BGP等路由协议中，都有Router-ID的概念，这相当于一台路由器的身份证号，在一个指定的范围（如一个自治系统）内只能标识一台设备，不能有重复。因为环回接口的稳定性，我们常使用一个环回接口地址来作为Router-ID，使整个设备的标识稳定可靠。使用环回接口作为Router-ID还有一个好处就是可以节省地址，因为环回接口的地址一般和业务地址没有关系，是独立规划的。</p>
+</li>
+<li><p>用于虚拟隧道连接</p>
+<p>在建立IPSec或GRE之类的虚拟隧道时，使用loopback接口可以保证整个隧道的稳定性。</p>
+</li>
+<li><p>用于网络连通性测试</p>
+<p>创建并配置好环回接口之后，它的地址是能被ping或telnet的，这就可以被用来测试网络的连通性。</p>
+</li>
+</ol>
+<p>在Cisco路由器中可以使用interface loopback命令来创建它。</p>
+<p>注意：启动OSPF路由选择进程时会选择OSPF的路由器ID。这发生在手动执行了router ospf命令或者在启动过程中加载路由器配置时。因此，如果在启用了OSPF之后再创建环回接口，那么该环回接口将不会被用作路由器ID；然而，如果重新启动路由器，默认将使用环回接口。因此，建议优先创建环回接口并先给它分配IP地址，然后再启用OSPF，这样可以消除关于路由器ID的困惑。 [2] </p>
+<p>以下为配置环回接口的指令：</p>
+<p>Router(config)#interface loopback<em>number</em></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/23/%E8%BD%AF%E5%B7%A5%E4%BA%8C-%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -720,355 +1092,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/22/%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1%E4%B8%AD%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%96%B9%E6%B3%95%E4%B8%8B%E7%9A%84%E6%A8%A1%E5%9D%97%E5%8C%96/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/p1.jpg">
-      <meta itemprop="name" content="戎菜菜">
-      <meta itemprop="description" content="hey">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小戎的学习历程">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/22/%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1%E4%B8%AD%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%96%B9%E6%B3%95%E4%B8%8B%E7%9A%84%E6%A8%A1%E5%9D%97%E5%8C%96/" class="post-title-link" itemprop="url">详细设计中面向对象方法下的模块化</a>
-        </h2>
-
-        <div class="post-meta">
-
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-05-22 15:42:07 / 修改时间：16:24:12" itemprop="dateCreated datePublished" datetime="2022-05-22T15:42:07+08:00">2022-05-22</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%BD%AF%E5%B7%A5%E4%BA%8C/" itemprop="url" rel="index"><span itemprop="name">软工二</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>模块化希望代码片段由两部分组成：接口和实现。同时，也希望各个模块之间尽可能独立（低耦合），希望集中信息与行为（高内聚）。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/05/22/%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1%E4%B8%AD%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%96%B9%E6%B3%95%E4%B8%8B%E7%9A%84%E6%A8%A1%E5%9D%97%E5%8C%96/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/22/VLAN/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/p1.jpg">
-      <meta itemprop="name" content="戎菜菜">
-      <meta itemprop="description" content="hey">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小戎的学习历程">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/22/VLAN/" class="post-title-link" itemprop="url">VLAN</a>
-        </h2>
-
-        <div class="post-meta">
-
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-05-22 14:23:31 / 修改时间：15:35:50" itemprop="dateCreated datePublished" datetime="2022-05-22T14:23:31+08:00">2022-05-22</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="1-为什么需要VLAN"><a href="#1-为什么需要VLAN" class="headerlink" title="1. 为什么需要VLAN"></a>1. 为什么需要VLAN</h2><p>需要将网络分割成多个广播域，减少网络带宽和CPU算力的大量无谓消耗。</p>
-<p>在网络中，广播帧回非常频繁地出现，除了ARP之外，还有DHCP、RIP等很多其他类型的广播信息。</p>
-<p>ARP请求：建立IP和MAC地址的映射关系。</p>
-<p>RIP： Routing Information Protocol，路由信息协议，采用距离向量计算。</p>
-<p>DHCP：用于自动设定IP地址的协议。</p>
-<p>通常情况下，路由器上不会有太多的网络接口，其数目多在1~4个左右。随着宽带连接的普及，宽带路由器（或者叫IP共享器）变得较为常见。但需要注意的是，它们上面虽然带着多个（一般为4个）连接LAN一侧的网络接口，但那其实是路由器内置的交换机，并不能分割广播域。</p>
-<p>况且使用路由器分割广播域的话，所能分割的个数完全取决于路由器的网络接口个数，使得用户无法自由地根据实际需要分割广播域。</p>
-<p>与路由器相比，二层交换机一般带有多个网络接口。因此如果能使用它分割广播域，那么无疑运用上的灵活性会大大提高。</p>
-<p>用于在二层交换机上分割广播域的技术，就是VLAN。通过利用VLAN，我们可以自由设计广播域的构成，提高网络设计的自由度。</p>
-<h2 id="2-实现VLAN的机制"><a href="#2-实现VLAN的机制" class="headerlink" title="2. 实现VLAN的机制"></a>2. 实现VLAN的机制</h2><p>在一台未设置任何VLAN的二层交换机上，任何广播帧都会被转发给除接收端口外的所有其他端口（Flooding）。</p>
-<p>这是如果将端口配置不同的VLAN，这样在转发的时候就只会转发给特定VLAN端口，分割了广播域。在实际使用中，不同VLAN用“VLAN ID”来区分。</p>
-<p>在交换机上设置VLAN，可以看作将一台交换机换做多台虚拟的交换机，这些逻辑上的交换机是互不相通的。因此，在交换机上设置VLAN后，如果为做其他处理，VLAN间是<strong>无法通信</strong>的。</p>
-<p>那么，如果需要在不同的VLAN间通信时又该怎么办呢？</p>
-<p>请注意一下，VLAN是广播域，而通常两个广播域之间由路由器连接，广播域之间来往的数据包都是由路由器中继的。因此，VLAN间的通信也需要路由器提供中继服务，这被称作“VLAN间路由”。VLAN间路由可以使用普通的路由器，也可以使用三层交换机。</p>
-<h2 id="3-VLAN的访问链接（Access-Link）"><a href="#3-VLAN的访问链接（Access-Link）" class="headerlink" title="3. VLAN的访问链接（Access Link）"></a>3. VLAN的访问链接（Access Link）</h2><p>交换机的端口，可以分成一下两种：</p>
-<ul>
-<li>访问链接（Access Link）</li>
-<li>汇聚链接（Trunk Link）</li>
-</ul>
-<h3 id="访问链接"><a href="#访问链接" class="headerlink" title="访问链接"></a>访问链接</h3><p>访问链接，指的是“只属于一个VLAN，且仅向该VLAN转发数据帧”的端口。在大多数情况下，访问链接所连的是客户机。</p>
-<p>通常设置VLAN的顺序是：</p>
-<p>（1）生成VLAN</p>
-<p>（2）设定访问链接（决定各端口属于哪一个VLAN）</p>
-<p>设定</p>
-<p>访问链接的手法，可以是事先固定的，也就是静态VLAN，也可以是根据所连计算机而动态改变设定，也就是动态VLAN。</p>
-<h4 id="静态VLAN–基于端口"><a href="#静态VLAN–基于端口" class="headerlink" title="静态VLAN–基于端口"></a>静态VLAN–基于端口</h4><p>静态VLAN又被称为基于端口的VLAN（PortBased VLAN）。顾名思义，就是明确指定各端口所属的VLAN的设定方法。</p>
-<h4 id="动态VLAN"><a href="#动态VLAN" class="headerlink" title="动态VLAN"></a>动态VLAN</h4><p>动态VLAN是根据每个端口所连的计算机，随时改变端口所属的VLAN。动态VLAN大致分为3类：</p>
-<ul>
-<li>基于MAC地址的VLAN（MAC Based VLAN）（第二层）</li>
-<li>基于子网的VLAN（Subnet Based VLAN）（第三层）</li>
-<li>基于用户的VLAN（User Based VLAN）（第四层以上）</li>
-</ul>
-<p>其间的差异，主要在于根据OSI参照模型哪一层的信息决定端口所属的VLAN。</p>
-<h2 id="4-VLAN的汇聚链接"><a href="#4-VLAN的汇聚链接" class="headerlink" title="4. VLAN的汇聚链接"></a>4. VLAN的汇聚链接</h2><p>当需要设置多台交换机的VLAN时，即每个用户分散在较远的地方，这时候就需要考虑如何跨越多台交换机设置VLAN的问题了。当然，可以在交换机的端口中新开出VLAN端口，将两台交换机的端口相连（类似于串联），但是这个方法从扩展性和管理效率来看都不好，VLAN越多，交换机间所需链接的端口就越多，对端口的利用率下降，布线也可能需要调整，限制了网络的扩展。</p>
-<p>为了避免这种低效率的连接方式，人们想办法让交换机间互联的网线集中到一根上，这时候使用的就是汇聚链接（Trunk Link）。</p>
-<p>汇聚链接（Trunk Link）就是指能够转发多个不同VLAN通信的端口。汇聚链路上流通的数据帧，都被附加了用于识别分别属于哪个VLAN的特殊信息。网线使用普通的UTP线，交换机间互联使用交叉线。</p>
-<p>通过汇聚链路时附加的VLAN识别信息，有可能支持标准的“IEEE 802.1Q”协议，也可能时Cisco独有的协议。在设定汇聚链接时，有一个前提就是必须支持100Mbps以上的传输速度。</p>
-<p>在默认条件下，汇聚链接会转发交换机上存在的所有VLAN数据，为了减轻交换机的负担，同时也为了减少对带宽的浪费，可以通过用户设定限制能够经由汇聚链路互联的VLAN。</p>
-<h2 id="5-VLAN间路由"><a href="#5-VLAN间路由" class="headerlink" title="5. VLAN间路由"></a>5. VLAN间路由</h2><p>两台计算机即使连接在同一台交换机上，只要所属的VLAN不同，就无法通信。这是因为LAN内的通信必须在数据帧头部指定通信目标的MAC地址，而为了获取MAC地址，TCP&#x2F;IP协议下使用的是ARP。ARP解析MAC地址的方法是通过广播，也就是说，如果广播报文无法到达，那么久无从解析MAC地址，亦无法直接通信。</p>
-<p>为了能在VLAN间通信，需要利用OSI参照模型中更高一层——网络层的信息（IP地址）来进行路由。</p>
-<h3 id="使用路由器进行VLAN间路由"><a href="#使用路由器进行VLAN间路由" class="headerlink" title="使用路由器进行VLAN间路由"></a>使用路由器进行VLAN间路由</h3><p>在使用路由器进行VLAN间路由时，与构建横跨多台交换机的VLAN时的情况类似，我们还是会遇到“该如何连接路由器与交换机”这个问题。路由器和交换机的接线方式，大致有以下两种：</p>
-<p>(1)将路由器与交换机上的每个VLAN分别连接</p>
-<p>(2)不论VLAN有多少个，路由器与交换机都只用一条网线连接</p>
-<p>如果将路由器与交换机上的每个VLAN分别连接，将交换机上用于和路由器互联的每个端口设为访问链接（Access Link），然后分别用网线与路由器上的独立端口互联。这样扩展性会有问题。</p>
-<p>当只用一条网线连接时，需要用到汇聚链接（Trunk Link），而路由器上的端口也必须支持汇聚链路，协议必须相同。</p>
-<p>相同VLAN中两台主机的通信可能不经过路由器，进行VLAN间的通信，即使通信双方都连接在同一台交换机上，也必须经过：“发送方–交换机–路由器–交换机–接收方”这样一个流程。</p>
-<p>三层交换机的内容略。</p>
-<h2 id="6-使用VLAN设计局域网"><a href="#6-使用VLAN设计局域网" class="headerlink" title="6.使用VLAN设计局域网"></a>6.使用VLAN设计局域网</h2><p>略。</p>
-<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/35616289">VLAN 基础知识 - 知乎 (zhihu.com)</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/22/STP%E5%8D%8F%E8%AE%AE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/p1.jpg">
-      <meta itemprop="name" content="戎菜菜">
-      <meta itemprop="description" content="hey">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小戎的学习历程">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/22/STP%E5%8D%8F%E8%AE%AE/" class="post-title-link" itemprop="url">STP协议</a>
-        </h2>
-
-        <div class="post-meta">
-
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-05-22 14:19:17 / 修改时间：14:23:09" itemprop="dateCreated datePublished" datetime="2022-05-22T14:19:17+08:00">2022-05-22</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>STP（Spanning Tree Protocol，生成树协议）是数据链路层的管理协议，发送BPDU帧，通过有选择性地阻塞网络冗余链路来达到消除网络环路地目的，同时具有链路冗余备份地功能。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/05/22/STP%E5%8D%8F%E8%AE%AE/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/21/RIP%E4%B8%8EOSPF/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/p1.jpg">
-      <meta itemprop="name" content="戎菜菜">
-      <meta itemprop="description" content="hey">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小戎的学习历程">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/21/RIP%E4%B8%8EOSPF/" class="post-title-link" itemprop="url">RIP与OSPF</a>
-        </h2>
-
-        <div class="post-meta">
-
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-05-21 14:50:02 / 修改时间：17:12:27" itemprop="dateCreated datePublished" datetime="2022-05-21T14:50:02+08:00">2022-05-21</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>计算机网络课程总结–RIP与OSPF<a target="_blank" rel="noopener" href="https://wulc.me/2016/12/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%AF%BE%E7%A8%8B%E6%80%BB%E7%BB%93--RIP%E4%B8%8EOSPF/">https://wulc.me/2016/12/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%AF%BE%E7%A8%8B%E6%80%BB%E7%BB%93--RIP%E4%B8%8EOSPF/</a></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/05/21/RIP%E4%B8%8EOSPF/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1136,7 +1163,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">70</span>
+          <span class="site-state-item-count">74</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
