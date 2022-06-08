@@ -28,7 +28,7 @@
 <meta property="og:description" content="计网实验（网络版）路由器1）打开packet tracer，在里面新建路由器（routers）和pc（End Devices），用console线（蓝色）连接路由器console口和pc的串口（com1,i.e. RS232)，即可完成连接。 2）双击pc，打开terminal，波特率选择9600，其余默认，然后就能进入用户模式。 3）用户模式：router&gt; ​      特权模式：rou">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-04-14T08:06:13.000Z">
-<meta property="article:modified_time" content="2022-05-25T03:03:05.287Z">
+<meta property="article:modified_time" content="2022-05-29T08:00:00.001Z">
 <meta property="article:author" content="戎菜菜">
 <meta property="article:tag" content="计算机网络">
 <meta name="twitter:card" content="summary">
@@ -226,7 +226,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-05-25 11:03:05" itemprop="dateModified" datetime="2022-05-25T11:03:05+08:00">2022-05-25</time>
+                <time title="修改时间：2022-05-29 16:00:00" itemprop="dateModified" datetime="2022-05-29T16:00:00+08:00">2022-05-29</time>
               </span>
 
           
@@ -315,7 +315,31 @@
 <p>5）将交换机与路由器连接的接口设置为Trunk接口</p>
 <p>6）将Router设置Vlan地址</p>
 <p>7）PC设置IP地址和网关，发现不同网段也能ping通（等几秒钟，设置需要时间）</p>
-<h2 id="NAT网络地址转换"><a href="#NAT网络地址转换" class="headerlink" title="NAT网络地址转换"></a>NAT网络地址转换</h2>
+<h2 id="NAT网络地址转换"><a href="#NAT网络地址转换" class="headerlink" title="NAT网络地址转换"></a>NAT网络地址转换</h2><p>（配置端口地址一定要no shut，不然的话会配不上。。。）</p>
+<p>1）按照拓扑连接路由</p>
+<p>2）配置端口的ip地址</p>
+<p>3）配置clock rate（重要，不然ping不通）</p>
+<p>4）在R2上完成静态NAT的配置，在R1上配置静态路由</p>
+<p>5）现在R1应该可以ping通R3</p>
+<p>6）设置动态NAT</p>
+<p>7）将原来的NAT条目删除，有一条命令修改为<code>ip nat pool nju 200.1.1.253 200.1.1.254 netmask 255.255.255.0</code></p>
+<p>8）现在依然能ping通（辅助地址的实验不做了）</p>
+<p>9）配置PAT</p>
+<p>10）按照实验手册，现在产生随机端口号</p>
+<p><a target="_blank" rel="noopener" href="https://blog.51cto.com/pizazzdog/112131">https://blog.51cto.com/pizazzdog/112131</a> nat命令</p>
+<h2 id="ACL实验"><a href="#ACL实验" class="headerlink" title="ACL实验"></a>ACL实验</h2><p>1）配置R1、R2串口ip，配置时钟</p>
+<p>2）发现能ping通</p>
+<p>3）创建ACL</p>
+<p>Router(config)# access-list access-list-number { permit | deny } protocol source source-wildcard [operator port] destination destination-wildcard [ operator port ] [ established ] [log]<br>4）将ACL绑定到指定端口</p>
+<p>Router(config-if)# ip access-group access-list-number { in | out }</p>
+<p>注意<br>access-list-number 要选择在100以上的数字<br>in 表示入站访问控制<br>out表示出站访问控制<br>“no access-list access-list-number” 命令删除指定号码的ACL<br>“no ip access-group access-list-number” 命令在特定接口禁用ACL<br>“sh access-lists”可以查看某台路由上ACL配置情况<br>5）照着实验验证，成功。</p>
+<p>6）前置知识：</p>
+<p><code>line vty 0 4</code>：vty指的是Virtual teletype，是一个虚拟端口，用来获得Telnet或者SSH连接。0 4代表允许5条虚拟连接。（tcp）</p>
+<p>实验中，使用扩展acl，发现telnet无法到达。</p>
+<p>7）实验中，使用标准ACL，发现telnet被拒绝。</p>
+<h2 id="实验拓扑备选"><a href="#实验拓扑备选" class="headerlink" title="实验拓扑备选"></a>实验拓扑备选</h2><p><a target="_blank" rel="noopener" href="https://blog.51cto.com/microdq/1968662">https://blog.51cto.com/microdq/1968662</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.51cto.com/hjtyqs/346965">https://blog.51cto.com/hjtyqs/346965</a></p>
+
     </div>
 
     
@@ -398,7 +422,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%A1%E7%BD%91%E5%AE%9E%E9%AA%8C%EF%BC%88%E7%BD%91%E7%BB%9C%E7%89%88%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">计网实验（网络版）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B7%AF%E7%94%B1%E5%99%A8"><span class="nav-number">1.1.</span> <span class="nav-text">路由器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%A4%E6%8D%A2%E6%9C%BA"><span class="nav-number">1.2.</span> <span class="nav-text">交换机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%84%E7%BD%91"><span class="nav-number">1.3.</span> <span class="nav-text">静态路由和简单组网</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A8%E6%80%81RIP"><span class="nav-number">1.4.</span> <span class="nav-text">动态RIP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E5%8D%95%E5%9F%9FOSPF"><span class="nav-number">1.5.</span> <span class="nav-text">配置单域OSPF</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VLAN%E9%97%B4%E8%B7%AF%E7%94%B1"><span class="nav-number">1.6.</span> <span class="nav-text">VLAN间路由</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NAT%E7%BD%91%E7%BB%9C%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.7.</span> <span class="nav-text">NAT网络地址转换</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%A1%E7%BD%91%E5%AE%9E%E9%AA%8C%EF%BC%88%E7%BD%91%E7%BB%9C%E7%89%88%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">计网实验（网络版）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B7%AF%E7%94%B1%E5%99%A8"><span class="nav-number">1.1.</span> <span class="nav-text">路由器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%A4%E6%8D%A2%E6%9C%BA"><span class="nav-number">1.2.</span> <span class="nav-text">交换机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%84%E7%BD%91"><span class="nav-number">1.3.</span> <span class="nav-text">静态路由和简单组网</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A8%E6%80%81RIP"><span class="nav-number">1.4.</span> <span class="nav-text">动态RIP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E5%8D%95%E5%9F%9FOSPF"><span class="nav-number">1.5.</span> <span class="nav-text">配置单域OSPF</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VLAN%E9%97%B4%E8%B7%AF%E7%94%B1"><span class="nav-number">1.6.</span> <span class="nav-text">VLAN间路由</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NAT%E7%BD%91%E7%BB%9C%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.7.</span> <span class="nav-text">NAT网络地址转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ACL%E5%AE%9E%E9%AA%8C"><span class="nav-number">1.8.</span> <span class="nav-text">ACL实验</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E6%8B%93%E6%89%91%E5%A4%87%E9%80%89"><span class="nav-number">1.9.</span> <span class="nav-text">实验拓扑备选</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -414,20 +438,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">74</span>
+          <span class="site-state-item-count">85</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-count">24</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

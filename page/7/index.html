@@ -191,7 +191,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/19/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%EF%BC%88BFS%EF%BC%89/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/23/%E7%90%86%E8%A7%A3java-Class-forname/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/p1.jpg">
@@ -205,87 +205,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/04/19/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%EF%BC%88BFS%EF%BC%89/" class="post-title-link" itemprop="url">广度优先搜索（BFS）</a>
-        </h2>
-
-        <div class="post-meta">
-
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-04-19 15:57:55" itemprop="dateCreated datePublished" datetime="2022-04-19T15:57:55+08:00">2022-04-19</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-20 13:06:12" itemprop="dateModified" datetime="2022-04-20T13:06:12+08:00">2022-04-20</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>广度优先搜索算法是一种图形搜索算法。简单的说，BDFS是从根节点开始，沿着树的宽度遍历树的结点。如果所有节点均被访问，则算法终止。广度优先搜索一般用队列（Queue）实现。</p>
-<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><p>BFS是一种暴力搜索算法，目的是系统地展开并检查图红的所有节点，以寻找结果。换句话说，它并不考虑结果的可能地址，彻底地搜索整张图，知道找到结果为止。BFS并不使用经验法则算法。</p>
-<p>从算法的观点，所有展开节点得到的子节点都会被加进一个先进先出的队列中，从队列中取出第一个节点，并检验它是否为目标。如果找到目标，则结束搜索并回传结果。否则将它所有尚未检验过的直接子节点加入队列中。如果队列为空，表示整张图都检查过了，即图中没有搜索的目标，那么就结束搜索并回传“找不到目标”。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">std::queue&lt;node *&gt; visited, unvisited;</span><br><span class="line">node nodes[<span class="number">9</span>];</span><br><span class="line">node *current;</span><br><span class="line"></span><br><span class="line">unvisited.<span class="built_in">push</span>(&amp;nodes[<span class="number">0</span>]); </span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> (!unvisited.<span class="built_in">empty</span>()) &#123; </span><br><span class="line">    current = (unvisited.<span class="built_in">front</span>()); <span class="comment">// 目前的应该检验的</span></span><br><span class="line">    <span class="keyword">if</span> (current-&gt;left != <span class="literal">NULL</span>)</span><br><span class="line">        unvisited.<span class="built_in">push</span>(current-&gt;left); </span><br><span class="line">    <span class="keyword">if</span> (current-&gt;right != <span class="literal">NULL</span>) </span><br><span class="line">        unvisited.<span class="built_in">push</span>(current-&gt;right);</span><br><span class="line">    visited.<span class="built_in">push</span>(current);</span><br><span class="line">    cout &lt;&lt; current-&gt;self &lt;&lt; endl;</span><br><span class="line">    unvisited.<span class="built_in">pop</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="广度优先搜索算法的应用"><a href="#广度优先搜索算法的应用" class="headerlink" title="广度优先搜索算法的应用"></a>广度优先搜索算法的应用</h2><p>广度优先搜索能用来解决图论中的许多问题，例如：</p>
-<ul>
-<li>查找图中的所有连接组件（Connected Component）。一个连接组件是图中的最大相连子图。</li>
-<li>查找连接组件中的所有节点。</li>
-<li>查找非加权图中任两点的最短路径</li>
-<li>测试一个图是否为二分图</li>
-<li>（Reverse）Cuthill-McKee算法</li>
-</ul>
-<h3 id="查找连接组件"><a href="#查找连接组件" class="headerlink" title="查找连接组件"></a>查找连接组件</h3><p>从起点开始，执行DFS后经过的所有节点，即包含起点的一个连接组件。</p>
-<h3 id="测试是否为二分图"><a href="#测试是否为二分图" class="headerlink" title="测试是否为二分图"></a>测试是否为二分图</h3><p>从任意结点开始搜索，并在搜索过程中给节点不同的标签。例如，给开始节点标签0，开始节点所有邻居标签1，开始节点所有邻居的邻居标签0……以此类推。若在此搜索过程中，任一节点有跟其相同标签的邻居，则此图就不是二分图，否则是二分图。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/18/%E5%85%83%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B9%B1%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/p1.jpg">
-      <meta itemprop="name" content="戎菜菜">
-      <meta itemprop="description" content="hey">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小戎的学习历程">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/04/18/%E5%85%83%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B9%B1%EF%BC%89/" class="post-title-link" itemprop="url">元学习（乱）</a>
+            <a href="/2022/04/23/%E7%90%86%E8%A7%A3java-Class-forname/" class="post-title-link" itemprop="url">理解java-Class.forname()</a>
         </h2>
 
         <div class="post-meta">
@@ -297,7 +217,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-04-18 15:41:20 / 修改时间：15:41:50" itemprop="dateCreated datePublished" datetime="2022-04-18T15:41:20+08:00">2022-04-18</time>
+              <time title="创建时间：2022-04-23 14:55:28 / 修改时间：14:58:47" itemprop="dateCreated datePublished" datetime="2022-04-23T14:55:28+08:00">2022-04-23</time>
             </span>
 
           
@@ -311,242 +231,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>传统的机器学习-&gt;需要大量的数据-&gt;但是元学习即使是少量的数据也能达到相同的（compatible）效果。</p>
-<p>样本过少可能产生过拟合-&gt;应用转移学习，先用充足的common classes训练</p>
-<p>N-way and K-shot: N classes, K support samples and Q query samples</p>
-<p>The goal: classify these N x Q query samples into N classes based on the N x K support samples.</p>
-<p>元学习（meta-learning）在某些地方不如全分类（whole-classification）</p>
-<p>Classifier-Baseline</p>
-<p>Meta-Baseline</p>
-<p> inheriting one of the most effective evaluation metrics of the whole-classification model</p>
-<p>meta-learning 的框架可以分成三类：1.Memory-based methods 2.Optimization-based methods 3.metric-based methods</p>
-<p>该文章主要的内容：探讨whole-classification 和 meta-learning objectives的区别。</p>
-<p>传统的few-shot classification是给大容量的base数据集，然后用少量样本训练出新的数据集。在N-way K-shot few shot classification中，support-set有N classes with K samples per class，the query-set 在n类每类中有Q samples，目标就是分类N x Q query images into N classes。</p>
-<p>做了个实验。。。</p>
-<p>很多其他的方法都需要更多的参数，更加复杂的设计，而meta-baseline更加简单。</p>
-<p>meta-baseline和classifier-baseline之前的差异很小。</p>
-<p>base class generation上升，novel class generation在下降。让base更好的时候的副作用。</p>
-<p>meta-baseline trained without classification training stage 在base class generalization方面更好，但是在novel class generalization上meta-baseline with whole-classification training 更好。也就是说whole-classification提供了更强的转移能力，有助于在新的分类上产生更好的效果。但也有trade-off发生在base class上。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/18/Lifelong-Learning%E7%AE%80%E4%BB%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/p1.jpg">
-      <meta itemprop="name" content="戎菜菜">
-      <meta itemprop="description" content="hey">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小戎的学习历程">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/04/18/Lifelong-Learning%E7%AE%80%E4%BB%8B/" class="post-title-link" itemprop="url">Lifelong Learning简介</a>
-        </h2>
-
-        <div class="post-meta">
-
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-04-18 15:25:10 / 修改时间：15:36:40" itemprop="dateCreated datePublished" datetime="2022-04-18T15:25:10+08:00">2022-04-18</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="2020机器学习前沿技术—-LifeLong-learning"><a href="#2020机器学习前沿技术—-LifeLong-learning" class="headerlink" title="2020机器学习前沿技术—-LifeLong learning"></a>2020机器学习前沿技术—-LifeLong learning</h1><h2 id="1-为什么要研究LifeLong-learning"><a href="#1-为什么要研究LifeLong-learning" class="headerlink" title="1.为什么要研究LifeLong learning"></a>1.为什么要研究LifeLong learning</h2><p>细数机器学习处理的问题，概括地讲，可以分为如下几类：</p>
-<ul>
-<li>计算机视觉（CV）： object classification, object detection, object segmentation, style transfer, denoising, image generation, image caption</li>
-<li>语音（Speech) : speech recogniton， speech synthesis</li>
-<li>自然语言处理（NLP): Machine translation, text classfication， emotional recogniton</li>
-<li>推荐系统: Recommendation, CRT</li>
-</ul>
-<p>目前针对各个大类的不同子问题，都会设计不同的网络结构，设计不同的loss，采用不同的数据据处理。这使得机器学习”偏科严重“。</p>
-<h2 id="2-概念"><a href="#2-概念" class="headerlink" title="2. 概念"></a>2. 概念</h2><p>LifeLong learning意味着以前学到的知识，能够促进下一个任务Task B的学习，在学习完Task B之后，要不仅可以很好地处理Task B，同时在Task A上不能有明显的下降，最好是有所提升或者保持。</p>
-<p>学完Task A再学Task B，Task A的准确率就会下降很多，这就是Forget，这就是Transfer Learning所带来的问题，也是LifeLong learning需要解决的问题。</p>
-<p>如果采用Multi-task Learning，需要把Task A 和Task B的训练数据都存储起来，需要的时候放在一起训练。虽然Task A和B都达到了不错的效果，但是所有数据的存储会是一个很大的问题。</p>
-<p>因此，如何解决数据存储的问题呢？可以借助于GAN网络来完成，减少了数据存储，但带来了更大的计算量。</p>
-<h2 id="3-这个领域还有那些前沿的研究方向"><a href="#3-这个领域还有那些前沿的研究方向" class="headerlink" title="3.这个领域还有那些前沿的研究方向"></a>3.这个领域还有那些前沿的研究方向</h2><ul>
-<li><p><strong>Curriculum Learning</strong> 类似于一个课程系的学习， 研究的是如何安排课程学习的先后顺序。</p>
-</li>
-<li><p><strong>Taskonomy</strong> 研究的是各个任务之间的关系， 即该先学哪个，后学哪个。</p>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/18/prompt%E7%AE%80%E4%BB%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/p1.jpg">
-      <meta itemprop="name" content="戎菜菜">
-      <meta itemprop="description" content="hey">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小戎的学习历程">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/04/18/prompt%E7%AE%80%E4%BB%8B/" class="post-title-link" itemprop="url">prompt简介</a>
-        </h2>
-
-        <div class="post-meta">
-
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-04-18 08:49:30 / 修改时间：14:17:09" itemprop="dateCreated datePublished" datetime="2022-04-18T08:49:30+08:00">2022-04-18</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>近年来，NLP技术发展迅猛。自BERT于2018年被提出以来，“pre-train+fine-tune”便成为了席卷整个NLP领域的学习范式。然而，自GPT-3开始，一种新的范式引起了大家的关注并越来越流行：prompt-based learning。<br>prompt-learning生成插槽，对下游任务进行重构，然后进行answer search、answer mapping，对[Z]槽位进行预测，选取得分最高的token z 作为输出即可，然后将z映射为最终输出y。<br>相比“pre-train+fine-tune”的范式，“prompt-based learning”有什么显著的优势？</p>
-<ul>
-<li><p>从应用场景看，可以解决zero-shot问题</p>
-</li>
-<li><p>从使用成本来看，由于后者可以不对pre-trained LM做fine-tune，因此使用起来成本更低。</p>
-</li>
-</ul>
-<p>prompt-based learning，给了我们什么样的启示？</p>
-<ul>
-<li>pre-train是必要的，但，fine-tune未必。换言之，fine-tune或许不是利用pre-trained LM 的唯一方式，更不是最有效的方式。</li>
-</ul>
-<p>如果包含了额外的prompt params，那么这种形式的“primpt-based learning”和”pre-train+fine-tune”的范式有什么区别？</p>
-<ul>
-<li>表象上来看，他俩确实区别不大，无非是起到“Adapter”作用的参数所处的位置不同。但是本质上，它们是完全不同的。前者的参数是为了让下游任务向预训练模型适配，后者的参数是为了让预训练模型向下游任务适配，这不同的出发点很可能导致了训练难度的不同，继而导致最终的效果不同。</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/15/git-%E5%B8%B8%E8%A7%81%E5%A5%97%E8%B7%AF/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/p1.jpg">
-      <meta itemprop="name" content="戎菜菜">
-      <meta itemprop="description" content="hey">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小戎的学习历程">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/04/15/git-%E5%B8%B8%E8%A7%81%E5%A5%97%E8%B7%AF/" class="post-title-link" itemprop="url">git 常见套路</a>
-        </h2>
-
-        <div class="post-meta">
-
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-04-15 16:06:13" itemprop="dateCreated datePublished" datetime="2022-04-15T16:06:13+08:00">2022-04-15</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-18 15:19:27" itemprop="dateModified" datetime="2022-04-18T15:19:27+08:00">2022-04-18</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>本文介绍git常见操作，仅仅设计四个命令：<code>add</code>，<code>commit</code>，<code>reset</code>，<code>checkout</code>.</p>
+          <p><strong>Class 类概念</strong></p>
+<p>Class 也是一个 Java 类，保存的是与之对应 Java 类的 meta信息（元信息），用来描述这个类的结构，比如描述一个类有哪些成员，有哪些方法等，一般在反射中使用。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2022/04/15/git-%E5%B8%B8%E8%A7%81%E5%A5%97%E8%B7%AF/#more" rel="contents">
+              <a class="btn" href="/2022/04/23/%E7%90%86%E8%A7%A3java-Class-forname/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -570,7 +259,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/15/git%E6%9B%B4%E6%96%B0%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/22/Spring%E6%95%99%E7%A8%8B-Day4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/p1.jpg">
@@ -584,7 +273,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/04/15/git%E6%9B%B4%E6%96%B0%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81/" class="post-title-link" itemprop="url">git 常见套路</a>
+            <a href="/2022/04/22/Spring%E6%95%99%E7%A8%8B-Day4/" class="post-title-link" itemprop="url">Spring教程 Day4</a>
         </h2>
 
         <div class="post-meta">
@@ -595,14 +284,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2022-04-15 16:06:10" itemprop="dateCreated datePublished" datetime="2022-04-15T16:06:10+08:00">2022-04-15</time>
+              <time title="创建时间：2022-04-22 17:13:53" itemprop="dateCreated datePublished" datetime="2022-04-22T17:13:53+08:00">2022-04-22</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-18 14:16:52" itemprop="dateModified" datetime="2022-04-18T14:16:52+08:00">2022-04-18</time>
+                <time title="修改时间：2022-04-23 18:41:36" itemprop="dateModified" datetime="2022-04-23T18:41:36+08:00">2022-04-23</time>
               </span>
 
           
@@ -616,182 +305,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="git更新本地代码"><a href="#git更新本地代码" class="headerlink" title="git更新本地代码"></a>git更新本地代码</h1><h2 id="1-本地代码未修改，只有master分支，直接更新"><a href="#1-本地代码未修改，只有master分支，直接更新" class="headerlink" title="1.本地代码未修改，只有master分支，直接更新"></a>1.本地代码未修改，只有master分支，直接更新</h2><p>git pull</p>
-<p>前提是本地的代码没更改过。比如，你提交了代码到github后，随后别人也提交代码到github，然后你需要更新别人提交的代码到你本地，就可以直接使用该命令。假如你提交代码后再修改过本地的代码，就会产生冲突，直接使用该命令会失败。</p>
-<h2 id="2-本地代码有修改，多分支。"><a href="#2-本地代码有修改，多分支。" class="headerlink" title="2.本地代码有修改，多分支。"></a>2.本地代码有修改，多分支。</h2><p>&#x2F;&#x2F;切换到master分支</p>
-<p>git checkout master</p>
-<p>&#x2F;&#x2F;更新master分支</p>
-<p>git pull</p>
-<p>&#x2F;&#x2F;切换到自己的分支isso</p>
-<p>git checkout isso</p>
-<p>&#x2F;&#x2F;把master分支合并到自己分支</p>
-<p>git merge master</p>
-<h2 id="3-本地代码有修改，只有master分支，直接覆盖本地代码。"><a href="#3-本地代码有修改，只有master分支，直接覆盖本地代码。" class="headerlink" title="3.本地代码有修改，只有master分支，直接覆盖本地代码。"></a>3.本地代码有修改，只有master分支，直接覆盖本地代码。</h2><p>&#x2F;&#x2F;重置索引和工作目录</p>
-<p>git reset –hard</p>
-<p>&#x2F;&#x2F;更新代码</p>
-<p>git pull</p>
-<h2 id="4-本地代码有修改，直接覆盖远程仓库代码"><a href="#4-本地代码有修改，直接覆盖远程仓库代码" class="headerlink" title="4.本地代码有修改，直接覆盖远程仓库代码"></a>4.本地代码有修改，直接覆盖远程仓库代码</h2><p>&#x2F;&#x2F;覆盖isso分支</p>
-<p>git push –force origin isso</p>
-<p>&#x2F;&#x2F;覆盖主分支</p>
-<p>git push –force origin master</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/14/C++unordered-set/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/p1.jpg">
-      <meta itemprop="name" content="戎菜菜">
-      <meta itemprop="description" content="hey">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小戎的学习历程">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/04/14/C++unordered-set/" class="post-title-link" itemprop="url">c++ unordered_set</a>
-        </h2>
-
-        <div class="post-meta">
-
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-04-14 16:30:22" itemprop="dateCreated datePublished" datetime="2022-04-14T16:30:22+08:00">2022-04-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-22 11:51:21" itemprop="dateModified" datetime="2022-04-22T11:51:21+08:00">2022-04-22</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="C-std-unordered-set用法与范例"><a href="#C-std-unordered-set用法与范例" class="headerlink" title="C++ std::unordered_set用法与范例"></a>C++ std::unordered_set用法与范例</h1><p>unordered_set是一种关联式容器，里面的元素是唯一的，并且是无排序容器，里面的值不可修改，但是可以插入或删除元素。</p>
-<p>unordered_set和set不同之处是：set是红黑树操作，红黑树具有排序功能。unordered_set是哈希表（hash table）操作的，插入和查询的时间复杂度很低，为常数级别，相对代价是消耗较多的空间，无自动排序功能。</p>
-<p>需要引入头文件：<code>#include&lt;unordered_set&gt;</code></p>
-<h2 id="unordered-set-初始化用法"><a href="#unordered-set-初始化用法" class="headerlink" title="unordered_set 初始化用法"></a>unordered_set 初始化用法</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">std::unordered_set&lt;<span class="type">int</span>&gt; myyunordered_set&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>从c-style阵列来初始化：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> arr[] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</span><br><span class="line">std::unordered_set&lt;<span class="type">int</span>&gt;<span class="built_in">myunordered_set</span>(arr,arr+<span class="number">5</span>);</span><br></pre></td></tr></table></figure>
-
-<h2 id="unordered-set插入元素"><a href="#unordered-set插入元素" class="headerlink" title="unordered_set插入元素"></a>unordered_set插入元素</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">myunordered_set.<span class="built_in">insert</span>(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
-
-<h2 id="遍历unordered-sort容器"><a href="#遍历unordered-sort容器" class="headerlink" title="遍历unordered_sort容器"></a>遍历unordered_sort容器</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">const</span> <span class="keyword">auto</span> &amp;s : myunordered_set)&#123;</span><br><span class="line">	std::cout&lt;&lt;s&lt;&lt;<span class="string">&quot; &quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>也可以使用迭代器的方法：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (std::unordered_set&lt;<span class="type">int</span>&gt;::iterator it = myunordered_set.<span class="built_in">begin</span>(); it != myunordered_set.<span class="built_in">end</span>(); it++) &#123;</span><br><span class="line">    std::cout &lt;&lt; *it &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="unordered-set删除指定元素"><a href="#unordered-set删除指定元素" class="headerlink" title="unordered_set删除指定元素"></a>unordered_set删除指定元素</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">myunordered_set.<span class="built_in">erase</span>(<span class="number">2</span>);</span><br></pre></td></tr></table></figure>
-
-<p>如果删除了不存在的元素，上述代码返回值为0；否则返回值为1。</p>
-<h2 id="清空unordered-set元素"><a href="#清空unordered-set元素" class="headerlink" title="清空unordered_set元素"></a>清空unordered_set元素</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">myunordered_set.<span class="built_in">clear</span>();</span><br></pre></td></tr></table></figure>
-
-<h2 id="判断unordered-set中元素是否存在"><a href="#判断unordered-set中元素是否存在" class="headerlink" title="判断unordered_set中元素是否存在"></a>判断unordered_set中元素是否存在</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">myunordered_set.<span class="built_in">count</span>(<span class="number">4</span>);</span><br></pre></td></tr></table></figure>
-
-<h2 id="判断unordered-set是否为空"><a href="#判断unordered-set是否为空" class="headerlink" title="判断unordered_set是否为空"></a>判断unordered_set是否为空</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">myunordered_set.<span class="built_in">empty</span>();</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/14/C++Set/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/p1.jpg">
-      <meta itemprop="name" content="戎菜菜">
-      <meta itemprop="description" content="hey">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小戎的学习历程">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/04/14/C++Set/" class="post-title-link" itemprop="url">c++ Set</a>
-        </h2>
-
-        <div class="post-meta">
-
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-04-14 16:10:01" itemprop="dateCreated datePublished" datetime="2022-04-14T16:10:01+08:00">2022-04-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-22 11:50:44" itemprop="dateModified" datetime="2022-04-22T11:50:44+08:00">2022-04-22</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="C-std-set用法与范例"><a href="#C-std-set用法与范例" class="headerlink" title="C++ std::set用法与范例"></a>C++ std::set用法与范例</h1><p>set是一个关联式容器，里面的元素是唯一的，而且是有排序的容器。set容器里面的元素的值是不可修改的，但set容器可以插入或删除元素。set通常是用红黑树（red-black tree）操作的。</p>
-<p>要使用set容器，需要引入头文件<code>&lt;set&gt;</code></p>
+          <p>本文为spring教程笔记4，视频资源为b站黑马程序员<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Sb411s7vP?p=1%E3%80%82">https://www.bilibili.com/video/BV1Sb411s7vP?p=1。</a></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2022/04/14/C++Set/#more" rel="contents">
+              <a class="btn" href="/2022/04/22/Spring%E6%95%99%E7%A8%8B-Day4/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -815,7 +332,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/14/%E8%AE%A1%E7%BD%91%E5%AE%9E%E9%AA%8C%EF%BC%88%E7%BD%91%E7%BB%9C%E7%89%88%EF%BC%89/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/22/Spring%E6%95%99%E7%A8%8B-Day3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/p1.jpg">
@@ -829,7 +346,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/04/14/%E8%AE%A1%E7%BD%91%E5%AE%9E%E9%AA%8C%EF%BC%88%E7%BD%91%E7%BB%9C%E7%89%88%EF%BC%89/" class="post-title-link" itemprop="url">计网实验（网络版）</a>
+            <a href="/2022/04/22/Spring%E6%95%99%E7%A8%8B-Day3/" class="post-title-link" itemprop="url">Spring教程 Day3</a>
         </h2>
 
         <div class="post-meta">
@@ -840,14 +357,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2022-04-14 16:06:13" itemprop="dateCreated datePublished" datetime="2022-04-14T16:06:13+08:00">2022-04-14</time>
+              <time title="创建时间：2022-04-22 16:43:20" itemprop="dateCreated datePublished" datetime="2022-04-22T16:43:20+08:00">2022-04-22</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-05-25 11:03:05" itemprop="dateModified" datetime="2022-05-25T11:03:05+08:00">2022-05-25</time>
+                <time title="修改时间：2022-04-23 09:29:44" itemprop="dateModified" datetime="2022-04-23T09:29:44+08:00">2022-04-23</time>
               </span>
 
           
@@ -861,82 +378,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="计网实验（网络版）"><a href="#计网实验（网络版）" class="headerlink" title="计网实验（网络版）"></a>计网实验（网络版）</h1><h2 id="路由器"><a href="#路由器" class="headerlink" title="路由器"></a>路由器</h2><p>1）打开packet tracer，在里面新建路由器（routers）和pc（End Devices），用console线（蓝色）连接路由器console口和pc的串口（com1,i.e. RS232)，即可完成连接。</p>
-<p>2）双击pc，打开terminal，波特率选择9600，其余默认，然后就能进入用户模式。</p>
-<p>3）用户模式：router&gt;</p>
-<p>​      特权模式：router#</p>
-<p>​      全局配置模式：router(config)#</p>
-<p>要进入特权模式，输入enable；要进入全局配置模式，在特权模式下输入configure terminal；在全局配置模式中可以选择端口；按Ctrl+Z可以退出全局配置模式。</p>
-<p>4）编辑路由器登陆信息：</p>
-<p>Router(config)#banner motd “Welcomee to NJU”</p>
-<p>5）配置端口描述：</p>
-<p>Router(config)#int fa 0&#x2F;0</p>
-<p>Router(config-if)#description To ISP</p>
-<p>6）关闭域名解析功能：</p>
-<p>Router(config)#no ip domain-lookup</p>
-<p>7）将实验端口恢复默认设置：</p>
-<p>Router(config)#default interface f0&#x2F;0</p>
-<p>8）设置系统时间：</p>
-<p>Router#clock set 08:00:00 1jan 2016 </p>
-<p>9)给路由器命名：</p>
-<p>进入全局配置模式，用hostname<name>命令来设定路由器名称</p>
-<p>10）给端口配IP地址：在全局配置模式下，进入各端口配置模式配置IP地址</p>
-<p>​        1.以太网口配置</p>
-<p>​            Router(config)# int f0&#x2F;0</p>
-<p>​            Router(config-if) #ip address <ip address><subnet mask></p>
-<p>​            Router(config-if)# no shutdown</p>
-<p>​        2.串行线：根据串口是DTE还是DCE来选择（略）</p>
-<p>11）Ping命令</p>
-<p>Router#ping <ip address></p>
-<p>12）设置Telnet</p>
-<p>能进行Telnet的前提：主机能ping通路由器；路由器设置了telnet密码；路由器允许通过telnet登录；如果需要进入特权模式，还需要配置enable密码。</p>
-<p>配置命令：Router#telnet <ip address></p>
-<p>​                   Router#telnet <hostname></p>
-<p>启动telnet：</p>
-<p>Router#config t</p>
-<p>Router(config)#line vty 0 4 &#x2F;&#x2F;同时允许0-4共5个连接</p>
-<p>Router(config-line)# login</p>
-<p>Router(config-line)#password cisco &#x2F;&#x2F;设置密码为cisco</p>
-<p>设置enable密码：</p>
-<p>Router(config)#enable password cisco</p>
-<p>Router(config-line)# password cisco</p>
-<h2 id="交换机"><a href="#交换机" class="headerlink" title="交换机"></a>交换机</h2><p>1）连接方法同路由器</p>
-<p>2）将hostname改为nju</p>
-<p>先enable进入特权模式，在con t 进入全局配置模式（命令在不引起歧义的情况下可以省略），然后</p>
-<p>Switch(config)#hostname nju</p>
-<p>3）设置特权密码和vty线路密码</p>
-<p>nju(config)#enable password ccna</p>
-<p>nju(config)#line vty 0 4</p>
-<p>nju(config-line)#passwoed ccnp</p>
-<p>4）设置管理ip地址</p>
-<p>nju(config)#inter vlan1</p>
-<p>nju(config-if)#ip add 192.168.1.1 255.255.255.0</p>
-<p>nju(config-if)#no shut</p>
-<p>nju(config-if)#exit</p>
-<p>nju(config)#ip default0gateway 192.168.1.100</p>
-<h2 id="静态路由和简单组网"><a href="#静态路由和简单组网" class="headerlink" title="静态路由和简单组网"></a>静态路由和简单组网</h2><p>1）完成拓扑图，其中pc和路由器通过fa口连接（可以不连），路由器和路由器之间通过s串口连接，pc连接console。</p>
-<p>路由器和路由器之间的线选择Serial DTE（最后一个），连接方向是从DTE路由器连接到DCE路由器（方向反了就ping不通了）</p>
-<p>2）按照实验手册配置ip地址,要设置clock rate</p>
-<p>3）现在可以ping通相连的路由器</p>
-<p>4）为了连接相邻路由器的下一跳地址，需要配置路由表。格式为：<code>ip route &lt;目标网段&gt;&lt;子网掩码&gt;&lt;下一跳路由器地址（IP地址）&gt;</code></p>
-<p>5）现在可以ping通下一跳路由器</p>
-<p>6）可以删除静态路由配置，然后配置默认路由</p>
-<p>注）如果PC要连接路由器，需要配置一个不同的IP地址，同时，要配置网关gateway，设置为与路由器相连的端口的IP地址。配置正确即可ping通其他所有。（PC和路由器连接要用交叉线）</p>
-<p>再注）即使IP和网关都设置好了，依然是ping不通的。因为中间路由器没有10网段和40网段的路由表，因此消息在传到中间路由器的时候就会因为找不到目的地址而被丢弃。（左右两边的因为手动配置了路由表，所以路由表是完整的）</p>
-<h2 id="动态RIP"><a href="#动态RIP" class="headerlink" title="动态RIP"></a>动态RIP</h2><p>根据实验手册配置。</p>
-<p>在配置RIP之后，路由器每30秒就会和相邻路由器交换路由表，从而实现网络的互通。</p>
-<h2 id="配置单域OSPF"><a href="#配置单域OSPF" class="headerlink" title="配置单域OSPF"></a>配置单域OSPF</h2><p>1）配置IP地址（手册上没有）</p>
-<p>2）配置回环接口</p>
-<p>3）配置OSPF（DR&#x2F;BDR和手册不一样？）</p>
-<p>4）设置计时器、安全等等</p>
-<h2 id="VLAN间路由"><a href="#VLAN间路由" class="headerlink" title="VLAN间路由"></a>VLAN间路由</h2><p>1）按照拓扑连接</p>
-<p>2）在设置encapsulation dot1q时报错，这是因为encapsulation dot1q是不用配置的，也就是说它只支持dot1q协议。如果遇到一个支持sli和dot1q两个协议的交换机时才用。</p>
-<p>3）划分VLAN，为10和20（两个交换机都要配置两个，如果没有配置的话会自动配置）</p>
-<p>4）将交换机的以太网口划分不同的VLAN</p>
-<p>5）将交换机与路由器连接的接口设置为Trunk接口</p>
-<p>6）将Router设置Vlan地址</p>
-<p>7）PC设置IP地址和网关，发现不同网段也能ping通（等几秒钟，设置需要时间）</p>
-<h2 id="NAT网络地址转换"><a href="#NAT网络地址转换" class="headerlink" title="NAT网络地址转换"></a>NAT网络地址转换</h2>
+          <p>本文为spring教程笔记3，视频资源为b站黑马程序员<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Sb411s7vP?p=1%E3%80%82">https://www.bilibili.com/video/BV1Sb411s7vP?p=1。</a></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/04/22/Spring%E6%95%99%E7%A8%8B-Day3/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -955,7 +405,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/14/C++sort/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/22/Spring%E6%95%99%E7%A8%8B-Day2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/p1.jpg">
@@ -969,7 +419,133 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/04/14/C++sort/" class="post-title-link" itemprop="url">C++ sort</a>
+            <a href="/2022/04/22/Spring%E6%95%99%E7%A8%8B-Day2/" class="post-title-link" itemprop="url">Spring教程 Day2</a>
+        </h2>
+
+        <div class="post-meta">
+
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-04-22 14:27:52 / 修改时间：16:43:00" itemprop="dateCreated datePublished" datetime="2022-04-22T14:27:52+08:00">2022-04-22</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>本文为spring教程笔记2，视频资源为b站黑马程序员<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Sb411s7vP?p=1%E3%80%82">https://www.bilibili.com/video/BV1Sb411s7vP?p=1。</a></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/04/22/Spring%E6%95%99%E7%A8%8B-Day2/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/22/C++%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1-%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/p1.jpg">
+      <meta itemprop="name" content="戎菜菜">
+      <meta itemprop="description" content="hey">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小戎的学习历程">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/22/C++%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1-%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/" class="post-title-link" itemprop="url">C++高级程序设计-学习小记</a>
+        </h2>
+
+        <div class="post-meta">
+
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-04-22 11:49:25 / 修改时间：11:49:26" itemprop="dateCreated datePublished" datetime="2022-04-22T11:49:25+08:00">2022-04-22</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/21/Spring%E6%95%99%E7%A8%8B%20Day1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/p1.jpg">
+      <meta itemprop="name" content="戎菜菜">
+      <meta itemprop="description" content="hey">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小戎的学习历程">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/21/Spring%E6%95%99%E7%A8%8B%20Day1/" class="post-title-link" itemprop="url">Spring教程 Day1</a>
         </h2>
 
         <div class="post-meta">
@@ -980,14 +556,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2022-04-14 10:39:19" itemprop="dateCreated datePublished" datetime="2022-04-14T10:39:19+08:00">2022-04-14</time>
+              <time title="创建时间：2022-04-21 20:30:00" itemprop="dateCreated datePublished" datetime="2022-04-21T20:30:00+08:00">2022-04-21</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-22 11:51:12" itemprop="dateModified" datetime="2022-04-22T11:51:12+08:00">2022-04-22</time>
+                <time title="修改时间：2022-04-22 14:27:07" itemprop="dateModified" datetime="2022-04-22T14:27:07+08:00">2022-04-22</time>
               </span>
 
           
@@ -1001,18 +577,315 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line">vector&lt;<span class="type">int</span>&gt; v;</span><br><span class="line">std::<span class="built_in">sort</span>(v.<span class="built_in">begin</span>(),v.<span class="built_in">end</span>());</span><br><span class="line"><span class="type">int</span> arr[] = &#123;<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">8</span>&#125;</span><br><span class="line">std::<span class="built_in">sort</span>(a,a+<span class="number">6</span>);</span><br></pre></td></tr></table></figure>
+          <p>本文为spring教程笔记，视频资源为b站黑马程序员<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Sb411s7vP?p=1%E3%80%82">https://www.bilibili.com/video/BV1Sb411s7vP?p=1。</a></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/04/21/Spring%E6%95%99%E7%A8%8B%20Day1/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
 
-<p>加入sort函数样板：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">less&lt;Type&gt;</span><br><span class="line"></span><br><span class="line">less_equal&lt;Type&gt;</span><br><span class="line"></span><br><span class="line">greater&lt;Type&gt;</span><br><span class="line"></span><br><span class="line">greater_equal&lt;Type&gt;</span><br><span class="line"></span><br><span class="line">equal_to&lt;Type&gt;</span><br><span class="line"></span><br><span class="line">not_equal_to&lt;Type&gt;</span><br></pre></td></tr></table></figure>
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
 
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> arr[] = &#123;<span class="number">4</span>, <span class="number">5</span>, <span class="number">8</span>, <span class="number">3</span>, <span class="number">7</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">6</span>, <span class="number">10</span>, <span class="number">9</span>&#125;;</span><br><span class="line">std::<span class="built_in">sort</span>(arr, arr+<span class="number">10</span>, std::<span class="built_in">greater</span>&lt;<span class="type">int</span>&gt;());</span><br></pre></td></tr></table></figure>
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/21/%E7%9C%8B%E6%9D%BF%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95/">
 
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">std::<span class="built_in">sort</span>(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>(), mycompare);</span><br></pre></td></tr></table></figure>
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/p1.jpg">
+      <meta itemprop="name" content="戎菜菜">
+      <meta itemprop="description" content="hey">
+    </span>
 
-<p>配合lambda匿名函数：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">std::sort(v.begin(), v.end(), [](int a, int b)&#123;</span><br><span class="line">    return a &lt; b; // 升序排列</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小戎的学习历程">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/21/%E7%9C%8B%E6%9D%BF%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">看板开发方法</a>
+        </h2>
 
+        <div class="post-meta">
+
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-04-21 16:03:58 / 修改时间：16:42:53" itemprop="dateCreated datePublished" datetime="2022-04-21T16:03:58+08:00">2022-04-21</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>看板开发方法是近年来（2013年）最热门的敏捷和精益开发方法。越来越多的案例表明，它能够改善协作、优化管理、显著提高交付速度、质量和灵活性。看板开发方法的规则简单，但其有效实施依赖于对原理的理解、对原则的坚持和实践的应变。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/04/21/%E7%9C%8B%E6%9D%BF%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/20/C++%20Map/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/p1.jpg">
+      <meta itemprop="name" content="戎菜菜">
+      <meta itemprop="description" content="hey">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小戎的学习历程">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/20/C++%20Map/" class="post-title-link" itemprop="url">C++ Map</a>
+        </h2>
+
+        <div class="post-meta">
+
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-04-20 18:20:01" itemprop="dateCreated datePublished" datetime="2022-04-20T18:20:01+08:00">2022-04-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-22 11:51:49" itemprop="dateModified" datetime="2022-04-22T11:51:49+08:00">2022-04-22</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="C-std-map-用法与范例"><a href="#C-std-map-用法与范例" class="headerlink" title="C++ std::map 用法与范例"></a>C++ std::map 用法与范例</h1><p>C++map是一个关联式容器，把键和值联系起来，并用该键来执行查找元素、插入元素、删除元素等操作。<br>map是有排序的关联式容器，会根据元素对应的键来排序，而且key是唯一值。如果同样的key再insert，就会覆盖原本的value。<br>map的运作方式通常是红黑树，这样可以保证在O(log n)时间内完成查找、插入、删除等操作。<br>需要引入头文件<code>&lt;map&gt;</code></p>
+<h2 id="map-常用功能"><a href="#map-常用功能" class="headerlink" title="map 常用功能"></a>map 常用功能</h2><ul>
+<li>元素存取：operator[]：存取指定的[i]元素的资料</li>
+<li>迭代器：<code>begin()</code>,<code>end()</code>,<code>rbegin()</code>,<code>rend()</code></li>
+<li>容量：<code>empty()</code>,<code>size()</code>,<code>max_size()</code></li>
+<li>修改器：<code>clear()</code>,<code>insert()</code>,<code>erase()</code>,<code>swap()</code></li>
+<li>查找：<code>count()</code>,<code>find()</code></li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">std::map&lt;<span class="type">int</span>, std::string&gt; studentMap;</span><br><span class="line"><span class="comment">//初始化</span></span><br><span class="line">studentMap.<span class="built_in">insert</span>(std::<span class="built_in">pair</span>&lt;<span class="type">int</span>, std::string&gt;(<span class="number">1</span>, <span class="string">&quot;Tom&quot;</span>));</span><br><span class="line">studentMap[<span class="number">1</span>] = <span class="string">&quot;Tom&quot;</span>;<span class="comment">//如果存在则覆盖</span></span><br><span class="line">std::map&lt;<span class="type">int</span>, std::string&gt; studentMap = &#123;</span><br><span class="line">    &#123;<span class="number">1</span>, <span class="string">&quot;Tom&quot;</span>&#125;,</span><br><span class="line">    &#123;<span class="number">2</span>, <span class="string">&quot;Jack&quot;</span>&#125;,</span><br><span class="line">    &#123;<span class="number">3</span>, <span class="string">&quot;John&quot;</span>&#125;</span><br><span class="line">&#125;;</span><br><span class="line">studentMap.<span class="built_in">erase</span>(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+
+<p>具体和其他STL容器相似。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/20/Java%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/p1.jpg">
+      <meta itemprop="name" content="戎菜菜">
+      <meta itemprop="description" content="hey">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小戎的学习历程">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/20/Java%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80/" class="post-title-link" itemprop="url">Java面向对象基础</a>
+        </h2>
+
+        <div class="post-meta">
+
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-04-20 16:39:21" itemprop="dateCreated datePublished" datetime="2022-04-20T16:39:21+08:00">2022-04-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-24 22:25:08" itemprop="dateModified" datetime="2022-04-24T22:25:08+08:00">2022-04-24</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>本文为Java学习笔记，主要来自于廖雪峰网站。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/04/20/Java%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/20/%E5%AF%B9%E8%B1%A1%E4%B8%8Ethis/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/p1.jpg">
+      <meta itemprop="name" content="戎菜菜">
+      <meta itemprop="description" content="hey">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小戎的学习历程">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/20/%E5%AF%B9%E8%B1%A1%E4%B8%8Ethis/" class="post-title-link" itemprop="url">对象与this</a>
+        </h2>
+
+        <div class="post-meta">
+
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-04-20 13:04:27 / 修改时间：15:34:55" itemprop="dateCreated datePublished" datetime="2022-04-20T13:04:27+08:00">2022-04-20</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="self与this"><a href="#self与this" class="headerlink" title="self与this"></a>self与this</h2><p>对象，可以理解为“多个相关数据的统一载体”。比如一个人，有name，age，height等社会或生理体征，而这些数据是数以一个个体的，如果用数组去存，表现力有所欠缺，无法表达“它们属于同一个个体”的含义。</p>
+<p>但我们知道，在Java中对象是在堆空间中生成的，数据会在堆空间占据一定的内存开销，而方法只有一份。</p>
+<p>为什么方法被设计出只有一份呢？</p>
+<p>因为多个个体，属性可能不同，但我们都有相同的method，没必要和属性数据一样在堆空间各存一份，所以被抽取出来存放。</p>
+<p>此时，方法相当于一套指令模板，谁都可以传入数据交给它执行，然后得到执行后的结果返回。</p>
+<p>那么，方法如何知道是谁执行的呢？</p>
+<p>python的self，Java的this其实就是解决这个问题的。可以理解为对象内部持有一个应用，党调用某个方法时，必须传递这个对象引用，然后方法根据这个引用就知道当前这套指令是对哪个对象的数据进行操作了。</p>
+<h2 id="static与this"><a href="#static与this" class="headerlink" title="static与this"></a>static与this</h2><p>我们都知道，static修饰的属性或方法其实是属于类的，是所有对象共享的。</p>
+<p>之所以一个变量或者方法要声明为static，是因为</p>
+<ul>
+<li>static变量：大家共有的，大家都一样，不是特定的差异化数据</li>
+<li>static方法：这个方法不处理差异化数据</li>
+</ul>
+<p>也就是说，static注定是与差异化数据无关，也就是与具体对象的数据无关。</p>
+<p>以静态方法为例，当你确定一个方法只提供通用的操作流程，而不会在内部引用具体对象的数据时，你就<strong>可以</strong>把它定为静态方法。</p>
+<p>这个其实和我们之前听到的解释不一样。网络上一贯的解释都是上来就告诉你静态方法不能访问实例变量，再解释为什么，是倒着解释的。而上面这段话的出发点是，当你满足什么条件时，你就可以把一个方法定为静态方法。</p>
+<p>为什么Java中静态方法无法访问非静态数据（实例字段）和非静态方法（实例方法）。<strong>因为Java不会在调用静态方法时传递this，静态方法内没有this当然无法调用实例相关的一切。</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">我们在一个实例方法中调用另一个实例方法或者实例变量时，其实都是通过<span class="built_in">this</span>调用的，比如</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test</span><span class="params">()</span>&#123;</span><br><span class="line">    System.out.println(<span class="built_in">this</span>.name);</span><br><span class="line">    <span class="built_in">this</span>.show();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当然，有些培训班视频会说静态方法随着类加载而加载，此时并没有对象实例化，所以静态方法无法访问实例相关数据，倒也勉强说得通。看大家自己怎么理解了，能自圆其说即可。</p>
+<p>java子类实例化时会隐式调用父类构造器</p>
+<p>本质和子类调用方法给父类传参一样一样的！只不过传参的过程很特殊：</p>
+<ul>
+<li>new的时候自动传参，不是我们主动调用，所以感知不到</li>
+<li>Java中的this是隐式传递的，所以我们更加注意不到了</li>
+</ul>
 
       
     </div>
@@ -1031,7 +904,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1099,20 +972,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">74</span>
+          <span class="site-state-item-count">85</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-count">24</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

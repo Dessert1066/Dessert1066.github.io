@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="PPP协议是一种点到点（一根链路两端只有两个接口）链路层协议，主要用在全双工的同异步链路上进行点到点的数据传输。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PPP协议">
+<meta property="og:url" content="http://example.com/2022/05/29/PPP%E5%8D%8F%E8%AE%AE/index.html">
+<meta property="og:site_name" content="小戎的学习历程">
+<meta property="og:description" content="PPP协议是一种点到点（一根链路两端只有两个接口）链路层协议，主要用在全双工的同异步链路上进行点到点的数据传输。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://static.getiot.tech/ppp-protocol-link.png">
+<meta property="og:image" content="https://www.qingsword.com/qing/images/Cisco-CCNA-PPP-2.jpg">
+<meta property="og:image" content="https://www.qingsword.com/qing/images/Cisco-CCNA-PPP-3.jpg">
+<meta property="og:image" content="https://www.qingsword.com/qing/images/Cisco-CCNA-PPP-4.jpg">
+<meta property="og:image" content="https://www.qingsword.com/qing/images/Cisco-CCNA-PPP-5.jpg">
+<meta property="og:image" content="https://www.qingsword.com/qing/images/Cisco-CCNA-PPP-6.jpg">
+<meta property="article:published_time" content="2022-05-29T02:52:32.000Z">
+<meta property="article:modified_time" content="2022-05-30T02:53:27.354Z">
+<meta property="article:author" content="戎菜菜">
+<meta property="article:tag" content="计网">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://static.getiot.tech/ppp-protocol-link.png">
+
+<link rel="canonical" href="http://example.com/2022/05/29/PPP%E5%8D%8F%E8%AE%AE/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>PPP协议 | 小戎的学习历程</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">小戎的学习历程</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">梦想下酒</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/29/PPP%E5%8D%8F%E8%AE%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/p1.jpg">
+      <meta itemprop="name" content="戎菜菜">
+      <meta itemprop="description" content="hey">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小戎的学习历程">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          PPP协议
+        </h1>
+
+        <div class="post-meta">
+
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-05-29 10:52:32" itemprop="dateCreated datePublished" datetime="2022-05-29T10:52:32+08:00">2022-05-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-05-30 10:53:27" itemprop="dateModified" datetime="2022-05-30T10:53:27+08:00">2022-05-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>PPP协议是一种点到点（一根链路两端只有两个接口）链路层协议，主要用在全双工的同异步链路上进行点到点的数据传输。</p>
+<span id="more"></span>
+
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>PPP协议（Point-to-Point Protocol）是一种网络协议中最为基础的协议，工作在数据链路层，它是为在同等单元之间传输数据包这样的简单链路而设计的，这种链路提供了全双工操作，并按照顺序传递数据报。</p>
+<p>PPP主要是用来通过拨号或专线方式在两个网络节点之间建立连接、发送数据。PPP是各类型主机、网桥和路由器之间简单连接的一种解决方案。PPP协议是目前广域网上应用最广泛的协议之一，它的优点在于简单、具备用户验证能力、可以解决IP分配等。</p>
+<p>PPP协议包括一下三个部分：</p>
+<ul>
+<li>数据帧封装方法</li>
+<li>链路控制协议LCP（Link Control Protocol），用于对封装格式选项的自动协商、建立和终止连接，探测链路错误和配置错误。</li>
+<li>针对不同网络层协议的一族网络控制协议NCP（Network Control Protocol），PPP协议规定了每一种网络层协议都有相应的网络控制协议，，并用他们来管理各个协议不同的需求。</li>
+</ul>
+<h2 id="PPP的LCP子层和NCP子层"><a href="#PPP的LCP子层和NCP子层" class="headerlink" title="PPP的LCP子层和NCP子层"></a>PPP的LCP子层和NCP子层</h2><p>1） LCP（Link Control Protocol）子层</p>
+<p>LCP子层位于物理层之上，除了用来建立、配置和测试数据链路连接外，还提供下面这些功能：</p>
+<ul>
+<li>身份验证：提供了PAP和CHAP验证</li>
+<li>压缩：将需要传输的数据先压缩再传输。支持Stac、Predictor、MPPC以及TCP头部压缩。</li>
+<li>错误检测：保证链路的质量</li>
+<li>多链路：实现链路的负载均衡</li>
+<li>PPP回拨：可以提高安全性和节约用户拨号费用</li>
+</ul>
+<p>2）NCP（Network Control Protocol）子层</p>
+<p>当LCP将链路建立好后，PPP开始根据不同用户的需要配置上层协议所需环境，NCP被用来为上层服务提供接口，针对不同的上层协议NCP提供不同的服务组件。</p>
+<h2 id="PPP-链路建立状态机"><a href="#PPP-链路建立状态机" class="headerlink" title="PPP 链路建立状态机"></a>PPP 链路建立状态机</h2><p><img src="https://static.getiot.tech/ppp-protocol-link.png" alt="img"></p>
+<ul>
+<li><strong>Dead 阶段</strong>：也称为物理层不可用阶段。当通信双方的两端检测到物理线路激活时，就会从 Dead 阶段迁移至 Establish 阶段，即链路建立阶段。</li>
+<li><strong>Establish 阶段</strong>：PPP 链路进行 LCP 参数协商。协商内容包括最大接收单元 MRU、认证方式、魔术字（Magic Number）等选项。LCP 参数协商成功后会进入 Opened 状态，表示底层链路已经建立。</li>
+<li><strong>Authenticate 阶段</strong>：多数情况下，链路两端的设备是需要经过认证阶段（Authenticate）后才能够进入到网络层协议阶段。PPP 链路在缺省情况下是不要求进行认证的。如果要求认证，则在链路建立阶段必须指定认证协议。认证方式是在链路建立阶段双方进行协商的。如果在这个阶段再次收到了 Configure-Request 报文，则又会返回到链路建立阶段。</li>
+<li><strong>Network 阶段</strong>：PPP 链路进行 NCP 协商。通过 NCP 协商来选择和配置一个网络层协议并进行网络层参数协商。只有相应的网络层协议协商成功后，该网络层协议才可以通过这条 PPP 链路发送报文。如果在这个阶段收到了 Configure-Request 报文，也会返回到链路建立阶段。NCP 协商成功后，PPP 链路将保持通信状态。</li>
+<li>PPP 运行过程中，可以随时中断连接，例如物理链路断开、认证失败、超时定时器时间、管理员通过配置关闭连接等动作都可能导致链路进入 <strong>Terminate 阶段</strong>。在 Terminate 阶段，如果所有的资源都被释放，通信双方将回到 <strong>Dead 阶段</strong>，直到通信双方重新建立 PPP 连接。</li>
+</ul>
+<h2 id="PPP会话建立过程"><a href="#PPP会话建立过程" class="headerlink" title="PPP会话建立过程"></a>PPP会话建立过程</h2><p>PPP从开始发起呼叫到最终通信完成后释放链路一共要经历下面四个步骤：</p>
+<p>第一步：链路的建立和配置协商，主要由LCP完成，通信的发起方发送LCP帧来配置和检测数据链路。</p>
+<p>第二步：链路质量检测（可选），属于LCP的可选功能，主要是测试链路质量能否满足要求。</p>
+<p>第三步：网络层协议的配置阶段，主要是NCP的功能，通信双方交换一系列NCP分组来配置网络层，NCP配置好后双方的逻辑通信链路就建立完成了。</p>
+<p>第四步：链路终止，当数据传送完成，或者一些外部事件发生的时候，一方会发起断开连接的请求，这时，首先使用NCP来释放网络层的连接，然后使用LCP来关闭数据链路层的连接，最后双方的通信设备关闭物理链路。</p>
+<h2 id="PPP身份验证协议"><a href="#PPP身份验证协议" class="headerlink" title="PPP身份验证协议"></a>PPP身份验证协议</h2><p>PPP有两种可选的身份验证协议PAP和CHAP。</p>
+<h3 id="1-PAP（Password-Authentication-Protocol，密码验证协议）"><a href="#1-PAP（Password-Authentication-Protocol，密码验证协议）" class="headerlink" title="1. PAP（Password Authentication Protocol，密码验证协议）"></a>1. PAP（Password Authentication Protocol，密码验证协议）</h3><p>这是一种两次握手协议，采用明文传输方式传输用户口令，验证步骤如下：</p>
+<p>首先被验证方主动发起验证请求，将本地配置的用户名和密码用铭文的方式发送给验证方，验证方接收到验证请求后检查此用户名和密码是否正确（再验证方的数据库中也配置有此用户名和密码），正确就发回接受报文，错误就发送拒绝报文；这种验证方式是采用明文传输，很容易被破解。</p>
+<p><img src="https://www.qingsword.com/qing/images/Cisco-CCNA-PPP-2.jpg"></p>
+<h3 id="2-CHAP（Challenge-Handshake-Authentication-Protocol，挑战握手验证协议）"><a href="#2-CHAP（Challenge-Handshake-Authentication-Protocol，挑战握手验证协议）" class="headerlink" title="2. CHAP（Challenge Handshake Authentication Protocol，挑战握手验证协议）"></a>2. CHAP（Challenge Handshake Authentication Protocol，挑战握手验证协议）</h3><p>这是一种三次握手协议，它只在网络上传输用户名，密码并不在网络上传输，下图为CHAP验证示意图：</p>
+<p><img src="https://www.qingsword.com/qing/images/Cisco-CCNA-PPP-3.jpg"></p>
+<p>CHAP的验证过程如下：</p>
+<p>在PPP链路建立阶段完成之后（R1作为被验证方拨入），验证方R2主动发起验证挑战“Challenge”，挑战报文中“01”是序列号；R2上可能有多个拨入请求，“ID”用来识别是哪个拨入者发起的挑战；“Random”是一个随机数；“R2”是发起挑战路由器的名字。</p>
+<p><img src="https://www.qingsword.com/qing/images/Cisco-CCNA-PPP-4.jpg"></p>
+<p>被验证方收到验证方发来的请求后，根据这个报文中的路由器的名称（R2），在本地数据库中寻找这个名称（R2）对应的密码，如果找到对应的密码，则用验证方送过来的报文的ID和随机数加上本地数据库中找到的密码，以MD5算法生成一个hash值。</p>
+<p><img src="https://www.qingsword.com/qing/images/Cisco-CCNA-PPP-5.jpg"></p>
+<p>生成hash之后，再将这个hash值、验证方R2发送过来的ID号以及本路由器的名称R1，发回给验证方R2。其中报文的序列号是“02”，“ID”是R2发送过来的ID不变，“hash”是R1计算后得到的哈希值。</p>
+<p><img src="https://www.qingsword.com/qing/images/Cisco-CCNA-PPP-6.jpg"></p>
+<p>R2接收到这个报文后，利用报文中的ID值找到储存在本地数据库中的随机数，并且根据发送过来的报文中路由器的名称（R1）找到本地数据库对应这个名称的密码，然后利用ID、随机数、R1对应的密码使用MD5算法生成一个hash值，最后用这个hash值与R1发送过来的hash比较，相同则验证通过，发回序列号是“03”的确认报文，如果不相同则验证失败，发回序号是“04”的验证失败报文。</p>
+<p>从这个步骤可以看出，只要双方配置相同的验证密码，即可完成验证，并且这个密码是不会在链路上传输的，传输的只是一个随机数、一个ID值、路由器的名称和发回的hash值。</p>
+<h2 id="PPP实验"><a href="#PPP实验" class="headerlink" title="PPP实验"></a>PPP实验</h2><p><a target="_blank" rel="noopener" href="https://www.qingsword.com/qing/661.html">https://www.qingsword.com/qing/661.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://getiot.tech/protocol/ppp.html">https://getiot.tech/protocol/ppp.html</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%A1%E7%BD%91/" rel="tag"># 计网</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/05/28/%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86%E5%9F%BA%E7%A1%80/" rel="prev" title="数据管理基础">
+      <i class="fa fa-chevron-left"></i> 数据管理基础
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/05/30/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" rel="next" title="单例模式">
+      单例模式 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PPP%E7%9A%84LCP%E5%AD%90%E5%B1%82%E5%92%8CNCP%E5%AD%90%E5%B1%82"><span class="nav-number">2.</span> <span class="nav-text">PPP的LCP子层和NCP子层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PPP-%E9%93%BE%E8%B7%AF%E5%BB%BA%E7%AB%8B%E7%8A%B6%E6%80%81%E6%9C%BA"><span class="nav-number">3.</span> <span class="nav-text">PPP 链路建立状态机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PPP%E4%BC%9A%E8%AF%9D%E5%BB%BA%E7%AB%8B%E8%BF%87%E7%A8%8B"><span class="nav-number">4.</span> <span class="nav-text">PPP会话建立过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PPP%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81%E5%8D%8F%E8%AE%AE"><span class="nav-number">5.</span> <span class="nav-text">PPP身份验证协议</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-PAP%EF%BC%88Password-Authentication-Protocol%EF%BC%8C%E5%AF%86%E7%A0%81%E9%AA%8C%E8%AF%81%E5%8D%8F%E8%AE%AE%EF%BC%89"><span class="nav-number">5.1.</span> <span class="nav-text">1. PAP（Password Authentication Protocol，密码验证协议）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-CHAP%EF%BC%88Challenge-Handshake-Authentication-Protocol%EF%BC%8C%E6%8C%91%E6%88%98%E6%8F%A1%E6%89%8B%E9%AA%8C%E8%AF%81%E5%8D%8F%E8%AE%AE%EF%BC%89"><span class="nav-number">5.2.</span> <span class="nav-text">2. CHAP（Challenge Handshake Authentication Protocol，挑战握手验证协议）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PPP%E5%AE%9E%E9%AA%8C"><span class="nav-number">6.</span> <span class="nav-text">PPP实验</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="戎菜菜"
+      src="/images/p1.jpg">
+  <p class="site-author-name" itemprop="name">戎菜菜</p>
+  <div class="site-description" itemprop="description">hey</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">85</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">戎菜菜</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/clicklove.js"></script>
+
+</html>
