@@ -191,6 +191,383 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/23/%E8%BD%AF%E5%B7%A5%E4%BA%8C-%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/p1.jpg">
+      <meta itemprop="name" content="戎菜菜">
+      <meta itemprop="description" content="hey">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小戎的学习历程">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/05/23/%E8%BD%AF%E5%B7%A5%E4%BA%8C-%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/" class="post-title-link" itemprop="url">软工二--软件设计基础</a>
+        </h2>
+
+        <div class="post-meta">
+
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-05-23 17:07:19" itemprop="dateCreated datePublished" datetime="2022-05-23T17:07:19+08:00">2022-05-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-06-01 08:52:24" itemprop="dateModified" datetime="2022-06-01T08:52:24+08:00">2022-06-01</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%BD%AF%E5%B7%A5%E4%BA%8C/" itemprop="url" rel="index"><span itemprop="name">软工二</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="软件设计基础"><a href="#软件设计基础" class="headerlink" title="软件设计基础"></a>软件设计基础</h1><h2 id="软件设计的核心思想"><a href="#软件设计的核心思想" class="headerlink" title="软件设计的核心思想"></a>软件设计的核心思想</h2><p>软件设计的核心思想是抽象和分解。分解（decomposition）是将系统分割成几个相对简单的子系统以及各子系统之间的关系；抽象（abstraction）是纵向上聚焦各子系统的接口。</p>
+<h2 id="软件设计的演化性"><a href="#软件设计的演化性" class="headerlink" title="软件设计的演化性"></a>软件设计的演化性</h2><p>真正的设计分离了使用和实现，分离了外部表现和内部结构。设计过程总是先根据外部表现进行初步设计，主要目的是保证设计与需求规格相符，所以简称为需求分配。需求分配之后再强调实现的内部结构是否具有坚固性和美感，简称为质量反思。质量反思可能会发现外部表现的设计需要调整，于是两个步骤会反复迭代，知道最后的设计很好地兼顾了功效、坚固和美感三个方面。</p>
+<h2 id="软件设计的分层"><a href="#软件设计的分层" class="headerlink" title="软件设计的分层"></a>软件设计的分层</h2><p>p139图</p>
+<p>在设计过程中，按照抽象和分解的思想，一般先进行高层设计，接着进行中层设计，最后完成低层设计。体系结构设计阶段主要完成高层设计和部分中层设计。相机设计阶段主要完成中层设计和部分低层设计。部分底层设计是在构造阶段完成的。</p>
+<h2 id="软件设计的方法和模型"><a href="#软件设计的方法和模型" class="headerlink" title="软件设计的方法和模型"></a>软件设计的方法和模型</h2><p>结构化设计、面向对象设计、数据结构为中心设计、基于构件的设计、形式化方法设计。</p>
+<p>静态模型和动态模型。静态模型通过快照的方式对系统进行描述，通常描述的是状态，而不是行为。动态模型通常描述的是系统行为和状态转移。</p>
+<p>在结构化设计中，人们通常使用实体关系图、数据流图和结构图来描述软件设计方案，实体关系图描述静态模型，数据流图和结构图描述动态模型。</p>
+<p>在面型对象设计中，人们使用UML来描述软件设计的方案。其中，静态模型通常使用类图、对象图、构件图、部署图；动态模型通常使用交互图（顺序图和通信图）、状态图、活动图等。</p>
+<h2 id="软件设计文档的书写"><a href="#软件设计文档的书写" class="headerlink" title="软件设计文档的书写"></a>软件设计文档的书写</h2><p>lab</p>
+<h1 id="软件体系结构基础"><a href="#软件体系结构基础" class="headerlink" title="软件体系结构基础"></a>软件体系结构基础</h1><p>软件体系结构&#x3D;部件（component），连接件（connector），配置（configuration）</p>
+<ul>
+<li>部件是软件体系结构的基本组成单元之一，承载系统的主要功能，包括处理与数据</li>
+<li>连接件是软件体系结构的另一个基本组成单位，定义了部件间的交互，是连接的抽象表示</li>
+<li>配置是对“形式“的发展，定义了部件以及连接件之间的关联方式，将它们组织成系统的总体结构。</li>
+</ul>
+<p>软件体系结构定义：一个软件系统的体系结构规定了系统的计算部件和部件之间的交互。</p>
+<p>注意：</p>
+<p>1）连接件是一个与部件平等的单位。</p>
+<p>2）部件与连接件是比类、模块等软件单位更高层次的抽象。</p>
+<p>3）配置将部件和连接件整合起来，构成系统的整体结构，达到系统的设计目标</p>
+<h2 id="体系结构风格初步"><a href="#体系结构风格初步" class="headerlink" title="体系结构风格初步"></a>体系结构风格初步</h2><ul>
+<li><p>主程序&#x2F;子程序风格</p>
+</li>
+<li><p>面向对象式风格</p>
+</li>
+<li><p>分层风格</p>
+<p>展示层、逻辑层、数据层</p>
+</li>
+<li><p>MVC风格（Model-View-Control，模型-视图-控制）</p>
+<p>模型封装了系统的数据和状态信息，实现业务逻辑，对外提供数据服务和执行业务逻辑。试图封装了用户交互，提供业务展现，接受用户行为。控制封装了系统的控制逻辑，根据用户行为调用需要执行的业务逻辑和数据更新，并且根据执行后的系统状态决定后续的业务实现。</p>
+</li>
+</ul>
+<h1 id="软件体系结构设计与构建"><a href="#软件体系结构设计与构建" class="headerlink" title="软件体系结构设计与构建"></a>软件体系结构设计与构建</h1><h2 id="体系结构设计过程"><a href="#体系结构设计过程" class="headerlink" title="体系结构设计过程"></a>体系结构设计过程</h2><p>1.分析关键需求和项目约束</p>
+<p>2.选择体系结构风格</p>
+<p>3.渐渐体系结构逻辑设计</p>
+<p>​    3.1.依据概要功能需求与体系结构风格建立初始设计</p>
+<p>​    3.2.使用非功能性需求与项目约束评价和改进初始设计</p>
+<p>4.软件体系结构实现</p>
+<p>​    4.1.开发包（构件）设计</p>
+<p>​    4.2.运行时的进程</p>
+<p>​    4.3.物理部署</p>
+<p>5.完善体系结构设计</p>
+<p>6.定义构建接口</p>
+<h2 id="体系结构集成与测试"><a href="#体系结构集成与测试" class="headerlink" title="体系结构集成与测试"></a>体系结构集成与测试</h2><h3 id="集成"><a href="#集成" class="headerlink" title="集成"></a>集成</h3><p>1.大爆炸继承</p>
+<p>2.自顶向下继承</p>
+<p>3.自底向上集成</p>
+<p>4.持续集成</p>
+<h3 id="桩、驱动与集成测试用例"><a href="#桩、驱动与集成测试用例" class="headerlink" title="桩、驱动与集成测试用例"></a>桩、驱动与集成测试用例</h3><p>桩模仿的是下层模块，用来测试上层。而驱动则模仿的是上层模块，用来测试下层。</p>
+<h3 id="软件体系结构设计文档描述"><a href="#软件体系结构设计文档描述" class="headerlink" title="软件体系结构设计文档描述"></a>软件体系结构设计文档描述</h3><p>lab</p>
+<h1 id="人机交互设计"><a href="#人机交互设计" class="headerlink" title="人机交互设计"></a>人机交互设计</h1><p>略</p>
+<h1 id="详细设计的基础"><a href="#详细设计的基础" class="headerlink" title="详细设计的基础"></a>详细设计的基础</h1><h2 id="详细设计出发点"><a href="#详细设计出发点" class="headerlink" title="详细设计出发点"></a>详细设计出发点</h2><p>软件详细设计在软件体系结构设计之后进行，以需求开发的结果（需求规格说明和需求分析的模型）和软件体系结构的结果（软件体系结构设计方案与原型）为出发点。</p>
+<p>需求开发明确了用户的功能性需求和非功能性需求；软件体系结构设计选择了风格和整体的框架性日系结构；详细设计就可以同时利用已有的需求和体系结构，对结构中的具体构建再进一步设计细化。这样做的好处是对于一个复杂系统来说，工程师同一时刻只关注某一层次的细节，从而使得设计的复杂度大大降低。</p>
+<p>在体系结构设计中主要关注的是高层设计，是基于反应软件高层抽象的构建层次，描述系统的高层结构、关注点和设计决策。而在详细设计中一般进行中层设计和低层设计。中层设计更加关注组成模块的内部结构，如数据定义、函数定义、类定义、类结构等。低层设计则深入模块和类的内部，关注具体的数据结构、算法、类型、语句和控制结构等。</p>
+<h2 id="详细设计的上下文"><a href="#详细设计的上下文" class="headerlink" title="详细设计的上下文"></a>详细设计的上下文</h2><p>详细设计的目的是实现所有功能性需求和非功能性需求，所以要以需求作为详细设计的方向指引（即需求驱动），不断细化设计框架的各个构建，使其能够满足各种细节的功能性需求和非功能性需求（而非仅仅是概要功能需求与关键性非功能需求）</p>
+<p>详细设计文档中需要明确定义：</p>
+<ul>
+<li>模块结构及其接口（如果有更细节的模块分解）</li>
+<li>类结构、类的协作、类接口（面向对象分析方法）</li>
+<li>控制结构与函数接口（结构化分析方法）</li>
+<li>重要的数据结构和算法逻辑（如果有必要的话）</li>
+</ul>
+<h2 id="结构化设计"><a href="#结构化设计" class="headerlink" title="结构化设计"></a>结构化设计</h2><p>略</p>
+<h2 id="面向对象设计"><a href="#面向对象设计" class="headerlink" title="面向对象设计"></a>面向对象设计</h2><ul>
+<li><p>抽象对象的职责</p>
+</li>
+<li><p>抽象类之间的关系</p>
+<p>依赖：        A use a B               虚线鱼骨箭头</p>
+<p>普通关联：A has a B               实线鱼骨箭头</p>
+<p>聚合：        A owns B               实线空心方块头</p>
+<p>组合：        B is a part of A     实线实心方块头</p>
+<p>继承：        B is A                     实现空心三角头</p>
+<p>实现：        B implements A   虚线空心三角头</p>
+</li>
+<li><p>添加辅助类</p>
+<p>接口类、记录类、启动类、控制器类、实现数据类型的类、容器类</p>
+</li>
+<li><p>通过协作建立动态模型</p>
+<p>同步消息：实线实心三角箭头（发送者等候直到消息返回）</p>
+<p>异步消息：实线鱼骨箭头（发送者在消息发送后继续执行）</p>
+<p>同步消息返回：虚线鱼骨箭头（接收同步消息者执行结束后，返回消息给发送者）</p>
+<p>（<em><strong>顺序图</strong></em>）</p>
+</li>
+<li><p>为类间协作开发集成测试用例</p>
+</li>
+</ul>
+<h2 id="详细设计文档描述"><a href="#详细设计文档描述" class="headerlink" title="详细设计文档描述"></a>详细设计文档描述</h2><p>略</p>
+<h1 id="详细设计中的模块化与信息隐藏"><a href="#详细设计中的模块化与信息隐藏" class="headerlink" title="详细设计中的模块化与信息隐藏"></a>详细设计中的模块化与信息隐藏</h1><p>略</p>
+<h1 id="详细设计中面向对象方法下的模块化"><a href="#详细设计中面向对象方法下的模块化" class="headerlink" title="详细设计中面向对象方法下的模块化"></a>详细设计中面向对象方法下的模块化</h1><p>lue</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/23/DTE%E5%92%8CDCT%E7%9A%84%E6%A6%82%E5%BF%B5%E5%8F%8A%E5%8C%BA%E5%88%AB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/p1.jpg">
+      <meta itemprop="name" content="戎菜菜">
+      <meta itemprop="description" content="hey">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小戎的学习历程">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/05/23/DTE%E5%92%8CDCT%E7%9A%84%E6%A6%82%E5%BF%B5%E5%8F%8A%E5%8C%BA%E5%88%AB/" class="post-title-link" itemprop="url">DTE和DCT的概念及区别</a>
+        </h2>
+
+        <div class="post-meta">
+
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-05-23 13:56:43 / 修改时间：15:47:22" itemprop="dateCreated datePublished" datetime="2022-05-23T13:56:43+08:00">2022-05-23</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>DTE是数据终端设备（Data Terminal Equipment），如终端，是广义的概念，PC也可以是终端。（一般广域网常用DTE设备有：路由器，终端主机）<br>DCE是数据通信设备（Data Circuit Terminal Equipment），如MODEM，连接DTE设备的通信设备。（一般广域网常用DCE设备有：CSU&#x2F;DSU，广域网交换机，MODEM）</p>
+<h2 id="DCE和DTE的区别"><a href="#DCE和DTE的区别" class="headerlink" title="DCE和DTE的区别"></a>DCE和DTE的区别</h2><p>DCE一方提供时钟，DTE不提供时钟，但它依靠DCE提供的时钟工作，比如PC机和MODEM之间。数据传输通常是经过DTE-DCT，再经过DCE-DTE的路径。对于标准的串行端口，通常从外观就能判断是DTE还是DCE：DTE是针头（俗称公头），DCE是孔头（俗称母头），这两种接口才能接在一起。 一般是用于接口的区分，比如一台路由器，它处于网络的边缘，它有一个S0口需要从另一台路由器中学习到一些参数，具体实施时，我们就不需在这个S0口配“时钟速率”，它从对方学到。这时它就是DTE，而对方就是DCE。</p>
+<p>router之间用串口连在一起的时候一般无所谓哪头接DCE，哪头接DTE。一般是核心层做DCE。有的是默认规定好的，比如modem永远是DCE，与其相连的电信程控交换机则为DTE，配的时候DCE不设clock rate的话，无法通信。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/23/DHCP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/p1.jpg">
+      <meta itemprop="name" content="戎菜菜">
+      <meta itemprop="description" content="hey">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小戎的学习历程">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/05/23/DHCP/" class="post-title-link" itemprop="url">DHCP</a>
+        </h2>
+
+        <div class="post-meta">
+
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-05-23 08:42:56 / 修改时间：09:10:52" itemprop="dateCreated datePublished" datetime="2022-05-23T08:42:56+08:00">2022-05-23</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>DHCP（Dynamic Host Configuration Protocol，动态主机配置协议）为局域网中的工作站动态分配IP地址，而不需要每个用户去设置静态IP。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/05/23/DHCP/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/22/%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/p1.jpg">
+      <meta itemprop="name" content="戎菜菜">
+      <meta itemprop="description" content="hey">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小戎的学习历程">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/05/22/%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-title-link" itemprop="url">详细设计的设计模式</a>
+        </h2>
+
+        <div class="post-meta">
+
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-05-22 16:41:05 / 修改时间：16:55:24" itemprop="dateCreated datePublished" datetime="2022-05-22T16:41:05+08:00">2022-05-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%BD%AF%E5%B7%A5%E4%BA%8C/" itemprop="url" rel="index"><span itemprop="name">软工二</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h2>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/22/%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1%E4%B8%AD%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%96%B9%E6%B3%95%E4%B8%8B%E7%9A%84%E4%BF%A1%E6%81%AF%E9%9A%90%E8%97%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -692,420 +1069,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/21/%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%92%8C%E8%B7%AF%E7%94%B1%E5%99%A8%E7%9A%84%E5%8C%BA%E5%88%AB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/p1.jpg">
-      <meta itemprop="name" content="戎菜菜">
-      <meta itemprop="description" content="hey">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小戎的学习历程">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/21/%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%92%8C%E8%B7%AF%E7%94%B1%E5%99%A8%E7%9A%84%E5%8C%BA%E5%88%AB/" class="post-title-link" itemprop="url">交换机和路由器的区别</a>
-        </h2>
-
-        <div class="post-meta">
-
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-05-21 14:09:02 / 修改时间：14:33:39" itemprop="dateCreated datePublished" datetime="2022-05-21T14:09:02+08:00">2022-05-21</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ol>
-<li><p>工作层次不同。</p>
-<p>交换机工作在数据链路层（第二层），路由器工作在网络层（第三层）。</p>
-</li>
-<li><p>转发依据不同</p>
-<p>交换机根据MAC地址，路由器根据IP地址。</p>
-</li>
-<li><p>主要功能不同</p>
-<p>交换机主要用于组建局域网，路由器是将交换机组好的局域网连接起来。</p>
-<p>交换机能做的，路由器都能做。</p>
-<p>交换机不能分割广播域，路由器可以。路由器还可以提供防火墙功能。</p>
-</li>
-</ol>
-<p>路由器实现了不同网络之间的数据转发，交换机实现了特定网络内的数据交换。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/18/C++%20Tricks/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/p1.jpg">
-      <meta itemprop="name" content="戎菜菜">
-      <meta itemprop="description" content="hey">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小戎的学习历程">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/18/C++%20Tricks/" class="post-title-link" itemprop="url">C++ Tricks</a>
-        </h2>
-
-        <div class="post-meta">
-
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-05-18 13:56:44 / 修改时间：15:54:15" itemprop="dateCreated datePublished" datetime="2022-05-18T13:56:44+08:00">2022-05-18</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="1-用-赋值。"><a href="#1-用-赋值。" class="headerlink" title="1.用{}赋值。"></a>1.用{}赋值。</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">pair&lt;<span class="type">int</span>,<span class="type">int</span>&gt; p;</span><br><span class="line">vector&lt;<span class="type">int</span>&gt; v;</span><br><span class="line">p = <span class="built_in">make_pair</span>(<span class="number">3</span>,<span class="number">4</span>);</span><br><span class="line">p = &#123;<span class="number">3</span>,<span class="number">4</span>&#125;;</span><br><span class="line">v = &#123;<span class="number">4</span>,<span class="number">5</span>&#125;;</span><br><span class="line"></span><br><span class="line">deque&lt;vector&lt;pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt;&gt;&gt; d;</span><br><span class="line">d = &#123;&#123;&#123;<span class="number">3</span>, <span class="number">4</span>&#125;, &#123;<span class="number">5</span>, <span class="number">6</span>&#125;&#125;, &#123;&#123;<span class="number">1</span>, <span class="number">2</span>&#125;, &#123;<span class="number">3</span>, <span class="number">4</span>&#125;&#125;&#125;;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">auto</span> i: d) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> j: i)</span><br><span class="line">        cout &lt;&lt; j.first &lt;&lt; <span class="string">&#x27; &#x27;</span> &lt;&lt; j.second &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;-\n&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">set&lt;<span class="type">int</span>&gt; s;</span><br><span class="line">s = &#123;<span class="number">4</span>,<span class="number">6</span>,<span class="number">2</span>,<span class="number">7</span>,<span class="number">4</span>&#125;; <span class="comment">//2 4 6 7</span></span><br><span class="line"></span><br><span class="line">list&lt;<span class="type">int</span>&gt; l;</span><br><span class="line">l = &#123;<span class="number">5</span>,<span class="number">6</span>,<span class="number">9</span>,<span class="number">1</span>&#125;;<span class="comment">//5 6 9 1</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="2-可以使用define定义宏指令（macros）"><a href="#2-可以使用define定义宏指令（macros）" class="headerlink" title="2.可以使用define定义宏指令（macros）"></a>2.可以使用define定义宏指令（macros）</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> what_is(x) cerr &lt;&lt; #x &lt;&lt; <span class="string">&quot; is &quot;</span> &lt;&lt; x &lt;&lt; endl;</span></span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line"><span class="type">int</span> a_variable = <span class="number">376</span>;</span><br><span class="line"><span class="built_in">what_is</span>(a_variable);</span><br><span class="line"><span class="comment">// prints &quot;a_variable is 376&quot;</span></span><br><span class="line"><span class="built_in">what_is</span>(a_variable * <span class="number">2</span> + <span class="number">1</span>)</span><br><span class="line"><span class="comment">// prints &quot;a_variable * 2 + 1 is 753&quot;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="3-简化includes"><a href="#3-简化includes" class="headerlink" title="3.简化includes"></a>3.简化includes</h2><p>仅仅使用<code>#include &lt;bits/stdc++.h&gt;</code>，这个库包括了<code>algorithm</code>，<code>iostream</code>，<code>vector</code>等等，一般来说不用再调用其他库了。</p>
-<h2 id="4-Hidden-function"><a href="#4-Hidden-function" class="headerlink" title="4.Hidden function"></a>4.Hidden function</h2><p>略</p>
-<h2 id="5-变长参数"><a href="#5-变长参数" class="headerlink" title="5.变长参数"></a>5.变长参数</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">sum</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> <span class="number">0</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">typename</span>... Args&gt;</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">sum</span><span class="params">(<span class="type">int</span> a, Args... args)</span> </span>&#123; <span class="keyword">return</span> a + <span class="built_in">sum</span>(args...); &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123; cout &lt;&lt; <span class="built_in">sum</span>(<span class="number">5</span>, <span class="number">7</span>, <span class="number">2</span>, <span class="number">2</span>) + <span class="built_in">sum</span>(<span class="number">3</span>, <span class="number">4</span>); <span class="comment">/* prints &quot;23&quot; */</span> &#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="C-11新特性"><a href="#C-11新特性" class="headerlink" title="C++11新特性"></a>C++11新特性</h2><ul>
-<li><p>auto关键字（也可以用auto&amp;）</p>
-</li>
-<li><p>tie和emplace_back</p>
-</li>
-<li><p>move</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="type">int</span>&gt; v = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;;</span><br><span class="line">vector&lt;<span class="type">int</span>&gt; w = <span class="built_in">move</span>(v);</span><br><span class="line"></span><br><span class="line">cout &lt;&lt; <span class="string">&quot;v: &quot;</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">auto</span> i: v)</span><br><span class="line">    cout &lt;&lt; i &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line"></span><br><span class="line">cout &lt;&lt; <span class="string">&quot;\nw: &quot;</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">auto</span> i: w)</span><br><span class="line">    cout &lt;&lt; i &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line"><span class="comment">//Output:</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//v: </span></span><br><span class="line"><span class="comment">//w: 1 2 3 4 </span></span><br></pre></td></tr></table></figure></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/18/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1%EF%BC%88OO-Design%EF%BC%89%E5%87%A0%E5%A4%A7%E5%8E%9F%E5%88%99/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/p1.jpg">
-      <meta itemprop="name" content="戎菜菜">
-      <meta itemprop="description" content="hey">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小戎的学习历程">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/18/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1%EF%BC%88OO-Design%EF%BC%89%E5%87%A0%E5%A4%A7%E5%8E%9F%E5%88%99/" class="post-title-link" itemprop="url">面向对象设计（OO Design）几大原则</a>
-        </h2>
-
-        <div class="post-meta">
-
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-05-18 10:27:11 / 修改时间：11:11:10" itemprop="dateCreated datePublished" datetime="2022-05-18T10:27:11+08:00">2022-05-18</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" itemprop="url" rel="index"><span itemprop="name">设计模式</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>本文分享面向对象设计的六个设计原则：</p>
-<table>
-<thead>
-<tr>
-<th>缩写</th>
-<th>英文名称</th>
-<th>中文名称</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>SRP</td>
-<td>Single Responsibility Principle</td>
-<td>单一职责原则</td>
-</tr>
-<tr>
-<td>OCP</td>
-<td>Open Close Principle</td>
-<td>开闭原则</td>
-</tr>
-<tr>
-<td>LSP</td>
-<td>Liskov Substitution Principle</td>
-<td>里氏替换原则</td>
-</tr>
-<tr>
-<td>LoD</td>
-<td>Law of Demeter （ Least Knowledge Principle）</td>
-<td>迪米特法则（最少知道原则）</td>
-</tr>
-<tr>
-<td>ISP</td>
-<td>Interface Segregation Principle</td>
-<td>接口分离原则</td>
-</tr>
-<tr>
-<td>DIP</td>
-<td>Dependency Inversion Principle</td>
-<td>依赖倒置原则</td>
-</tr>
-</tbody></table>
-<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903673672237063">https://juejin.cn/post/6844903673672237063</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/17/C++%E7%B1%BB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/p1.jpg">
-      <meta itemprop="name" content="戎菜菜">
-      <meta itemprop="description" content="hey">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小戎的学习历程">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/17/C++%E7%B1%BB/" class="post-title-link" itemprop="url">C++类</a>
-        </h2>
-
-        <div class="post-meta">
-
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-05-17 22:31:18" itemprop="dateCreated datePublished" datetime="2022-05-17T22:31:18+08:00">2022-05-17</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-05-19 16:13:53" itemprop="dateModified" datetime="2022-05-19T16:13:53+08:00">2022-05-19</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="C-类（Class）"><a href="#C-类（Class）" class="headerlink" title="C++类（Class）"></a>C++类（Class）</h1><h2 id="类声明与类定义"><a href="#类声明与类定义" class="headerlink" title="类声明与类定义"></a>类声明与类定义</h2><h3 id="类声明（declare）"><a href="#类声明（declare）" class="headerlink" title="类声明（declare）"></a>类声明（declare）</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Screen</span>;</span><br></pre></td></tr></table></figure>
-
-<p>在声明之后，定义之前，只知道Screen是一个类名，但不知道包含那些成员。只能以有限方式使用它，不能定义该类型的对象，只能用于定义指向该类型的指针或引用，声明（不是定义）使用该类型作为形参类型或者返回类型的函数。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">Test1</span><span class="params">(Screen&amp; a)</span></span>&#123;&#125;;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Test1</span><span class="params">(Screen* a)</span></span>&#123;&#125;;</span><br></pre></td></tr></table></figure>
-
-<h3 id="类定义（define）"><a href="#类定义（define）" class="headerlink" title="类定义（define）"></a>类定义（define）</h3><p>在创建类的对象之前，必须完整定义该类，而不只是声明类。所以，类不能具有自身类型的数据成员，但可以包含指向本类的指针或引用。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">LinkScreen</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	Screen window;</span><br><span class="line">	LinkScreen* next;</span><br><span class="line">	LinkScreen* prev;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//注意，分号不能丢，因为在类定义之后可以接一个对象定义列表，可类比内置类型，定义必须以分号结束。</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">LinkScreen</span>&#123;<span class="comment">/**...*/</span>&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">LinkScreen</span>&#123;<span class="comment">/*...*/</span>&#125;scr1,scr2;</span><br></pre></td></tr></table></figure>
-
-<h2 id="复制构造函数"><a href="#复制构造函数" class="headerlink" title="复制构造函数"></a>复制构造函数</h2><p>复制构造函数是一种特殊构造函数，只有一个形参，该形参（常用const&amp;修饰）是对该类类型的引用。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">People</span>&#123;</span><br><span class="line"><span class="keyword">public</span>：</span><br><span class="line">	<span class="built_in">People</span>();<span class="comment">//默认构造函数</span></span><br><span class="line">	<span class="built_in">People</span>(<span class="type">const</span> People&amp;);<span class="comment">//复制构造函数</span></span><br><span class="line">	~<span class="built_in">People</span>();<span class="comment">//析构函数</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>当定义一个新对象并用一个同类型的对象对它进行初始化时，将显式使用复制构造函数。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">People a1;</span><br><span class="line">People a2 = a1;</span><br></pre></td></tr></table></figure>
-
-<p>当将该类型的对象传递给函数或者函数返回该类型的对象时，将隐式使用复制构造函数。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">People <span class="title">Func</span><span class="params">(People b)</span></span>&#123;...&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="复制控制"><a href="#复制控制" class="headerlink" title="复制控制"></a>复制控制</h3><p>复制构造函数、赋值操作符和析构函数总称为复制控制。编译器自动实现这些操作，但类也可以定义自己的版本。</p>
-<h3 id="两种初始化形式"><a href="#两种初始化形式" class="headerlink" title="两种初始化形式"></a>两种初始化形式</h3><p>直接初始化和复制初始化。直接初始化将初始化放在圆括号中，复制初始化使用&#x3D;号。</p>
-<p>对于内置类型，例如int，double等，直接初始化和复制初始化没有区别。</p>
-<p>对于类类型：直接初始化直接调用与实参匹配的构造函数；复制初始化先使用指定构造函数创建一个临时对象，然后用复制构造函数将那个临时对象复制到正在创建的对象。直接初始化比复制初始化更快。</p>
-<h2 id="赋值操作符"><a href="#赋值操作符" class="headerlink" title="赋值操作符"></a>赋值操作符</h2><h3 id="重载赋值操作符"><a href="#重载赋值操作符" class="headerlink" title="重载赋值操作符"></a>重载赋值操作符</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Sales_item&amp; <span class="keyword">operator</span>=(<span class="type">const</span> Sales_item &amp;);</span><br></pre></td></tr></table></figure>
-
-<h2 id="友元"><a href="#友元" class="headerlink" title="友元"></a>友元</h2><p>友元机制允许一个类将其非公有成员的访问权授予指定的函数或类。友元可以出现在类定义的内部的任何地方。友元不是授予友元关系的那个类的成员，所以它们不受声明出现部分的访问控制影响。</p>
-<h3 id="友元类"><a href="#友元类" class="headerlink" title="友元类"></a>友元类</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Husband</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="keyword">friend</span> <span class="keyword">class</span> <span class="title class_">Wife</span>;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="type">double</span> money;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Wife</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">Consume</span><span class="params">(Husband&amp; h)</span></span>&#123;</span><br><span class="line">	h.money -=  <span class="number">1000</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Husband h;</span><br><span class="line">Wife w;</span><br><span class="line">w.<span class="built_in">Consume</span>(h);</span><br></pre></td></tr></table></figure>
-
-<h3 id="友元函数"><a href="#友元函数" class="headerlink" title="友元函数"></a>友元函数</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Husband</span>;<span class="comment">//声明Husband</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Wife</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">Consume</span><span class="params">(Husband&amp; h)</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Husband</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">friend</span> <span class="type">void</span> <span class="title">Wife::Consume</span><span class="params">(Husband&amp; h)</span></span>;<span class="comment">//声明Consume函数</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="type">double</span> money;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Wife::Consume</span><span class="params">(Husband&amp; h)</span></span>&#123;</span><br><span class="line">h.money -= <span class="number">100</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>注意类和函数的声明和定义的顺序：</p>
-<p>(1)声明类Husband </p>
-<p>(2)定义类Wife，声明Consume函数</p>
-<p>(3)定义类Husband</p>
-<p>(4)定义Consume函数。</p>
-<h2 id="static成员"><a href="#static成员" class="headerlink" title="static成员"></a>static成员</h2><p>static数据成员是与类关联的对象，并不与该类的对象相关联。static成员遵循正常的共有&#x2F;私有访问规则。</p>
-<h3 id="使用static成员而不是全局对象的三个优点："><a href="#使用static成员而不是全局对象的三个优点：" class="headerlink" title="使用static成员而不是全局对象的三个优点："></a>使用static成员而不是全局对象的三个优点：</h3><ul>
-<li>static成员的名字是在类的作用域中，因此可以避免与其他类的成员或全局对象名字冲突。</li>
-<li>可以实施封装。static成员可以是私有成员，而全局对象不可以。</li>
-<li>通过阅读程序容易看出static 成员是与特定类关联的，这种可见性清晰地显示程序员地意图。</li>
-</ul>
-<h3 id="static成员函数"><a href="#static成员函数" class="headerlink" title="static成员函数"></a>static成员函数</h3><p>在类的内部声明函数时需要添加static关键字，但是在类外部定义函数时就不需要了。因为static成员是类的组成部分但不是任何对象的组成部分，所以有以下几个特点：</p>
-<ul>
-<li>static函数没有this指针</li>
-<li>static成员函数不能被声明为const（将成员函数声明为const就是承诺不会修改该函数所属的对象）</li>
-<li>static成员函数也不能被声明为虚函数</li>
-</ul>
-<h3 id="static数据成员"><a href="#static数据成员" class="headerlink" title="static数据成员"></a>static数据成员</h3><p>应该在定义时初始化。</p>
-<p>static成员变量的特点：</p>
-<ul>
-<li>属于类本身，不属于对象</li>
-<li>程序运行过程中只有一个副本</li>
-<li>不能在生成对象时初始化，即不能再构造函数中初始化</li>
-</ul>
-<h4 id="static变量初始化"><a href="#static变量初始化" class="headerlink" title="static变量初始化"></a>static变量初始化</h4><p>类体外进行，变量前不加static限定符；不加访问控制符；使用作用域运算符表明它所属类。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">A</span>&#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="type">static</span> <span class="type">int</span> iCount;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="built_in">A</span>()&#123;&#125;</span><br><span class="line">	<span class="function"><span class="type">int</span> <span class="title">GetCount</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> iCount;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> A::iCount = <span class="number">10</span>; <span class="comment">//在main函数外面初始化！</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>1.static数据成员的类型可以是该成员所属的类的类型。非static成员只能是自身类对象的指针或引用。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Screen</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="comment">//...</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="type">static</span> Screen scr1;<span class="comment">//OK</span></span><br><span class="line">	Screen *scr2;<span class="comment">//OK</span></span><br><span class="line">	Screen scr3;<span class="comment">//Error</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>2.非static数据成员不能用作默认实参，static数据成员可靠用作默认实参。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Screen</span> </span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">          <span class="function">Screen&amp; <span class="title">clear</span><span class="params">(<span class="type">char</span> = bkground)</span></span>;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">         <span class="type">static</span> <span class="type">const</span> <span class="type">char</span> bkground = <span class="string">&#x27;#&#x27;</span>;<span class="comment">//static const整形变量可以在类内部初始化。</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h2 id="嵌套类"><a href="#嵌套类" class="headerlink" title="嵌套类"></a>嵌套类</h2><p>嵌套类就是在一个类中定义另一个类。这个被嵌套的类的作用域就只在它的上一级类中。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">class</span> <span class="title class_">c1</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="type">int</span> a;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">foo</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">c2</span></span><br><span class="line">    &#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="type">int</span> a;</span><br><span class="line">        <span class="function"><span class="type">void</span> <span class="title">foo</span><span class="params">()</span></span>;</span><br><span class="line">    &#125; b;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">c1::foo</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    a = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">void</span> c1::c2::<span class="built_in">foo</span>()</span><br><span class="line">&#123;</span><br><span class="line">    a = <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">c1</span> f;</span><br><span class="line">    f.<span class="built_in">foo</span>();</span><br><span class="line">    f.b.<span class="built_in">foo</span>();</span><br><span class="line">    cout &lt;&lt; f.a &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; f.b.a &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>同样，被嵌套的类也可以是匿名的。匿名类的成员函数只能在类的声明中同时定义，因为这个类没有名称，没法再外部指代它。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">c3</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="type">int</span> a;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">foo</span><span class="params">()</span> </span>&#123;a = <span class="number">3</span>;&#125;</span><br><span class="line">    <span class="keyword">class</span></span><br><span class="line">    &#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="type">int</span> a;</span><br><span class="line">        <span class="function"><span class="type">void</span> <span class="title">foo</span><span class="params">()</span> </span>&#123;a = <span class="number">4</span>;&#125;</span><br><span class="line">    &#125; b;</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">c3</span> ff;</span><br><span class="line">    ff.<span class="built_in">foo</span>();</span><br><span class="line">    ff.b.<span class="built_in">foo</span>();</span><br><span class="line">    cout &lt;&lt; ff.a &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; ff.b.a &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="局部类"><a href="#局部类" class="headerlink" title="局部类"></a>局部类</h2><p>局部类就是定义在一个函数内部的类。这个类只能在这个函数内部使用。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">c4</span></span><br><span class="line">    &#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="type">int</span> a;</span><br><span class="line">        <span class="function"><span class="type">void</span> <span class="title">foo</span><span class="params">()</span> </span>&#123;a = <span class="number">4</span>;&#125;</span><br><span class="line">    &#125;;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">c4</span> ff;<span class="comment">//就是c4 ff</span></span><br><span class="line">    ff.<span class="built_in">foo</span>();</span><br><span class="line">    cout &lt;&lt; ff.a &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>通常，嵌套类和局部类的所有成员变量都会被声明为共有的。因为这两种类只能在很小的范围内使用，没有必要通过定义接口来隐藏内部的信息。所以，可以把class改换成struct，这样就可以不写public了。</p>
-<p>但是我们可以通过一些变通的方法来模拟出一个局部函数来。具体来说就是通过重载一个类的operator () 方法来模拟一个函数调用，下面给个例子：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">struct</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="type">void</span> <span class="title">operator</span> <span class="params">()</span> <span class="params">( <span class="type">void</span> )</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            cout &lt;&lt; <span class="string">&quot;HELLO&quot;</span> &lt;&lt; endl;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="type">int</span> <span class="title">operator</span><span class="params">()</span> <span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> a + b;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; foo;</span><br><span class="line"> </span><br><span class="line">    <span class="built_in">foo</span>();</span><br><span class="line">    cout &lt;&lt; <span class="built_in">foo</span>(<span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1177,7 +1140,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">85</span>
+          <span class="site-state-item-count">89</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1190,7 +1153,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-count">25</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
