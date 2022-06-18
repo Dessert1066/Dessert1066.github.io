@@ -191,6 +191,372 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/06/08/%E5%B8%B8%E5%AF%B9%E8%B1%A1%E3%80%81%E5%B8%B8%E5%8F%98%E9%87%8F%E3%80%81%E5%B8%B8%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/p1.jpg">
+      <meta itemprop="name" content="戎菜菜">
+      <meta itemprop="description" content="hey">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小戎的学习历程">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/06/08/%E5%B8%B8%E5%AF%B9%E8%B1%A1%E3%80%81%E5%B8%B8%E5%8F%98%E9%87%8F%E3%80%81%E5%B8%B8%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0/" class="post-title-link" itemprop="url">常对象、常变量、常成员函数</a>
+        </h2>
+
+        <div class="post-meta">
+
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-06-08 18:22:59 / 修改时间：20:03:24" itemprop="dateCreated datePublished" datetime="2022-06-08T18:22:59+08:00">2022-06-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>既要使数据能在一定范围内共享，又要保证它不被任意修改，可使用const。</p>
+<ul>
+<li>用const修饰的声明数据成员称为常数据成员</li>
+<li>用const修饰的声明成员函数称为常成员函数</li>
+<li>用const修饰的定义对象称为常对象</li>
+</ul>
+<p>变量或对象被const修饰后其值不能被更新。因此被const修饰的变量过对象必须要进行初始化。</p>
+<h1 id="（一）-用const修饰的声明数据成员称为常数据成员"><a href="#（一）-用const修饰的声明数据成员称为常数据成员" class="headerlink" title="（一） 用const修饰的声明数据成员称为常数据成员"></a>（一） 用const修饰的声明数据成员称为常数据成员</h1><p>有两种声明形式：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span> a;</span><br><span class="line"><span class="type">int</span> <span class="type">const</span> a;</span><br></pre></td></tr></table></figure>
+
+<p>说明：</p>
+<ol>
+<li>任何函数都不能对常数据成员赋值。</li>
+<li>构造函数对常数据成员进行初始化时也只能通过初始化列表进行。（只此一种）</li>
+<li>常数据成员在初始化时都必须赋值或称其必须初始化。</li>
+<li>如果类有多个默认构造函数都必须初始化常数据成员。</li>
+</ol>
+<p><b>指出下面程序的错误：</b></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">A</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="type">int</span> w,h;</span><br><span class="line">	<span class="type">const</span> <span class="type">int</span> num = <span class="number">5</span>;<span class="comment">//错误一</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	A a;<span class="comment">//错误二</span></span><br><span class="line">	cout&lt;&lt;<span class="string">&quot;sss&quot;</span>;</span><br><span class="line">	<span class="built_in">system</span>(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>错误一：不能对常数据成员在类中初始化，要通过类的构造函数，只有静态常量才能这样初始化。</p>
+<p>错误二：没有合适的默认构造函数可用。因为有常量num没有初始化。必须初始化所有常量数据成员。</p>
+<p>更正后结果如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">A</span>&#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="type">int</span> w,h;</span><br><span class="line">	<span class="type">const</span> <span class="type">int</span> num;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="type">const</span> <span class="type">int</span> num2;</span><br><span class="line">	<span class="built_in">A</span>():<span class="built_in">num</span>(<span class="number">5</span>),<span class="built_in">num2</span>(<span class="number">8</span>)&#123;&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><b>请指出下面程序的错误：</b></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">A</span>&#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="type">int</span> w,h;</span><br><span class="line">	<span class="type">const</span> <span class="type">int</span> num;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="type">const</span> <span class="type">int</span> num2;</span><br><span class="line">	<span class="built_in">A</span>():<span class="built_in">num</span>(<span class="number">5</span>),<span class="built_in">num2</span>(<span class="number">8</span>)&#123;&#125;;</span><br><span class="line">	<span class="built_in">A</span>(<span class="type">int</span> x,<span class="type">int</span> y)&#123;</span><br><span class="line">		w=x;h=y;<span class="comment">//错误一</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;；</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	A a;</span><br><span class="line">	<span class="function">A <span class="title">b</span><span class="params">(<span class="number">3</span>,<span class="number">8</span>)</span></span>;</span><br><span class="line">	cout&lt;&lt;<span class="string">&quot;sss&quot;</span>;</span><br><span class="line">	<span class="built_in">system</span>(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>错误一：每个构造函数都要初始化常数据成员，应改为：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">A</span>(<span class="type">int</span> x,<span class="type">int</span> y):<span class="built_in">num</span>(<span class="number">5</span>),<span class="built_in">num2</span>(<span class="number">8</span>)&#123;</span><br><span class="line">	w=x;h=y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="（二）-用const修饰的声明成员函数称为常成员函数"><a href="#（二）-用const修饰的声明成员函数称为常成员函数" class="headerlink" title="（二） 用const修饰的声明成员函数称为常成员函数"></a>（二） 用const修饰的声明成员函数称为常成员函数</h1><p>声明：&lt;类型标志符&gt;函数名（参数表）const；</p>
+<p>说明：</p>
+<ol>
+<li>const是函数类型的一部分，在实现部分也要带该关键字。</li>
+<li>const关键字可以用于对重载函数的区分。</li>
+<li>常成员函数不能更新任何数据成员，也不能调用该类中没有用const修饰的成员函数，能调用常成员函数和常数据成员。</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">A</span>&#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> w,h;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">getValue</span><span class="params">()</span> <span class="type">const</span></span>;</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">getValue</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="built_in">A</span>(<span class="type">int</span> x,<span class="type">int</span> y)&#123;</span><br><span class="line">        w=x;h=y;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">A::getValue</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> w*h;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">A::getValue</span><span class="params">()</span> <span class="type">const</span> </span>&#123; <span class="comment">//两种函数const和非const都要进行重载</span></span><br><span class="line">    <span class="keyword">return</span> w+h;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="function">A <span class="type">const</span> <span class="title">a</span><span class="params">(<span class="number">3</span>,<span class="number">4</span>)</span></span>; <span class="comment">//const对象调用const函数</span></span><br><span class="line">    <span class="function">A <span class="title">c</span><span class="params">(<span class="number">2</span>,<span class="number">6</span>)</span></span>;		<span class="comment">//非const对象调用非const函数</span></span><br><span class="line">    cout&lt;&lt;a.<span class="built_in">getValue</span>()&lt;&lt;c.<span class="built_in">getValue</span>()&lt;&lt;endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>常成员函数可以被其他成员函数调用，但是不能调用其他非常成员函数，可以调用其他常成员函数。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">A</span>&#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> w,h;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">getValue</span><span class="params">()</span> <span class="type">const</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> w*h+<span class="built_in">getValue2</span>();<span class="comment">//错误 不能调用其他非常成员函数</span></span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">getValue2</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> w+h+<span class="built_in">getValue</span>();<span class="comment">//正确 可以调用常成员函数</span></span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="built_in">A</span>(<span class="type">int</span> x,<span class="type">int</span> y)&#123;</span><br><span class="line">        w=x;h=y;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>常成员函数中， const修饰的是普通成员函数中this指针指向的内存空间。即：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">printT</span><span class="params">(<span class="type">const</span> Test* <span class="type">const</span> <span class="keyword">this</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">printT</span><span class="params">()</span> <span class="type">const</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>上面第二个const是普通成员函数和常成员函数均有的，表示的是指针本身的指向一旦确定不可修改，即指针常量。</p>
+<p>最前面的const是自己添加的，表示的是指针指向的内存空间的值不可被修改，是一个常量指针，从而this指针是一个指向常量的常量指针。</p>
+<h1 id="（三）用const修饰的定义对象称为常对象"><a href="#（三）用const修饰的定义对象称为常对象" class="headerlink" title="（三）用const修饰的定义对象称为常对象"></a>（三）用const修饰的定义对象称为常对象</h1><p>常对象是指对象的数据成员的值在对象调用时不能被改变。常对象必须进行初始化，且不能被更新。不能通过常对象调用普通成员函数，但是可以通过调用普通对象调用常成员函数。常对象只能调用常成员函数。</p>
+<p>常对象的声明：</p>
+<p>​    const &lt;类名&gt; &lt;对象名&gt;</p>
+<p>​    &lt;类名&gt; const &lt;对象名&gt;</p>
+<p><b>请指出下面程序的错误：</b></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">A</span>&#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="type">int</span> w,h;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="type">int</span> <span class="title">getArea</span><span class="params">()</span><span class="type">const</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> w*h;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="type">int</span> <span class="title">getW</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> w;&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">setWH</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y)</span></span>&#123;w=x;h=y;&#125;</span><br><span class="line">	<span class="built_in">A</span>(<span class="type">int</span> x,<span class="type">int</span> y)&#123;w=x;h=y;&#125;</span><br><span class="line">	<span class="built_in">A</span>()&#123;;&#125;<span class="comment">//本例中不能省略，因为普通对象需要使用</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	A a;<span class="comment">//普通对象可以不初始化</span></span><br><span class="line">	a.<span class="built_in">setWH</span>(<span class="number">3</span>,<span class="number">9</span>);</span><br><span class="line">	A <span class="type">const</span> b;<span class="comment">//常对象必须声明的同时初始化，正确的时A const b(2,7)</span></span><br><span class="line">	b.<span class="built_in">setWH</span>(<span class="number">2</span>,<span class="number">7</span>);<span class="comment">//错误，常对象不能调用非常成员函数，且值不能改变</span></span><br><span class="line">	cout&lt;&lt;a.<span class="built_in">getArea</span>()&lt;&lt;endl&lt;&lt;b.<span class="built_in">getArea</span>()&lt;&lt;endl;</span><br><span class="line">	<span class="built_in">system</span>(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>PS：</p>
+<ul>
+<li>常成员函数可以引用const数据成员，也可以引用非const数据成员</li>
+<li>const数据成员可以被const成员函数引用，也可以被非const的成员函数引用</li>
+<li>常成员函数不能调用另一个非const成员函数</li>
+<li>const int *pa 指的是不能改变pa指向的变量的值</li>
+</ul>
+<p>const指针：</p>
+<ul>
+<li>如果一个变量已经被声明为常变量，只能用指向行两的指针变量指向它，而不能用非常量指针指向它。</li>
+<li>指向常变量的指针除了可以指向常变量外，还可以指向未被声明为const的变量。此时不能通过该指针改变变量的值</li>
+<li>如果函数的形参时指向非const型变量的指针，实参只能用指向非const变量的指针，而不能用指向const变量的指针</li>
+</ul>
+<h1 id="其他关于const位置的小结"><a href="#其他关于const位置的小结" class="headerlink" title="其他关于const位置的小结"></a>其他关于const位置的小结</h1><ol>
+<li><p>当函数是指针返回时，该返回值只能返回给用const修饰的同类型指针</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">const</span> <span class="type">int</span>* <span class="title">getval</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span>* tmp = <span class="keyword">new</span> <span class="built_in">int</span>(<span class="number">10</span>);</span><br><span class="line">    <span class="keyword">return</span> tmp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span>* a = <span class="built_in">getVal</span>();<span class="comment">//编译错误</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span>*b = <span class="built_in">getVal</span>();<span class="comment">//正确</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>const修饰成员变量</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="type">const</span> a;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> a;<span class="comment">//两者等价，定义常量a</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span>* a;</span><br><span class="line"><span class="type">int</span> <span class="type">const</span>* a;<span class="comment">//两者等价，定义了常量指针，即指针指向的值不可改变</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>* <span class="type">const</span> a;<span class="comment">//定义了一个指针常量，即指针的指向不可改变</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/06/01/C++%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/p1.jpg">
+      <meta itemprop="name" content="戎菜菜">
+      <meta itemprop="description" content="hey">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小戎的学习历程">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/06/01/C++%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" class="post-title-link" itemprop="url">C++异常处理</a>
+        </h2>
+
+        <div class="post-meta">
+
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-06-01 19:32:43 / 修改时间：19:44:40" itemprop="dateCreated datePublished" datetime="2022-06-01T19:32:43+08:00">2022-06-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="C-异常处理关键字"><a href="#C-异常处理关键字" class="headerlink" title="C++异常处理关键字"></a>C++异常处理关键字</h2><p><code>try</code>：定义一个代码块，该代码块在执行时将金鹰异常错误检测。通常后面跟一个或多个<code>catch</code>块</p>
+<p><code>catch</code>：如果<code>try</code>块中发生错误，则该语句允许定义要执行的代码块</p>
+<p><code>throw</code>：可以创建一个自定义错误，可以抛出自定义的异常</p>
+<h2 id="C-throw抛出异常"><a href="#C-throw抛出异常" class="headerlink" title="C++ throw抛出异常"></a>C++ throw抛出异常</h2><p>可以用throw语句在代码块任何地方抛出异常。throw语句的操作数可以是任意的表达式，表达式的结果类型决定了抛出的异常的类型。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">	<span class="type">int</span> age = <span class="number">11</span>;</span><br><span class="line">	<span class="keyword">if</span>(age &gt; <span class="number">0</span>)&#123;</span><br><span class="line">		cout&lt;&lt;<span class="string">&quot;age &gt; 0&quot;</span>;</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="built_in">throw</span>(age);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">catch</span>(<span class="type">int</span> myNum)&#123;</span><br><span class="line">	cout&lt;&lt;<span class="string">&quot;age不是合法值！&quot;</span>;</span><br><span class="line">	cout&lt;&lt;<span class="string">&quot;age = &quot;</span>&lt;&lt;myNum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="C-标准异常"><a href="#C-标准异常" class="headerlink" title="C++标准异常"></a>C++标准异常</h2><p>C++提供一些标准的异常，定义在<code>&lt;exception</code>中。</p>
+<table>
+<thead>
+<tr>
+<th>异常</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>std::exception</td>
+<td>该异常是所有标准 C++ 异常的父类。</td>
+</tr>
+<tr>
+<td>std::bad_alloc</td>
+<td>该异常可以通过 new 抛出。</td>
+</tr>
+<tr>
+<td>std::bad_cast</td>
+<td>该异常可以通过 dynamic_cast 抛出。</td>
+</tr>
+<tr>
+<td>std::bad_exception</td>
+<td>这在处理 C++ 程序中无法预期的异常时非常有用。</td>
+</tr>
+<tr>
+<td>std::bad_typeid</td>
+<td>该异常可以通过 typeid 抛出。</td>
+</tr>
+<tr>
+<td>std::logic_error</td>
+<td>理论上可以通过读取代码来检测到的异常。</td>
+</tr>
+<tr>
+<td>std::domain_error</td>
+<td>当使用了一个无效的数学域时，会抛出该异常。</td>
+</tr>
+<tr>
+<td>std::invalid_argument</td>
+<td>当使用了无效的参数时，会抛出该异常。</td>
+</tr>
+<tr>
+<td>std::length_error</td>
+<td>当创建了太长的 std::string 时，会抛出该异常。</td>
+</tr>
+<tr>
+<td>std::out_of_range</td>
+<td>该异常可以通过方法抛出，例如 std::vector 和 std::bitset&lt;&gt;::operator<a href=""></a>。</td>
+</tr>
+<tr>
+<td>std::runtime_error</td>
+<td>理论上不可以通过读取代码来检测到的异常。</td>
+</tr>
+<tr>
+<td>std::overflow_error</td>
+<td>当发生数学上溢时，会抛出该异常。</td>
+</tr>
+<tr>
+<td>std::range_error</td>
+<td>当尝试存储超出范围的值时，会抛出该异常。</td>
+</tr>
+<tr>
+<td>std::underflow_error</td>
+<td>当发生数学下溢时，会抛出该异常。</td>
+</tr>
+</tbody></table>
+<h2 id="C-自定义异常"><a href="#C-自定义异常" class="headerlink" title="C++自定义异常"></a>C++自定义异常</h2><p>可以通过继承和重载<code>exception</code>类来实现自定义异常类型。</p>
+<p>例如：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;exception&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">MyException</span> : <span class="keyword">public</span> exception</span><br><span class="line">&#123;</span><br><span class="line">	<span class="function"><span class="type">const</span> <span class="type">char</span>* <span class="title">what</span><span class="params">()</span> <span class="type">const</span> <span class="title">throw</span> <span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;C++ Exception&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">try</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">throw</span> <span class="built_in">MyException</span>();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">catch</span>(MyException&amp; e)</span><br><span class="line">	&#123;</span><br><span class="line">		cout&lt;&lt;<span class="string">&quot;MyException caught&quot;</span>&lt;&lt;endl;</span><br><span class="line">		cout&lt;&lt;e.<span class="built_in">what</span>()&lt;&lt;endl;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">catch</span>(exception&amp; e)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">//其他的错误</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/31/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/p1.jpg">
+      <meta itemprop="name" content="戎菜菜">
+      <meta itemprop="description" content="hey">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小戎的学习历程">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/05/31/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/" class="post-title-link" itemprop="url">观察者模式</a>
+        </h2>
+
+        <div class="post-meta">
+
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-05-31 10:46:38 / 修改时间：10:52:13" itemprop="dateCreated datePublished" datetime="2022-05-31T10:46:38+08:00">2022-05-31</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" itemprop="url" rel="index"><span itemprop="name">设计模式</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>观察者模式（Observer Pattern）有两个角色，观察者和被观察者（也有说法是主题和订阅者）。处于某些状况，在被观察者改变时，观察者需要知道状态。这是一种使用率非常高的模式，在GUI系统中经常被使用。也有许多对于观察者模式的扩展与实现，知名的[ReactiveX]就实现了观察者模式的程序设计思想。</p>
+<p>定义：观察者模式时一种一对多的依赖关系，当物件的状态改变，所有依赖于它的物件都会得到通知并被自动更新。</p>
+<blockquote>
+<p><strong>The Observer pattern defines a one-to-many dependency</strong> between objects so that when <strong>one</strong> object changes state, all of its dependents are notified and updated automatically.<br><em>– from <a target="_blank" rel="noopener" href="http://www.sihui.io/design-pattern-observer/">Design Pattern: Observer and Podcasts</a></em></p>
+</blockquote>
+<p><img src="https://ithelp.ithome.com.tw/upload/images/20181023/20112528E2P8dfMVqg.png"></p>
+<p>[<a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10204117"> Day 8 ] 初探設計模式 - 觀察者模式 ( Observer Pattern ) - iT 邦幫忙::一起幫忙解決難題，拯救 IT 人的一天 (ithome.com.tw)</a></p>
+<p>（其实就是被观察者中有一个列表，上面记录了所有的观察者，然后更新时就会遍历列表，然后一一调用观察者的函数通知。）</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/31/%E8%A3%85%E9%A5%B0%E6%A8%A1%E5%BC%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -746,297 +1112,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/25/NAT/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/p1.jpg">
-      <meta itemprop="name" content="戎菜菜">
-      <meta itemprop="description" content="hey">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小戎的学习历程">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/25/NAT/" class="post-title-link" itemprop="url">NAT</a>
-        </h2>
-
-        <div class="post-meta">
-
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-05-25 13:31:09 / 修改时间：14:28:07" itemprop="dateCreated datePublished" datetime="2022-05-25T13:31:09+08:00">2022-05-25</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="私有地址和全局地址"><a href="#私有地址和全局地址" class="headerlink" title="私有地址和全局地址"></a>私有地址和全局地址</h2><p>主机的IP地址是否必须时唯一的？</p>
-<p>1.的确，在一开始的时候，任何一台主机或者路由器都必须配有一个唯一的IP地址。</p>
-<p>2.但随着IP地址不足的问题日益显著，人们对IP地址做了新的处理方式：</p>
-<ul>
-<li>将IP地址分为私有IP地址和全局IP地址</li>
-<li>全局IP地址必须是唯一的</li>
-<li>私有IP地址不需要时唯一的，只要在同一个域里保持唯一便可，在不同域里可以重复</li>
-</ul>
-<p>私有IP地址的范围：（A&#x2F;B&#x2F;C类各有一段，一共三段）</p>
-<p>10.0.0.0~10.255.255.255（10&#x2F;8) A类</p>
-<p>172.16.0.0~172.31.255.255（172.16&#x2F;12）B类</p>
-<p>192.168.0.0~192.168.255.255（192.168&#x2F;16） C类</p>
-<h2 id="什么是NAT？"><a href="#什么是NAT？" class="headerlink" title="什么是NAT？"></a>什么是NAT？</h2><p>NAT（Network Address Translation，网络地址转换），是用于在本地网络中使用私有地址，在连接网络时转而使用全局IP地址的技术。</p>
-<p>这种方法需要在专用网连接到因特网的路由器上安装NAT软件。装有NAT软件的路由器叫做NAT路由器，它至少有一个有效的外部全球IP地址。这样，所有使用本地地址的主机和外界通信时，都要在NAT路由器上将其本地地址转换为全球IP地址，才能和因特网连接。</p>
-<h2 id="NAT的功能"><a href="#NAT的功能" class="headerlink" title="NAT的功能"></a>NAT的功能</h2><p>在NAT路由器内部，有一张自动生成的用于地址转换的表，当发送数据的时候，会按照表中的映射关系进行处理。</p>
-<p>当NAT路由器具有n各全球IP地址时，专用网内最多可以同时有n台主机接入到互联网。这样就可以使专用网内较多数量的主机，轮流使用NAT路由器有限数量的全球IP地址。</p>
-<p>通过NAT路由器的通信必须由专用网内的主机发起。专用网内部的主机不能充当服务器用，因为互联网上的客户无法请求专用网内的服务器提供服务。</p>
-<h2 id="网络地址与端口号转换NAPT"><a href="#网络地址与端口号转换NAPT" class="headerlink" title="网络地址与端口号转换NAPT"></a>网络地址与端口号转换NAPT</h2><ul>
-<li>为了更加有效地利用 NAT 路由器上的全球IP地址，现在常用的 NAT 转换表把运输层的端口号也利用上。这样，就可以使多个拥有本地地址的主机，共用一个 NAT 路由器上的全球 IP 地址，因而可以同时和互联网上的不同主机进行通信。</li>
-<li>使用端口号的 NAT 叫做网络地址与端口号转换NAPT (Network Address and Port Translation)，而不使用端口号的 NAT 就叫做传统的 NAT (traditional NAT)。（也叫PAT，Port Address Translation）</li>
-</ul>
-<p>NAT不仅能解决IP地址不足的问题，而且还能够有效地避免来自网络外部的攻击，隐藏并保护网络内部的主机。把内网的私有地主，转化成外网的公有地址，使得内部网络上的（被设置为私有IP地址的）主机可以访问Internet。</p>
-<h2 id="NAT的分类"><a href="#NAT的分类" class="headerlink" title="NAT的分类"></a>NAT的分类</h2><p>NAT分为Basic NAT和PAT：</p>
-<ul>
-<li>Basic NAT只转化IP，不映射端口。</li>
-<li>PAT除了转化IP，还做端口映射，可以用于多个内部地主映射到少量（甚至一个）外部地址。</li>
-</ul>
-<p>NAT还分为静态NAT和动态NAT：</p>
-<ul>
-<li>静态NAT：将内部网络中的每个主机都永久映射成外部网络中的某个合法的地址，多用于服务器。</li>
-<li>动态NAT：在外部网络中定义了一个或多个合法地址，采用动态分配的方法映射到内部网络。</li>
-</ul>
-<h2 id="NAT的映射方式"><a href="#NAT的映射方式" class="headerlink" title="NAT的映射方式"></a>NAT的映射方式</h2><p>对于第四层是TCP或UDP的数据报，NAT通过更改源端口号，来实现多对少的映射。</p>
-<blockquote>
-<p>例如：内部IP1~IP4，4个地址映射成外部一个地址IP5。</p>
-<p>(IP1，Port1）映射成（IP5，Port1）</p>
-<p>（IP2，Port1）映射成（IP5，Port2）</p>
-<p>（IP3，Port2）映射成（IP5，Port3）</p>
-<p>（IP4，Port2）映射成（IP5，Port4）</p>
-</blockquote>
-<p>对于ICMP包，NAT通过更改ICMP的ID，来实现多对少的映射。</p>
-<h2 id="NAT有什么弊端"><a href="#NAT有什么弊端" class="headerlink" title="NAT有什么弊端"></a>NAT有什么弊端</h2><p>在一个具有NAT功能的路由器下的主机并没有建立真正的端对端连接，并不能参与一些因特网协议。</p>
-<p>一些需要初始化从外部网络建立的TCP连接，和使用无状态协议（比如UDP）的服务将被终端。除非NAT路由器做一些具体的努力，否则送来的数据包将不能到达正确的地址。NAT也会使安全协议变得复杂。</p>
-<h2 id="NAT的局限性"><a href="#NAT的局限性" class="headerlink" title="NAT的局限性"></a>NAT的局限性</h2><p>（1）NAT违反了IP地址构建模型的设计原则。IP地址结构的基础是每个IP地址均标识了一个网络的连接。Internet的软件设计就是建立在这个前提之上，而NAT使得有很多主机可能在使用相同的地址，如10.0.0.1。</p>
-<p>（2）NAT使得IP协议从面向无连接编程面向连接。NAT必须维护专用IP地址与公用IP地址以及端口号的映射关系。在TCP&#x2F;IP协议体系中，如果一个路由器出现故障，不会影响到TCP协议的执行。因为只要几秒收不到应答，发送进程就会进入超时重传处理。而当存在NAT时，最初设计的TCP&#x2F;IP协议过程将发生变化，Internet可能变得非常脆弱。</p>
-<p>（3）NAT违反了基本的网络分层结构模型的设计原则。因为在传统的网络分层结构模型中，第N层是不能修改第N+1层的报头内容的。NAT破坏了这种各层独立的原则。</p>
-<p>（4）有些应用是将IP地址插入到正文的内容中，例如标准的FTP协议与IP　Phone协议H.323。如果NAT与这一类协议一起工作，那么NAT协议一定要做适当地修正。同时，网络的传输层也可能使用TCP与UDP协议之外的其他协议，那么NAT协议必须知道并且做相应的修改。由于NAT的存在，使得P2P应用实现出现困难，因为P2P的文件共享与语音共享都是建立在IP协议的基础上的。</p>
-<p>（5）NAT同时存在对高层协议和安全性的影响问题。RFC对NAT存在的问题进行了讨论。NAT的反对者认为这种临时性的缓解IP地址短缺的方案推迟了Ipv6迁移的进程，而并没有解决深层次的问题，他们认为是不可取的。</p>
-<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/26992935">https://zhuanlan.zhihu.com/p/26992935</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/24/%E8%BD%AF%E5%B7%A5%E4%BA%8C%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/p1.jpg">
-      <meta itemprop="name" content="戎菜菜">
-      <meta itemprop="description" content="hey">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小戎的学习历程">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/24/%E8%BD%AF%E5%B7%A5%E4%BA%8C%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-title-link" itemprop="url">软工二设计模式</a>
-        </h2>
-
-        <div class="post-meta">
-
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-05-24 10:07:36 / 修改时间：16:02:32" itemprop="dateCreated datePublished" datetime="2022-05-24T10:07:36+08:00">2022-05-24</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%BD%AF%E5%B7%A5%E4%BA%8C/" itemprop="url" rel="index"><span itemprop="name">软工二</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h2><p>抽象策略（一个类的行为或者其算法）为一个接口，然后有不同的实现。</p>
-<p>[<a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10202506"> Day 3 ] 初探設計模式 - 策略模式 (Strategy Pattern) - IT 邦幫忙::一起幫忙解決難題，拯救 IT 人的一天 (ithome.com.tw)</a></p>
-<h2 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h2><p>工厂提供对象的创建方法接口，程序调用接口创建对象，并不清楚对象的创建细节。</p>
-<p>[<a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10202075"> Day 2 ] 初探設計模式 - 工廠方法模式 (Factory Method Pattern) - IT 邦幫忙::一起幫忙解決難題，拯救 IT 人的一天 (ithome.com.tw)</a></p>
-<h2 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h2><p>[<a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10203092"> Day 5 ] 初探設計模式 - 單例模式 (Singleton) - iT 邦幫忙::一起幫忙解決難題，拯救 IT 人的一天 (ithome.com.tw)</a></p>
-<h2 id="迭代器模式"><a href="#迭代器模式" class="headerlink" title="迭代器模式"></a>迭代器模式</h2><p>为了不暴露内部细节，减少其所担负的功能，所以将迭代器独立出来。</p>
-<p>[<a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10207704"> Day 20 ] 這樣每個月發薪水就輕鬆啦！迭代器模式 ( Iterator Pattern ) - iT 邦幫忙::一起幫忙解決難題，拯救 IT 人的一天 (ithome.com.tw)</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/23/%E7%8E%AF%E5%9B%9E%E6%8E%A5%E5%8F%A3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/p1.jpg">
-      <meta itemprop="name" content="戎菜菜">
-      <meta itemprop="description" content="hey">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小戎的学习历程">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/23/%E7%8E%AF%E5%9B%9E%E6%8E%A5%E5%8F%A3/" class="post-title-link" itemprop="url">环回接口</a>
-        </h2>
-
-        <div class="post-meta">
-
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-05-23 22:45:01 / 修改时间：23:23:17" itemprop="dateCreated datePublished" datetime="2022-05-23T22:45:01+08:00">2022-05-23</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>大多数产品都支持环回接口（Loopback Interface），以允许运行在同一台主机上的客户端程序和服务器通过TCP&#x2F;IP进行通信。A类网络号127就是为环回接口预留的。根据惯例，大多数系统把127.0.0.1分配给这个接口，子网掩码一般建议为255.255.255.255，并命名为localhost。一个传给环回接口的IP数据包不能再任何网络上出现。（实际上，127开头的所有网络都是环回地址，只是默认会用127.0.0.1，但传给其他127开头的地址的数据最终都会到环回接口，不会进入网络）</p>
-<p>环回接口有一个特性，除非设备瘫痪，否则其状态一直是up。这个特性对于路由协议来说非常重要。环回接口使使用广泛的一种逻辑接口。</p>
-<p>下图为环回接口处理IP数据报的简单过程。</p>
-<p><img src="https://box.kancloud.cn/2016-04-12_570c8933e28da.png"></p>
-<p>图中需要指出的关键点是：</p>
-<p>1）传给环回地址的任何数据均作为IP输入</p>
-<p>2）传给广播地址或多播地址的数据报复制一份传给环回地址，然后送到以太网上。这是因为广播传送和多播传送的定义包含主机本身。</p>
-<p>3）任何传给该主机Ip地址的数据均送到环回接口。</p>
-<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><p>OSPF router-id可以手工指定，只要保证区域内只有一个就行，可以是设备上不存在的地址。环回接口使用可以模拟网段，或者主机地址。环回口还可以用来建立邻居，比如BGP，使邻居更稳定，即使路由器其中一个物理口down了，还可以从其他途径访问到环回口，保证邻居的稳定，以节省资源。</p>
-<h2 id="创建环回接口的原因"><a href="#创建环回接口的原因" class="headerlink" title="创建环回接口的原因"></a>创建环回接口的原因</h2><ol>
-<li><p>用来建立路由邻居</p>
-<p>我们知道路由协议要想正常运行，大多需要先建立邻居关系，邻居关系的稳定是路由计算正确的基石。实际运用中，常常使用环回接口来建立两个路由器之间的邻居关系，例如BGP协议。比起使用物理接口建立连接，使用环回接口可以使邻居关系更加牢固，因为就算某个物理链路和接口发生了故障，只要能从其他途径访问到该设备，那么邻居关系就不会中断。</p>
-</li>
-<li><p>用来作为Router-ID</p>
-<p>在常用的OSPF、BGP等路由协议中，都有Router-ID的概念，这相当于一台路由器的身份证号，在一个指定的范围（如一个自治系统）内只能标识一台设备，不能有重复。因为环回接口的稳定性，我们常使用一个环回接口地址来作为Router-ID，使整个设备的标识稳定可靠。使用环回接口作为Router-ID还有一个好处就是可以节省地址，因为环回接口的地址一般和业务地址没有关系，是独立规划的。</p>
-</li>
-<li><p>用于虚拟隧道连接</p>
-<p>在建立IPSec或GRE之类的虚拟隧道时，使用loopback接口可以保证整个隧道的稳定性。</p>
-</li>
-<li><p>用于网络连通性测试</p>
-<p>创建并配置好环回接口之后，它的地址是能被ping或telnet的，这就可以被用来测试网络的连通性。</p>
-</li>
-</ol>
-<p>在Cisco路由器中可以使用interface loopback命令来创建它。</p>
-<p>注意：启动OSPF路由选择进程时会选择OSPF的路由器ID。这发生在手动执行了router ospf命令或者在启动过程中加载路由器配置时。因此，如果在启用了OSPF之后再创建环回接口，那么该环回接口将不会被用作路由器ID；然而，如果重新启动路由器，默认将使用环回接口。因此，建议优先创建环回接口并先给它分配IP地址，然后再启用OSPF，这样可以消除关于路由器ID的困惑。 [2] </p>
-<p>以下为配置环回接口的指令：</p>
-<p>Router(config)#interface loopback<em>number</em></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1104,20 +1183,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">89</span>
+          <span class="site-state-item-count">92</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-count">26</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
