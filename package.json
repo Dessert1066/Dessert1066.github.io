@@ -1,0 +1,30 @@
+{
+  "name": "vue",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev_def": "webpack-dev-server --inline --public --config build/dev.js",
+    "dev": "nodemon --watch config/index.js --exec \"webpack-dev-server --inline --public --config build/dev.js\"",
+    "start": "npm run dev",
+    "build": "cross-env NODE_ENV=production node build/build.js",
+    "test": "jest"
+  },
+  "author": "rong runxiang",
+  "license": "ISC",
+  "dependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.1.0",
+    "jest-environment-jsdom": "^28.1.3",
+    "jsdom": "^14.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.18.6",
+    "@babel/preset-env": "^7.18.6",
+    "jest": "^28.1.3"
+  },
+  "directories": {
+    "example": "example"
+  },
+  "keywords": [],
+  "description": ""
+}
