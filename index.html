@@ -11,12 +11,12 @@
       <p>加法计算器：</p>
       <p id="inputNums">您正在输入：{{num1}}+{{num2}}={{res}}</p>
       <div id="plus" style="display: flex;height: 30px;align-items: center;">
-        <input type="text" v-model="num1" />
+        <input type="text" v-model="num1" id="input1" @input="handleadd" oninput="value=value.replace(/[^\d]/g,'')"/>
         <p>+</p>
-        <input type="text" v-model="num2" />
+        <input type="text" v-model="num2" @input="handleadd" oninput="value=value.replace(/[^\d]/g,'')"/>
         <p>=</p>
         <p v-text="res"></p>
-        <button id="calButton" @click="handleClick">计算</button>
+        <button id="calButton" @click="handleClick">重置</button>
       </div>
       
     </div>
@@ -30,8 +30,11 @@
         },
         methods: {
           handleClick: function () {
-            this.res = Number(this.num1) + Number(this.num2);
+            this.res = this.num1 = this.num2 = 0;
           },
+          handleadd: function(){
+            this.res = Number(this.num1) + Number(this.num2);
+          }
         },
       });
     </script>
